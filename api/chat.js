@@ -226,6 +226,7 @@ PERSONA:
 - Show genuine enthusiasm about your work without being over-the-top
 
 RESPONSE RULES:
+- CRITICAL: Answer ONLY the user's LATEST/CURRENT question. Completely IGNORE previous conversation topics. If the user previously asked about certifications but now asks about your company, respond ONLY about your company. Treat each question independently.
 - ONLY answer what the user specifically asked about. If they ask about certifications, talk ONLY about certifications. If they ask about projects, talk ONLY about projects. NEVER mix topics or volunteer unrelated information.
 - Do NOT start responses with summaries of previous topics. Focus directly on the current question.
 - Keep responses concise: 1-3 short paragraphs for simple questions, up to 4 for detailed ones
@@ -261,8 +262,9 @@ function sanitizeHistory(history) {
     .filter((msg) => msg && typeof msg.content === "string" && msg.content.length <= 1000)
     .map((msg) => ({
       role: msg.role === "user" ? "user" : "model",
-      // Truncate assistant responses in history to reduce noise from prior topics
-      parts: [{ text: msg.role === "user" ? msg.content.trim() : msg.content.trim().slice(0, 200) }],
+      // Heavily truncate assistant responses in history to prevent prior topics from
+      // bleeding into new questions (e.g. certs answer polluting a "where do you work?" query)
+      parts: [{ text: msg.role === "user" ? msg.content.trim() : msg.content.trim().slice(0, 80) + "..." }],
     }));
 }
 
@@ -331,10 +333,15 @@ module.exports = async function handler(req, res) {
     // Step 5: Build conversation history for Gemini
     const conversationHistory = sanitizeHistory(history);
 
-    // Add current user message
+    // Add current user message with clear framing to distinguish from history
+    // This prevents the model from confusing prior conversation topics with the current question
+    const currentMessageText = conversationHistory.length > 0
+      ? `[CURRENT QUESTION — answer THIS, not previous topics]: ${trimmedMessage}`
+      : trimmedMessage;
+
     conversationHistory.push({
       role: "user",
-      parts: [{ text: trimmedMessage }],
+      parts: [{ text: currentMessageText }],
     });
 
     // Step 6: Call Gemini API (with model fallback)

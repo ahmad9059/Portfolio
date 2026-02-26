@@ -659,9 +659,8 @@
       suggestedQuestions.style.display = 'none';
     }
 
-    // Add user message
+    // Add user message to UI
     addMessage('user', message);
-    conversationHistory.push({ role: 'user', content: message });
 
     // Clear input
     chatInput.value = '';
@@ -676,6 +675,7 @@
     addTypingIndicator();
 
     try {
+      // Send history WITHOUT the current message (server appends it separately)
       const response = await fetch(API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -684,6 +684,9 @@
           history: conversationHistory.slice(-10)
         })
       });
+
+      // Add to history AFTER sending (so it's not duplicated in the request)
+      conversationHistory.push({ role: 'user', content: message });
 
       removeTypingIndicator();
 
