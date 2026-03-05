@@ -29,5 +29,4 @@ Allow: /
 # Sitemaps
 Sitemap: {{ "sitemap.xml" | absURL }}
 
-# RSS Feed
-Feed: {{ "index.xml" | absURL }}
+
