@@ -4,15 +4,15 @@
 
 ## Main Pages
 
-- [About](https://ahmadx.vercel.app/about/): Background, experience, open source contributions, competitive programming achievements, and contact information
-- [Projects](https://ahmadx.vercel.app/projects/): Showcase of 7 featured projects — full-stack web apps, open-source tools, and developer infrastructure built with Next.js, TypeScript, AWS, and more
-- [Certifications & Achievements](https://ahmadx.vercel.app/certifications/): 21 professional certifications from AWS, Meta, Google, GitHub, IBM, HackerRank, Harvard, UC Davis, and DeepLearning.AI, plus a timeline of major achievements
-- [Tools & Setup](https://ahmadx.vercel.app/tools/): Detailed writeup of the software, tools, and developer environment used daily — Arch Linux, Hyprland, Neovim, Zsh, and more
-- [Blog](https://ahmadx.vercel.app/posts/): 41 technical articles covering AWS cloud, web development, system design, databases, shell scripting, and personal topics
-- [Chat](https://ahmadx.vercel.app/chat/): AI-powered chatbot (Google Gemini with RAG) that answers questions about Ahmad's work, projects, and background
-- [Search](https://ahmadx.vercel.app/search/): Full-text fuzzy search across all content powered by Fuse.js
-- [Categories](https://ahmadx.vercel.app/categories/): Blog posts organized by category — tech, web, and life
-- [Resume](https://ahmadx.vercel.app/Ahmad-Hassan-Resume.pdf): Downloadable PDF resume
+- [About](https://ahmadx.dev/about/): Background, experience, open source contributions, competitive programming achievements, and contact information
+- [Projects](https://ahmadx.dev/projects/): Showcase of 7 featured projects — full-stack web apps, open-source tools, and developer infrastructure built with Next.js, TypeScript, AWS, and more
+- [Certifications & Achievements](https://ahmadx.dev/certifications/): 21 professional certifications from AWS, Meta, Google, GitHub, IBM, HackerRank, Harvard, UC Davis, and DeepLearning.AI, plus a timeline of major achievements
+- [Tools & Setup](https://ahmadx.dev/tools/): Detailed writeup of the software, tools, and developer environment used daily — Arch Linux, Hyprland, Neovim, Zsh, and more
+- [Blog](https://ahmadx.dev/posts/): 41 technical articles covering AWS cloud, web development, system design, databases, shell scripting, and personal topics
+- [Chat](https://ahmadx.dev/chat/): AI-powered chatbot (Google Gemini with RAG) that answers questions about Ahmad's work, projects, and background
+- [Search](https://ahmadx.dev/search/): Full-text fuzzy search across all content powered by Fuse.js
+- [Categories](https://ahmadx.dev/categories/): Blog posts organized by category — tech, web, and life
+- [Resume](https://ahmadx.dev/Ahmad-Hassan-Resume.pdf): Downloadable PDF resume
 
 ## Projects
 
@@ -62,63 +62,63 @@
 
 ## Blog Posts — AWS Certified Cloud Practitioner Series
 
-- [Cloud Computing](https://ahmadx.vercel.app/posts/aws-ccp-cloud-computing/): AWS CCP notes on cloud computing fundamentals
-- [IAM (Identity and Access Management)](https://ahmadx.vercel.app/posts/aws-ccp-iam-identity-and-access-management/): AWS IAM users, groups, policies, roles, and security
-- [EC2 - Elastic Compute Cloud](https://ahmadx.vercel.app/posts/aws-ccp-ec2-elastic-compute-cloud/): AWS EC2 instances, types, purchasing options, and setup
-- [EC2 - Instance Storage](https://ahmadx.vercel.app/posts/aws-ccp-ec2-instance-storage/): EBS volumes, snapshots, AMIs, and storage options
-- [ELB & ASG](https://ahmadx.vercel.app/posts/aws-ccp-elb-asg-elastic-load-balancing-auto-scaling-groups/): Elastic Load Balancing and Auto Scaling Groups
-- [Amazon S3](https://ahmadx.vercel.app/posts/aws-ccp-amazon-s3/): S3 buckets, storage classes, versioning, and lifecycle
-- [Databases & Analytics](https://ahmadx.vercel.app/posts/aws-ccp-databases-analytics/): RDS, Aurora, DynamoDB, Redshift, and analytics services
-- [Other Compute Services](https://ahmadx.vercel.app/posts/aws-ccp-other-compute-services-ecs-lambda-batch-lightsail/): ECS, Lambda, Batch, and Lightsail
-- [Deployments & Managing Infrastructure at Scale](https://ahmadx.vercel.app/posts/aws-ccp-deployments-managing-infrastructure-at-scale/): CloudFormation, Elastic Beanstalk, CodeDeploy, and more
-- [Leveraging the AWS Global Infrastructure](https://ahmadx.vercel.app/posts/aws-ccp-leveraging-the-aws-global-infrastructure/): Route 53, CloudFront, Global Accelerator, and edge services
-- [Cloud Integrations](https://ahmadx.vercel.app/posts/aws-ccp-cloud-integrations/): SQS, SNS, Kinesis, and Amazon MQ
-- [Cloud Monitoring](https://ahmadx.vercel.app/posts/aws-ccp-cloud-monitoring/): CloudWatch, CloudTrail, X-Ray, and monitoring tools
-- [VPC & Networking](https://ahmadx.vercel.app/posts/aws-ccp-vpc-networking/): VPC, subnets, security groups, NACLs, and networking
-- [Security & Compliance](https://ahmadx.vercel.app/posts/aws-ccp-security-compliance/): AWS security services, compliance programs, and encryption
-- [Machine Learning](https://ahmadx.vercel.app/posts/aws-ccp-machine-learning/): SageMaker, Rekognition, Comprehend, and ML services
-- [Account Management, Billing & Support](https://ahmadx.vercel.app/posts/aws-ccp-account-management-billing-support/): AWS Organizations, billing, pricing, and support plans
-- [Advanced Identity](https://ahmadx.vercel.app/posts/aws-ccp-advanced-identity/): AWS STS, Cognito, Directory Services, and IAM Identity Center
-- [Other Services](https://ahmadx.vercel.app/posts/aws-ccp-other-services/): Additional AWS services overview
+- [Cloud Computing](https://ahmadx.dev/posts/aws-ccp-cloud-computing/): AWS CCP notes on cloud computing fundamentals
+- [IAM (Identity and Access Management)](https://ahmadx.dev/posts/aws-ccp-iam-identity-and-access-management/): AWS IAM users, groups, policies, roles, and security
+- [EC2 - Elastic Compute Cloud](https://ahmadx.dev/posts/aws-ccp-ec2-elastic-compute-cloud/): AWS EC2 instances, types, purchasing options, and setup
+- [EC2 - Instance Storage](https://ahmadx.dev/posts/aws-ccp-ec2-instance-storage/): EBS volumes, snapshots, AMIs, and storage options
+- [ELB & ASG](https://ahmadx.dev/posts/aws-ccp-elb-asg-elastic-load-balancing-auto-scaling-groups/): Elastic Load Balancing and Auto Scaling Groups
+- [Amazon S3](https://ahmadx.dev/posts/aws-ccp-amazon-s3/): S3 buckets, storage classes, versioning, and lifecycle
+- [Databases & Analytics](https://ahmadx.dev/posts/aws-ccp-databases-analytics/): RDS, Aurora, DynamoDB, Redshift, and analytics services
+- [Other Compute Services](https://ahmadx.dev/posts/aws-ccp-other-compute-services-ecs-lambda-batch-lightsail/): ECS, Lambda, Batch, and Lightsail
+- [Deployments & Managing Infrastructure at Scale](https://ahmadx.dev/posts/aws-ccp-deployments-managing-infrastructure-at-scale/): CloudFormation, Elastic Beanstalk, CodeDeploy, and more
+- [Leveraging the AWS Global Infrastructure](https://ahmadx.dev/posts/aws-ccp-leveraging-the-aws-global-infrastructure/): Route 53, CloudFront, Global Accelerator, and edge services
+- [Cloud Integrations](https://ahmadx.dev/posts/aws-ccp-cloud-integrations/): SQS, SNS, Kinesis, and Amazon MQ
+- [Cloud Monitoring](https://ahmadx.dev/posts/aws-ccp-cloud-monitoring/): CloudWatch, CloudTrail, X-Ray, and monitoring tools
+- [VPC & Networking](https://ahmadx.dev/posts/aws-ccp-vpc-networking/): VPC, subnets, security groups, NACLs, and networking
+- [Security & Compliance](https://ahmadx.dev/posts/aws-ccp-security-compliance/): AWS security services, compliance programs, and encryption
+- [Machine Learning](https://ahmadx.dev/posts/aws-ccp-machine-learning/): SageMaker, Rekognition, Comprehend, and ML services
+- [Account Management, Billing & Support](https://ahmadx.dev/posts/aws-ccp-account-management-billing-support/): AWS Organizations, billing, pricing, and support plans
+- [Advanced Identity](https://ahmadx.dev/posts/aws-ccp-advanced-identity/): AWS STS, Cognito, Directory Services, and IAM Identity Center
+- [Other Services](https://ahmadx.dev/posts/aws-ccp-other-services/): Additional AWS services overview
 
 ## Blog Posts — Web Development
 
-- [HTML - The Language of the Web](https://ahmadx.vercel.app/posts/html/): Comprehensive guide to HTML elements, forms, and semantics
-- [CSS - Cascading Style Sheets](https://ahmadx.vercel.app/posts/css/): CSS fundamentals, selectors, box model, flexbox, grid, and responsive design
-- [Tailwind CSS](https://ahmadx.vercel.app/posts/tailwind-css/): Utility-first CSS framework guide
-- [Fundamentals of JavaScript](https://ahmadx.vercel.app/posts/fundamentals-of-javascript/): JavaScript basics — variables, types, operators, control flow, and functions
-- [JavaScript Advanced Concepts](https://ahmadx.vercel.app/posts/javascript-advanced/): Closures, prototypes, classes, modules, and advanced patterns
-- [DOM Manipulation in JavaScript](https://ahmadx.vercel.app/posts/dom-js/): Selecting, modifying, and interacting with DOM elements
-- [Asynchronous JavaScript](https://ahmadx.vercel.app/posts/asynchronous-js/): Promises, async/await, fetch API, and event loop
-- [React – A JavaScript Library](https://ahmadx.vercel.app/posts/reactjs/): React components, hooks, state management, and building UIs
-- [GSAP & Locomotive Scroll](https://ahmadx.vercel.app/posts/gsap-locomotive/): Animation library integration for smooth web animations
-- [Becoming a Full-Stack Web Developer in 2025](https://ahmadx.vercel.app/posts/web-dev-roadmap/): Complete roadmap for web development careers
-- [Build an AI Chatbot Web App with Google Gemini](https://ahmadx.vercel.app/posts/chatbot/): Tutorial on building and deploying an AI chatbot on Vercel
+- [HTML - The Language of the Web](https://ahmadx.dev/posts/html/): Comprehensive guide to HTML elements, forms, and semantics
+- [CSS - Cascading Style Sheets](https://ahmadx.dev/posts/css/): CSS fundamentals, selectors, box model, flexbox, grid, and responsive design
+- [Tailwind CSS](https://ahmadx.dev/posts/tailwind-css/): Utility-first CSS framework guide
+- [Fundamentals of JavaScript](https://ahmadx.dev/posts/fundamentals-of-javascript/): JavaScript basics — variables, types, operators, control flow, and functions
+- [JavaScript Advanced Concepts](https://ahmadx.dev/posts/javascript-advanced/): Closures, prototypes, classes, modules, and advanced patterns
+- [DOM Manipulation in JavaScript](https://ahmadx.dev/posts/dom-js/): Selecting, modifying, and interacting with DOM elements
+- [Asynchronous JavaScript](https://ahmadx.dev/posts/asynchronous-js/): Promises, async/await, fetch API, and event loop
+- [React – A JavaScript Library](https://ahmadx.dev/posts/reactjs/): React components, hooks, state management, and building UIs
+- [GSAP & Locomotive Scroll](https://ahmadx.dev/posts/gsap-locomotive/): Animation library integration for smooth web animations
+- [Becoming a Full-Stack Web Developer in 2025](https://ahmadx.dev/posts/web-dev-roadmap/): Complete roadmap for web development careers
+- [Build an AI Chatbot Web App with Google Gemini](https://ahmadx.dev/posts/chatbot/): Tutorial on building and deploying an AI chatbot on Vercel
 
 ## Blog Posts — System Design & Architecture
 
-- [CAP Theorem](https://ahmadx.vercel.app/posts/cap-theorem/): Consistency, availability, and partition tolerance in distributed systems
-- [Event Driven Architecture](https://ahmadx.vercel.app/posts/event-driven-architecture/): Event-based system design patterns and implementation
-- [Microservice Architecture](https://ahmadx.vercel.app/posts/microservice-architecture/): Microservices design, communication, and deployment patterns
+- [CAP Theorem](https://ahmadx.dev/posts/cap-theorem/): Consistency, availability, and partition tolerance in distributed systems
+- [Event Driven Architecture](https://ahmadx.dev/posts/event-driven-architecture/): Event-based system design patterns and implementation
+- [Microservice Architecture](https://ahmadx.dev/posts/microservice-architecture/): Microservices design, communication, and deployment patterns
 
 ## Blog Posts — Databases
 
-- [Introduction to Databases - MySQL](https://ahmadx.vercel.app/posts/mysql/): MySQL fundamentals, queries, and database design
-- [MS SQL Server and Azure Data Studio on Arch Linux](https://ahmadx.vercel.app/posts/sqlserver/): Setting up SQL Server development environment on Linux
+- [Introduction to Databases - MySQL](https://ahmadx.dev/posts/mysql/): MySQL fundamentals, queries, and database design
+- [MS SQL Server and Azure Data Studio on Arch Linux](https://ahmadx.dev/posts/sqlserver/): Setting up SQL Server development environment on Linux
 
 ## Blog Posts — Shell Scripting & Linux
 
-- [Introduction to Shell Scripting](https://ahmadx.vercel.app/posts/intro-to-shell-scripting/): Shell scripting basics, commands, and automation
-- [Variables in Shell Scripting](https://ahmadx.vercel.app/posts/variable-in-shell-scripting/): Variable declaration, types, and usage in shell scripts
-- [Shell Expansion in Shell Scripting](https://ahmadx.vercel.app/posts/shell-expansion/): Parameter expansion, command substitution, and arithmetic expansion
-- [Shell Operation in Shell Scripting](https://ahmadx.vercel.app/posts/shell-operation-shell-scripting/): Shell operations, control structures, and script execution
-- [Setting Up MPD and RMPC](https://ahmadx.vercel.app/posts/setup-mpd-and-rmpc/): Music Player Daemon and RMPC client setup on Linux
-- [Arch Linux Installation on VMware](https://ahmadx.vercel.app/posts/vmware-archlinux-installation/): Step-by-step guide for installing Arch Linux in a virtual machine
+- [Introduction to Shell Scripting](https://ahmadx.dev/posts/intro-to-shell-scripting/): Shell scripting basics, commands, and automation
+- [Variables in Shell Scripting](https://ahmadx.dev/posts/variable-in-shell-scripting/): Variable declaration, types, and usage in shell scripts
+- [Shell Expansion in Shell Scripting](https://ahmadx.dev/posts/shell-expansion/): Parameter expansion, command substitution, and arithmetic expansion
+- [Shell Operation in Shell Scripting](https://ahmadx.dev/posts/shell-operation-shell-scripting/): Shell operations, control structures, and script execution
+- [Setting Up MPD and RMPC](https://ahmadx.dev/posts/setup-mpd-and-rmpc/): Music Player Daemon and RMPC client setup on Linux
+- [Arch Linux Installation on VMware](https://ahmadx.dev/posts/vmware-archlinux-installation/): Step-by-step guide for installing Arch Linux in a virtual machine
 
 ## Blog Posts — Other
 
-- [The 80/20 Principle](https://ahmadx.vercel.app/posts/80-20-rule/): Productivity and the Pareto principle applied to work and life
-- [What It Means to Feel for Someone](https://ahmadx.vercel.app/posts/forher/): Personal reflections on relationships and emotional depth
+- [The 80/20 Principle](https://ahmadx.dev/posts/80-20-rule/): Productivity and the Pareto principle applied to work and life
+- [What It Means to Feel for Someone](https://ahmadx.dev/posts/forher/): Personal reflections on relationships and emotional depth
 
 ## Technical Stack
 
@@ -133,10 +133,11 @@
 
 ## Contact
 
-- Email: ahmadhassan9059@gmail.com
-- LinkedIn: https://linkedin.com/in/ahmad9059
+- Email: hi@ahmadx.dev
+- LinkedIn: https://www.linkedin.com/in/ahmad9059/
 - GitHub: https://github.com/ahmad9059
-- LeetCode: https://leetcode.com/u/ahmad9059
-- Instagram: https://instagram.com/ahmad9059.dev
-- Portfolio: https://ahmadx.vercel.app
-- RSS Feed: https://ahmadx.vercel.app/index.xml
+- LeetCode: https://leetcode.com/ahmad9059/
+- Instagram: https://www.instagram.com/ahmad9059x/
+- X/Twitter: https://x.com/ahmad9059x
+- Portfolio: https://ahmadx.dev
+- RSS Feed: https://ahmadx.dev/index.xml

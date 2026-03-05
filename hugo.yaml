@@ -1,4 +1,4 @@
-baseURL: "https://ahmadx.vercel.app"
+baseURL: "https://ahmadx.dev"
 languageCode: en-us
 title: ahmad
 theme: PaperMod
@@ -10,26 +10,30 @@ menu:
       name: About
       url: /about/
       weight: 10
-    - identifier: categories
-      name: Categories
-      url: /categories/
-      weight: 20
     - identifier: projects
       name: Projects
       url: /projects/
-      weight: 25
+      weight: 20
     - identifier: certifications
       name: Certs
       url: /certifications/
       weight: 30
+    - identifier: blog
+      name: Blog
+      url: /categories/
+      weight: 40
+    - identifier: contact
+      name: Contact
+      url: /contact/
+      weight: 50
     - identifier: chat
       name: Chat
       url: /chat/
-      weight: 45
+      weight: 60
     - identifier: search
       name: Search
       url: /search/
-      weight: 50
+      weight: 70
 
 ignoreLogs: "warning-goldmark-raw-html"
 
@@ -77,15 +81,17 @@ params:
         url: "/Ahmad-Hassan-Resume.pdf"
   socialIcons:
     - name: "linkedin"
-      url: "https://linkedin.com/in/ahmad9059"
+      url: "https://www.linkedin.com/in/ahmad9059/"
     - name: "github"
       url: "https://github.com/ahmad9059"
     - name: "leetcode"
-      url: "https://leetcode.com/u/ahmad9059"
+      url: "https://leetcode.com/ahmad9059/"
     - name: "email"
-      url: "mailto:ahmadhassan9059@gmail.com"
+      url: "mailto:hi@ahmadx.dev"
     - name: "instagram"
-      url: "https://instagram.com/ahmad9059.dev"
+      url: "https://www.instagram.com/ahmad9059x/"
+    - name: "x"
+      url: "https://x.com/ahmad9059x"
     - name: "rss"
       url: "/index.xml"
   assets:

@@ -3,7 +3,7 @@
     "id": "bio-intro",
     "category": "about",
     "title": "Introduction",
-    "content": "I'm Ahmad Hassan, a Software Engineer and Full Stack Developer from Pakistan. I was born on July 4, 2005, making me 20 years old (as of 2025). I'm from Nasirabad, Mumtazabad, Multan, Punjab, Pakistan. I currently work at VieroMind and study at MNS University of Agriculture, Multan. I'm single. I build web applications, contribute to open source, and write about things I learn along the way. My portfolio is at ahmadx.vercel.app."
+    "content": "I'm Ahmad Hassan, a Software Engineer and Full Stack Developer from Pakistan. I was born on July 4, 2005, making me 20 years old (as of 2025). I'm from Nasirabad, Mumtazabad, Multan, Punjab, Pakistan. I currently work at VieroMind and study at MNS University of Agriculture, Multan. I'm single. I build web applications, contribute to open source, and write about things I learn along the way. My portfolio is at ahmadx.dev."
   },
   {
     "id": "bio-work",
@@ -27,7 +27,7 @@
     "id": "bio-writing",
     "category": "about",
     "title": "Writing & Blog",
-    "content": "I write technical blogs covering system design, AWS cloud, web development, databases, shell scripting, and occasionally personal topics. I have 34 published articles on my blog. I started writing because it helps me think more clearly about what I'm learning, and if it helps someone else along the way, even better. My blog is available at ahmadx.vercel.app/posts/."
+    "content": "I write technical blogs covering system design, AWS cloud, web development, databases, shell scripting, and occasionally personal topics. I have 34 published articles on my blog. I started writing because it helps me think more clearly about what I'm learning, and if it helps someone else along the way, even better. My blog is available at ahmadx.dev/posts/."
   },
   {
     "id": "bio-beyond-code",
@@ -39,7 +39,7 @@
     "id": "contact-info",
     "category": "contact",
     "title": "Contact Information",
-    "content": "You can reach me at: Email: ahmadhassan9059@gmail.com, LinkedIn: linkedin.com/in/ahmad9059, GitHub: github.com/ahmad9059, LeetCode: leetcode.com/u/ahmad9059, Instagram: instagram.com/ahmad9059.dev. My portfolio website is at ahmadx.ercel.app."
+    "content": "You can reach me at: Email: hi@ahmadx.dev, LinkedIn: www.linkedin.com/in/ahmad9059, GitHub: github.com/ahmad9059, LeetCode: leetcode.com/ahmad9059, Instagram: www.instagram.com/ahmad9059x, X/Twitter: x.com/ahmad9059x. My portfolio website is at ahmadx.dev."
   },
   {
     "id": "skills-techstack",
@@ -153,7 +153,7 @@
     "id": "tools-website",
     "category": "tools",
     "title": "Portfolio Website",
-    "content": "This portfolio website is built with Hugo static site generator and the PaperMod theme. Hugo outputs plain HTML and CSS, keeping things fast and lightweight. The site is deployed on Vercel at ahmadx.vercel.app. I write my blog posts in Obsidian and sync them to Hugo using a custom shell script."
+    "content": "This portfolio website is built with Hugo static site generator and the PaperMod theme. Hugo outputs plain HTML and CSS, keeping things fast and lightweight. The site is deployed on Vercel at ahmadx.dev. I write my blog posts in Obsidian and sync them to Hugo using a custom shell script."
   },
   {
     "id": "education",
@@ -189,43 +189,43 @@
     "id": "summary-articles",
     "category": "articles",
     "title": "Blog Articles Overview",
-    "content": "I have 34 published blog articles on my portfolio at /posts/. They cover system design & architecture (microservices, event-driven architecture, CAP theorem), AWS Cloud Practitioner study notes (18 articles covering all CCP exam domains), shell scripting (4-part series), JavaScript & web development (React, GSAP, DOM, async JS, fundamentals, Tailwind CSS, CSS), databases (MySQL, MS SQL Server on Arch Linux), building an AI chatbot with Gemini, Linux tools (MPD/RMPC setup), a web dev roadmap for 2025, and personal/life topics. All articles are available at ahmadx.vercel.app/posts/."
+    "content": "I have 34 published blog articles on my portfolio at /posts/. They cover system design & architecture (microservices, event-driven architecture, CAP theorem), AWS Cloud Practitioner study notes (18 articles covering all CCP exam domains), shell scripting (4-part series), JavaScript & web development (React, GSAP, DOM, async JS, fundamentals, Tailwind CSS, CSS), databases (MySQL, MS SQL Server on Arch Linux), building an AI chatbot with Gemini, Linux tools (MPD/RMPC setup), a web dev roadmap for 2025, and personal/life topics. All articles are available at ahmadx.dev/posts/."
   },
   {
     "id": "articles-system-design",
     "category": "articles",
     "title": "System Design Articles",
-    "content": "I wrote 3 articles on system design and architecture: 1) 'Microservice Architecture' - covers API gateways, service decomposition, independent deployment, and scaling strategies (ahmadx.vercel.app/posts/microservice-architecture/), 2) 'Event Driven Architecture' - a practical guide to producers, consumers, message brokers like Kafka and RabbitMQ (ahmadx.vercel.app/posts/event-driven-architecture/), 3) 'CAP Theorem' - understanding consistency, availability, and partition tolerance trade-offs in distributed systems (ahmadx.vercel.app/posts/cap-theorem/)."
+    "content": "I wrote 3 articles on system design and architecture: 1) 'Microservice Architecture' - covers API gateways, service decomposition, independent deployment, and scaling strategies (ahmadx.dev/posts/microservice-architecture/), 2) 'Event Driven Architecture' - a practical guide to producers, consumers, message brokers like Kafka and RabbitMQ (ahmadx.dev/posts/event-driven-architecture/), 3) 'CAP Theorem' - understanding consistency, availability, and partition tolerance trade-offs in distributed systems (ahmadx.dev/posts/cap-theorem/)."
   },
   {
     "id": "articles-aws-ccp",
     "category": "articles",
     "title": "AWS Cloud Practitioner Articles",
-    "content": "I wrote an 18-part series of AWS Certified Cloud Practitioner study notes covering all CCP exam domains: Cloud Computing (/posts/aws-ccp-cloud-computing/), IAM (/posts/aws-ccp-iam-identity-and-access-management/), EC2 (/posts/aws-ccp-ec2-elastic-compute-cloud/), EC2 Instance Storage (/posts/aws-ccp-ec2-instance-storage/), ELB & ASG (/posts/aws-ccp-elb-asg-elastic-load-balancing-auto-scaling-groups/), Amazon S3 (/posts/aws-ccp-amazon-s3/), Databases & Analytics (/posts/aws-ccp-databases-analytics/), Other Compute Services like ECS, Lambda, Batch, Lightsail (/posts/aws-ccp-other-compute-services-ecs-lambda-batch-lightsail/), Deployments & Infrastructure (/posts/aws-ccp-deployments-managing-infrastructure-at-scale/), Global Infrastructure (/posts/aws-ccp-leveraging-the-aws-global-infrastructure/), Cloud Integrations (/posts/aws-ccp-cloud-integrations/), Cloud Monitoring (/posts/aws-ccp-cloud-monitoring/), VPC & Networking (/posts/aws-ccp-vpc-networking/), Security & Compliance (/posts/aws-ccp-security-compliance/), Machine Learning (/posts/aws-ccp-machine-learning/), Account Management & Billing (/posts/aws-ccp-account-management-billing-support/), Advanced Identity (/posts/aws-ccp-advanced-identity/), and Other Services (/posts/aws-ccp-other-services/). All are available at ahmadx.vercel.app/posts/."
+    "content": "I wrote an 18-part series of AWS Certified Cloud Practitioner study notes covering all CCP exam domains: Cloud Computing (/posts/aws-ccp-cloud-computing/), IAM (/posts/aws-ccp-iam-identity-and-access-management/), EC2 (/posts/aws-ccp-ec2-elastic-compute-cloud/), EC2 Instance Storage (/posts/aws-ccp-ec2-instance-storage/), ELB & ASG (/posts/aws-ccp-elb-asg-elastic-load-balancing-auto-scaling-groups/), Amazon S3 (/posts/aws-ccp-amazon-s3/), Databases & Analytics (/posts/aws-ccp-databases-analytics/), Other Compute Services like ECS, Lambda, Batch, Lightsail (/posts/aws-ccp-other-compute-services-ecs-lambda-batch-lightsail/), Deployments & Infrastructure (/posts/aws-ccp-deployments-managing-infrastructure-at-scale/), Global Infrastructure (/posts/aws-ccp-leveraging-the-aws-global-infrastructure/), Cloud Integrations (/posts/aws-ccp-cloud-integrations/), Cloud Monitoring (/posts/aws-ccp-cloud-monitoring/), VPC & Networking (/posts/aws-ccp-vpc-networking/), Security & Compliance (/posts/aws-ccp-security-compliance/), Machine Learning (/posts/aws-ccp-machine-learning/), Account Management & Billing (/posts/aws-ccp-account-management-billing-support/), Advanced Identity (/posts/aws-ccp-advanced-identity/), and Other Services (/posts/aws-ccp-other-services/). All are available at ahmadx.dev/posts/."
   },
   {
     "id": "articles-shell-scripting",
     "category": "articles",
     "title": "Shell Scripting Articles",
-    "content": "I wrote a 4-part shell scripting series: 1) 'Introduction to Shell Scripting' - learning shell scripting from scratch (ahmadx.vercel.app/posts/intro-to-shell-scripting/), 2) 'Shell Operation in Shell Scripting' - deep dive into shell operations (ahmadx.vercel.app/posts/shell-operation-shell-scripting/), 3) 'Shell Expansion in Shell Scripting' - understanding shell expansion (ahmadx.vercel.app/posts/shell-expansion/), 4) 'Variables in Shell Scripting' - working with variables (ahmadx.vercel.app/posts/variable-in-shell-scripting/)."
+    "content": "I wrote a 4-part shell scripting series: 1) 'Introduction to Shell Scripting' - learning shell scripting from scratch (ahmadx.dev/posts/intro-to-shell-scripting/), 2) 'Shell Operation in Shell Scripting' - deep dive into shell operations (ahmadx.dev/posts/shell-operation-shell-scripting/), 3) 'Shell Expansion in Shell Scripting' - understanding shell expansion (ahmadx.dev/posts/shell-expansion/), 4) 'Variables in Shell Scripting' - working with variables (ahmadx.dev/posts/variable-in-shell-scripting/)."
   },
   {
     "id": "articles-javascript",
     "category": "articles",
     "title": "JavaScript & Web Development Articles",
-    "content": "I wrote 9 articles on JavaScript and web development: 1) 'React -- A JavaScript Library' - comprehensive guide to React.js, state management, props, routing, redux (ahmadx.vercel.app/posts/reactjs/), 2) 'Build an AI Chatbot Web App with Google Gemini and Deploy on Vercel' - tutorial on building and deploying an AI chatbot (ahmadx.vercel.app/posts/chatbot/), 3) 'GSAP & Locomotive Scroll' - creating smooth animations and scroll effects (ahmadx.vercel.app/posts/gsap-locomotive/), 4) 'DOM Manipulation in JavaScript' - selecting, creating, removing elements dynamically (ahmadx.vercel.app/posts/dom-js/), 5) 'JavaScript Advanced Concepts' - closures, event listeners, higher-order functions (ahmadx.vercel.app/posts/javascript-advanced/), 6) 'Asynchronous JavaScript' - callbacks, Promises, async/await, Web Workers, Event Loop (ahmadx.vercel.app/posts/asynchronous-js/), 7) 'Fundamentals of JavaScript' - history, design philosophy, key features (ahmadx.vercel.app/posts/fundamentals-of-javascript/), 8) 'Tailwind CSS' - utility-first CSS framework guide (ahmadx.vercel.app/posts/tailwind-css/), 9) 'CSS - Cascading Style Sheets' - how CSS works for styling HTML/XML documents (ahmadx.vercel.app/posts/css/)."
+    "content": "I wrote 9 articles on JavaScript and web development: 1) 'React -- A JavaScript Library' - comprehensive guide to React.js, state management, props, routing, redux (ahmadx.dev/posts/reactjs/), 2) 'Build an AI Chatbot Web App with Google Gemini and Deploy on Vercel' - tutorial on building and deploying an AI chatbot (ahmadx.dev/posts/chatbot/), 3) 'GSAP & Locomotive Scroll' - creating smooth animations and scroll effects (ahmadx.dev/posts/gsap-locomotive/), 4) 'DOM Manipulation in JavaScript' - selecting, creating, removing elements dynamically (ahmadx.dev/posts/dom-js/), 5) 'JavaScript Advanced Concepts' - closures, event listeners, higher-order functions (ahmadx.dev/posts/javascript-advanced/), 6) 'Asynchronous JavaScript' - callbacks, Promises, async/await, Web Workers, Event Loop (ahmadx.dev/posts/asynchronous-js/), 7) 'Fundamentals of JavaScript' - history, design philosophy, key features (ahmadx.dev/posts/fundamentals-of-javascript/), 8) 'Tailwind CSS' - utility-first CSS framework guide (ahmadx.dev/posts/tailwind-css/), 9) 'CSS - Cascading Style Sheets' - how CSS works for styling HTML/XML documents (ahmadx.dev/posts/css/)."
   },
   {
     "id": "articles-databases",
     "category": "articles",
     "title": "Database Articles",
-    "content": "I wrote 2 articles on databases: 1) 'MS SQL Server and Azure Data Studio on Arch Linux' - installing MS SQL Server and Azure Data Studio on Arch Linux using Docker (ahmadx.vercel.app/posts/sqlserver/), 2) 'Introduction to Databases - MySQL' - MySQL as an open-source relational database management system (ahmadx.vercel.app/posts/mysql/)."
+    "content": "I wrote 2 articles on databases: 1) 'MS SQL Server and Azure Data Studio on Arch Linux' - installing MS SQL Server and Azure Data Studio on Arch Linux using Docker (ahmadx.dev/posts/sqlserver/), 2) 'Introduction to Databases - MySQL' - MySQL as an open-source relational database management system (ahmadx.dev/posts/mysql/)."
   },
   {
     "id": "articles-other",
     "category": "articles",
     "title": "Other Articles",
-    "content": "I also wrote several other articles: 1) 'HTML - The Language of the Web' - basics of HTML and creating webpages (ahmadx.vercel.app/posts/html/), 2) 'Setting Up MPD and RMPC' - setting up MPD and RMPC music player on Linux (ahmadx.vercel.app/posts/setup-mpd-and-rmpc/), 3) 'Becoming a Full-Stack Web Developer in 2025' - step-by-step roadmap to master web development (ahmadx.vercel.app/posts/web-dev-roadmap/), 4) 'The 80/20 Principle' - achieving more with less, productivity and self-improvement (ahmadx.vercel.app/posts/80-20-rule/), 5) 'What It Means to Feel for Someone' - a personal reflection (ahmadx.vercel.app/posts/forher/)."
+    "content": "I also wrote several other articles: 1) 'HTML - The Language of the Web' - basics of HTML and creating webpages (ahmadx.dev/posts/html/), 2) 'Setting Up MPD and RMPC' - setting up MPD and RMPC music player on Linux (ahmadx.dev/posts/setup-mpd-and-rmpc/), 3) 'Becoming a Full-Stack Web Developer in 2025' - step-by-step roadmap to master web development (ahmadx.dev/posts/web-dev-roadmap/), 4) 'The 80/20 Principle' - achieving more with less, productivity and self-improvement (ahmadx.dev/posts/80-20-rule/), 5) 'What It Means to Feel for Someone' - a personal reflection (ahmadx.dev/posts/forher/)."
   },
   {
     "id": "personal-details",

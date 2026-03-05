@@ -39,8 +39,11 @@ When I'm not coding, I'm usually reading about productivity and self-improvement
 
 I'm always open to interesting conversations, collaborations, or opportunities. Feel free to reach out:
 
-- **Email:** [ahmadhassan9059@gmail.com](mailto:ahmadhassan9059@gmail.com)
-- **LinkedIn:** [linkedin.com/in/ahmad9059](https://linkedin.com/in/ahmad9059)
+- **Email:** [hi@ahmadx.dev](mailto:hi@ahmadx.dev)
+- **LinkedIn:** [linkedin.com/in/ahmad9059](https://www.linkedin.com/in/ahmad9059/)
 - **GitHub:** [github.com/ahmad9059](https://github.com/ahmad9059)
+- **LeetCode:** [leetcode.com/ahmad9059](https://leetcode.com/ahmad9059/)
+- **Instagram:** [instagram.com/ahmad9059x](https://www.instagram.com/ahmad9059x/)
+- **X/Twitter:** [x.com/ahmad9059x](https://x.com/ahmad9059x)
 
 Thanks for stopping by!
