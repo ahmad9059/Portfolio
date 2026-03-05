@@ -6,6 +6,7 @@ showtoc: false
 searchHidden: true
 ShowRssButtonInSectionTermList: false
 ShowShareButtons: false
+hideMeta: true
 ---
 
 <style>

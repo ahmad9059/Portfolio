@@ -19,12 +19,13 @@
 }
 
 .logo {
-  flex-wrap: inherit;
+  flex-wrap: nowrap;
 }
 
 .logo a {
   font-size: 24px;
   font-weight: 700;
+  white-space: nowrap;
 }
 
 .logo a img,
@@ -125,4 +126,33 @@ body:not(.dark) #sun {
 
 .logo-switches {
   flex-wrap: inherit;
+}
+
+/* Mobile: logo row on top, menu below — single line each, scrollable */
+@media screen and (max-width: 768px) {
+  .nav {
+    flex-wrap: wrap;
+  }
+  .logo {
+    flex-shrink: 0;
+  }
+  #menu {
+    flex-basis: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    margin: 0 var(--gap);
+    padding-bottom: 4px;
+  }
+  #menu::-webkit-scrollbar {
+    display: none;
+  }
+  #menu li + li {
+    margin-inline-start: 12px;
+  }
+  #menu a {
+    font-size: 14px;
+  }
 }
