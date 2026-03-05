@@ -95,6 +95,13 @@
                     </svg>
                 </button>
                 {{- end }}
+                <button id="menu-toggle" aria-label="Toggle menu" title="Menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
 
                 {{- $lang := .Lang}}
                 {{- $separator := or $label_text (not site.Params.disableThemeToggle)}}
@@ -156,3 +163,14 @@
         </ul>
     </nav>
 </header>
+<script>
+(function() {
+    var toggle = document.getElementById('menu-toggle');
+    var menu = document.getElementById('menu');
+    if (toggle && menu) {
+        toggle.addEventListener('click', function() {
+            menu.classList.toggle('show');
+        });
+    }
+})();
+</script>
