@@ -1,6 +1,6 @@
 ---
 title: "Projects"
-description: "Projects by Ahmad Hassan — full-stack web apps, open-source tools, and developer infrastructure built with Next.js, TypeScript, AWS, and more."
+description: "Here are some of my projects — full-stack web apps, open-source tools, and developer infrastructure built with Next.js, TypeScript, AWS, and more."
 keywords: [Projects, Portfolio, SehatScan, HyprFlux, MindOasis, HisaabScore, UAM Tracker, Next.js, React, TypeScript, AWS]
 showtoc: false
 searchHidden: true
