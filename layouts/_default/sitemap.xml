@@ -8,11 +8,25 @@
     {{- if not .Lastmod.IsZero }}
     <lastmod>{{ .Lastmod.Format "2006-01-02T15:04:05-07:00" | safeHTML }}</lastmod>
     {{- end }}
-    {{- with .Sitemap.ChangeFreq }}
-    <changefreq>{{ . }}</changefreq>
-    {{- end }}
-    {{- if ge .Sitemap.Priority 0.0 }}
-    <priority>{{ .Sitemap.Priority }}</priority>
+    {{- /* Identity pages get highest priority, blog posts get lower */ -}}
+    {{- if .IsHome }}
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    {{- else if and .IsPage (eq .File.LogicalName "about.md") }}
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    {{- else if and .IsPage (eq .File.LogicalName "projects.md") }}
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    {{- else if and .IsPage (or (eq .File.LogicalName "certifications.md") (eq .File.LogicalName "contact.md")) }}
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    {{- else if eq .Section "posts" }}
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+    {{- else }}
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
     {{- end }}
   </url>
   {{- end }}
