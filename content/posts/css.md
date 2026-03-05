@@ -10,6 +10,17 @@ tags:
   - tech
   - CSS
   - web
+keywords:
+  - CSS tutorial
+  - CSS guide for beginners
+  - CSS flexbox
+  - CSS grid layout
+  - CSS animations
+  - responsive web design
+  - CSS media queries
+  - CSS properties reference
+  - CSS units explained
+  - pseudo-classes and pseudo-elements
 Author: Ahmad Hassan
 ---
 

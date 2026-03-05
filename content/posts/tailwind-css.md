@@ -11,6 +11,16 @@ tags:
   - CSS
   - web
 Author: Ahmad Hassan
+keywords:
+  - Tailwind CSS tutorial
+  - utility-first CSS framework
+  - Tailwind responsive design
+  - Tailwind flexbox grid
+  - Tailwind CSS installation
+  - Tailwind directives apply
+  - Tailwind JIT mode
+  - CSS utility classes
+  - Tailwind customization config
 ---
 
 Tailwind CSS is a utility-first CSS framework designed to allow developers to build custom designs quickly. Instead of writing custom styles, Tailwind provides a collection of utility classes that you can use to style elements directly in the HTML.

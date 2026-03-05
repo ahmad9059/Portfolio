@@ -9,6 +9,14 @@ categories:
 tags:
   - love
   - thoughts
+keywords:
+  - heartbreak reflections
+  - emotional healing
+  - feelings of loss
+  - personal essay on love
+  - coping with heartbreak
+  - vulnerability and emotional pain
+  - moving on after love
 ---
 
 ![cover-image](/posts/assets/forher/forher.webp)

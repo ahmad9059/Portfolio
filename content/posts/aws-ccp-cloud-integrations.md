@@ -9,6 +9,17 @@ tags:
   - aws
   - cloud
   - certification
+keywords:
+  - AWS Certified Cloud Practitioner
+  - Amazon SQS
+  - Amazon SNS
+  - Amazon Kinesis
+  - Amazon MQ
+  - cloud integration patterns
+  - message queues
+  - pub/sub messaging
+  - decoupled architecture
+  - asynchronous communication
 Author: Ahmad Hassan
 ---
 
@@ -48,7 +59,7 @@ Author: Ahmad Hassan
    - Allows **buffering** during high traffic (prevents overload).
 
 
-![](/posts/assets/aws/img-114.webp)
+![Synchronous vs asynchronous application communication with queue-based decoupling](/posts/assets/aws/img-114.webp)
 
 ### Benefits of Decoupling
 
@@ -92,7 +103,7 @@ Author: Ahmad Hassan
 
 **Producers and consumers are decoupled** — they work **independently** and at **different speeds**.
 
-![](/posts/assets/aws/img-118.webp)
+![SQS queue with producers sending messages and consumers polling messages](/posts/assets/aws/img-118.webp)
 
 ### Key Characteristics
 
@@ -113,7 +124,7 @@ Author: Ahmad Hassan
    - Instead of sending videos directly to the processing app,  
       the web servers send **messages to an SQS queue**.
    - A **video processing layer** (another EC2 Auto Scaling Group) polls messages from SQS and processes them.
-![](/posts/assets/aws/img-117.webp)
+![SQS decoupled architecture with web tier and video processing Auto Scaling Groups](/posts/assets/aws/img-117.webp)
 
 
 **Benefits:**
@@ -129,7 +140,7 @@ Author: Ahmad Hassan
 - Regular (Standard) queues may deliver messages **out of order**.
 - **Remember:** FIFO = Ordered message delivery.
 
-![](/posts/assets/aws/img-116.webp)
+![SQS FIFO queue ensuring ordered message processing](/posts/assets/aws/img-116.webp)
 
 ### Summary Table
 
@@ -180,7 +191,7 @@ Author: Ahmad Hassan
        - **Amazon OpenSearch Service** (for search and visualization)
 
 
-![](/posts/assets/aws/img-119.webp)
+![Amazon Kinesis data streaming workflow from sources through Streams to Firehose destinations](/posts/assets/aws/img-119.webp)
 
 ### Key Features
 
@@ -233,7 +244,7 @@ Author: Ahmad Hassan
 - Each **subscriber** gets **a full copy** of every message.
 
 
-![](/posts/assets/aws/img-120.webp)
+![SNS Pub/Sub model with publisher sending to topic and multiple subscribers receiving](/posts/assets/aws/img-120.webp)
 
 ### Key Concepts
 
@@ -269,7 +280,7 @@ SNS can publish messages to:
 - **Mobile push notifications**
 - **HTTP/HTTPS endpoints**
 
-![](/posts/assets/aws/img-121.webp)
+![SNS supported destinations including SQS, Lambda, Kinesis, email, SMS, and HTTP](/posts/assets/aws/img-121.webp)
 
 ### Exam Tips
 
@@ -367,4 +378,4 @@ Otherwise, use **SQS or SNS** for:
 ## Summary
 ---
 
-![](/posts/assets/aws/img-122.webp)
+![AWS cloud integrations services summary comparing SQS, SNS, Kinesis, and MQ](/posts/assets/aws/img-122.webp)

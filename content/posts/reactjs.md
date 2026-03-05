@@ -11,6 +11,17 @@ tags:
   - JavaScript
   - Web
 Author: Ahmad Hassan
+keywords:
+  - React.js tutorial
+  - React hooks useState useEffect
+  - React component lifecycle
+  - React props and state
+  - React Router dynamic routing
+  - Redux Toolkit state management
+  - React Context API
+  - React form handling
+  - JSX syntax
+  - React API integration axios
 ---
 
 

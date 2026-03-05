@@ -9,11 +9,19 @@ tags:
   - aws
   - cloud
   - certification
+keywords:
+  - AWS Certified Cloud Practitioner
+  - AWS Organizations
+  - consolidated billing
+  - AWS Control Tower
+  - Service Control Policies
+  - AWS Service Catalog
+  - AWS Savings Plans
+  - AWS Budgets
+  - AWS Cost Explorer
+  - AWS Trusted Advisor
+  - AWS billing and cost management
 Author: Ahmad Hassan
----
-
-
-
 ## AWS Organizations
 ---
 
@@ -154,7 +162,7 @@ Consolidated Billing in AWS Organizations allows centralized payment management 
    - Result: **5 instances receive RI pricing**, **4 instances are on-demand**.
    - This demonstrates **cross-account RI sharing**.
 
-![](/posts/assets/aws/img-161.webp)
+![AWS Organizations consolidated billing and Reserved Instance sharing across accounts](/posts/assets/aws/img-161.webp)
 
 ### Important Notes
 
@@ -258,7 +266,7 @@ Control Tower **automates all these steps** with just a few clicks.
    - Automatically applies **Service Control Policies (SCPs)** to enforce guardrails effectively.
 
 
-![](/posts/assets/aws/img-162.webp)
+![AWS Control Tower dashboard with guardrails and compliance monitoring](/posts/assets/aws/img-162.webp)
 
 
 ### Service Control Policies (SCPs)
@@ -319,7 +327,7 @@ AWS Service Catalog enables organizations to **create and manage approved collec
 - The database is deployed **correctly configured and tagged** as per organization standards.
 
 
-![](/posts/assets/aws/img-163.webp)
+![AWS Service Catalog workflow showing admin creating products and users launching from portal](/posts/assets/aws/img-163.webp)
 
 ### Summary
 
@@ -434,7 +442,7 @@ AWS offers **four main pricing approaches:**
 
 
 
-![](/posts/assets/aws/img-164.webp)
+![AWS pricing models overview showing networking data transfer costs](/posts/assets/aws/img-164.webp)
 
 ### Key Takeaways for CCP Exam
 
@@ -542,7 +550,7 @@ Then you simply **add it to cart**, and your plan applies automatically to match
 - Identifies **over-provisioned** and **under-provisioned** resources.
 - Provides **recommendations** for right-sizing.
 
-![](/posts/assets/aws/img-165.webp)
+![AWS Compute Optimizer analyzing resources and providing right-sizing recommendations](/posts/assets/aws/img-165.webp)
 
 ### Benefits
 - Improves **cost-efficiency** and **performance**.  
@@ -903,7 +911,7 @@ AWS Cost Anomaly Detection helps you **monitor and identify unusual spending pat
 - Helps in **root cause analysis** to identify which service or resource caused the increase.
 - Reduces the risk of unexpected AWS bills.
 
-![](/posts/assets/aws/img-166.webp)
+![AWS Cost Anomaly Detection workflow with ML-based monitoring and SNS notifications](/posts/assets/aws/img-166.webp)
 
 ### Summary
 
@@ -943,7 +951,7 @@ AWS Cost Anomaly Detection uses machine learning to:
 - **Request quota increases** directly from the console.
 - Optionally **shut down resources** if limits are being reached unintentionally.
 
-![](/posts/assets/aws/img-167.webp)
+![AWS Service Quotas console with CloudWatch alarm integration for quota monitoring](/posts/assets/aws/img-167.webp)
 
 ### Summary
 

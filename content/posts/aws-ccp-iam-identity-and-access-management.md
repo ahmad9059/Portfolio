@@ -9,6 +9,19 @@ tags:
   - aws
   - cloud
   - certification
+keywords:
+  - AWS Certified Cloud Practitioner
+  - IAM
+  - Identity and Access Management
+  - IAM users and groups
+  - IAM policies
+  - IAM roles
+  - multi-factor authentication
+  - AWS CLI
+  - AWS CloudShell
+  - least privilege principle
+  - IAM security tools
+  - AWS access keys
 Author: Ahmad Hassan
 ---
 
@@ -44,7 +57,7 @@ Author: Ahmad Hassan
    - Charles + David also in Audit group.
 
 
-![](/posts/assets/aws/img-8.webp)
+![IAM users and groups structure diagram](/posts/assets/aws/img-8.webp)
 
 ### Permissions via Policies
 
@@ -144,7 +157,7 @@ Author: Ahmad Hassan
 - Charles (Developer + Audit group) = policies from both groups.
 - David (Operations + Audit group) = policies from both groups.
 
-![](/posts/assets/aws/img-9.webp)
+![IAM policy assignment at group and user levels](/posts/assets/aws/img-9.webp)
 
 ### Policy Structure (JSON format)
 
@@ -161,7 +174,7 @@ IAM policies are written in JSON and have these main parts:
 
 
 
-![](/posts/assets/aws/img-10.webp)
+![IAM policy JSON structure diagram](/posts/assets/aws/img-10.webp)
 
 
 
@@ -421,7 +434,7 @@ aws --version
 
 
 
-![](/posts/assets/aws/img-11.webp)
+![IAM Role attached to EC2 instance for service permissions](/posts/assets/aws/img-11.webp)
 
 
 ### Common IAM Roles
@@ -448,7 +461,7 @@ aws --version
 - Shows the **status of their credentials** (passwords, access keys, MFA, etc).
 - Useful for auditing security at a high level.
 
-![](/posts/assets/aws/img-12.webp)
+![IAM Credentials Report showing account-level user credentials status](/posts/assets/aws/img-12.webp)
 
 
 
@@ -462,7 +475,7 @@ aws --version
    - Identify unused permissions.
    - Remove unnecessary access.
 
-![](/posts/assets/aws/img-13.webp)
+![IAM Access Advisor showing last accessed services for a user](/posts/assets/aws/img-13.webp)
 
 ### Key Takeaways
 
@@ -555,7 +568,7 @@ You must secure how you use AWS services:
 - **AWS:** Secures the infrastructure.
 - **You (the customer):** Secure **how** you use that infrastructure.
 
-![](/posts/assets/aws/img-14.webp)
+![IAM shared responsibility model between AWS and customer](/posts/assets/aws/img-14.webp)
 
 
 
@@ -600,4 +613,4 @@ You must secure how you use AWS services:
 - **IAM Access Advisor:** Shows which services users have accessed, helps refine permissions.
 
 
-![](/posts/assets/aws/img-15.webp)
+![IAM section summary covering users, groups, policies, roles, and security](/posts/assets/aws/img-15.webp)

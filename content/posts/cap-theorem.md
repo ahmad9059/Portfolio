@@ -9,9 +9,18 @@ tags:
   - tech
   - web
   - system-design
+keywords:
+  - CAP theorem
+  - distributed systems
+  - consistency availability partition tolerance
+  - system design trade-offs
+  - CP vs AP systems
+  - distributed database design
+  - partition tolerance explained
+  - CAP theorem for beginners
 Author: Ahmad Hassan
 ---
-![|715x436](/posts/assets/img-6.webp)
+![CAP theorem diagram illustrating consistency, availability, and partition tolerance](/posts/assets/img-6.webp)
 
 
 

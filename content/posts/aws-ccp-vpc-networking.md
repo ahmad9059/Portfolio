@@ -9,6 +9,20 @@ tags:
   - aws
   - cloud
   - certification
+keywords:
+  - AWS Certified Cloud Practitioner
+  - Amazon VPC
+  - Virtual Private Cloud
+  - subnets
+  - Internet Gateway
+  - NAT Gateway
+  - Security Groups
+  - Network ACLs
+  - VPC Peering
+  - VPC Endpoints
+  - AWS Direct Connect
+  - Transit Gateway
+  - Site-to-Site VPN
 Author: Ahmad Hassan
 ---
 
@@ -136,7 +150,7 @@ Author: Ahmad Hassan
 - Each **subnet** is associated with **one Availability Zone (AZ)**.
 - **CIDR Range (Classless Inter-Domain Routing)** defines the **IP address range** of a VPC. Example: `10.0.0.0/16`.
 
-![](/posts/assets/aws/img-133.webp)
+![VPC structure with subnets across Availability Zones and CIDR range](/posts/assets/aws/img-133.webp)
 ### Subnets
 
 | **Type**           | **Description**                                                                             | **Typical Use**                                                            |
@@ -147,7 +161,7 @@ Author: Ahmad Hassan
 - **Subnets are made public** when their route tables include a route to an Internet Gateway.
 
 
-![](/posts/assets/aws/img-132.webp)
+![Public and private subnets within a VPC with Internet Gateway access](/posts/assets/aws/img-132.webp)
 
 
 ### Route Tables
@@ -163,7 +177,7 @@ Author: Ahmad Hassan
 - Used by **public subnets** for inbound/outbound internet access.
 
 
-![](/posts/assets/aws/img-134.webp)
+![Internet Gateway connecting VPC public subnet to the internet](/posts/assets/aws/img-134.webp)
 
 
 ### NAT Gateway / NAT Instance
@@ -276,7 +290,7 @@ These work **together** to secure traffic _to and from_ your EC2 instances insid
 |**References**|IP addresses only|IPs or other SGs|
 |**Default Behavior**|Allows all|Denies all inbound, allows all outbound|
 
-![](/posts/assets/aws/img-135.webp)
+![NACL vs Security Group traffic flow at subnet and instance level](/posts/assets/aws/img-135.webp)
 
 
 ### Default Behavior in AWS
@@ -359,7 +373,7 @@ VPC Peering allows two VPCs to communicate privately using AWS’s internal netw
 Possible between VPCs in the same or different regions/accounts (requires acceptance by the other VPC owner).
 
 
-![|350](/posts/assets/aws/img-136.webp)
+![VPC Peering non-transitive connection between two VPCs|350](/posts/assets/aws/img-136.webp)
 
 ### Exam Tips
 
@@ -421,7 +435,7 @@ Possible between VPCs in the same or different regions/accounts (requires accept
 4. Define **policy**, **security groups**, and **DNS settings** if needed.
 
 
-![|400](/posts/assets/aws/img-137.webp)
+![VPC Endpoints Gateway and Interface types for private AWS service access|400](/posts/assets/aws/img-137.webp)
 
 ### Exam Tips
 
@@ -460,7 +474,7 @@ It is part of the **VPC Endpoint Services** family.
    - Communication stays **within AWS’s private network** (no public internet, NAT, or VPN).
 
 
-![](/posts/assets/aws/img-138.webp)
+![AWS PrivateLink architecture with NLB on provider side and ENI on consumer side](/posts/assets/aws/img-138.webp)
 
 ### Key Benefits
 
@@ -500,7 +514,7 @@ Encrypted connection between **on-premises data center** and **AWS VPC** over th
 - Lower cost, but **less reliable** and **limited bandwidth**
 
 
-![](/posts/assets/aws/img-139.webp)
+![Site-to-Site VPN encrypted tunnel between on-premises and AWS VPC](/posts/assets/aws/img-139.webp)
 
 
 **Use Case:**  
@@ -526,7 +540,7 @@ A **dedicated private physical connection** between **on-premises** and **AWS**.
 - More expensive and takes **weeks (≈1 month)** to set up
 - Requires connection through **Direct Connect partner**
 
-![](/posts/assets/aws/img-140.webp)
+![AWS Direct Connect dedicated private physical connection to on-premises](/posts/assets/aws/img-140.webp)
 
 
 **Use Case:**  
@@ -577,7 +591,7 @@ AWS **Client VPN** is a **managed, scalable VPN service** that allows individual
    → the user can securely access **on-prem servers** as well.
 
 
-![](/posts/assets/aws/img-141.webp)
+![AWS Client VPN connecting remote user to private VPC resources over internet](/posts/assets/aws/img-141.webp)
 
 ### Key Points for Exam
 
@@ -624,7 +638,7 @@ It simplifies complex network topologies and replaces the need for multiple VPC 
  On-premises networks
 
 
-![](/posts/assets/aws/img-142.webp)
+![AWS Transit Gateway hub-and-spoke model connecting multiple VPCs and on-premises](/posts/assets/aws/img-142.webp)
 
 ### Exam Tip
 

@@ -9,6 +9,19 @@ tags:
   - aws
   - cloud
   - certification
+keywords:
+  - AWS Certified Cloud Practitioner
+  - Elastic Load Balancing
+  - Auto Scaling Groups
+  - Application Load Balancer
+  - Network Load Balancer
+  - Gateway Load Balancer
+  - ELB
+  - ASG
+  - horizontal scaling
+  - vertical scaling
+  - high availability
+  - AWS scalability
 Author: Ahmad Hassan
 ---
 
@@ -76,7 +89,7 @@ Author: Ahmad Hassan
 - Ensures no single instance is overwhelmed.
 - Provides **scalability, fault tolerance, and high availability**.
 
-![](/posts/assets/aws/img-37.webp)
+![Elastic Load Balancer distributing traffic across multiple EC2 instances](/posts/assets/aws/img-37.webp)
 
 ### Elastic Load Balancing (ELB)
 
@@ -139,7 +152,7 @@ Author: Ahmad Hassan
 - Replaced by **ALB** and **NLB**.
 - Not likely on the exam anymore.
 
-![](/posts/assets/aws/img-38.webp)
+![AWS load balancer types comparison: ALB, NLB, GWLB](/posts/assets/aws/img-38.webp)
 
 ### ELB Exam Summary
 
@@ -238,7 +251,7 @@ Author: Ahmad Hassan
 - **Maximum Size** = The most EC2 instances allowed.
 - ASG scales **between min and max** automatically.
 
-![](/posts/assets/aws/img-40.webp)
+![Auto Scaling Group with minimum, desired, and maximum capacity settings](/posts/assets/aws/img-40.webp)
 ### ASG + Load Balancer Integration
 
 - Web traffic first goes to the **Load Balancer (LB)**.
@@ -255,7 +268,7 @@ Author: Ahmad Hassan
 4. Traffic decreases → ASG terminates extra EC2s.
 5. LB stops sending traffic to terminated instances.
 
-![](/posts/assets/aws/img-39.webp)
+![Auto Scaling Group integrated with Load Balancer diagram](/posts/assets/aws/img-39.webp)
 
  **Key Takeaways for Exam**
 
@@ -383,7 +396,7 @@ Automatically responds to **changing demand** using **CloudWatch alarms**.
 - Example:
    - Traffic spikes daily from **6–9 PM** → ASG launches extra instances before that window.
 
-![](/posts/assets/aws/img-41.webp)
+![Predictive scaling using machine learning to forecast traffic patterns](/posts/assets/aws/img-41.webp)
 
 **Exam Tip**:
 
@@ -395,4 +408,4 @@ Automatically responds to **changing demand** using **CloudWatch alarms**.
 
 ## Summary
 ---
-![](/posts/assets/aws/img-42.webp)
+![ELB and ASG section summary diagram](/posts/assets/aws/img-42.webp)

@@ -10,6 +10,17 @@ tags:
   - tech
   - JavaScript
   - web
+keywords:
+  - JavaScript fundamentals
+  - JavaScript tutorial for beginners
+  - JavaScript data types
+  - JavaScript variables let const var
+  - JavaScript operators
+  - JavaScript functions
+  - JavaScript loops
+  - arrow functions JavaScript
+  - type conversions JavaScript
+  - JavaScript comparisons
 Author: Ahmad Hassan
 ---
 

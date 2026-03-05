@@ -9,6 +9,19 @@ tags:
   - aws
   - cloud
   - certification
+keywords:
+  - AWS Certified Cloud Practitioner
+  - Amazon WorkSpaces
+  - Amazon AppStream
+  - AWS IoT Core
+  - AWS Step Functions
+  - AWS Backup
+  - AWS DataSync
+  - disaster recovery strategies
+  - cloud migration 7Rs
+  - AWS Fault Injection Simulator
+  - AWS Amplify
+  - AWS Device Farm
 Author: Ahmad Hassan
 ---
 

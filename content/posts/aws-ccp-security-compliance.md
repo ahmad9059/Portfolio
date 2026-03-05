@@ -9,6 +9,20 @@ tags:
   - aws
   - cloud
   - certification
+keywords:
+  - AWS Certified Cloud Practitioner
+  - AWS security and compliance
+  - shared responsibility model
+  - AWS Shield
+  - AWS WAF
+  - AWS KMS
+  - AWS CloudHSM
+  - Amazon GuardDuty
+  - Amazon Inspector
+  - Amazon Macie
+  - AWS Security Hub
+  - AWS Config
+  - IAM Access Analyzer
 Author: Ahmad Hassan
 ---
 
@@ -113,7 +127,7 @@ Some controls are **shared** between AWS and the customer.
 - Global infrastructure (Regions, AZs, Edge Locations).
 
 
-![](/posts/assets/aws/img-143.webp)
+![AWS shared responsibility model diagram](/posts/assets/aws/img-143.webp)
 
 ### Exam Tip
 
@@ -140,7 +154,7 @@ Some controls are **shared** between AWS and the customer.
 3. Bots send excessive requests to your **application server**.
 4. The server becomes **overloaded and crashes**.
 
-![](/posts/assets/aws/img-144.webp)
+![DDoS attack flow diagram with bots flooding application server](/posts/assets/aws/img-144.webp)
 
 
 ### AWS Services that Protect Against DDoS
@@ -209,7 +223,7 @@ Protects **web applications (Layer 7)** from **common web exploits**.
 
 **Flow Diagram (Conceptually):**
 
-![](/posts/assets/aws/img-145.webp)
+![AWS DDoS protection architecture with Shield, WAF, CloudFront, and Auto Scaling](/posts/assets/aws/img-145.webp)
 
 
 **Benefits:**
@@ -289,7 +303,7 @@ Apply **custom rules** to detect and block:
 - Application-level signatures (like HTTP headers or payloads)
 
 
-![](/posts/assets/aws/img-146.webp)
+![AWS Network Firewall protecting entire VPC traffic](/posts/assets/aws/img-146.webp)
 
 
 ### Summary Table
@@ -477,7 +491,7 @@ In AWS, encryption ensures data **confidentiality and protection** at all times.
 Encrypt data **both at rest and in transit** for end-to-end protection.
 
 
-![](/posts/assets/aws/img-147.webp)
+![AWS encryption at rest and in transit diagram](/posts/assets/aws/img-147.webp)
 
 
 ### Encryption Keys
@@ -515,7 +529,7 @@ Encrypt data **both at rest and in transit** for end-to-end protection.
 - CloudHSM = AWS provides **hardware**, but **you manage your own keys**.
 - HSM device is **tamper-resistant**, and all cryptographic operations happen inside it.
 
-![](/posts/assets/aws/img-148.webp)
+![AWS KMS vs CloudHSM key management comparison](/posts/assets/aws/img-148.webp)
 
 ### Types of KMS Keys
 
@@ -569,7 +583,7 @@ Encrypt data **both at rest and in transit** for end-to-end protection.
    - Attach it to your ALB.
    - The ALB then serves **HTTPS endpoints** for clients.
 
-![](/posts/assets/aws/img-149.webp)
+![AWS Certificate Manager providing TLS certificate to Application Load Balancer](/posts/assets/aws/img-149.webp)
 
 ### Features of ACM
 
@@ -714,7 +728,7 @@ It uses **machine learning, anomaly detection, and integrated threat intelligenc
    - Trigger **Lambda** functions (automated remediation),
    - Or send **SNS notifications** (alerting security teams).
 
-![](/posts/assets/aws/img-150.webp)
+![Amazon GuardDuty threat detection workflow with EventBridge and Lambda](/posts/assets/aws/img-150.webp)
 
 ### Use Case Example
 
@@ -790,7 +804,7 @@ Inspector automatically assesses the following:
    - **AWS Security Hub** for centralized visibility.
    - **Amazon EventBridge** for automated remediation workflows.
 
-![](/posts/assets/aws/img-151.webp)
+![Amazon Inspector vulnerability scanning workflow for EC2, ECR, and Lambda](/posts/assets/aws/img-151.webp)
 
 ### Example Use Case
 
@@ -957,7 +971,7 @@ Amazon Macie is a **fully managed data security and data privacy service** that 
    - **SNS notifications** (alerts)
    - **Lambda functions** (automated responses)
 
-![](/posts/assets/aws/img-152.webp)
+![Amazon Macie detecting sensitive data in S3 with EventBridge integration](/posts/assets/aws/img-152.webp)
 
 ### Use Cases
 
@@ -1024,7 +1038,7 @@ Security Hub aggregates findings from:
 6. Investigate issues with **Amazon Detective**.
 
 
-![](/posts/assets/aws/img-153.webp)
+![AWS Security Hub centralized dashboard aggregating findings from multiple services](/posts/assets/aws/img-153.webp)
 
 ### Pricing Overview
 
@@ -1196,7 +1210,7 @@ IAM Access Analyzer checks these for external sharing:
 3. **Findings** show resources shared externally.
 
 
-![](/posts/assets/aws/img-154.webp)
+![IAM Access Analyzer zone of trust and external access findings](/posts/assets/aws/img-154.webp)
 
 ### Example
 

@@ -2,6 +2,7 @@
 title: "Tools & Setup"
 description: "The software, tools, and setup Ahmad Hassan uses daily as a Software Engineer - Arch Linux, Hyprland, Neovim, and more."
 keywords: [Tools, Setup, Arch Linux, Hyprland, Neovim, Developer Setup, Linux Desktop]
+lastmod: 2025-03-05
 showtoc: false
 searchHidden: true
 hideMeta: true

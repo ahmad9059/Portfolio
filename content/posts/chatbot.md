@@ -10,6 +10,15 @@ tags:
   - tech
   - web
   - AI
+keywords:
+  - AI chatbot tutorial
+  - Google Gemini chatbot
+  - build chatbot with Gemini
+  - deploy chatbot on Vercel
+  - AssistantUI framework
+  - Next.js AI chatbot
+  - Vercel deployment guide
+  - AI web app tutorial
 Author: Ahmad Hassan
 ---
 

@@ -10,6 +10,15 @@ tags:
   - tech
   - html
   - web
+keywords:
+  - HTML tutorial for beginners
+  - HTML tags reference
+  - HTML boilerplate code
+  - HTML5 semantic elements
+  - HTML forms and inputs
+  - learn HTML basics
+  - HTML document structure
+  - HTML tables
 Author: Ahmad Hassan
 ---
 

@@ -10,6 +10,18 @@ tags:
   - tech
   - JavaScript
   - web
+keywords:
+  - asynchronous JavaScript
+  - JavaScript event loop
+  - callbacks
+  - Promises
+  - async await
+  - Fetch API
+  - Axios
+  - Web Workers
+  - JavaScript generators
+  - call stack
+  - microtask queue
 Author: Ahmad Hassan
 ---
 

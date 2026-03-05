@@ -1,10 +1,13 @@
 {{- /* Head custom content area start */ -}}
 
-{{- /* Enhanced robots directive (overrides theme's basic one in head.html) */ -}}
-{{- /* Note: theme outputs "index, follow" - this adds max-image-preview etc. */ -}}
+{{- /* Enhanced robots meta with max-image-preview for better SERP thumbnails */ -}}
+{{- if hugo.IsProduction | or (eq site.Params.env "production") }}
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+{{- end }}
 
-{{- /* Twitter creator - not output by theme */ -}}
-<meta name="twitter:creator" content="@ahmad9059">
+{{- /* Twitter creator and site */ -}}
+<meta name="twitter:creator" content="@ahmad9059x">
+<meta name="twitter:site" content="@ahmad9059x">
 
 {{- /* JSON-LD Schema for Person + Website */ -}}
 {{- if .IsHome }}
@@ -94,6 +97,112 @@
   {{- else }}{{- with .Params.tags }},
   "keywords": [{{ range $i, $e := . }}{{ if $i }}, {{ end }}"{{ $e }}"{{ end }}]
   {{- end }}{{- end }}
+}
+</script>
+{{- end }}
+
+{{- /* JSON-LD Schema for Projects page (ItemList) */ -}}
+{{- if and .File (eq .File.LogicalName "projects.md") }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Projects by Ahmad Hassan",
+  "description": "{{ .Description }}",
+  "url": "{{ .Permalink }}",
+  "numberOfItems": 7,
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@type": "SoftwareSourceCode",
+        "name": "HyprFlux",
+        "description": "Dotfiles and configs for a beautiful, efficient Hyprland desktop on Arch Linux.",
+        "url": "https://www.hyprflux.dev",
+        "codeRepository": "https://github.com/ahmad9059/HyprFlux",
+        "programmingLanguage": ["Shell", "CSS"],
+        "author": { "@id": "{{ site.BaseURL }}#person" }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "SoftwareSourceCode",
+        "name": "SehatScan",
+        "description": "AI-powered health assessment platform that analyzes medical documents and facial images for personalized health insights.",
+        "url": "https://sehatscan.vercel.app",
+        "codeRepository": "https://github.com/ahmad9059/SehatScan",
+        "programmingLanguage": ["Python", "TypeScript", "Next.js"],
+        "author": { "@id": "{{ site.BaseURL }}#person" }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@type": "SoftwareSourceCode",
+        "name": "HisaabScore",
+        "description": "AI-powered alternative credit scoring for gig workers and informal economy workers.",
+        "url": "https://hisaabscore.vercel.app",
+        "codeRepository": "https://github.com/ahmad9059/HisaabScore",
+        "programmingLanguage": ["TypeScript", "Next.js"],
+        "author": { "@id": "{{ site.BaseURL }}#person" }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "@type": "SoftwareSourceCode",
+        "name": "RAF-SP",
+        "description": "Agricultural data management platform with department management and equipment tracking.",
+        "url": "https://raf-sp.vercel.app",
+        "programmingLanguage": ["TypeScript", "Next.js"],
+        "author": { "@id": "{{ site.BaseURL }}#person" }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "item": {
+        "@type": "SoftwareSourceCode",
+        "name": "UAM Tracker",
+        "description": "Full-stack GPA/CGPA tracker for UAM University students with authenticated dashboards.",
+        "url": "https://uam-tracker.vercel.app",
+        "codeRepository": "https://github.com/ahmad9059/UamTracker",
+        "programmingLanguage": ["TypeScript", "Next.js"],
+        "author": { "@id": "{{ site.BaseURL }}#person" }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "item": {
+        "@type": "SoftwareSourceCode",
+        "name": "MindOasis",
+        "description": "Hackathon project helping users in Pakistan find mental health professionals with AI-powered summaries.",
+        "url": "https://mindoasis.vercel.app",
+        "codeRepository": "https://github.com/ahmad9059/MindOasis",
+        "programmingLanguage": ["TypeScript", "Next.js"],
+        "author": { "@id": "{{ site.BaseURL }}#person" }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 7,
+      "item": {
+        "@type": "SoftwareSourceCode",
+        "name": "CodingHawks",
+        "description": "Official website for Coding Hawks Society at MNS-UoA.",
+        "url": "https://codinghawks.vercel.app",
+        "codeRepository": "https://github.com/ahmad9059/codinghawks",
+        "programmingLanguage": ["TypeScript", "Next.js"],
+        "author": { "@id": "{{ site.BaseURL }}#person" }
+      }
+    }
+  ]
 }
 </script>
 {{- end }}

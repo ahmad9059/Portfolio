@@ -10,6 +10,16 @@ tags:
   - shell
   - scripting
 Author: Ahmad Hassan
+keywords:
+  - shell operation bash
+  - bash tokenization
+  - shell command processing
+  - bash redirections
+  - stdin stdout stderr
+  - shell command identification
+  - bash pipe tee command
+  - shell scripting fundamentals
+  - file descriptors Linux
 ---
 ## Shell Operation in Bash 
 ---
@@ -86,7 +96,7 @@ Author: Ahmad Hassan
 2. **Redirection Operators** → Redirect input/output.
    - Examples: `> >> < << <<< >& <& >|`
 
-![|262x331](/1-Notes/Shell%20Scripting/assets/img.webp)
+![Shell tokenization process showing tokens and operators](/1-Notes/Shell%20Scripting/assets/img.webp)
 
 ⚠️ Operators matter **only if unquoted**.
 
@@ -376,7 +386,7 @@ Every shell command has **three default streams**, identified by numbers (file d
 - **2 → stderr (Standard Error)**  
    Error messages (screen by default).
 
-![|715x406](/1-Notes/Shell%20Scripting/assets/img-1.webp)
+![Standard data streams diagram showing stdin stdout and stderr](/1-Notes/Shell%20Scripting/assets/img-1.webp)
 
 > These numbers (0, 1, 2) are **file descriptors** opened each time a command runs.
 

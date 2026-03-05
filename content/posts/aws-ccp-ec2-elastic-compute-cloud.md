@@ -9,6 +9,19 @@ tags:
   - aws
   - cloud
   - certification
+keywords:
+  - AWS Certified Cloud Practitioner
+  - Amazon EC2
+  - Elastic Compute Cloud
+  - EC2 instance types
+  - EC2 purchasing options
+  - AWS Security Groups
+  - EC2 Instance Connect
+  - SSH into EC2
+  - IAM Roles for EC2
+  - AWS free tier EC2
+  - Reserved Instances
+  - Spot Instances
 Author: Ahmad Hassan
 ---
 
@@ -85,7 +98,7 @@ Example: `m5.2xlarge`
 - **Examples:** T2/T3 (burstable), M5/M6.
 - **Exam Tip:** Free tier uses **t2.micro** (1 vCPU, 1 GB RAM, 750 hrs/month).
 
-![](/posts/assets/aws/img-16.webp)
+![AWS EC2 General Purpose instance types overview](/posts/assets/aws/img-16.webp)
 
 #### Compute Optimized
 
@@ -99,7 +112,7 @@ Example: `m5.2xlarge`
    - Gaming servers
 - **Examples:** C5, C6 (C = Compute).
 
-![](/posts/assets/aws/img-17.webp)
+![AWS EC2 Compute Optimized instance types overview](/posts/assets/aws/img-17.webp)
 
 #### Memory Optimized
 
@@ -115,7 +128,7 @@ Example: `m5.2xlarge`
    - X1 (extra high memory)
    - Z1 (specialized)
 
-![](/posts/assets/aws/img-18.webp)
+![AWS EC2 Memory Optimized instance types overview](/posts/assets/aws/img-18.webp)
 
 
 #### Storage Optimized
@@ -131,7 +144,7 @@ Example: `m5.2xlarge`
 - **Examples:** I3, H1, D2.
 
 
-![](/posts/assets/aws/img-19.webp)
+![AWS EC2 Storage Optimized instance types overview](/posts/assets/aws/img-19.webp)
 
 #### Graphics Optimized
 
@@ -166,7 +179,7 @@ Example: `m5.2xlarge`
 - They are **stateful** and only contain **allow rules** (no explicit deny).
 
 
-![](/posts/assets/aws/img-20.webp)
+![AWS Security Groups acting as firewall for EC2 instances](/posts/assets/aws/img-20.webp)
 
 ### Rules
 
@@ -176,14 +189,14 @@ Example: `m5.2xlarge`
 - Rules define: **Type (service)**, **Protocol (TCP/UDP/ICMP)**, **Port range**, **Source/Destination**.
 - `0.0.0.0/0` = all IPv4 addresses, `::/0` = all IPv6 addresses.
 
-![](/posts/assets/aws/img-23.webp)
+![Security Group inbound and outbound rules configuration](/posts/assets/aws/img-23.webp)
 
 ### Default Behavior
 
 - **Inbound**: All traffic blocked by default.
 - **Outbound**: All traffic allowed by default.
 
-![](/posts/assets/aws/img-21.webp)
+![Security Group default behavior for inbound and outbound traffic](/posts/assets/aws/img-21.webp)
 
 ### Key Characteristics
 
@@ -201,7 +214,7 @@ Example: `m5.2xlarge`
 - Example: Web SG allows inbound only from Load Balancer SG.
 - Avoids managing dynamic IPs, simplifies multi-instance communication.
 
-![](/posts/assets/aws/img-22.webp)
+![Security Group referencing other Security Groups diagram](/posts/assets/aws/img-22.webp)
 
 
 
@@ -289,7 +302,7 @@ Here are concise notes for that lecture:
 3. Default username = **ec2-user** (for Amazon Linux 2).
 4. Click **Connect** → browser terminal opens.
 
-![](/posts/assets/aws/img-24.webp)
+![EC2 Instance Connect browser-based SSH session](/posts/assets/aws/img-24.webp)
 ### Benefits
 
 - No SSH key management required.
@@ -345,7 +358,7 @@ ping google.com
 - **Always** use **IAM Roles** to give EC2 instances permissions.
 - Never hardcode or manually configure credentials on the instance.
 
-![](/posts/assets/aws/img-25.webp)
+![IAM Role attached to EC2 instance for secure permissions](/posts/assets/aws/img-25.webp)
 
 
 ## EC2 Purchasing Options
@@ -415,7 +428,7 @@ ping google.com
 
 ### Which Purchasing Option is Right For Me?
 
-![](/posts/assets/aws/img-26.webp)
+![EC2 purchasing options comparison chart](/posts/assets/aws/img-26.webp)
 
 
 
@@ -457,7 +470,7 @@ ping google.com
 - Prefer IPv6 where possible.
 - Use **IPAM** to track allocations.
 
-![](/posts/assets/aws/img-27.webp)
+![AWS IPv4 charges and cost management overview](/posts/assets/aws/img-27.webp)
 
 
 ## Shared Responsibility Model – EC2

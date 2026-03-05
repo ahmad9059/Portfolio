@@ -10,6 +10,16 @@ tags:
   - tech
   - JavaScript
   - web
+keywords:
+  - JavaScript DOM manipulation
+  - DOM tutorial
+  - querySelector JavaScript
+  - createElement JavaScript
+  - addEventListener JavaScript
+  - innerHTML vs innerText vs textContent
+  - JavaScript event handling
+  - modify HTML with JavaScript
+  - DOM element selection methods
 Author: Ahmad Hassan
 ---
 # DOM Manipulation in JavaScript

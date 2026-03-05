@@ -9,6 +9,20 @@ tags:
   - aws
   - cloud
   - certification
+keywords:
+  - AWS Certified Cloud Practitioner
+  - AWS Machine Learning
+  - Amazon Rekognition
+  - Amazon Transcribe
+  - Amazon Polly
+  - Amazon Translate
+  - Amazon Lex
+  - Amazon Connect
+  - Amazon Comprehend
+  - Amazon SageMaker
+  - Amazon Kendra
+  - Amazon Personalize
+  - Amazon Textract
 Author: Ahmad Hassan
 ---
 
@@ -228,7 +242,7 @@ A **cloud-based contact center service** for managing **customer calls and inter
 3. Lex invokes a **Lambda function** to process actions, e.g., scheduling appointments in a CRM.
 4. The workflow completes automatically without human intervention.
 
-![](/posts/assets/aws/img-155.webp)
+![Amazon Lex and Amazon Connect workflow for automated customer support](/posts/assets/aws/img-155.webp)
 
 ### Exam Tip
 
@@ -332,7 +346,7 @@ A **fully managed service** that helps **developers and data scientists** build,
 5. **Deploy:** Use the model to predict new students’ scores.
 
 
-![](/posts/assets/aws/img-156.webp)
+![Amazon SageMaker end-to-end machine learning workflow](/posts/assets/aws/img-156.webp)
 
 All these steps are managed inside **Amazon SageMaker**.
 
@@ -384,7 +398,7 @@ A **fully managed, ML-powered enterprise search service** that allows users to *
 - **Amazon Kendra** searches across all connected files and returns the **exact answer**, not just document titles.
 
 
-![](/posts/assets/aws/img-157.webp)
+![Amazon Kendra enterprise document search with natural language queries](/posts/assets/aws/img-157.webp)
 
 ### Benefits
 
@@ -431,7 +445,7 @@ A **fully managed machine learning service** that lets you easily **build real-t
 - Similar to Amazon.com suggesting “You might also like…” based on your purchase history.
 
 
-![](/posts/assets/aws/img-158.webp)
+![Amazon Personalize real-time recommendation system workflow](/posts/assets/aws/img-158.webp)
 
 ### Common Industries
 
@@ -477,7 +491,7 @@ It can identify and extract information from **forms, tables, and structured doc
 - **Public Sector:** Automating tax form, ID, and passport processing
 
 
-![](/posts/assets/aws/img-159.webp)
+![Amazon Textract extracting text and data from scanned documents](/posts/assets/aws/img-159.webp)
 
 It provides the extracted data in a **machine-readable format**, making document analysis faster and reducing manual data entry.
 
@@ -485,4 +499,4 @@ It provides the extracted data in a **machine-readable format**, making document
 ## Summary
 ---
 
-![](/posts/assets/aws/img-160.webp)
+![AWS Machine Learning services summary diagram](/posts/assets/aws/img-160.webp)

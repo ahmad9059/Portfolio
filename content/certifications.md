@@ -2,6 +2,7 @@
 title: "Certifications & Achievements"
 description: "My professional certifications and achievements including AWS, Meta, Google, IBM, GitHub certifications and competition wins."
 keywords: [Certifications, Achievements, AWS, Meta, Google, IBM, GitHub, HackerRank, Programming Competitions]
+lastmod: 2025-03-05
 showtoc: false
 searchHidden: true
 ShowRssButtonInSectionTermList: false

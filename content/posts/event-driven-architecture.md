@@ -10,9 +10,18 @@ tags:
   - web
   - system-design
   - architecture
+keywords:
+  - event driven architecture
+  - EDA design pattern
+  - message broker Kafka RabbitMQ
+  - publish subscribe pattern
+  - loosely coupled systems
+  - asynchronous communication
+  - event producers and consumers
+  - scalable system design
 Author: Ahmad Hassan
 ---
-![|715x288](/posts/assets/img-4.webp)
+![Event driven architecture diagram showing producers, event broker, and consumers](/posts/assets/img-4.webp)
 
 
 Let’s talk about Event Driven Architecture. 

@@ -9,6 +9,17 @@ tags:
   - aws
   - cloud
   - certification
+keywords:
+  - AWS Certified Cloud Practitioner
+  - Amazon RDS
+  - Amazon Aurora
+  - Amazon DynamoDB
+  - Amazon Redshift
+  - Amazon ElastiCache
+  - Amazon Neptune
+  - AWS Glue ETL
+  - Amazon Athena
+  - AWS Database Migration Service
 Author: Ahmad Hassan
 ---
 
@@ -91,7 +102,7 @@ Author: Ahmad Hassan
    - Classic **3-tier architecture**.
 
 
-![](/posts/assets/aws/img-65.webp)
+![Amazon RDS three-tier architecture with Load Balancer, EC2, and database](/posts/assets/aws/img-65.webp)
 
 ### Amazon Aurora
 
@@ -106,7 +117,7 @@ Author: Ahmad Hassan
     - **20% more expensive than RDS**, but more **efficient & cost-effective**.
 - **Exam tip:** RDS is in the Free Tier, **Aurora is NOT**.
 
-![](/posts/assets/aws/img-67.webp)
+![Amazon Aurora performance comparison with MySQL and PostgreSQL on RDS](/posts/assets/aws/img-67.webp)
 
 
 ### Aurora Serverless
@@ -119,7 +130,7 @@ Author: Ahmad Hassan
 - **Exam keyword:** “Aurora with no management overhead” = **Aurora Serverless**.
 
 
-![](/posts/assets/aws/img-66.webp)
+![Aurora Serverless architecture with proxy fleet auto-scaling DB instances](/posts/assets/aws/img-66.webp)
 
 
 **Exam perspective:**
@@ -140,7 +151,7 @@ Author: Ahmad Hassan
 - Applications can read from replicas, but **writes always go to the main DB**.
 - ✅ Use Case: **Scaling read-heavy workloads**.
 
-![](/posts/assets/aws/img-68.webp)
+![RDS Read Replicas scaling read workloads from main database](/posts/assets/aws/img-68.webp)
 
 ### Multi-AZ (High Availability / Failover)
 
@@ -149,7 +160,7 @@ Author: Ahmad Hassan
 - If the main DB or AZ fails, **automatic failover** happens.
 - Use Case: **High Availability & Disaster Recovery within a region**.
 
-![](/posts/assets/aws/img-69.webp)
+![RDS Multi-AZ deployment with synchronous standby and automatic failover](/posts/assets/aws/img-69.webp)
 
 ### Multi-Region (Cross-Region Read Replicas)
 
@@ -161,7 +172,7 @@ Author: Ahmad Hassan
 - Extra cost for **cross-region replication & data transfer**.
 - Use Cases: **Global apps, regional DR, reduced latency for remote users**.
 
-![](/posts/assets/aws/img-70.webp)
+![RDS Multi-Region cross-region read replicas for disaster recovery](/posts/assets/aws/img-70.webp)
 
 ### Exam Tips
 - **Read Replicas** = Scale reads (not HA).
@@ -202,7 +213,7 @@ AWS handles:
 - Reduces **latency** and **pressure on RDS**.
 
 
-![](/posts/assets/aws/img-71.webp)
+![ElastiCache architecture with Load Balancer, EC2, cache layer, and RDS](/posts/assets/aws/img-71.webp)
 
 ### Exam Tips
 
@@ -232,7 +243,7 @@ AWS handles:
    - Attributes = additional columns.
    - Items stored row by row.
 
-![](/posts/assets/aws/img-72.webp)
+![DynamoDB key-value data model with partition key, sort key, and attributes](/posts/assets/aws/img-72.webp)
 
 ### DynamoDB Accelerator (DAX)
 
@@ -245,7 +256,7 @@ AWS handles:
 - **Use Case:** If exam mentions _cache for DynamoDB → Answer = DAX_.
 
 
-![](/posts/assets/aws/img-73.webp)
+![DynamoDB Accelerator DAX providing microsecond latency caching](/posts/assets/aws/img-73.webp)
 
 ### DynamoDB vs Other Services (Exam Traps)
 
@@ -275,7 +286,7 @@ AWS handles:
 - Supports **up to 10 regions**.
 - Data is **two-way replicated** between regions.
 
-![](/posts/assets/aws/img-74.webp)
+![DynamoDB Global Tables with two-way replication across AWS regions](/posts/assets/aws/img-74.webp)
 
 ### Key Properties
 
@@ -318,7 +329,7 @@ DynamoDB Global Tables = **Multi-region, active-active, low latency access with 
 * **Auto-provisions and scales** based on workload.
 * **Use cases:** Reporting, dashboards, real-time analytics, cost-efficient ad-hoc queries.
 
-![](/posts/assets/aws/img-75.webp)
+![Amazon Redshift Serverless auto-scaling analytics architecture](/posts/assets/aws/img-75.webp)
 
 ### Exam Keywords
 
@@ -499,7 +510,7 @@ Amazon DocumentDB is a **fully managed, MongoDB-compatible NoSQL database** for 
 - **Use case**: Handles **highly connected datasets** (e.g., social networks).
    - Example: Users have friends, posts, comments, likes, and shares — all form a **graph** of relationships.
 
-![](/posts/assets/aws/img-76.webp)
+![Amazon Neptune graph database showing interconnected social network relationships](/posts/assets/aws/img-76.webp)
 
 ### Features
 
@@ -530,7 +541,7 @@ Amazon DocumentDB is a **fully managed, MongoDB-compatible NoSQL database** for 
 - **Purpose**: Specifically designed for **time series data** (data evolving over time).
    - Example: Numbers (y-axis) changing over years/dates (x-axis).
 
-![](/posts/assets/aws/img-77.webp)
+![Amazon Timestream time series data visualization over time](/posts/assets/aws/img-77.webp)
 
 ### Features
 
@@ -559,7 +570,7 @@ Amazon DocumentDB is a **fully managed, MongoDB-compatible NoSQL database** for 
 - SQL-like query support.
 - Performance: **2–3x faster** than common ledger blockchain frameworks.
 
-![](/posts/assets/aws/img-78.webp)
+![Amazon QLDB immutable ledger with cryptographic verification journal](/posts/assets/aws/img-78.webp)
 
 ### Difference from Managed Blockchain
 
@@ -627,7 +638,7 @@ Amazon DocumentDB is a **fully managed, MongoDB-compatible NoSQL database** for 
 3. **Load** → Store data in destinations such as Redshift for analytics.
 
 
-![](/posts/assets/aws/img-79.webp)
+![AWS Glue ETL pipeline extracting from S3 and RDS, transforming, and loading to Redshift](/posts/assets/aws/img-79.webp)
 
 ### Glue Data Catalog
 
@@ -677,4 +688,4 @@ Amazon DocumentDB is a **fully managed, MongoDB-compatible NoSQL database** for 
 ## Summary
 ----
 
-![](/posts/assets/aws/img-80.webp)
+![AWS databases and analytics services summary comparison chart](/posts/assets/aws/img-80.webp)

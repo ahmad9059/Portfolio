@@ -30,4 +30,4 @@ Allow: /
 Sitemap: {{ "sitemap.xml" | absURL }}
 
 # RSS Feed
-Host: {{ site.BaseURL }}
+Feed: {{ "index.xml" | absURL }}

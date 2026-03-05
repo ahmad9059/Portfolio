@@ -10,6 +10,15 @@ tags:
   - sql
   - database
 Author: Ahmad Hassan
+keywords:
+  - MS SQL Server Arch Linux
+  - Azure Data Studio installation
+  - SQL Server Docker container
+  - Docker SQL Server setup
+  - Arch Linux database server
+  - SQL Server Linux installation
+  - Azure Data Studio AUR
+  - Docker MSSQL configuration
 ---
 
 Installing MS SQL Server along with Azure Data Studio on Arch Linux requires a combination of Microsoft packages and some extra tweaks since SQL Server isn't natively available for Arch and Azure Data Studio is mainly targeted for Debian/Red Hat based distros.

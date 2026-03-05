@@ -9,6 +9,19 @@ tags:
   - aws
   - cloud
   - certification
+keywords:
+  - AWS Certified Cloud Practitioner
+  - AWS Global Infrastructure
+  - Amazon Route 53
+  - Amazon CloudFront
+  - S3 Transfer Acceleration
+  - AWS Global Accelerator
+  - AWS Outposts
+  - AWS Wavelength
+  - AWS Local Zones
+  - CDN
+  - edge locations
+  - disaster recovery
 Author: Ahmad Hassan
 ---
 
@@ -105,7 +118,7 @@ Author: Ahmad Hassan
 4. Browser connects to server at that IP.
 
 
-![](/posts/assets/aws/img-100.webp)
+![Route 53 DNS resolution flow from browser to server](/posts/assets/aws/img-100.webp)
 
 ### Route 53 Routing Policies (high-level exam focus)
 
@@ -119,7 +132,7 @@ Author: Ahmad Hassan
    - **Supports health checks** (only sends traffic to healthy resources).
    - Used for load balancing, A/B testing.
 
-![](/posts/assets/aws/img-101.webp)
+![Route 53 Weighted Routing Policy distributing traffic across servers](/posts/assets/aws/img-101.webp)
 
 
 1. **Latency Routing Policy**
@@ -133,7 +146,7 @@ Author: Ahmad Hassan
    - Supports **Disaster Recovery** scenarios.
 
 
-![](/posts/assets/aws/img-102.webp)
+![Route 53 Failover Routing Policy with primary and secondary setup](/posts/assets/aws/img-102.webp)
 
 ### Key Exam Takeaways
 
@@ -171,11 +184,11 @@ Author: Ahmad Hassan
 - If content is cached → served immediately.
 - If not cached → CloudFront fetches from **Origin**, caches it, then serves.
 
-![](/posts/assets/aws/img-103.webp)
+![CloudFront CDN caching content at edge locations worldwide](/posts/assets/aws/img-103.webp)
 
 ### S3 as an Orgin
 
-![](/posts/assets/aws/img-104.webp)
+![CloudFront with S3 as origin using Origin Access Control](/posts/assets/aws/img-104.webp)
 
 ### Origins Supported by CloudFront
 
@@ -285,7 +298,7 @@ Author: Ahmad Hassan
    - Result: lower latency, more reliable connections.
 
 
-![](/posts/assets/aws/img-106.webp)
+![AWS Global Accelerator routing traffic through edge locations to application](/posts/assets/aws/img-106.webp)
 
 ### Key Difference: Global Accelerator vs CloudFront
 
@@ -298,7 +311,7 @@ Author: Ahmad Hassan
 | **Failover**   | Fast regional failover for high availability                            | Focused on cached content, not failover                                |
 | **Best for**   | Global apps needing **low latency, static IPs, fast failover**          | Serving **static/dynamic cached content** like images, video, websites |
 
-![](/posts/assets/aws/img-105.webp)
+![Global Accelerator vs CloudFront comparison diagram](/posts/assets/aws/img-105.webp)
 
 ---
 
@@ -360,7 +373,7 @@ You can run the following AWS services **locally**:
 - **Amazon EKS** and **ECS** (containers)
 - **Amazon EMR** (big data processing)
 
-![](/posts/assets/aws/img-107.webp)
+![AWS Outposts server racks deployed in on-premises data center](/posts/assets/aws/img-107.webp)
 
 ### Benefits
 
@@ -425,7 +438,7 @@ You can run the following AWS services **locally**:
 - The traffic often **stays within the telecom provider’s network (CSP)** and **does not reach the AWS region** unless needed.
 
 
-![](/posts/assets/aws/img-108.webp)
+![AWS Wavelength Zones embedded in 5G telecom network](/posts/assets/aws/img-108.webp)
 
 ### Connectivity
 
@@ -474,7 +487,7 @@ Whenever the question mentions **“5G” or “ultra-low latency edge computing
     - Local Zones: **Boston, Chicago, Dallas, Miami, Houston**, etc.
 - These local zones are **connected** to their parent region through **high-bandwidth private AWS network links**.
 
-![](/posts/assets/aws/img-109.webp)
+![AWS Local Zones extending a region to nearby metro areas](/posts/assets/aws/img-109.webp)
 
 ### Key Features
 
@@ -528,7 +541,7 @@ _(If the question mentions **5G or telecom edge**, that’s **AWS Wavelength** i
 | **Difficulty Level**       | ⭐ Very simple                                            |
 | **Use Case**               | Testing, development, or non-critical workloads          |
 
-![](/posts/assets/aws/img-110.webp)
+![Single Region Single AZ architecture diagram](/posts/assets/aws/img-110.webp)
 
 ### Single Region, Multi-AZ
 
@@ -540,7 +553,7 @@ _(If the question mentions **5G or telecom edge**, that’s **AWS Wavelength** i
 |**Difficulty Level**|⭐⭐ Slightly increased|
 |**Use Case**|Production workloads needing fault tolerance within one region|
 
-![](/posts/assets/aws/img-111.webp)
+![Single Region Multi-AZ architecture diagram](/posts/assets/aws/img-111.webp)
 
 ### Multi-Region, **Active–Passive**
 
@@ -555,7 +568,7 @@ _(If the question mentions **5G or telecom edge**, that’s **AWS Wavelength** i
 |**Failover Behavior**|If active region fails → passive becomes active|
 |**Use Case**|Disaster Recovery (DR) or read-heavy global workloads|
 
-![](/posts/assets/aws/img-112.webp)
+![Multi-Region Active-Passive architecture with data replication](/posts/assets/aws/img-112.webp)
 
 ### Multi-Region, **Active–Active**
 
@@ -569,7 +582,7 @@ _(If the question mentions **5G or telecom edge**, that’s **AWS Wavelength** i
 |**Example**|DynamoDB Global Tables, Route 53 latency-based routing, global web apps|
 |**Use Case**|Mission-critical applications needing **global low-latency** and **no single point of failure**|
 
-![](/posts/assets/aws/img-113.webp)
+![Multi-Region Active-Active architecture with bidirectional replication](/posts/assets/aws/img-113.webp)
 
 ### Summary Table
 

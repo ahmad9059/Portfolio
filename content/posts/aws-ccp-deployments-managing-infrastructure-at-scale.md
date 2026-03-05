@@ -9,6 +9,17 @@ tags:
   - aws
   - cloud
   - certification
+keywords:
+  - AWS Certified Cloud Practitioner
+  - AWS CloudFormation
+  - Infrastructure as Code
+  - AWS CDK
+  - Elastic Beanstalk
+  - AWS CodePipeline
+  - AWS CodeDeploy
+  - AWS CodeBuild
+  - AWS Systems Manager
+  - CI/CD on AWS
 Author: Ahmad Hassan
 ---
 
@@ -51,7 +62,7 @@ Author: Ahmad Hassan
 - Helps understand **relations between components**.
 
 
-![](/posts/assets/aws/img-92.webp)
+![CloudFormation Infrastructure Composer stack visualization showing resource relationships](/posts/assets/aws/img-92.webp)
 
 ### Exam Tips (AWS CCP)
 
@@ -111,7 +122,7 @@ Author: Ahmad Hassan
    - **Type safety**.
    - To deploy **infra + app code together**.
 
-![](/posts/assets/aws/img-93.webp)
+![AWS CDK workflow compiling programming language code into CloudFormation template](/posts/assets/aws/img-93.webp)
 
 **Key takeaway:** CDK = CloudFormation, but written in real programming languages, giving you more flexibility, reusability, and speed.
 
@@ -131,7 +142,7 @@ Author: Ahmad Hassan
 - But developers usually **don’t want to manage infrastructure**, they just want to **deploy code** and let AWS handle scaling, load balancing, and provisioning.
 
 
-![](/posts/assets/aws/img-94.webp)
+![Three-tier web application architecture with Load Balancer, Auto Scaling Group, and RDS](/posts/assets/aws/img-94.webp)
 
 
 ### What is Elastic Beanstalk?
@@ -231,7 +242,7 @@ Author: Ahmad Hassan
 4. CodeDeploy handles **automatic upgrade** from one version to another.
 
 
-![](/posts/assets/aws/img-95.webp)
+![AWS CodeDeploy deployment flow from source to EC2 and on-premises servers](/posts/assets/aws/img-95.webp)
 
 ### Benefits
 
@@ -297,7 +308,7 @@ Author: Ahmad Hassan
 4. Compiles, tests, packages.
 5. Produces **artifacts** ready for deployment.
 
-![](/posts/assets/aws/img-96.webp)
+![AWS CodeBuild workflow retrieving code, building, and producing deployment artifacts](/posts/assets/aws/img-96.webp)
 
 ### Features
 
@@ -338,7 +349,7 @@ Author: Ahmad Hassan
 4. Orchestration is handled by **CodePipeline**.
 
 
-![](/posts/assets/aws/img-97.webp)
+![AWS CodePipeline CI/CD orchestration from CodeCommit to CodeBuild to CodeDeploy](/posts/assets/aws/img-97.webp)
 
 
 ### Key Features
@@ -439,7 +450,7 @@ Author: Ahmad Hassan
    - Patch the fleet.
    - Apply consistent configurations.
 
-![](/posts/assets/aws/img-98.webp)
+![AWS Systems Manager SSM Agent managing EC2 and on-premises servers](/posts/assets/aws/img-98.webp)
 
 ### Exam Tips
 
@@ -466,7 +477,7 @@ Author: Ahmad Hassan
 - **Serverless, scalable, durable, secure**.
 
 
-![](/posts/assets/aws/img-99.webp)
+![SSM Parameter Store securely storing configurations and secrets with IAM and KMS](/posts/assets/aws/img-99.webp)
 
 ### Key Features
 

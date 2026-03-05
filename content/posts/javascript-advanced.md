@@ -11,6 +11,17 @@ tags:
   - JavaScript
   - web
 Author: Ahmad Hassan
+keywords:
+  - JavaScript advanced concepts
+  - JavaScript closures
+  - JavaScript prototypal inheritance
+  - JavaScript event listeners
+  - higher-order functions JavaScript
+  - JavaScript this keyword
+  - call apply bind JavaScript
+  - JavaScript arrays and objects
+  - event delegation JavaScript
+  - JavaScript error handling
 ---
 
 # Arrays

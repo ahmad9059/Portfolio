@@ -9,6 +9,18 @@ tags:
   - aws
   - cloud
   - certification
+keywords:
+  - AWS Certified Cloud Practitioner
+  - Amazon S3
+  - S3 storage classes
+  - S3 bucket policy
+  - S3 versioning
+  - S3 replication
+  - S3 encryption
+  - S3 static website hosting
+  - AWS Snowball
+  - AWS Storage Gateway
+  - S3 Glacier
 Author: Ahmad Hassan
 ---
 
@@ -85,7 +97,7 @@ Author: Ahmad Hassan
 
 - Objects can have a **version ID** if versioning is enabled.
 
-![](/posts/assets/aws/img-43.webp)
+![Amazon S3 object key structure showing prefix and object name](/posts/assets/aws/img-43.webp)
 
 ### **Key Takeaways**
 
@@ -129,7 +141,7 @@ Author: Ahmad Hassan
    - The **public URL** does not work unless you explicitly make the object public.
    - The **working URL** is an **S3 Pre-Signed URL**, which includes your AWS credentials as a temporary signature. It proves you are authorized to access the object.
 
-![](/posts/assets/aws/img-44.webp)
+![S3 console showing uploaded object with pre-signed URL access](/posts/assets/aws/img-44.webp)
 
 **Key Takeaways for AWS CCP Exam**
 
@@ -171,7 +183,7 @@ An IAM principal can access an S3 object if:
 - **Action** → Specific API actions (e.g., `s3:GetObject`).
 - **Principal** → Who the policy applies to (`*` means anyone).
 
-![](/posts/assets/aws/img-45.webp)
+![S3 bucket policy JSON structure with resource, effect, action, and principal fields](/posts/assets/aws/img-45.webp)
 
 📌 Example: A policy allowing `s3:GetObject` for `*` = public read access.
 
@@ -189,7 +201,7 @@ An IAM principal can access an S3 object if:
 - Purpose: prevent accidental company data leaks.
 - Best practice: keep it on unless you **explicitly** want public access.
 
-![](/posts/assets/aws/img-46.webp)
+![S3 Block Public Access settings preventing accidental public exposure](/posts/assets/aws/img-46.webp)
 
 
 **Key Takeaways for AWS CCP Exam**
@@ -228,7 +240,7 @@ An IAM principal can access an S3 object if:
    - Any object in the bucket (example: `coffee.jpg`) is now accessible via its **Object URL**.
    - You can test by copying the URL and opening it in the browser — the image/file will be publicly visible.
 
-![](/posts/assets/aws/img-47.webp)
+![S3 bucket policy applied to make objects publicly accessible via GetObject](/posts/assets/aws/img-47.webp)
 
 
 **Warning**: Making an entire bucket public is risky and can cause data leaks if sensitive data is uploaded. Always use bucket policies carefully.
@@ -257,7 +269,7 @@ An IAM principal can access an S3 object if:
 ⚠️ **Important**: Only use public access for buckets intended for websites. Never make private or sensitive data buckets public.
 
 
-![](/posts/assets/aws/img-48.webp)
+![S3 static website hosting configuration with index and error document settings](/posts/assets/aws/img-48.webp)
 
 
 ## Steps to Enable S3 Static Website Hosting
@@ -293,7 +305,7 @@ http://<bucket-name>.s3-website-<region>.amazonaws.com
 
 
 
-![](/posts/assets/aws/img-49.webp)
+![S3 static website endpoint serving HTML page with embedded images](/posts/assets/aws/img-49.webp)
 
 
 
@@ -323,7 +335,7 @@ http://<bucket-name>.s3-website-<region>.amazonaws.com
 **Cost note**: Each version is stored separately, so versioning may increase storage costs.
 
 
-![](/posts/assets/aws/img-50.webp)
+![S3 versioning diagram showing multiple versions of an object with version IDs](/posts/assets/aws/img-50.webp)
 
 
 
@@ -363,7 +375,7 @@ http://<bucket-name>.s3-website-<region>.amazonaws.com
 - Versioning makes rollback and recovery possible.
 
 
-![](/posts/assets/aws/img-51.webp)
+![S3 versioning with delete markers and version rollback demonstration](/posts/assets/aws/img-51.webp)
 
 
 
@@ -391,7 +403,7 @@ http://<bucket-name>.s3-website-<region>.amazonaws.com
    - Aggregating logs across multiple S3 buckets
    - Replicating between **production and test** environments
 
-![](/posts/assets/aws/img-52.webp)
+![S3 Cross-Region and Same-Region Replication diagram between source and destination buckets](/posts/assets/aws/img-52.webp)
 
 
 ## Steps to Set Up Replication
@@ -501,7 +513,7 @@ http://<bucket-name>.s3-website-<region>.amazonaws.com
 - **Cost**: Small monitoring + auto-tiering fee, but no retrieval charges
 - **Use case**: Unknown or changing access patterns
 
-![](/posts/assets/aws/img-53.webp)
+![S3 storage classes comparison chart showing durability, availability, and pricing tiers](/posts/assets/aws/img-53.webp)
 
 ### Key Exam Tips
 
@@ -557,7 +569,7 @@ http://<bucket-name>.s3-website-<region>.amazonaws.com
 - Glacier tiers are best for archival data with different retrieval speeds.
 - **Reduced Redundancy is deprecated** and should not be used.
 
-![](/posts/assets/aws/img-54.webp)
+![S3 lifecycle rules configuration for automatic storage class transitions](/posts/assets/aws/img-54.webp)
 
 
 ## S3 Encryption Overview
@@ -579,7 +591,7 @@ Encryption protects data stored in Amazon S3. There are two main models:
 - S3 just stores the already-encrypted object.
 - User is responsible for key management.
 
-![](/posts/assets/aws/img-55.webp)
+![S3 server-side vs client-side encryption comparison diagram](/posts/assets/aws/img-55.webp)
 
 ### Key Exam Point
 
@@ -610,7 +622,7 @@ Encryption protects data stored in Amazon S3. There are two main models:
 
 **Key exam point**: IAM Access Analyzer helps detect **unintended access to S3 buckets** by checking policies and ACLs, highlighting public or cross-account sharing.
 
-![](/posts/assets/aws/img-56.webp)
+![IAM Access Analyzer for S3 detecting publicly accessible or shared buckets](/posts/assets/aws/img-56.webp)
 
 
 ## Shared Responsibility Model for Amazon S3
@@ -633,7 +645,7 @@ Encryption protects data stored in Amazon S3. There are two main models:
    - Apply **encryption** for data at rest (SSE-S3, SSE-KMS, or client-side).
 - **Cost optimization**: choose the right **storage class** (Standard, IA, Glacier, etc.) based on needs.
 
-![](/posts/assets/aws/img-57.webp)
+![AWS shared responsibility model for S3 showing AWS vs customer responsibilities](/posts/assets/aws/img-57.webp)
 
 **Exam tip**: AWS secures the infrastructure _of_ S3, while the customer secures data _in_ S3 (access controls, policies, encryption, monitoring, and cost management).
 
@@ -656,7 +668,7 @@ Encryption protects data stored in Amazon S3. There are two main models:
    - Designed for **edge computing workloads**.
    - Can run **EC2 instances** or **AWS Lambda functions** directly on the device.
    
-![](/posts/assets/aws/img-58.webp)
+![AWS Snowball Edge device types - Storage Optimized and Compute Optimized](/posts/assets/aws/img-58.webp)
 
 ### Data Migration Use Case
 
@@ -672,7 +684,7 @@ Encryption protects data stored in Amazon S3. There are two main models:
    - Bandwidth is limited or costly.
 
 
-![](/posts/assets/aws/img-59.webp)
+![AWS Snowball data migration workflow - loading data locally and shipping to AWS](/posts/assets/aws/img-59.webp)
 
 ### Edge Computing Use Case
 
@@ -683,7 +695,7 @@ Encryption protects data stored in Amazon S3. There are two main models:
    - **Machine Learning inference** at the edge.
    - **Media transcoding** at the edge.
 
-![](/posts/assets/aws/img-60.webp)
+![AWS Snowball edge computing use cases in remote locations without internet](/posts/assets/aws/img-60.webp)
 
 
 **Exam Tip**:
@@ -714,7 +726,7 @@ Encryption protects data stored in Amazon S3. There are two main models:
    - Intended for **edge computing** scenarios.
    - Up to **62% discount** compared to on-demand.
 
-![](/posts/assets/aws/img-61.webp)
+![AWS Snowball Edge pricing model showing on-demand and committed upfront options](/posts/assets/aws/img-61.webp)
 
 ### Exam Tip
 
@@ -731,7 +743,7 @@ Encryption protects data stored in Amazon S3. There are two main models:
    - Strategic choice to use both environments.
 
 
-![](/posts/assets/aws/img-62.webp)
+![Hybrid cloud architecture with on-premises infrastructure connected to AWS](/posts/assets/aws/img-62.webp)
 
 ### Storage Gateway
 
@@ -751,7 +763,7 @@ Encryption protects data stored in Amazon S3. There are two main models:
 3. **Tape Gateway** → Virtual tape library backed by Amazon S3 & Glacier.
 
 
-![](/posts/assets/aws/img-63.webp)
+![AWS Storage Gateway types - File Gateway, Volume Gateway, and Tape Gateway](/posts/assets/aws/img-63.webp)
 
 ### Key Points for AWS CCP Exam
 
@@ -762,4 +774,4 @@ Encryption protects data stored in Amazon S3. There are two main models:
 
 ## Amazon S3 - Summary
 
-![](/posts/assets/aws/img-64.webp)
+![Amazon S3 summary of key features including storage classes, security, and replication](/posts/assets/aws/img-64.webp)

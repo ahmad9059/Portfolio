@@ -1,6 +1,6 @@
 baseURL: "https://ahmadx.dev"
 languageCode: en-us
-title: ahmad
+title: Ahmad Hassan
 theme: PaperMod
 copyright: "Ahmad Hassan"
 
@@ -20,7 +20,7 @@ menu:
       weight: 30
     - identifier: blog
       name: Blog
-      url: /categories/
+      url: /posts/
       weight: 40
     - identifier: contact
       name: Contact
@@ -47,6 +47,10 @@ sitemap:
   filename: sitemap.xml
   priority: 0.5
 
+taxonomies:
+  category: categories
+  tag: tags
+
 services:
   rss:
     limit: 20
@@ -64,6 +68,8 @@ params:
   seoTitle: Ahmad Hassan - Software Engineer
   defaultTheme: auto
   images: ["/assets/opengraph.webp"]
+  label:
+    text: "ahmad"
   profileMode:
     enabled: true
     title: "Ahmad Hassan" # optional default will be site title

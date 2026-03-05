@@ -9,6 +9,19 @@ tags:
   - aws
   - cloud
   - certification
+keywords:
+  - AWS Certified Cloud Practitioner
+  - Amazon ECS
+  - AWS Lambda
+  - AWS Fargate
+  - Amazon ECR
+  - AWS Batch
+  - Amazon Lightsail
+  - Amazon EKS
+  - serverless computing
+  - Docker containers on AWS
+  - API Gateway
+  - serverless architecture
 Author: Ahmad Hassan
 ---
 
@@ -30,7 +43,7 @@ Author: Ahmad Hassan
 - Scaling containers = **seconds**.
 - Powerful and widely used for modern app deployment.
 
-![](/posts/assets/aws/img-81.webp)
+![Docker containers running on multiple platforms diagram](/posts/assets/aws/img-81.webp)
 
 
 ### Docker on EC2
@@ -55,7 +68,7 @@ Author: Ahmad Hassan
    - Infrastructure → Host OS (EC2) → Docker Daemon → Containers.
    - Containers share resources with host.
    - **Lightweight, faster, easier to scale.**
-![](/posts/assets/aws/img-82.webp)
+![Docker vs Virtual Machines architecture comparison](/posts/assets/aws/img-82.webp)
 ### Exam Tip
 
 - **You don’t need deep Docker knowledge for CCP**.
@@ -78,7 +91,7 @@ Author: Ahmad Hassan
 - ECS decides which EC2 instance will host each container.
 - **Exam Tip**: “Run Docker containers on AWS → think ECS.”
 
-![](/posts/assets/aws/img-83.webp)
+![Amazon ECS launching Docker containers on EC2 instances](/posts/assets/aws/img-83.webp)
 
 ### Fargate
 
@@ -90,7 +103,7 @@ Author: Ahmad Hassan
 - **Exam Tip**: Fargate = serverless container solution.
 
 
-![](/posts/assets/aws/img-84.webp)
+![AWS Fargate serverless container deployment without EC2 management](/posts/assets/aws/img-84.webp)
 
 ### ECR (Elastic Container Registry)
 
@@ -99,7 +112,7 @@ Author: Ahmad Hassan
 - Alternative to public repos (like Docker Hub).
 
 
-![](/posts/assets/aws/img-85.webp)
+![Amazon ECR storing Docker images for ECS and Fargate](/posts/assets/aws/img-85.webp)
 
 ### Comparison
 
@@ -140,7 +153,7 @@ Author: Ahmad Hassan
 - Great for **multi-cloud** or **hybrid** setups → Kubernetes is **cloud agnostic**.
    - Works on AWS, Azure, GCP, or on-premises.
 
-![](/posts/assets/aws/img-86.webp)
+![Amazon EKS Kubernetes cluster with EC2 and Fargate options](/posts/assets/aws/img-86.webp)
 
 ### Exam Tip
 
@@ -179,7 +192,7 @@ Author: Ahmad Hassan
 - **AWS Lambda** → Pioneer of serverless, runs functions in the cloud.
 
 
-![](/posts/assets/aws/img-87.webp)
+![AWS serverless services overview including S3, DynamoDB, Fargate, and Lambda](/posts/assets/aws/img-87.webp)
 
 ### Exam Tip
 
@@ -204,7 +217,7 @@ Author: Ahmad Hassan
 - **EC2**: Always running, billed for uptime, scaling with Auto Scaling Groups (slower and more complex).
 - **Lambda**: Runs only on demand, billed per request and execution time, scaling is automatic.
 
-![](/posts/assets/aws/img-88.webp)
+![AWS Lambda vs EC2 comparison diagram](/posts/assets/aws/img-88.webp)
 
 ### Benefits of AWS Lambda
 
@@ -229,7 +242,7 @@ Author: Ahmad Hassan
    - User uploads image to S3 → triggers Lambda → generates thumbnail → saves to S3 → metadata to DynamoDB.
    - Fully serverless and event-driven.
 
-![](/posts/assets/aws/img-89.webp)
+![Serverless thumbnail creation workflow with S3, Lambda, and DynamoDB](/posts/assets/aws/img-89.webp)
 
 
 2. **Serverless CRON jobs**:
@@ -262,7 +275,7 @@ Author: Ahmad Hassan
    - Client → API Gateway → Lambda → DynamoDB.
 
 
-![](/posts/assets/aws/img-90.webp)
+![API Gateway as front door for Lambda serverless architecture](/posts/assets/aws/img-90.webp)
 
 ### Key Features
 
@@ -329,7 +342,7 @@ API Gateway = **Serverless API front door for Lambda and other AWS services**.
 | **Infra Type**      | Serverless         | Managed service (uses EC2/Spot)   |
 | **Scaling**         | Fully serverless   | Scales EC2 automatically          |
 
-![](/posts/assets/aws/img-91.webp)
+![AWS Batch vs Lambda comparison diagram](/posts/assets/aws/img-91.webp)
 
 ### Exam Tips
 

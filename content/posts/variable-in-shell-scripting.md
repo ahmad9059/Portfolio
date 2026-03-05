@@ -10,6 +10,16 @@ tags:
   - shell
   - scripting
 Author: Ahmad Hassan
+keywords:
+  - shell scripting variables
+  - bash variables tutorial
+  - environment variables Linux
+  - positional parameters bash
+  - shell quoting rules
+  - read command bash
+  - special parameters shell
+  - export variable bash
+  - bash user input
 ---
 
 # Variables in Shell Scripting

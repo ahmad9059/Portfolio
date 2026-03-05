@@ -9,6 +9,19 @@ tags:
   - aws
   - cloud
   - certification
+keywords:
+  - AWS Certified Cloud Practitioner
+  - EC2 Instance Storage
+  - Amazon EBS
+  - Elastic Block Store
+  - EBS Snapshots
+  - Amazon Machine Image
+  - AMI
+  - EC2 Image Builder
+  - EC2 Instance Store
+  - Amazon EFS
+  - Elastic File System
+  - Amazon FSx
 Author: Ahmad Hassan
 ---
 
@@ -58,7 +71,7 @@ Author: Ahmad Hassan
 - **Use case**: Keep root volume to preserve logs/data after instance termination.
 
 
-![](/posts/assets/aws/img-28.webp)
+![EBS volume attached to EC2 instance diagram](/posts/assets/aws/img-28.webp)
 
 
 
@@ -133,7 +146,7 @@ Author: Ahmad Hassan
 3. Use snapshot to create a new EBS volume in same or another AZ.
 4. Attach new volume to EC2 instance.
 
-![](/posts/assets/aws/img-29.webp)
+![EBS Snapshot workflow for copying volumes across Availability Zones](/posts/assets/aws/img-29.webp)
 ### Features
 
 1. **EBS Snapshot Archive**
@@ -216,7 +229,7 @@ Author: Ahmad Hassan
 - Free service, but resources (EC2 + storage) are billed.
 
 
-![](/posts/assets/aws/img-30.webp)
+![EC2 Image Builder automated AMI creation workflow](/posts/assets/aws/img-30.webp)
 
 
 Here are **concise AWS CCP notes** from your EC2 Instance Store transcript:
@@ -283,7 +296,7 @@ Here are **concise AWS CCP notes** from your EC2 Instance Store transcript:
 - **EFS**: many instances, multiple AZs, shared access, no snapshots needed.
 
 
-![](/posts/assets/aws/img-31.webp)
+![EBS vs EFS comparison diagram showing single-AZ and multi-AZ access](/posts/assets/aws/img-31.webp)
 
 ### Storage Classes
 
@@ -293,7 +306,7 @@ Here are **concise AWS CCP notes** from your EC2 Instance Store transcript:
    - Transparent to applications (apps access files the same way).
 
 
-![](/posts/assets/aws/img-32.webp)
+![EFS storage classes with Standard and Infrequent Access tiers](/posts/assets/aws/img-32.webp)
 
 ### Exam Tips
 
@@ -327,7 +340,7 @@ Here are **concise AWS CCP notes** from your EC2 storage **shared responsibility
    - Data lost if instance is stopped or terminated.
    - Must plan for backup of ephemeral storage.
 
-![](/posts/assets/aws/img-33.webp)
+![EC2 storage shared responsibility model between AWS and customer](/posts/assets/aws/img-33.webp)
 
 ✅ Exam takeaway:
 - AWS secures the **infra & replication**, customers secure **data, backups, encryption, and usage decisions**.
@@ -349,7 +362,7 @@ Here are **concise AWS CCP notes** from your EC2 storage **shared responsibility
    - Integrated with **Microsoft Active Directory**.
    - Deployed across **multiple AZs** for reliability.
 
-![](/posts/assets/aws/img-34.webp)
+![Amazon FSx for Windows File Server architecture diagram](/posts/assets/aws/img-34.webp)
 2. **FSx for Lustre**
    - Use cases: **Machine Learning, Analytics, Video Processing, Financial Modeling**.
    - Features:
@@ -359,7 +372,7 @@ Here are **concise AWS CCP notes** from your EC2 storage **shared responsibility
    - Can connect to **AWS compute instances or on-premises**.
    - Data can be linked to **Amazon S3 buckets** for backend storage.
 
-![](/posts/assets/aws/img-35.webp)
+![Amazon FSx for Lustre high-performance file system diagram](/posts/assets/aws/img-35.webp)
 
 ### Other flavors (FYI, not main exam focus)
 
@@ -377,4 +390,4 @@ Here are **concise AWS CCP notes** from your EC2 storage **shared responsibility
 ### Summary 
 ---
 
-![](/posts/assets/aws/img-36.webp)
+![EC2 Instance Storage summary comparing EBS, EFS, Instance Store, and FSx](/posts/assets/aws/img-36.webp)

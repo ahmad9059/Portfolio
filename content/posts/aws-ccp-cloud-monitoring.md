@@ -9,6 +9,17 @@ tags:
   - aws
   - cloud
   - certification
+keywords:
+  - AWS Certified Cloud Practitioner
+  - Amazon CloudWatch
+  - CloudWatch Alarms
+  - CloudWatch Logs
+  - Amazon EventBridge
+  - AWS CloudTrail
+  - AWS X-Ray
+  - Amazon CodeGuru
+  - AWS Health Dashboard
+  - cloud monitoring and observability
 Author: Ahmad Hassan
 ---
 
@@ -139,7 +150,7 @@ CloudWatch Logs can collect logs from:
 - By default, EC2 **does not send logs** to CloudWatch.
 - After installing and configuring the **CloudWatch Logs Agent**, logs from EC2 are pushed to CloudWatch Logs for central monitoring and analysis.
 
-![](/posts/assets/aws/img-123.webp)
+![CloudWatch Logs Agent on EC2 pushing logs to CloudWatch for monitoring](/posts/assets/aws/img-123.webp)
 
 ### Summary
 
@@ -169,7 +180,7 @@ CloudWatch Logs can collect logs from:
 - **Cron jobs:** Schedule scripts to run regularly (e.g., every hour trigger a Lambda).
 - **Automated reactions:** Respond to AWS events (e.g., root user sign-in, EC2 state change).
 
-![](/posts/assets/aws/img-124.webp)
+![Amazon EventBridge scheduling cron jobs and reacting to AWS events](/posts/assets/aws/img-124.webp)
 
 **2. Example**
 - Detect IAM **root user sign-in** → send event to **SNS** → email alert to security team.
@@ -189,7 +200,7 @@ CloudWatch Logs can collect logs from:
 - **Other AWS services** for orchestration or automation
 
 
-![](/posts/assets/aws/img-126.webp)
+![EventBridge event sources including AWS services, partners, and custom applications](/posts/assets/aws/img-126.webp)
 
 ### Advanced Features
 
@@ -207,7 +218,7 @@ CloudWatch Logs can collect logs from:
 3. **Rule:** Defines which events trigger which actions.
 4. **Target:** Destination service (Lambda, SNS, etc.).
 
-![](/posts/assets/aws/img-125.webp)
+![EventBridge structure showing event source, event bus, rules, and targets](/posts/assets/aws/img-125.webp)
 
 ### Summary
 
@@ -245,7 +256,7 @@ It tracks all API interactions through:
 - API call made by SDK → logged in CloudTrail
 
 
-![](/posts/assets/aws/img-127.webp)
+![AWS CloudTrail logging API calls from Console, CLI, and SDK](/posts/assets/aws/img-127.webp)
 
 ### Storage of Logs
 
@@ -310,7 +321,7 @@ X-Ray solves this by giving a **centralized trace** of all service interactions.
 
 
 
-![](/posts/assets/aws/img-128.webp)
+![AWS X-Ray distributed tracing service map showing request flow across services](/posts/assets/aws/img-128.webp)
 
 ### Key Features
 
@@ -389,7 +400,7 @@ Performs **static code analysis** to automatically review code when you push com
 **Use Case:**  
 When developers push code, CodeGuru Reviewer analyzes it and comments on potential problems or best practice violations.
 
-![](/posts/assets/aws/img-129.webp)
+![CodeGuru Reviewer automated code review with ML-powered recommendations](/posts/assets/aws/img-129.webp)
 
 
 ### CodeGuru Profiler
@@ -411,7 +422,7 @@ Analyzes **runtime behavior** of applications in **production** or **pre-product
 If a logging function consumes too much CPU, CodeGuru Profiler detects it and suggests optimizations.
 
 
-![](/posts/assets/aws/img-130.webp)
+![CodeGuru Profiler runtime performance analysis detecting CPU and memory inefficiencies](/posts/assets/aws/img-130.webp)
 
 ### Summary
 
@@ -463,7 +474,7 @@ There are **two main parts** of the AWS Health Dashboard:
 - It’s a **global service** showing outages or events that directly impact you.
 
 
-![](/posts/assets/aws/img-131.webp)
+![AWS Account Health Dashboard showing personalized alerts and event notifications](/posts/assets/aws/img-131.webp)
 
 ### Summary
 

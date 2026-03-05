@@ -11,9 +11,19 @@ tags:
   - system-design
   - architecture
 Author: Ahmad Hassan
+keywords:
+  - microservice architecture
+  - API gateway pattern
+  - service decomposition
+  - independent deployment
+  - monolith vs microservices
+  - distributed systems design
+  - microservices scaling
+  - loose coupling architecture
+  - system design fundamentals
 ---
 
-![|715x402](/posts/assets/img-5.webp)
+![Microservice architecture diagram showing API gateway routing requests to independent services](/posts/assets/img-5.webp)
 
 
 Let’s talk about microservice architecture

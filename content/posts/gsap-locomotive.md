@@ -12,6 +12,16 @@ tags:
   - web
   - gsap
   - locomotive
+keywords:
+  - GSAP animation tutorial
+  - Locomotive Scroll setup
+  - GSAP ScrollTrigger
+  - smooth scrolling JavaScript
+  - parallax effects web
+  - JavaScript animation library
+  - GSAP timeline
+  - scroll-based animations
+  - GreenSock Animation Platform
 Author: Ahmad Hassan
 ---
 

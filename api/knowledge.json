@@ -9,7 +9,7 @@
     "id": "bio-work",
     "category": "about",
     "title": "What I Do",
-    "content": "I work primarily with TypeScript, Next.js, and Golang on the frontend and backend, with cloud infrastructure on AWS. My day-to-day involves building full-stack applications, designing system architecture, and shipping products from idea to deployment."
+    "content": "I work primarily with TypeScript, Next.js, and Golang on the frontend and backend, with cloud infrastructure on AWS. At VieroMind Foundation, Inc., I work on AI-powered mental health and wellness tools. My day-to-day involves building scalable interfaces with Next.js and TypeScript, writing backend services in Node.js and Golang, and integrating machine learning models for journaling, mood tracking, and wellness insights. I received a full-time offer based on my performance during the Pakathon hackathon, where our team secured 2nd place."
   },
   {
     "id": "bio-opensource",
@@ -27,7 +27,7 @@
     "id": "bio-writing",
     "category": "about",
     "title": "Writing & Blog",
-    "content": "I write technical blogs covering system design, AWS cloud, web development, databases, shell scripting, and occasionally personal topics. I have 34 published articles on my blog. I started writing because it helps me think more clearly about what I'm learning, and if it helps someone else along the way, even better. My blog is available at ahmadx.dev/posts/."
+    "content": "I write technical blogs covering system design, AWS cloud, web development, databases, shell scripting, and occasionally personal topics. I have 41 published articles on my blog. I started writing because it helps me think more clearly about what I'm learning, and if it helps someone else along the way, even better. My blog is available at ahmadx.dev/posts/."
   },
   {
     "id": "bio-beyond-code",
@@ -189,7 +189,7 @@
     "id": "summary-articles",
     "category": "articles",
     "title": "Blog Articles Overview",
-    "content": "I have 34 published blog articles on my portfolio at /posts/. They cover system design & architecture (microservices, event-driven architecture, CAP theorem), AWS Cloud Practitioner study notes (18 articles covering all CCP exam domains), shell scripting (4-part series), JavaScript & web development (React, GSAP, DOM, async JS, fundamentals, Tailwind CSS, CSS), databases (MySQL, MS SQL Server on Arch Linux), building an AI chatbot with Gemini, Linux tools (MPD/RMPC setup), a web dev roadmap for 2025, and personal/life topics. All articles are available at ahmadx.dev/posts/."
+    "content": "I have 41 published blog articles on my portfolio at /posts/. They cover system design & architecture (microservices, event-driven architecture, CAP theorem), AWS Cloud Practitioner study notes (18 articles covering all CCP exam domains), shell scripting (4-part series), JavaScript & web development (React, GSAP, DOM, async JS, fundamentals, Tailwind CSS, CSS), databases (MySQL, MS SQL Server on Arch Linux), building an AI chatbot with Gemini, Linux tools (MPD/RMPC setup), a web dev roadmap for 2025, and personal/life topics. All articles are available at ahmadx.dev/posts/."
   },
   {
     "id": "articles-system-design",

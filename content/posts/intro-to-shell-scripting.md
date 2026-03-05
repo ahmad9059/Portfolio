@@ -9,6 +9,15 @@ tags:
   - tech
   - shell
   - scripting
+keywords:
+  - shell scripting tutorial
+  - bash scripting for beginners
+  - Linux shell commands
+  - shebang explained
+  - PATH environment variable
+  - bash vs sh vs zsh
+  - how to write shell scripts
+  - shell script execution methods
 Author: Ahmad Hassan
 ---
 

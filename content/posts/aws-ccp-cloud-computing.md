@@ -9,6 +9,17 @@ tags:
   - aws
   - cloud
   - certification
+keywords:
+  - AWS Certified Cloud Practitioner
+  - cloud computing basics
+  - IaaS PaaS SaaS
+  - AWS global infrastructure
+  - availability zones
+  - AWS regions
+  - shared responsibility model
+  - IAM identity and access management
+  - pay-as-you-go pricing
+  - traditional IT vs cloud
 Author: Ahmad Hassan
 ---
 
@@ -30,7 +41,7 @@ Author: Ahmad Hassan
    4. Client displays the website.
 
 
-![](/posts/assets/aws/img.webp)
+![Client-server model showing request and response flow over network](/posts/assets/aws/img.webp)
 
 ### Traditional IT Setup
 - Companies used to **buy and manage their own physical servers**.
@@ -41,7 +52,7 @@ Author: Ahmad Hassan
 - Servers often **over-provisioned** to handle peak traffic but underutilized most of the time.
 - Scaling required **purchasing more servers**, which was slow and costly.
 
-![](/posts/assets/aws/img-1.webp)
+![Traditional IT infrastructure with physical servers in a data center](/posts/assets/aws/img-1.webp)
 
 ### Challenges of Traditional IT
 - **High upfront costs** (CAPEX).
@@ -186,7 +197,7 @@ There are **three main service models** to understand:
 - **SaaS**: Provider manages everything.
 
 
-![](/posts/assets/aws/img-2.webp)
+![Cloud service models comparison showing IaaS, PaaS, SaaS vs on-premises responsibilities](/posts/assets/aws/img-2.webp)
 
 
 ### AWS Pricing Fundamentals
@@ -235,7 +246,7 @@ AWS follows a **pay-as-you-go** model with 3 key principles:
    - Global infrastructure.
    - Reliability and scalability.
 
-![](/posts/assets/aws/img-3.webp)
+![AWS market share and cloud provider growth comparison chart](/posts/assets/aws/img-3.webp)
 
 ### AWS Global Infrastructure
 
@@ -245,7 +256,7 @@ AWS follows a **pay-as-you-go** model with 3 key principles:
 - AWS Edge Locations, Points of Presence
 
 
-![](/posts/assets/aws/img-4.webp)
+![AWS global infrastructure hierarchy showing Regions, Availability Zones, and Edge Locations](/posts/assets/aws/img-4.webp)
 
 
 ### How to choose an AWS Region?
@@ -267,7 +278,7 @@ AWS follows a **pay-as-you-go** model with 3 key principles:
 - They’re connected with **high bandwidth**, **ultra-low latency networking**.
 
 
-![](/posts/assets/aws/img-5.webp)
+![AWS Availability Zones with isolated data centers connected by low-latency networking](/posts/assets/aws/img-5.webp)
 
 
 ### AWS Points of Presence (Edge Locations)
@@ -277,7 +288,7 @@ AWS follows a **pay-as-you-go** model with 3 key principles:
 - Amazon has 400+ Points of Presence (400+ Edge Locations & 10+ Regional Caches) in 90+ cities across 40+ countries
 - Content is delivered to end users with lower latency
 
-![](/posts/assets/aws/img-6.webp)
+![AWS Points of Presence and Edge Locations global map](/posts/assets/aws/img-6.webp)
 
 
 ## Shared Responsibility Model & Acceptable Use Policy
@@ -298,7 +309,7 @@ AWS follows a **pay-as-you-go** model with 3 key principles:
    - Virtualization layer.
    - Their own software and internal security.
 
-![](/posts/assets/aws/img-7.webp)
+![AWS Shared Responsibility Model diagram showing customer vs AWS responsibilities](/posts/assets/aws/img-7.webp)
 
 
 ---

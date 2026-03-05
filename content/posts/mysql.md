@@ -10,6 +10,17 @@ tags:
   - mysql 
   - database
 Author: Ahmad Hassan
+keywords:
+  - MySQL tutorial
+  - SQL queries
+  - relational database management
+  - MySQL joins
+  - SQL CRUD operations
+  - MySQL stored procedures
+  - foreign key constraints
+  - SQL aggregate functions
+  - MySQL table operations
+  - database management system
 ---
 
 ## Database
@@ -75,7 +86,7 @@ USE db_name;
 SQL is a language used to perform CRUD operations in Relational DB, while MySQL is a RDBMS that uses SQL.
 
 
-![](posts/assets/mysql/img.webp)
+![SQL vs MySQL comparison diagram](posts/assets/mysql/img.webp)
 #### Creating Table
 
 We can create the table in db using the **CREATE TABLE** command whole syntax is given below.
@@ -205,7 +216,7 @@ It is a column (or set of columns) in a table that uniquely identifies each row.
 
 A foreign key is a column (or set of columns) in a table that refers to the primary key in another table. There can be multiple FKs. FKs can be have duplicate & null values.
 
-![](posts/assets/mysql/img-1.webp)
+![Foreign key relationship between two database tables](posts/assets/mysql/img-1.webp)
 
 ### Secondary Key
 
@@ -733,7 +744,7 @@ and we can also use the **UNION ALL** to give all the values including the dupli
 
 A Subquery or Inner query or a Nested query is a query within another SQL query. It is used to return data that will be used in the main query as a condition.
 
-![img8](/posts/assets/mysql/img-8.png)
+![SQL sub queries nested query diagram](/posts/assets/mysql/img-8.png)
 
 It involves 2 select statements.
 

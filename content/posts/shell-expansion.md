@@ -10,6 +10,17 @@ tags:
   - shell
   - scripting
 Author: Ahmad Hassan
+keywords:
+  - shell expansion bash
+  - brace expansion
+  - tilde expansion
+  - parameter variable expansion
+  - command substitution bash
+  - arithmetic expansion
+  - process substitution
+  - word splitting IFS
+  - filename expansion globbing
+  - bash scripting tutorial
 ---
 
 # Shell Expansion

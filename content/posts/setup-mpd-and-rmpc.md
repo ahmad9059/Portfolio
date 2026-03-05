@@ -10,9 +10,18 @@ tags:
   - terminal
   - music
 Author: Ahmad Hassan
+keywords:
+  - MPD music player daemon
+  - RMPC terminal music client
+  - MPD configuration Linux
+  - terminal music player setup
+  - Arch Linux MPD
+  - PipeWire audio output
+  - systemd user service MPD
+  - TUI music player
 ---
 
-![|500x444](/posts/assets/img-1.webp)
+![RMPC terminal music player interface](/posts/assets/img-1.webp)
 
 ## What is RMPC?
 
@@ -200,7 +209,7 @@ If it fails to connect, check:
 
 
 
-![|715x402](/posts/assets/img-2.webp)
+![RMPC TUI client connected to MPD showing music library](/posts/assets/img-2.webp)
 
 ---
 

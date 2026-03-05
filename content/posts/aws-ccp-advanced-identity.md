@@ -9,6 +9,17 @@ tags:
   - aws
   - cloud
   - certification
+keywords:
+  - AWS Certified Cloud Practitioner
+  - AWS STS
+  - Security Token Service
+  - Amazon Cognito
+  - AWS Directory Service
+  - IAM Identity Center
+  - AWS Single Sign-On
+  - Active Directory
+  - federated identity
+  - temporary credentials
 Author: Ahmad Hassan
 ---
 
@@ -53,7 +64,7 @@ Author: Ahmad Hassan
    - EC2 instances can assume IAM roles automatically.
    - AWS **refreshes credentials in the background** using STS to maintain temporary access tokens.
 
-![](/posts/assets/aws/img-168.webp)
+![AWS STS workflow showing temporary credentials issuance for cross-account access](/posts/assets/aws/img-168.webp)
 
 ### Example
 
@@ -104,7 +115,7 @@ Author: Ahmad Hassan
    - Provide **temporary AWS credentials** to access AWS services after users authenticate.
    - Work together with **STS** to assume roles securely.
 
-![](/posts/assets/aws/img-169.webp)
+![Amazon Cognito architecture showing user pools and federated identity login flow](/posts/assets/aws/img-169.webp)
 
 ### Use Case
 
@@ -176,7 +187,7 @@ Author: Ahmad Hassan
 - Cannot be joined with an on-premises AD.
 - Best for **small organizations or test environments** needing basic directory features.
 
-![](/posts/assets/aws/img-170.webp)
+![AWS Directory Service types comparison - Managed Microsoft AD, AD Connector, and Simple AD](/posts/assets/aws/img-170.webp)
 
 ### Exam Tip
 
@@ -224,7 +235,7 @@ Author: Ahmad Hassan
    - After signing in, they see a **dashboard** listing all AWS accounts and roles they can access.
    - They can launch the **AWS Management Console** for any account directly from the portal.
 
-![](/posts/assets/aws/img-171.webp)
+![AWS IAM Identity Center single sign-on portal for multiple AWS accounts and applications](/posts/assets/aws/img-171.webp)
 
 ### Benefits
 
