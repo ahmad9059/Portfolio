@@ -77,7 +77,8 @@
 {{- /* Search: disabled built-in fastsearch — using custom Fuse.js modal in extend_footer.html instead */}}
 
 {{- /* Favicons */}}
-<link rel="icon" href="{{ site.Params.assets.favicon | default "favicon.ico" | absURL }}">
+<link rel="icon" href="{{ site.Params.assets.favicon | default "favicon.ico" | absURL }}" type="image/x-icon">
+<link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="48x48">
 <link rel="icon" type="image/png" sizes="16x16" href="{{ site.Params.assets.favicon16x16 | default "favicon-16x16.png" | absURL }}">
 <link rel="icon" type="image/png" sizes="32x32" href="{{ site.Params.assets.favicon32x32 | default "favicon-32x32.png" | absURL }}">
 <link rel="apple-touch-icon" href="{{ site.Params.assets.apple_touch_icon | default "apple-touch-icon.png" | absURL }}">
