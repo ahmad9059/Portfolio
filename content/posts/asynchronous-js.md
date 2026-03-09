@@ -97,10 +97,11 @@ fetch("https://jsonplaceholder.typicode.com/todos/1") // Fetch data from API
   .catch((error) => console.error("Error fetching data:", error));
 ```
 
-🔹 **How it works?** 1️⃣ `fetch()` makes an HTTP request **(returns a Promise).**  
-2️⃣ `.json()` parses the response into JavaScript object **(also async, returns a Promise).**  
-3️⃣ `.then()` handles the resolved data.  
-4️⃣ `.catch()` handles errors (e.g., network failure).
+How it works:
+1. `fetch()` makes an HTTP request **(returns a Promise).**
+2. `.json()` parses the response into JavaScript object **(also async, returns a Promise).**
+3. `.then()` handles the resolved data.
+4. `.catch()` handles errors (e.g., network failure).
 
 ### Axios
 
@@ -118,27 +119,27 @@ axios.get("https://jsonplaceholder.typicode.com/todos/1")
     .catch(error => console.error("Error fetching data:", error));
 ```
 
-### 🔥 Comparison: Axios vs. Fetch
+### Comparison: Axios vs. Fetch
 
 |Feature|Axios|Fetch|
 |---|---|---|
-|JSON Parsing|✅ Auto|❌ Manual (`.json()`)|
-|Error Handling|✅ Rejects on HTTP errors|❌ Only rejects on network errors|
-|Request Headers|✅ Easy|❌ Manual setup required|
-|`async/await` Support|✅ Yes|✅ Yes|
-|Default Timeout|✅ Yes (`timeout` option)|❌ No|
+|JSON Parsing|Auto|Manual (`.json()`)|
+|Error Handling|Rejects on HTTP errors|Only rejects on network errors|
+|Request Headers|Easy|Manual setup required|
+|`async/await` Support|Yes|Yes|
+|Default Timeout|Yes (`timeout` option)|No|
 
-**👉 Best Practice:** Use **Axios** when working with APIs that require headers, authentication, or advanced error handling.
+**Best Practice:** Use **Axios** when working with APIs that require headers, authentication, or advanced error handling.
 
 ## Promise in JavaScript
 
 A **Promise** in JavaScript is an object that represents the eventual **completion (or failure)** of an asynchronous operation.
 
-👉 It has **three states**:
+It has **three states**:
 
-1. **Pending** → Initial state, neither resolved nor rejected.
-2. **Fulfilled** → Operation completed successfully.
-3. **Rejected** → Operation failed.
+1. **Pending** - Initial state, neither resolved nor rejected.
+2. **Fulfilled** - Operation completed successfully.
+3. **Rejected** - Operation failed.
 
 
 ```js
@@ -164,8 +165,9 @@ promise
 
 ## Callbacks in JavaScript
 
-A **callback** is a **function passed as an argument** to another function and executed later.  
-👉 **Why use callbacks?**
+A **callback** is a **function passed as an argument** to another function and executed later.
+
+**Why use callbacks?**
 
 - Handle **asynchronous operations** (like fetching data, timers, or reading files).
 - Execute **code after another function completes**.
@@ -195,11 +197,11 @@ getData("https://randomuser.me/api/", function (result) {
 `async/await` is a modern **way to handle asynchronous code** in JavaScript.  
 It allows you to write **asynchronous code** in a way that looks **synchronous**, making it **easier to read and debug**.
 
-👉 **Key Features:**  
-✔️ **`async`: **The `async` keyword is used **before a function definition** to make it return a **Promise**.
-✔️ **`await`:** The `await` keyword is used **inside an `async` function** to pause execution **until a Promise resolves**.
-✔️ **Avoids callback hell** and complex `.then()` chains.  
-✔️ **Handles errors** with `try/catch`.
+**Key Features:**
+- **`async`:** The `async` keyword is used **before a function definition** to make it return a **Promise**.
+- **`await`:** The `await` keyword is used **inside an `async` function** to pause execution **until a Promise resolves**.
+- **Avoids callback hell** and complex `.then()` chains.
+- **Handles errors** with `try/catch`.
 
 ```js
 async function func() {
@@ -212,11 +214,11 @@ func();
 
 ### When to Use `async/await`?
 
-✔️ **Fetching data from an API**  
-✔️ **Performing database queries**  
-✔️ **Reading/Writing files (in Node.js)**  
-✔️ **Processing multiple async requests together**  
-✔️ **Avoiding callback hell**
+- **Fetching data from an API**
+- **Performing database queries**
+- **Reading/Writing files (in Node.js)**
+- **Processing multiple async requests together**
+- **Avoiding callback hell**
 
 ## Event Loop
 
@@ -234,7 +236,7 @@ function greet() {
 greet();
 ```
 
-📌 **Execution:**
+**Execution:**
 
 4. `greet()` is **pushed** onto the **Call Stack**.
 5. `console.log("Hello!")` runs and is **popped** from the stack.
@@ -255,11 +257,11 @@ setTimeout(() => {
 console.log("End");
 ```
 
-📌 **Execution Flow:**
+**Execution Flow:**
 
-6. `console.log("Start")` → **Executes immediately**.
-7. `setTimeout()` → **Sent to Web API, NOT executed immediately**.
-8. `console.log("End")` → **Executes immediately**.
+6. `console.log("Start")` - **Executes immediately**.
+7. `setTimeout()` - **Sent to Web API, NOT executed immediately**.
+8. `console.log("End")` - **Executes immediately**.
 9. After 1 second, the callback (`console.log("Inside setTimeout")`) moves to **Callback Queue**.
 
 ### Callback Queue & Microtask Queue
@@ -277,31 +279,31 @@ Promise.resolve().then(() => console.log("Promise Resolved"));
 console.log("End");
 ```
 
-📌 **Execution Flow:**
+**Execution Flow:**
 
-10. `console.log("Start")` → **Runs immediately**.
-11. `setTimeout()` → **Sent to Web API** (callback moved to Callback Queue).
-12. `Promise.resolve().then(...)` → **Sent to Microtask Queue**.
-13. `console.log("End")` → **Runs immediately**.
-14. **Microtask Queue executes first** → `console.log("Promise Resolved")`.
-15. **Callback Queue executes** → `console.log("Timeout Callback")`.
+10. `console.log("Start")` - **Runs immediately**.
+11. `setTimeout()` - **Sent to Web API** (callback moved to Callback Queue).
+12. `Promise.resolve().then(...)` - **Sent to Microtask Queue**.
+13. `console.log("End")` - **Runs immediately**.
+14. **Microtask Queue executes first** - `console.log("Promise Resolved")`.
+15. **Callback Queue executes** - `console.log("Timeout Callback")`.
 
 ### How the Event Loop Works
 
-1️⃣ JavaScript executes synchronous code in the Call Stack.
-2️⃣ If an async task is encountered, it moves to the Web API.
-3️⃣ Once completed, it moves the callback to the Callback Queue or Microtask Queue.
-4️⃣ The Event Loop checks if the Call Stack is empty.
-5️⃣ If empty, it first executes Microtasks, then moves Callbacks from the Callback Queue.
-6️⃣ Repeats the process infinitely.
+1. JavaScript executes synchronous code in the Call Stack.
+2. If an async task is encountered, it moves to the Web API.
+3. Once completed, it moves the callback to the Callback Queue or Microtask Queue.
+4. The Event Loop checks if the Call Stack is empty.
+5. If empty, it first executes Microtasks, then moves Callbacks from the Callback Queue.
+6. Repeats the process infinitely.
 
 
-## 🚀 Key Takeaways
+## Key Takeaways
 
-✔ **JavaScript is single-threaded** but handles async tasks with the **Event Loop**.  
-✔ **Microtask Queue (Promises) runs before the Callback Queue (`setTimeout`)**.  
-✔ **The Event Loop ensures JavaScript never blocks execution.**  
-✔ **Long-running tasks should be asynchronous to avoid UI freezing.**
+- **JavaScript is single-threaded** but handles async tasks with the **Event Loop**.
+- **Microtask Queue (Promises) runs before the Callback Queue (`setTimeout`)**.
+- **The Event Loop ensures JavaScript never blocks execution.**
+- **Long-running tasks should be asynchronous to avoid UI freezing.**
 
 
 ### Difference Between Callbacks, Promises, and Async/Await
@@ -322,10 +324,10 @@ Generators are **special functions** in JavaScript that allow us to **pause and 
 
 ### Key Features of Generators
 
-✔ Uses the `function*` syntax (notice the `*` after `function`).  
-✔ Uses the `yield` keyword to **pause execution** and return values.  
-✔ The function doesn’t run immediately; instead, it returns an **iterator object**.  
-✔ The `next()` method resumes execution from the last `yield`.
+- Uses the `function*` syntax (notice the `*` after `function`).
+- Uses the `yield` keyword to **pause execution** and return values.
+- The function doesn't run immediately; instead, it returns an **iterator object**.
+- The `next()` method resumes execution from the last `yield`.
 
 ```js
 function* myGenerator() {
@@ -344,12 +346,12 @@ console.log(gen.next()); // { value: undefined, done: true }
 ```
 
 
-### **📌 How it Works?**
+### How it Works
 
-16. **Calling `myGenerator()` doesn't execute it immediately.** It returns a generator object (`gen`).
-17. **`gen.next()` starts execution** until the first `yield`, returning `{ value: 1, done: false }`.
-18. **Calling `gen.next()` again** resumes execution after the first `yield`, printing `"Resume"` and yielding `{ value: 2, done: false }`.
-19. **When there are no more `yield` statements, `done: true` is returned.**
+1. **Calling `myGenerator()` doesn't execute it immediately.** It returns a generator object (`gen`).
+2. **`gen.next()` starts execution** until the first `yield`, returning `{ value: 1, done: false }`.
+3. **Calling `gen.next()` again** resumes execution after the first `yield`, printing `"Resume"` and yielding `{ value: 2, done: false }`.
+4. **When there are no more `yield` statements, `done: true` is returned.**
 
 
 ### Generator with `for...of` Loop
@@ -358,9 +360,9 @@ Instead of calling `next()` manually, we can use a `for...of` loop.
 
 ```js
 function* fruits() {
-    yield "🍎 Apple";
-    yield "🍌 Banana";
-    yield "🍇 Grapes";
+    yield "Apple";
+    yield "Banana";
+    yield "Grapes";
 }
 
 for (let fruit of fruits()) {
@@ -381,10 +383,10 @@ for (let fruit of fruits()) {
 
 ### When to Use Generators?
 
-✔ **Custom Iterators** – Iterating over data in a custom way.  
-✔ **Lazy Execution** – Generate values on demand instead of all at once.  
-✔ **Infinite Sequences** – Generate values infinitely without memory issues.  
-✔ **Asynchronous Programming (with co-routines)** – Generators can be combined with Promises.
+- **Custom Iterators** - Iterating over data in a custom way.
+- **Lazy Execution** - Generate values on demand instead of all at once.
+- **Infinite Sequences** - Generate values infinitely without memory issues.
+- **Asynchronous Programming (with co-routines)** - Generators can be combined with Promises.
 
 ## Web Worker
 
@@ -392,12 +394,12 @@ Web Workers allow JavaScript to run **background tasks** in a **separate thread*
 
 ### Why Use Web Workers?
 
-✔ JavaScript is **single-threaded** (blocking UI when executing long tasks).  
-✔ Web Workers allow running tasks **in parallel** on a different thread.  
-✔ Helps in **CPU-intensive tasks** like image processing, large calculations, etc.  
-✔ Keeps the **UI smooth** and prevents the page from freezing.
+- JavaScript is **single-threaded** (blocking UI when executing long tasks).
+- Web Workers allow running tasks **in parallel** on a different thread.
+- Helps in **CPU-intensive tasks** like image processing, large calculations, etc.
+- Keeps the **UI smooth** and prevents the page from freezing.
 
-**🚀 Step 1: Create the Worker (`heavyWorker.js`)**
+**Step 1: Create the Worker (`heavyWorker.js`)**
 
 ```js
 onmessage = function (data) {
@@ -406,7 +408,7 @@ onmessage = function (data) {
 };
 ```
 
-**🚀 Step 2: Use the Worker in Your Main Script (`main.js`)**
+**Step 2: Use the Worker in Your Main Script (`main.js`)**
 
 ```js
 let nums = Array.from({ length: 10000 }, (_, b) => b + 1);
@@ -422,7 +424,7 @@ worker.onmessage = function (data) {
 
 ### Limitations of Web Workers
 
-❌ **No DOM Access** – Cannot manipulate HTML directly.  
-❌ **Cannot use `window`, `document`, or `alert()`** – Only limited APIs like `fetch()`, `WebSockets`, and IndexedDB.  
-❌ **Same-Origin Policy** – Workers must be loaded from the same domain.  
-❌ **Extra Resource Consumption** – Creating multiple workers consumes more memory.
+- **No DOM Access** - Cannot manipulate HTML directly.
+- **Cannot use `window`, `document`, or `alert()`** - Only limited APIs like `fetch()`, `WebSockets`, and IndexedDB.
+- **Same-Origin Policy** - Workers must be loaded from the same domain.
+- **Extra Resource Consumption** - Creating multiple workers consumes more memory.

@@ -860,7 +860,7 @@ increment(); // 2
 
 An **event listener** is a method that allows you to wait for a specific event (like a click, keypress, hover, etc.) and run a function when the event occurs.
 
-### ✅ Example of `addEventListener()`
+### Example of `addEventListener()`
 
 ```js
 document.getElementById("btn").addEventListener("click", function() {
@@ -903,11 +903,11 @@ document.querySelector("p");        // Selects the first <p> element
 
 Event Delegation is a **pattern** that allows you to handle events **efficiently** by attaching a **single event listener** to a **parent element** instead of adding multiple listeners to child elements.
 
-## 🤔 Why Use Event Delegation?
+## Why Use Event Delegation?
 
-✅ **Better Performance** → Avoids adding multiple event listeners.  
-✅ **Handles Dynamic Elements** → Works even for elements added later via JavaScript.  
-✅ **Less Memory Usage** → Reduces the number of event listeners.
+- **Better Performance** - Avoids adding multiple event listeners.
+- **Handles Dynamic Elements** - Works even for elements added later via JavaScript.
+- **Less Memory Usage** - Reduces the number of event listeners.
 
 **Example**
 
@@ -959,7 +959,7 @@ returned(); // Call the returned function
 |`reduce()`|Reduces an array to a single value.|
 |`forEach()`|Iterates over an array but does not return a new one.|
 
-# Handling Errors with `try...catch
+# Handling Errors with `try...catch`
 
 The `try...catch` block allows you to handle errors gracefully.
 The `try...catch` statement is used to handle errors, and `throw` is used to create custom errors.
@@ -968,33 +968,33 @@ Basic Example of `try...catch`
 
 ```js
 try {
-    let x = y + 5;  // ❌ ReferenceError: y is not defined
+    let x = y + 5;  // ReferenceError: y is not defined
 } catch (error) {
     console.log("An error occurred:", error.message);
 }
 ```
 
-🔹 If an error occurs inside `try`, execution moves to `catch`, preventing a crash.
+If an error occurs inside `try`, execution moves to `catch`, preventing a crash.
 
 ## Using `throw` to Create Custom Error
 
 ```js
 function divide(a, b) {
     if (b === 0) {
-        throw new Error("Cannot divide by zero!");  // 🚀 Custom error
+        throw new Error("Cannot divide by zero!");  // Custom error
     }
     return a / b;
 }
 
 try {
-    console.log(divide(10, 0)); // ❌ Throws an error
+    console.log(divide(10, 0)); // Throws an error
 } catch (error) {
     console.log("Error:", error.message);
 }
 
 ```
 
-🔹 **`throw` allows custom error messages** instead of generic JavaScript errors.
+**`throw` allows custom error messages** instead of generic JavaScript errors.
 
 #### `finally` Block (Always Executes)
 
@@ -1015,8 +1015,9 @@ A **Custom Event** in JavaScript is an event that you manually create and dispat
 
 ## Creating and Dispatching a Custom Event
 
-The `CustomEvent` constructor takes two arguments: 1️⃣ **Event Name** (string)  
-2️⃣ **Event Options** (optional, includes `detail` for extra data)
+The `CustomEvent` constructor takes two arguments:
+1. **Event Name** (string)
+2. **Event Options** (optional, includes `detail` for extra data)
 
 ```js
 let ev = new Event("newEv");
