@@ -1,7 +1,7 @@
 ---
 title: "Leveraging the AWS Global Infrastructure"
 draft: false
-date: 2026-01-23
+date: 2026-01-22
 description: "AWS Certified Cloud Practitioner notes on Leveraging the AWS Global Infrastructure"
 categories:
   - tech

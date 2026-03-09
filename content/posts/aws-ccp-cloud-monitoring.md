@@ -1,7 +1,7 @@
 ---
 title: "Cloud Monitoring"
 draft: false
-date: 2026-01-25
+date: 2026-01-20
 description: "AWS Certified Cloud Practitioner notes on Cloud Monitoring"
 categories:
   - tech

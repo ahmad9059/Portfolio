@@ -1,7 +1,7 @@
 ---
 title: "Deployments & Managing Infrastructure at Scale"
 draft: false
-date: 2026-01-22
+date: 2026-01-23
 description: "AWS Certified Cloud Practitioner notes on Deployments & Managing Infrastructure at Scale"
 categories:
   - tech

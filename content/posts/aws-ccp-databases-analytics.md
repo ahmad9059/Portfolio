@@ -1,7 +1,7 @@
 ---
 title: "Databases & Analytics"
 draft: false
-date: 2026-01-20
+date: 2026-01-25
 description: "AWS Certified Cloud Practitioner notes on Databases & Analytics"
 categories:
   - tech

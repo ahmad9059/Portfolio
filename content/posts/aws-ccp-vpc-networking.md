@@ -1,7 +1,7 @@
 ---
 title: "VPC & Networking"
 draft: false
-date: 2026-01-26
+date: 2026-01-19
 description: "AWS Certified Cloud Practitioner notes on VPC & Networking"
 categories:
   - tech

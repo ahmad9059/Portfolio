@@ -1,7 +1,7 @@
 ---
 title: "Cloud Computing"
 draft: false
-date: 2026-01-14
+date: 2026-01-31
 description: "AWS Certified Cloud Practitioner notes on Cloud Computing"
 categories:
   - tech

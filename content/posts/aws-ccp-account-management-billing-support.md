@@ -1,7 +1,7 @@
 ---
 title: "Account Management, Billing & Support"
 draft: false
-date: 2026-01-29
+date: 2026-01-16
 description: "AWS Certified Cloud Practitioner notes on Account Management, Billing & Support"
 categories:
   - tech

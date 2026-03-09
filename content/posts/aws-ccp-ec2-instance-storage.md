@@ -1,7 +1,7 @@
 ---
 title: "EC2 - Instance Storage"
 draft: false
-date: 2026-01-17
+date: 2026-01-28
 description: "AWS Certified Cloud Practitioner notes on EC2 - Instance Storage"
 categories:
   - tech

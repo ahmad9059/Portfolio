@@ -1,7 +1,7 @@
 ---
 title: "Advanced Identity"
 draft: false
-date: 2026-01-30
+date: 2026-01-15
 description: "AWS Certified Cloud Practitioner notes on Advanced Identity"
 categories:
   - tech

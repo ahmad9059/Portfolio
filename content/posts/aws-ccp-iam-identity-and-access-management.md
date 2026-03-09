@@ -1,7 +1,7 @@
 ---
 title: "IAM (Identity and Access Management)"
 draft: false
-date: 2026-01-15
+date: 2026-01-30
 description: "AWS Certified Cloud Practitioner notes on IAM (Identity and Access Management)"
 categories:
   - tech

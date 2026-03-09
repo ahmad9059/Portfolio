@@ -1,7 +1,7 @@
 ---
 title: "EC2 - Elastic Compute Cloud"
 draft: false
-date: 2026-01-16
+date: 2026-01-29
 description: "AWS Certified Cloud Practitioner notes on EC2 - Elastic Compute Cloud"
 categories:
   - tech

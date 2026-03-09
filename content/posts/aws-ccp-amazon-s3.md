@@ -1,7 +1,7 @@
 ---
 title: "Amazon S3"
 draft: false
-date: 2026-01-19
+date: 2026-01-26
 description: "AWS Certified Cloud Practitioner notes on Amazon S3"
 categories:
   - tech

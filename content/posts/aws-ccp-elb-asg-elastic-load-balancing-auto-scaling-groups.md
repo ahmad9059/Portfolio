@@ -1,7 +1,7 @@
 ---
 title: "ELB & ASG - Elastic Load Balancing & Auto Scaling Groups"
 draft: false
-date: 2026-01-18
+date: 2026-01-27
 description: "AWS Certified Cloud Practitioner notes on ELB & ASG - Elastic Load Balancing & Auto Scaling Groups"
 categories:
   - tech

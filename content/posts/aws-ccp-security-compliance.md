@@ -1,7 +1,7 @@
 ---
 title: "Security & Compliance"
 draft: false
-date: 2026-01-27
+date: 2026-01-18
 description: "AWS Certified Cloud Practitioner notes on Security & Compliance"
 categories:
   - tech
