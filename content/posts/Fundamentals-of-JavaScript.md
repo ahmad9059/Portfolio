@@ -244,7 +244,7 @@ With strict mode, you can not, for example, use undeclared variables.
 
 In JavaScript, `window` is a global object that represents the browser window or tab. It is the top-level object in the browser's client-side execution environment and provides access to various properties and methods for controlling the browser window.
 
-## console
+### console
 
 The console object provides access to the browser's debugging console.
 
@@ -259,12 +259,12 @@ console.error("You made a mistake");
 - `error()`: Outputs an error message to the console.
 - `clear()`: Clears the console.
 
-# Interaction: alert, prompt, confirm
+## Interaction: alert, prompt, confirm
 
 As we’ll be using the browser as our demo environment, let’s see a couple of functions to interact with the user: `alert`, `prompt` and `confirm`.
-## alert()
+### alert()
 
-The `alert()` method displays an alert box with a message and an OK button.
+The `alert()` method displays an alert box with a message and an OK button.
 
 The `alert()` method is used when you want information to come through to the user.
 
@@ -272,9 +272,9 @@ The `alert()` method is used when you want information to come through to the 
 alert("Hello\nHow are you?");
 ```
 
-## prompt()
+### prompt()
 
-The `prompt()` method displays a dialog box that prompts the user for input.
+The `prompt()` method displays a dialog box that prompts the user for input.
 
 The `prompt()` method returns the input value if the user clicks "OK", otherwise it returns `null`.
 
@@ -295,9 +295,9 @@ console.log(`You are ${age} years old!`); // You are 100 years old!
 ```
 
 
-## confirm()
+### confirm()
 
-The `confirm()` method displays a dialog box with a message, an OK button, and a Cancel button.
+The `confirm()` method displays a dialog box with a message, an OK button, and a Cancel button.
 
 The `confirm()` method returns `true` if the user clicked "OK", otherwise `false`.
 
@@ -308,7 +308,7 @@ The `confirm()` method returns `true` if the user clicked "OK", otherwise `
 > Do not overuse this method. It prevents the user from accessing other parts of the page until the box is closed.
 
 
-# Variables
+## Variables
 
 A [variable](https://en.wikipedia.org/wiki/Variable_\(computer_science\)) is a “named storage” for data. We can use variables to store goodies, visitors, and other data.
 
@@ -386,9 +386,9 @@ Technically, all these variants do the same thing. So, it’s a matter of person
 > Though it may seem a little odd at first sight, these languages are quite capable of serious development. More than that, there are areas like parallel computations where this limitation confers certain benefits.
 
 
-## Constants
+### Constants
 
-To declare a constant (unchanging) variable, use `const` instead of `let`:
+To declare a constant (unchanging) variable, use `const` instead of `let`:
 
 ```js
 const myBirthday = '18.04.1982';
@@ -403,7 +403,7 @@ myBirthday = '01.01.2001'; // error, can't reassign the constant!
 ```
 
 When a programmer is sure that a variable will never change, they can declare it with `const` to guarantee and communicate that fact to everyone.
-### Uppercase constants
+#### Uppercase constants
 
 There is a widespread practice to use constants as aliases for difficult-to-remember values that are known before execution.
 
@@ -440,7 +440,7 @@ The value of `pageLoadTime` is not known before the page load, so it’s named
 In other words, capital-named constants are only used as aliases for “hard-coded” values.
 
 
-# Data types
+## Data types
 
 A value in JavaScript is always of a certain type. For example, a string or a number.
 
@@ -454,9 +454,9 @@ message = 123456;
 
 Programming languages that allow such things, such as JavaScript, are called *“dynamically typed”*, meaning that there exist data types, but variables are not bound to any of them.
 
-## Number
+### Number
 
-The _number_ type represents both integer and floating point numbers.
+The _number_ type represents both integer and floating point numbers.
 
 ```js
 let n = 123;
@@ -494,7 +494,7 @@ console.log( "not a number" / 2 - 1 ); // NaN
 So, if there’s a `NaN` somewhere in a mathematical expression, it propagates to the whole result (there’s only one exception to that: `NaN ** 0` is `1`).
 
 
-### BigInt
+#### BigInt
 
 In JavaScript, the “number” type cannot safely represent integer values larger than `(253-1)` (that’s `9007199254740991`), or less than `-(253-1)` for negatives.
 
@@ -521,7 +521,7 @@ const bigInt = 1234567890123456789012345678901234567890n;
 ```
 
 
-## String
+### String
 
 A string in JavaScript must be surrounded by quotes.
 
@@ -560,7 +560,7 @@ console.log( `the result is ${1 + 2}` ); // the result is 3
 > In JavaScript, there is no such type. There’s only one type: `string`. A string may consist of zero characters (be empty), one character or many of them.
 
 
-## Boolean (logical type)
+### Boolean (logical type)
 
 The boolean type has only two values: `true` and `false`.
 
@@ -574,7 +574,7 @@ let ageFieldChecked = false; // no, age field is not checked
 ```
 
 
-## The "null" value
+### The "null" value
 
 The special `null` value does not belong to any of the types described above.
 
@@ -592,7 +592,7 @@ It’s just a special value which represents “nothing”, “empty” or “va
 The code above states that `age` is unknown.
 
 
-## The "undefined" value
+### The "undefined" value
 
 The special value `undefined` also stands apart. It makes a type of its own, just like `null`.
 
@@ -620,7 +620,7 @@ console.log(age); // "undefined"
 
 …But it's don’t recommend doing that. Normally, one uses `null` to assign an “empty” or “unknown” value to a variable, while `undefined` is reserved as a default initial value for unassigned things.
 
-## Objects and Symbols
+### Objects and Symbols
 
 The `object` type is special.
 
@@ -630,7 +630,7 @@ Being that important, objects deserve a special treatment. Deal with them later 
 
 The `symbol` type is used to create unique identifiers for objects. We have to mention it here for the sake of completeness, but also postpone the details till we know objects.
 
-## The typeof operator
+### The typeof operator
 
 The `typeof` operator returns the type of the operand. It’s useful when we want to process values of different types differently or just want to do a quick check.
 
@@ -668,7 +668,7 @@ typeof alert// "function"  (3)
 > Some people prefer `typeof(x)`, although the `typeof x` syntax is much more common.
 
 
-# Type Conversions
+## Type Conversions
 
 Most of the time, operators and functions automatically convert the values given to them to the right type.
 
@@ -676,7 +676,7 @@ For example, `console.log` automatically converts any value to a string to sho
 
 There are also cases when we need to explicitly convert a value to the expected type.
 
-## String Conversion
+### String Conversion
 
 String conversion happens when we need the string form of a value.
 
@@ -694,7 +694,7 @@ console.log(typeof value); // string
 
 String conversion is mostly obvious. A `false` becomes `"false"`, `null` becomes `"null"`, etc.
 
-## Numeric Conversion
+### Numeric Conversion
 
 Numeric conversion in mathematical functions and expressions happens automatically.
 
@@ -743,7 +743,7 @@ console.log( Number(true) );        // 1
 console.log( Number(false) );       // 0
 ```
 
-## Boolean Conversion
+### Boolean Conversion
 
 Boolean conversion is the simplest one.
 
@@ -773,13 +773,13 @@ alert( Boolean(" ") ); // spaces, also true (any non-empty string is true)
 ```
 
 
-# Basic operators, maths
+## Basic operators, maths
 
 We know many operators from school. They are things like addition `+`, multiplication `*`, subtraction `-`, and so on.
 
 In this chapter, we’ll start with simple operators, then concentrate on JavaScript-specific aspects, not covered by school arithmetic.
 
-## Maths
+### Maths
 
 The following math operations are supported:
 
@@ -791,7 +791,7 @@ The following math operations are supported:
 - Exponentiation `**`.
 
 
-### Remainder
+#### Remainder
 
 The remainder operator `%`, despite its appearance, is not related to percents.
 
@@ -805,7 +805,7 @@ console.log(8 % 3); // 2, the remainder of 8 divided by 3
 console.log(8 % 4); // 0, the remainder of 8 divided by 4
 ```
 
-### Exponentiation
+#### Exponentiation
 
 The exponentiation operator `a ** b` raises `a` to the power of `b`.
 
@@ -829,7 +829,7 @@ console.log(8 ** (1 / 3)); // 2 (power of 1/3 is the same as a cubic root)
 ```
 
 
-## String concatenation with binary
+### String concatenation with binary
 
 Let’s meet the features of JavaScript operators that are beyond school arithmetics.
 
@@ -874,7 +874,7 @@ console.log( 6 - '2' ); // 4, converts '2' to a number
 console.log( '6' / '2' ); // 3, converts both operands to numbers
 ```
 
-## Numeric conversion, unary
+### Numeric conversion, unary
 
 The plus `+` exists in two forms: the binary form that we used above and the unary form.
 
@@ -923,7 +923,7 @@ console.log( +apples + +oranges ); // 5
 
 From a mathematician’s standpoint, the abundance of pluses may seem strange. But from a programmer’s standpoint, there’s nothing special: unary pluses are applied first, they convert strings to numbers, and then the binary plus sums them up.
 
-## Operator Precedence
+### Operator Precedence
 
 If an expression has more than one operator, the execution order is defined by their _precedence_, or, in other words, the default priority order of operators.
 
@@ -941,7 +941,7 @@ If an expression has more than one operator, the execution order is defined by t
 | 2          | assignment     | `=`  |
 | …          | …              | …    |
 
-## Assignment
+### Assignment
 
 Let’s note that an assignment `=` is also an operator. It is listed in the precedence table with the very low priority of `2`.
 
@@ -954,7 +954,7 @@ let x = 2 * 2 + 1;
 console.log( x ); // 5
 ```
 
-### Assignment = returns a value
+#### Assignment = returns a value
 
 The fact of `=` being an operator, not a “magical” language construct has an interesting implication.
 
@@ -978,7 +978,7 @@ Funny code, isn’t it? We should understand how it works, because sometimes we 
 
 Although, please don’t write the code like that. Such tricks definitely don’t make code clearer or readable.
 
-### Modify-in-place
+#### Modify-in-place
 
 We often need to apply an operator to a variable and store the new result in that same variable.
 
@@ -1000,7 +1000,7 @@ n *= 2; // now n = 14 (same as n = n * 2)
 alert( n ); // 14
 ```
 
-### Increment/decrement
+#### Increment/decrement
 
 Increasing or decreasing a number by one is among the most common numerical operations.
 
@@ -1086,7 +1086,7 @@ alert( 2 * counter );
 counter++;
 ```
 
-### Bitwise operators
+#### Bitwise operators
 
 Bitwise operators treat arguments as 32-bit integer numbers and work on the level of their binary representation.
 
@@ -1105,7 +1105,7 @@ The list of operators:
 These operators are used very rarely, when we need to fiddle with numbers on the very lowest (bitwise) level. We won’t need these operators any time soon, as web development has little use of them, but in some special areas, such as cryptography, they are useful. You can read the [Bitwise Operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#bitwise_operators) chapter on MDN when a need arises.
 
 
-### Comma
+#### Comma
 
 The comma operator `,` is one of the rarest and most unusual operators. Sometimes, it’s used to write shorter code, so we need to know it in order to understand what’s going on.
 
@@ -1139,7 +1139,7 @@ for (a = 1, b = 3, c = a * b; a < 10; a++) {
 }
 ```
 
-# Comparisons
+## Comparisons
 
 We know many comparison operators from maths.
 
@@ -1154,7 +1154,7 @@ In this article we’ll learn more about different types of comparisons, how Jav
 
 At the end you’ll find a good recipe to avoid “JavaScript quirks”-related issues.
 
-## Boolean is the result
+### Boolean is the result
 
 All comparison operators return a boolean value:
 
@@ -1176,7 +1176,7 @@ let result = 5 > 4; // assign the result of the comparison
 console.log( result ); // true
 ```
 
-## String comparison
+### String comparison
 
 To see whether a string is greater than another, JavaScript uses the so-called “dictionary” or “lexicographical” order.
 
@@ -1202,9 +1202,9 @@ In the first example above, the comparison `'Z' > 'A'` gets to a result at the
 
 The second comparison `'Glow'` and `'Glee'` needs more steps as strings are compared character-by-character:
 
-6. `G` is the same as `G`.
-7. `l` is the same as `l`.
-8. `o` is greater than `e`. Stop here. The first string is greater.
+1. `G` is the same as `G`.
+2. `l` is the same as `l`.
+3. `o` is greater than `e`. Stop here. The first string is greater.
 
 > Not a real dictionary, but Unicode order
 > 
@@ -1212,7 +1212,7 @@ The second comparison `'Glow'` and `'Glee'` needs more steps as strings are 
 > 
 > For instance, case matters. A capital letter `"A"` is not equal to the lowercase `"a"`. Which one is greater? The lowercase `"a"`. Why? Because the lowercase character has a greater index in the internal encoding table JavaScript uses (Unicode). We’ll get back to specific details and consequences of this in the chapter [Strings](https://javascript.info/string).
 
-## Comparison of different types
+### Comparison of different types
 
 When comparing values of different types, JavaScript converts the values to numbers.
 
@@ -1254,7 +1254,7 @@ alert(a == b); // true!
 
 From JavaScript’s standpoint, this result is quite normal. An equality check converts values using the numeric conversion (hence `"0"` becomes `0`), while the explicit `Boolean` conversion uses another set of rules.
 
-## Strict equality
+### Strict equality
 
 A regular equality check `==` has a problem. It cannot differentiate `0` from `false`:
 
@@ -1287,7 +1287,7 @@ There is also a “strict non-equality” operator `!==` analogous to `!=`.
 
 The strict equality operator is a bit longer to write, but makes it obvious what’s going on and leaves less room for errors.
 
-## Comparison with null and undefined
+### Comparison with null and undefined
 
 There’s a non-intuitive behavior when `null` or `undefined` are compared to other values.
 
@@ -1309,7 +1309,7 @@ There’s a special rule. These two are a “sweet couple”: they equal each ot
 
 Now let’s see some funny things that happen when we apply these rules. And, what’s more important, how to not fall into a trap with them.
 
-## Strange result: null vs 0
+### Strange result: null vs 0
 
 Let’s compare `null` with a zero:
 
@@ -1326,7 +1326,7 @@ The reason is that an equality check `==` and comparisons `> < >= <=` work d
 On the other hand, the equality check `==` for `undefined` and `null` is defined such that, without any conversions, they equal each other and don’t equal anything else. That’s why (2) `null == 0` is false.
 
 
-## An incomparable undefined
+### An incomparable undefined
 
 The value `undefined` shouldn’t be compared to other values:
 
@@ -1344,7 +1344,7 @@ We get these results because:
 - Comparisons `(1)` and `(2)` return `false` because `undefined` gets converted to `NaN` and `NaN` is a special numeric value which returns `false` for all comparisons.
 - The equality check `(3)` returns `false` because `undefined` only equals `null`, `undefined`, and no other value.
 
-## Avoid Problems
+### Avoid Problems
 
 Why did we go over these examples? Should we remember these peculiarities all the time? Well, not really. Actually, these tricky things will gradually become familiar over time, but there’s a solid way to avoid problems with them:
 
@@ -1352,13 +1352,13 @@ Why did we go over these examples? Should we remember these peculiarities all th
 - Don’t use comparisons `>= > < <=` with a variable which may be `null/undefined`, unless you’re really sure of what you’re doing. If a variable can have these values, check for them separately.
 
 
-# Conditional branching: if, '?'
+## Conditional branching: if, '?'
 
 Sometimes, we need to perform different actions based on different conditions.
 
 To do that, we can use the `if` statement and the conditional operator `?`, that’s also called a “question mark” operator.
 
-## The “if” statement
+### The “if” statement
 
 The `if(...)` statement evaluates a condition in parentheses and, if the result is `true`, executes a block of code.
 
@@ -1383,7 +1383,7 @@ if (year == 2015) {
 
 We recommend wrapping your code block with curly braces `{}` every time you use an `if` statement, even if there is only one statement to execute. Doing so improves readability
 
-## Boolean conversion
+### Boolean conversion
 
 The `if (…)` statement evaluates the expression in its parentheses and converts the result to a boolean.
 
@@ -1418,7 +1418,7 @@ if (cond) {
 }
 ```
 
-### The "else" clause
+#### The "else" clause
 
 The if statement may contain an optional else block. It executes when the condition is falsy.
 
@@ -1434,7 +1434,7 @@ if (year == 2015) {
 }
 ```
 
-### Several conditions: "else if"
+#### Several conditions: "else if"
 
 Sometimes, we'd like to test several variants of a condition. The else if clause lets us do that.
 
@@ -1456,7 +1456,7 @@ In the code above, JavaScript first checks `year < 2015`. If that is falsy, it 
 
 There can be more `else if` blocks. The final `else` is optional.
 
-### Conditional operator '?'
+#### Conditional operator '?'
 
 Sometimes, we need to assign a variable depending on a condition.
 
@@ -1512,7 +1512,7 @@ But parentheses make the code more readable, so we recommend using them.
 let accessAllowed = age > 18;
 ```
 
-## Multiple ‘?’
+### Multiple ‘?’
 
 A sequence of question mark operators `?` can return a value that depends on more than one condition.
 
@@ -1555,7 +1555,7 @@ if (age < 3) {
 }
 ```
 
-# Logical operators
+## Logical operators
 
 There are four logical operators in JavaScript: `||` (OR), `&&` (AND), `!` (NOT), `??` (Nullish Coalescing). Here we cover the first three, the `??` operator is in the next article.
 
@@ -1563,7 +1563,7 @@ Although they are called “logical”, they can be applied to values of any typ
 
 Let’s see the details.
 
-## || (OR)
+### || (OR)
 
 The “OR” operator is represented with two vertical line symbols:
 
@@ -1621,7 +1621,7 @@ if (hour < 10 || hour > 18 || isWeekend) {
 ```
 
 
-### OR "||" finds the first truthy value
+#### OR "||" finds the first truthy value
 
 The logic described above is somewhat classical. Now, let’s bring in the “extra” features of JavaScript.
 
@@ -1688,7 +1688,7 @@ In the first line, the OR `||` operator stops the evaluation immediately upon 
 
 Sometimes, people use this feature to execute commands only if the condition on the left part is falsy.
 
-## && (AND)
+### && (AND)
 
 The AND operator is represented with two ampersands `&&`:
 
@@ -1724,7 +1724,7 @@ if (1 && 0) { // evaluated as true && false
 }
 ```
 
-## AND “&&” finds the first falsy value
+#### AND “&&” finds the first falsy value
 
 Given multiple AND’ed values:
 
@@ -1799,7 +1799,7 @@ if (x > 0) alert( 'Greater than zero!' );
 
 Although, the variant with `&&` appears shorter, `if` is more obvious and tends to be a little bit more readable. So we recommend using every construct for its purpose: use `if` if we want `if` and use `&&` if we want AND.
 
-## ! (NOT)
+### ! (NOT)
 The boolean NOT operator is represented with an exclamation sign !.
 
 The syntax is pretty simple:
@@ -1838,7 +1838,7 @@ alert( Boolean(null) ); // false
 
 The precedence of NOT `!` is the highest of all logical operators, so it always executes first, before `&&` or `||`.
 
-# Nullish coalescing operator '??'
+## Nullish coalescing operator '??'
 
 The nullish coalescing operator is written as two question marks `??`.
 
@@ -1896,9 +1896,9 @@ alert(firstName ?? lastName ?? nickName ?? "Anonymous"); // Supercoder
 ```
 
 
-# Loops: while and for
+## Loops: while and for
 
-## The “while” loop
+### The “while” loop
 
 The `while` loop has the following syntax:
 
@@ -1949,7 +1949,7 @@ while (i) alert(i--);
 ```
 
 
-## The “do…while” loop
+### The “do…while” loop
 
 The condition check can be moved below the loop body using the do..while syntax:
 
@@ -1971,7 +1971,7 @@ do {
 
 This form of syntax should only be used when you want the body of the loop to execute **at least once** regardless of the condition being truthy. Usually, the other form is preferred: `while(…) {…}`.
 
-## The “for” loop
+### The “for” loop
 
 The for loop is more complex, but it’s also the most commonly used loop.
 
@@ -2030,7 +2030,7 @@ if (i < 3) { alert(i); i++ }
 // ...finish, because now i == 3
 ```
 
-## Breaking the loop
+### Breaking the loop
 
 Normally, a loop exits when its condition becomes falsy.
 
@@ -2054,7 +2054,7 @@ The `break` directive is activated at the line `(*)` if the user enters an e
 The combination “infinite loop + `break` as needed” is great for situations when a loop’s condition must be checked not in the beginning or end of the loop, but in the middle or even in several places of its body.
 
 
-## Continue to the next iteration
+### Continue to the next iteration
 
 The `continue` directive is a “lighter version” of `break`. It doesn’t stop the whole loop. Instead, it stops the current iteration and forces the loop to start a new one (if the condition allows).
 
@@ -2098,7 +2098,7 @@ if (i > 5) {
 
 This is just another reason not to use the question mark operator `?` instead of `if`.
 
-## Labels for break/continue
+### Labels for break/continue
 
 Sometimes we need to break out from multiple nested loops at once.
 
@@ -2188,13 +2188,13 @@ label: {
 A `continue` is only possible from inside a loop.
 
 
-# The "switch" statement
+## The "switch" statement
 
 A `switch` statement can replace multiple `if` checks.
 
 It gives a more descriptive way to compare a value with multiple variants.
 
-## The syntax
+### The syntax
 
 The `switch` has one or more `case` blocks and an optional default.
 
@@ -2220,7 +2220,7 @@ switch(x) {
 - If the equality is found, `switch` starts to execute the code starting from the corresponding `case`, until the nearest `break` (or until the end of `switch`).
 - If no case is matched then the `default` code is executed (if it exists).
 
-## Type matters
+### Type matters
 
 Let’s emphasize that the equality check is always strict. The values must be of the same type to match.
 
@@ -2250,7 +2250,7 @@ switch (arg) {
 2. For `2` the second `alert` runs.
 3. But for `3`, the result of the `prompt` is a string `"3"`, which is not strictly equal `===` to the number `3`. So we’ve got a dead code in `case 3`! The `default` variant will execute.
 
-# Functions
+## Functions
 
 Quite often we need to perform a similar action in many places of the script.
 
@@ -2260,7 +2260,7 @@ Functions are the main “building blocks” of the program. They allow the code
 
 We’ve already seen examples of built-in functions, like alert(message), prompt(message, default) and confirm(question). But we can create functions of our own as well.
 
-## Function Declaration
+### Function Declaration
 
 To create a function we can use a function declaration.
 
@@ -2288,7 +2288,7 @@ This example clearly demonstrates one of the main purposes of functions: to avoi
 
 If we ever need to change the message or the way it is shown, it’s enough to modify the code in one place: the function which outputs it.
 
-## Local variables
+### Local variables
 
 A variable declared inside a function is only visible inside that function.
 
@@ -2306,7 +2306,7 @@ showMessage(); // Hello, I'm JavaScript!
 alert( message ); // <-- Error! The variable is local to the function
 ```
 
-## Outer Variables
+### Outer Variables
 
 A function can access an outer variable as well, for example:
 
@@ -2362,7 +2362,7 @@ showMessage();
 alert( userName ); // John, unchanged, the function did not access the outer variable
 ```
 
-## Parameters
+### Parameters
 
 We can pass arbitrary data to functions using parameters.
 
@@ -2407,7 +2407,7 @@ We declare functions listing their parameters, then call them passing arguments.
 
 In the example above, one might say: “the function showMessage is declared with two parameters, then called with two arguments: from and "Hello"”.
 
-## Default values
+### Default values
 
 If a function is called, but an argument is not provided, then the corresponding value becomes undefined.
 
@@ -2450,7 +2450,7 @@ function showMessage(from, text) {
 ```
 
 
-## Alternative default parameters
+### Alternative default parameters
 
 Sometimes it makes sense to assign default values for parameters at a later stage after the function declaration.
 
@@ -2471,7 +2471,7 @@ showMessage(); // empty message
 ```
 
 
-## Returning a value
+### Returning a value
 
 A function can return a value back into the calling code as the result.
 
@@ -2523,7 +2523,7 @@ A few examples of breaking this rule:
 These examples assume common meanings of prefixes. You and your team are free to agree on other meanings, but usually they’re not much different. In any case, you should have a firm understanding of what a prefix means, what a prefixed function can and cannot do. All same-prefixed functions should obey the rules. And the team should share the knowledge.
 
 
-# Function expressions
+## Function expressions
 
 In JavaScript, a function is not a “magical language structure”, but a special kind of value.
 
@@ -2557,7 +2557,7 @@ Here we immediately assign it to the variable, so the meaning of these code samp
 
 In more advanced situations, that we’ll come across later, a function may be created and immediately called or scheduled for a later execution, not stored anywhere, thus remaining anonymous.
 
-## Function is a value
+### Function is a value
 
 Let’s reiterate: no matter how the function is created, a function is a value. Both examples above store a function in the `sayHi` variable.
 
@@ -2629,7 +2629,7 @@ The answer is simple: a Function Expression is created here as function(…) {�
 
 The semicolon would be there for a simpler assignment, such as let sayHi = 5;, and it’s also there for a function assignment.
 
-## function callbacks
+### function callbacks
 
 Let’s look at more examples of passing functions as values and using function expressions.
 
@@ -2701,7 +2701,7 @@ A function can be perceived as an action.
 
 We can pass it between variables and run when we want.
 
-## Function Expression vs Function Declaration
+### Function Expression vs Function Declaration
 
 Let’s formulate the key differences between Function Declarations and Expressions.
 
@@ -2773,7 +2773,7 @@ let sayHi = function(name) {  // (*) no magic any more
 > 
 > …But if a Function Declaration does not suit us for some reason, or we need a conditional declaration (we’ve just seen an example), then Function Expression should be used.
 
-## Summary
+### Summary
 
 - Functions are values. They can be assigned, copied or declared in any place of the code.
 - If the function is declared as a separate statement in the main code flow, that’s called a “Function Declaration”.
@@ -2785,7 +2785,7 @@ In most cases when we need to declare a function, a Function Declaration is pref
 
 So we should use a Function Expression only when a Function Declaration is not fit for the task. We’ve seen a couple of examples of that in this chapter, and will see more in the future.
 
-# Arrow functions, the basics
+## Arrow functions, the basics
 
 There’s another very simple and concise syntax for creating functions, that’s often better than Function Expressions.
 
@@ -2859,7 +2859,7 @@ Arrow functions may appear unfamiliar and not very readable at first, but that q
 
 They are very convenient for simple one-line actions, when we’re just too lazy to write many words.
 
-## Multiline arrow functions
+### Multiline arrow functions
 
 The arrow functions that we’ve seen so far were very simple. They took arguments from the left of =>, evaluated and returned the right-side expression with them.
 
@@ -2885,7 +2885,7 @@ To study them in-depth, we first need to get to know some other aspects of JavaS
 
 For now, we can already use arrow functions for one-line actions and callbacks.
 
-## Summary
+### Summary
 
 Arrow functions are handy for simple actions, especially for one-liners. They come in two flavors:
 

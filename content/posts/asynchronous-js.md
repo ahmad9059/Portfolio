@@ -238,8 +238,8 @@ greet();
 
 **Execution:**
 
-4. `greet()` is **pushed** onto the **Call Stack**.
-5. `console.log("Hello!")` runs and is **popped** from the stack.
+1. `greet()` is **pushed** onto the **Call Stack**.
+2. `console.log("Hello!")` runs and is **popped** from the stack.
 
 ### Web APIs (Async Tasks)
 
@@ -259,10 +259,10 @@ console.log("End");
 
 **Execution Flow:**
 
-6. `console.log("Start")` - **Executes immediately**.
-7. `setTimeout()` - **Sent to Web API, NOT executed immediately**.
-8. `console.log("End")` - **Executes immediately**.
-9. After 1 second, the callback (`console.log("Inside setTimeout")`) moves to **Callback Queue**.
+1. `console.log("Start")` - **Executes immediately**.
+2. `setTimeout()` - **Sent to Web API, NOT executed immediately**.
+3. `console.log("End")` - **Executes immediately**.
+4. After 1 second, the callback (`console.log("Inside setTimeout")`) moves to **Callback Queue**.
 
 ### Callback Queue & Microtask Queue
 
@@ -281,12 +281,12 @@ console.log("End");
 
 **Execution Flow:**
 
-10. `console.log("Start")` - **Runs immediately**.
-11. `setTimeout()` - **Sent to Web API** (callback moved to Callback Queue).
-12. `Promise.resolve().then(...)` - **Sent to Microtask Queue**.
-13. `console.log("End")` - **Runs immediately**.
-14. **Microtask Queue executes first** - `console.log("Promise Resolved")`.
-15. **Callback Queue executes** - `console.log("Timeout Callback")`.
+1. `console.log("Start")` - **Runs immediately**.
+2. `setTimeout()` - **Sent to Web API** (callback moved to Callback Queue).
+3. `Promise.resolve().then(...)` - **Sent to Microtask Queue**.
+4. `console.log("End")` - **Runs immediately**.
+5. **Microtask Queue executes first** - `console.log("Promise Resolved")`.
+6. **Callback Queue executes** - `console.log("Timeout Callback")`.
 
 ### How the Event Loop Works
 

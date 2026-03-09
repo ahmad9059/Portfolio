@@ -24,7 +24,7 @@ keywords:
   - JavaScript error handling
 ---
 
-# Arrays
+## Arrays
 
 Objects allow you to store keyed collections of values. That’s fine.
 
@@ -33,7 +33,7 @@ But quite often we find that we need an _ordered collection_, where we have a 1
 It is not convenient to use an object here, because it provides no methods to manage the order of elements. We can’t insert a new property “between” the existing ones. Objects are just not meant for such use.
 
 There exists a special data structure named `Array`, to store ordered collections.
-## [Declaration](https://javascript.info/array#declaration)
+### [Declaration](https://javascript.info/array#declaration)
 
 There are two syntaxes for creating an empty array:
 
@@ -99,7 +99,7 @@ alert( arr[1].name ); // John
 arr[3](); // hello
 ```
 
-## Get last elements with “at”
+### Get last elements with “at”
 
 Let’s say we want the last element of the array.
 
@@ -129,7 +129,7 @@ In other words, `arr.at(i)`:
 - is exactly the same as `arr[i]`, if `i >= 0`.
 - for negative values of `i`, it steps back from the end of the array.
 
-## Methods pop/push, shift/unshift
+### Methods pop/push, shift/unshift
 
 A [queue](https://en.wikipedia.org/wiki/Queue_\(abstract_data_type\)) is one of the most common uses of an array. In computer science, this means an ordered collection of elements which supports two operations:
 
@@ -217,7 +217,7 @@ fruits.unshift("Pineapple", "Lemon");
 alert( fruits );
 ```
 
-# Objects
+## Objects
 
 As we know from the chapter [Data types](https://javascript.info/types), there are eight data types in JavaScript. Seven of them are called “primitive”, because their values contain only a single thing (be it a string or a number or whatever).
 
@@ -235,7 +235,7 @@ let user = {};  // "object literal" syntax
 ```
 
 Usually, the figure brackets `{...}` are used. That declaration is called an _object literal_.
-## Literals and properties
+### Literals and properties
 
 We can immediately put some properties into `{...}` as “key: value” pairs:
 
@@ -299,7 +299,7 @@ let user = {
 That is called a “trailing” or “hanging” comma. Makes it easier to add/remove/move around properties, because all lines become alike.
 
 
-## Square brackets
+### Square brackets
 
 For multiword properties, the dot access doesn’t work:
 
@@ -369,7 +369,7 @@ alert( user.key ) // undefined
 ```
 
 
-## Computed properties
+### Computed properties
 
 We can use square brackets in an object literal, when creating an object. That’s called _computed properties_.
 
@@ -414,7 +414,7 @@ Square brackets are much more powerful than dot notation. They allow any propert
 
 So most of the time, when property names are known and simple, the dot is used. And if we need something more complex, then we switch to square brackets.
 
-## Property value shorthand
+### Property value shorthand
 
 In real code, we often use existing variables as values for property names.
 
@@ -457,7 +457,7 @@ let user = {
 };
 ```
 
-## Property names limitations
+### Property names limitations
 
 As we already know, a variable cannot have a name equal to one of the language-reserved words like “for”, “let”, “return” etc.
 
@@ -490,7 +490,7 @@ alert( obj["0"] ); // test
 alert( obj[0] ); // test (same property)
 ```
 
-## Property existence test, “in” operator
+### Property existence test, “in” operator
 A notable feature of objects in JavaScript, compared to many other languages, is that it’s possible to access any property. There will be no error if the property doesn’t exist!
 
 Reading a non-existing property just returns undefined. So we can easily test whether the property exists:
@@ -548,7 +548,7 @@ In the code above, the property `obj.test` technically exists. So the `in` o
 
 Situations like this happen very rarely, because `undefined` should not be explicitly assigned. We mostly use `null` for “unknown” or “empty” values. So the `in` operator is an exotic guest in the code.
 
-## The "for..in" loop
+### The "for..in" loop
 
 To walk over all keys of an object, there exists a special form of the loop: `for..in`. This is a completely different thing from the `for(;;)` construct that we studied before.
 
@@ -582,10 +582,10 @@ Note that all “for” constructs allow us to declare the looping variable insi
 
 Also, we could use another variable name here instead of `key`. For instance, `"for (let prop in obj)"` is also widely used.
 
-# Object methods, "this"
+## Object methods, "this"
 
 
-## “this” in methods
+### “this” in methods
 
 It’s common that an object method needs to access the information stored in the object to do its job.
 
@@ -627,7 +627,7 @@ let user = {
 ```
 
 
-## “this” is not bound
+### “this” is not bound
 
 In JavaScript, keyword `this` behaves unlike most other programming languages. It can be used in any function, even if it’s not a method of an object.
 
@@ -660,7 +660,7 @@ admin['f'](); // Admin (dot or square brackets access the method – doesn't mat
 ```
 
 
-## Arrow functions have no “this”
+### Arrow functions have no “this”
 Arrow functions are special: they don’t have their “own” this. If we reference this from such a function, it’s taken from the outer “normal” function.
 
 For instance, here arrow() uses this from the outer user.sayHi() method:
@@ -679,7 +679,7 @@ user.sayHi(); // Ilya
 
 That’s a special feature of arrow functions, it’s useful when we actually do not want to have a separate `this`, but rather to take it from the outer context. Later in the chapter [Arrow functions revisited](https://javascript.info/arrow-functions) we’ll go more deeply into arrow functions.
 
-## Summary
+### Summary
 
 - Functions that are stored in object properties are called “methods”.
 - Methods allow objects to “act” like `object.doSomething()`.
@@ -693,7 +693,7 @@ The value of `this` is defined at run-time.
 
 Please note that arrow functions are special: they have no `this`. When `this` is accessed inside an arrow function, it is taken from outside.
 
-## Key Points
+### Key Points
 
 1. In Global Scope the value of `this` is window.
 2. In function the value of `this` is window
@@ -703,9 +703,9 @@ Please note that arrow functions are special: they have no `this`. When `this`
 6. the value of `this` in constructor function is blank object.
 7. In event listener value of `this` will be according to the element.
 
-# call/apply/bind
+## call/apply/bind
 
-## call
+### call
 
 There’s a special built-in function method [func.call(context, …args)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call) that allows to call a function explicitly setting `this`.
 
@@ -740,7 +740,7 @@ sayHi.call( admin ); // Admin
 ```
 
 
-## apply
+### apply
 
 Instead of `func.call(this, ...arguments)` we could use `func.apply(this, arguments)`.
 
@@ -771,7 +771,7 @@ func.call(obj, [1, 2, 3]);
 ```
 
 
-## bind()
+### bind()
 
 The **`bind()`** method of [`Function`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function) instances creates a new function that, when called, calls this function with its `this` keyword set to the provided value, and a given sequence of arguments preceding any provided when the new function is called.
 
@@ -787,7 +787,7 @@ n();
 ```
 
 
-# Prototypal inheritance
+## Prototypal inheritance
 
 In JavaScript, objects have a special hidden property `[[Prototype]]` (as named in the specification), that is either `null` or references another object. That object is called “a prototype”:
 
@@ -821,7 +821,7 @@ let human2 = new makeHuman("ali",30);
 - When you try to access a property or method on an object, JavaScript first looks for it on the object itself.
 
 - If the property/method is not found, JavaScript looks up the prototype chain until it either finds the property or reaches null.
-## The value of “this”
+### The value of “this”
 
 An interesting question may arise in the example above: what’s the value of `this` inside `set fullName(value)`? Where are the properties `this.name` and `this.surname` written: into `user` or `admin`?
 
@@ -834,7 +834,7 @@ So, the setter call `admin.fullName=` uses `admin` as `this`, not `user`.
 That is actually a super-important thing, because we may have a big object with many methods, and have objects that inherit from it. And when the inheriting objects run the inherited methods, they will modify only their own states, not the state of the big object.
 
 
-# Closures in JS
+## Closures in JS
 
 A **closure** in JavaScript is a function that remembers the variables from its **lexical scope**, even when the function is executed outside that scope.
 
@@ -856,7 +856,7 @@ increment(); // 2
 ```
 
 
-# What is an Event Listener in JavaScript?
+## What is an Event Listener in JavaScript?
 
 An **event listener** is a method that allows you to wait for a specific event (like a click, keypress, hover, etc.) and run a function when the event occurs.
 
@@ -891,7 +891,7 @@ const heading = document.querySelector("h1"); // Selects the first `<h1>` elemen
 heading.style.color = "red"; // Changes its color to red
 ```
 
-#### Selecting Elements
+### Selecting Elements
 
 ```js
 document.querySelector("#myId");    // Selects an element by ID
@@ -899,11 +899,11 @@ document.querySelector(".myClass"); // Selects the first element with this class
 document.querySelector("p");        // Selects the first <p> element
 ```
 
-# Event Delegation in JavaScript
+## Event Delegation in JavaScript
 
 Event Delegation is a **pattern** that allows you to handle events **efficiently** by attaching a **single event listener** to a **parent element** instead of adding multiple listeners to child elements.
 
-## Why Use Event Delegation?
+### Why Use Event Delegation?
 
 - **Better Performance** - Avoids adding multiple event listeners.
 - **Handles Dynamic Elements** - Works even for elements added later via JavaScript.
@@ -928,7 +928,7 @@ parent.addEventListener("click", function (ev) {
 - Handling **form inputs** when adding fields dynamically.
 - Improving **performance** for elements inside large containers.
 
-# Higher-Order Functions in JavaScript
+## Higher-Order Functions in JavaScript
 
 A **Higher-Order Function (HOF)** is a function that **takes another function as an argument** or **returns a function**.
 
@@ -959,7 +959,7 @@ returned(); // Call the returned function
 |`reduce()`|Reduces an array to a single value.|
 |`forEach()`|Iterates over an array but does not return a new one.|
 
-# Handling Errors with `try...catch`
+## Handling Errors with `try...catch`
 
 The `try...catch` block allows you to handle errors gracefully.
 The `try...catch` statement is used to handle errors, and `throw` is used to create custom errors.
@@ -976,7 +976,7 @@ try {
 
 If an error occurs inside `try`, execution moves to `catch`, preventing a crash.
 
-## Using `throw` to Create Custom Error
+### Using `throw` to Create Custom Error
 
 ```js
 function divide(a, b) {
@@ -996,7 +996,7 @@ try {
 
 **`throw` allows custom error messages** instead of generic JavaScript errors.
 
-#### `finally` Block (Always Executes)
+### `finally` Block (Always Executes)
 
 ```js
 try {
@@ -1009,11 +1009,11 @@ try {
 }
 ```
 
-# Custom Events in JavaScript
+## Custom Events in JavaScript
 
 A **Custom Event** in JavaScript is an event that you manually create and dispatch using the `CustomEvent` constructor. This allows communication between different parts of your application.
 
-## Creating and Dispatching a Custom Event
+### Creating and Dispatching a Custom Event
 
 The `CustomEvent` constructor takes two arguments:
 1. **Event Name** (string)
