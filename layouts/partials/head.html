@@ -47,6 +47,10 @@
     {{- $includes = (append $ScrollStyle $includes) }}
 {{- end }}
 
+{{- /* Grid Background Pattern */}}
+{{- $bgPattern := (resources.Get "css/includes/bg-pattern.css") }}
+{{- $includes = (append $bgPattern $includes) }}
+
 {{- $includes_all := $includes | resources.Concat "assets/css/includes.css" }}
 
 {{- $theme_vars := (resources.Get "css/core/theme-vars.css") }}
