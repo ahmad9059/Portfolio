@@ -17,7 +17,7 @@
 {{- print " dark" }}
 {{- end -}}
 " id="top">
-    <div class="bg-pattern"></div>
+    {{ if not (and .IsPage (eq .Section "posts")) }}<div class="bg-pattern"></div>{{ end }}
     {{- partialCached "header.html" . .Page -}}
     <main class="main">
         {{- block "main" . }}{{ end }}
