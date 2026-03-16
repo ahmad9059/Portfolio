@@ -248,22 +248,23 @@
 
   .chat-input-wrapper {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
     max-width: 800px;
     margin: 0 auto;
     width: 100%;
     background: var(--card);
     border: 1px solid var(--code-block-border, var(--border));
     border-radius: 28px;
-    padding: 0.5rem;
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
     box-shadow: 0 1px 3px rgba(0,0,0,0.05);
   }
 
   .chat-input {
-    width: 100%;
-    padding: 0.75rem 1rem;
+    flex: 1;
+    padding: 0.25rem 0;
     border: none;
-    border-radius: 20px;
+    border-radius: 0;
     background: transparent;
     color: var(--primary);
     font-size: 0.925rem;
@@ -271,51 +272,13 @@
     resize: none;
     outline: none;
     max-height: 200px;
-    min-height: 48px;
+    min-height: 32px;
     line-height: 1.5;
     box-sizing: border-box;
   }
 
   .chat-input::placeholder {
     color: var(--muted-foreground);
-  }
-
-  .chat-input-toolbar {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.25rem 0.5rem 0.25rem 0.25rem;
-  }
-
-  .chat-input-divider {
-    width: 1px;
-    height: 16px;
-    background: var(--border);
-    margin: 0 0.25rem;
-  }
-
-  .chat-toolbar-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-    border: none;
-    border-radius: 50%;
-    background: transparent;
-    color: var(--muted-foreground);
-    cursor: pointer;
-    transition: background 0.15s, color 0.15s;
-  }
-
-  .chat-toolbar-btn:hover {
-    background: var(--muted);
-    color: var(--primary);
-  }
-
-  .chat-toolbar-btn svg {
-    width: 18px;
-    height: 18px;
   }
 
   .chat-send-btn {
@@ -331,7 +294,7 @@
     justify-content: center;
     transition: opacity 0.2s, transform 0.1s;
     flex-shrink: 0;
-    margin-left: auto;
+    margin-left: 0.5rem;
   }
 
   .chat-send-btn:hover {
@@ -403,10 +366,6 @@
     box-shadow: 0 1px 3px rgba(0,0,0,0.2);
   }
 
-  .dark .chat-toolbar-btn:hover {
-    background: #27272a;
-  }
-
   .dark .chat-send-btn:disabled {
     background: #3f3f46;
     color: #71717a;
@@ -464,18 +423,9 @@
         rows="1"
         maxlength="500"
       ></textarea>
-      <div class="chat-input-toolbar">
-        <button type="button" class="chat-toolbar-btn" id="micBtn" title="Record voice">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
-            <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
-            <line x1="12" y1="19" x2="12" y2="23"></line>
-          </svg>
-        </button>
-        <button class="chat-send-btn" id="sendBtn" onclick="sendMessage()" title="Send message">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-icon lucide-arrow-up"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg>
-        </button>
-      </div>
+      <button class="chat-send-btn" id="sendBtn" onclick="sendMessage()" title="Send message">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-icon lucide-arrow-up"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg>
+      </button>
     </div>
   </div>
 </div>
