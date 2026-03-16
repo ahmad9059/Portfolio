@@ -37,7 +37,7 @@ lastmod: 2026-03-05
 .profile-card-img img{width:130px;height:130px;border-radius:50%;object-fit:cover;display:block}
 .profile-card-info h1{margin:0 0 .4rem;font-size:1.8rem}
 .profile-card-info .profile-role{color:var(--accent);font-weight:600;font-size:1.05rem;margin:0 0 .6rem}
-.profile-card-info .profile-bio{color:var(--secondary);font-size:.95rem;line-height:1.6;margin:0 0 .8rem}
+.profile-card-info .profile-bio{color:var(--muted-foreground);font-size:.95rem;line-height:1.6;margin:0 0 .8rem}
 .profile-card-links{display:flex;flex-wrap:wrap;gap:.5rem}
 .profile-card-links a{display:inline-flex;align-items:center;gap:.35rem;padding:.3rem .7rem;font-size:.82rem;color:var(--primary);background:var(--theme);border:1px solid var(--border);border-radius:6px;text-decoration:none;transition:background .2s,color .2s;box-shadow:none}
 .profile-card-links a:hover{background:var(--accent);color:#fff}

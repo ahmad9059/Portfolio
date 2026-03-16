@@ -27,7 +27,7 @@ ShowBreadCrumbs: false
   letter-spacing: -0.02em;
 }
 .contact-header p {
-  color: var(--secondary);
+  color: var(--muted-foreground);
   font-size: 1rem;
   margin: 0;
   line-height: 1.6;
@@ -64,7 +64,7 @@ ShowBreadCrumbs: false
   width: 16px;
   height: 16px;
   flex-shrink: 0;
-  fill: var(--secondary);
+  fill: var(--muted-foreground);
 }
 
 /* Social icons row — matches PaperMod homepage style */
@@ -78,7 +78,7 @@ ShowBreadCrumbs: false
 .social-row a {
   display: inline-flex;
   padding: 5px 10px;
-  color: var(--secondary);
+  color: var(--muted-foreground);
   text-decoration: none !important;
   border-bottom: none !important;
   box-shadow: none !important;
@@ -97,7 +97,7 @@ ShowBreadCrumbs: false
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--secondary);
+  color: var(--muted-foreground);
   margin-bottom: 1.25rem;
   font-weight: 600;
 }
@@ -125,7 +125,7 @@ ShowBreadCrumbs: false
 }
 .contact-form input::placeholder,
 .contact-form textarea::placeholder {
-  color: var(--secondary);
+  color: var(--muted-foreground);
   opacity: 0.6;
 }
 .contact-form textarea {

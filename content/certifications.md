@@ -23,7 +23,7 @@ hideMeta: true
   border: none;
   font-size: 1rem;
   font-weight: 500;
-  color: var(--secondary);
+  color: var(--muted-foreground);
   cursor: pointer;
   position: relative;
   transition: color 0.2s;
@@ -94,7 +94,7 @@ hideMeta: true
 .cert-card-info p {
   margin: 0;
   font-size: 0.9rem;
-  color: var(--secondary);
+  color: var(--muted-foreground);
 }
 .cert-card-info .verify-link {
   display: inline-block;
@@ -123,13 +123,13 @@ hideMeta: true
 }
 .achievement-item p {
   margin: 0;
-  color: var(--secondary);
+  color: var(--muted-foreground);
   font-size: 0.95rem;
 }
 .achievement-item .date {
   margin-top: 0.5rem;
   font-size: 0.85rem;
-  color: var(--secondary);
+  color: var(--muted-foreground);
 }
 .modal-overlay {
   display: none;
@@ -172,7 +172,7 @@ hideMeta: true
 }
 .modal-details p {
   margin: 0.25rem 0;
-  color: var(--secondary);
+  color: var(--muted-foreground);
 }
 .modal-close {
   position: absolute;
