@@ -52,7 +52,7 @@ hideMeta: true
 .project-card-info p {
   margin: 0 0 1rem 0;
   font-size: 0.9rem;
-  color: var(--secondary);
+  color: var(--muted-foreground);
   line-height: 1.5;
 }
 .project-tags {
@@ -64,8 +64,8 @@ hideMeta: true
 .project-tags span {
   font-size: 0.75rem;
   padding: 0.2rem 0.5rem;
-  background: var(--tertiary);
-  color: var(--secondary);
+  background: var(--secondary);
+  color: var(--secondary-foreground);
   border-radius: 4px;
 }
 .project-links {

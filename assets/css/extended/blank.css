@@ -27,7 +27,7 @@ body {
 blockquote {
     border-left: 3px solid var(--accent, #5b8def);
     padding-left: 1rem;
-    color: var(--secondary);
+    color: var(--muted-foreground);
 }
 
 /* Selection highlight */

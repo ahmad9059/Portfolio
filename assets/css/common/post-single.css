@@ -15,7 +15,7 @@
 
 .post-meta,
 .breadcrumbs {
-  color: var(--secondary);
+  color: var(--muted-foreground);
   font-size: 14px;
   display: flex;
   flex-wrap: wrap;
@@ -160,6 +160,7 @@
   margin: 10px auto;
   background: var(--code-block-bg) !important;
   border-radius: var(--radius);
+  border: 1px solid var(--code-block-border, #27272a);
   direction: ltr;
 }
 
@@ -200,7 +201,7 @@
   line-height: 1.5;
   background: var(--code-bg);
   border-radius: 6px;
-  border: 1px solid var(--border);
+  border: 1px solid var(--code-block-border, var(--border));
 }
 
 .post-content pre code {
@@ -253,7 +254,7 @@
 }
 
 .post-content figure > figcaption > p {
-  color: var(--secondary);
+  color: var(--muted-foreground);
   font-size: 14px;
   font-weight: normal;
 }
@@ -328,7 +329,7 @@
 .post-tags a {
   display: block;
   padding: 0 14px;
-  color: var(--secondary);
+  color: var(--muted-foreground);
   font-size: 14px;
   line-height: 34px;
   background: var(--theme);
@@ -363,7 +364,7 @@ h4:hover .anchor,
 h5:hover .anchor,
 h6:hover .anchor {
   display: inline-flex;
-  color: var(--secondary);
+  color: var(--muted-foreground);
   margin-inline-start: 8px;
   font-weight: 500;
   user-select: none;
@@ -384,7 +385,7 @@ h6:hover .anchor {
   letter-spacing: 1px;
   text-transform: uppercase;
   font-size: small;
-  color: var(--secondary);
+  color: var(--muted-foreground);
 }
 
 .paginav .prev,

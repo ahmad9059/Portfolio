@@ -39,6 +39,6 @@
 
 .archive-count,
 .archive-meta {
-    color: var(--secondary);
+    color: var(--muted-foreground);
     font-size: 14px;
 }
