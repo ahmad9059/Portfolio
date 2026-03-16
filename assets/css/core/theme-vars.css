@@ -52,10 +52,10 @@
     --entry: var(--card);
     --tertiary: var(--muted);
     --content: var(--foreground);
-    /* Code blocks with very dark background and border */
-    --code-block-bg: #0a0a0a;
-    --code-bg: #18181b;
-    --code-block-border: #27272a;
+    /* Code blocks - light mode (subtle gray backgrounds) */
+    --code-block-bg: #f4f4f5;
+    --code-bg: #fafafa;
+    --code-block-border: #e4e4e7;
     /* Override accent for hover states - use chart colors */
     --accent: var(--chart-1);
 }
@@ -101,7 +101,7 @@
     --entry: var(--card);
     --tertiary: var(--muted);
     --content: var(--foreground);
-    /* Code blocks with very dark background and border */
+    /* Code blocks - dark mode (very dark backgrounds) */
     --code-block-bg: #0a0a0a;
     --code-bg: #18181b;
     --code-block-border: #27272a;

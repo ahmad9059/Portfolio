@@ -25,6 +25,7 @@ hideMeta: true
   padding: 0;
   display: flex;
   flex-direction: column;
+  border: 1px solid var(--code-block-border, var(--border));
 }
 .project-card:hover {
   transform: translateY(-4px);

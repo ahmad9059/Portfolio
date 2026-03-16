@@ -67,6 +67,7 @@ hideMeta: true
   transition: transform 0.2s, box-shadow 0.2s;
   background: var(--entry);
   padding: 0;
+  border: 1px solid var(--code-block-border, var(--border));
 }
 .cert-card:hover {
   transform: translateY(-4px);
@@ -116,6 +117,7 @@ hideMeta: true
   background: var(--entry);
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border: 1px solid var(--code-block-border, var(--border));
 }
 .achievement-item h3 {
   margin: 0 0 0.5rem 0;
