@@ -370,6 +370,13 @@
     color: #71717a;
   }
 
+  /* Remove fade effect from grid background on chat page */
+  .chat-container ~ .bg-pattern,
+  body:has(.chat-container) .bg-pattern {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
   @media (max-width: 600px) {
     .message {
       max-width: 92%;
