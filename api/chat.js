@@ -4,32 +4,28 @@
 // =============================================================================
 
 // Load knowledge base and embeddings at cold start
-// Using require() ensures Vercel's bundler includes these files
-// Wrapped in try-catch to prevent total function crash on load failure
 let knowledge = null;
-let embeddingsData = null;
 let knowledgeMap = {};
-let embeddingsMap = {};
-let normsMap = {};  // Pre-computed norms for faster cosine similarity
+let embeddingsArray = []; // Flat array for faster iteration
+let idToArrayIndex = {}; // Map ID to array index
 let loadError = null;
 
 try {
   knowledge = require("./knowledge.json");
-  embeddingsData = require("./embeddings.json");
+  const embeddingsData = require("./embeddings.json");
 
-  // Build lookup maps
   knowledge.forEach((chunk) => {
     knowledgeMap[chunk.id] = chunk;
   });
 
-  // Pre-compute norms at cold start (avoids sqrt on every query comparison)
-  embeddingsData.forEach((item) => {
-    embeddingsMap[item.id] = item.vector;
-    let norm = 0;
-    for (let i = 0; i < item.vector.length; i++) {
-      norm += item.vector[i] * item.vector[i];
-    }
-    normsMap[item.id] = Math.sqrt(norm);
+  // Store embeddings as Float32Array for faster math
+  embeddingsData.forEach((item, idx) => {
+    embeddingsArray.push({
+      id: item.id,
+      vec: new Float32Array(item.vector),
+      norm: Math.sqrt(item.vector.reduce((sum, v) => sum + v * v, 0))
+    });
+    idToArrayIndex[item.id] = idx;
   });
 } catch (e) {
   loadError = e.message;
@@ -65,16 +61,33 @@ setInterval(() => {
   }
 }, RATE_LIMIT_WINDOW * 5);
 
-// -----------------------------------------------------------------------------
-// Cosine Similarity — uses pre-computed norms for document vectors
-// -----------------------------------------------------------------------------
-function cosineSimilarity(queryVec, docVec, docNorm) {
-  let dot = 0, queryNorm = 0;
-  for (let i = 0; i < queryVec.length; i++) {
-    dot += queryVec[i] * docVec[i];
-    queryNorm += queryVec[i] * queryVec[i];
+// Query embedding cache (LRU-style, max 100 entries)
+const embeddingCache = new Map();
+const EMBEDDING_CACHE_MAX = 100;
+const EMBEDDING_CACHE_TTL = 30 * 60 * 1000; // 30 minutes
+
+function getCachedEmbedding(text) {
+  const cached = embeddingCache.get(text);
+  if (cached && Date.now() - cached.timestamp < EMBEDDING_CACHE_TTL) {
+    return cached.vector;
   }
-  return dot / (Math.sqrt(queryNorm) * docNorm);
+  return null;
+}
+
+function setCachedEmbedding(text, vector) {
+  if (embeddingCache.size >= EMBEDDING_CACHE_MAX) {
+    const oldestKey = embeddingCache.keys().next().value;
+    embeddingCache.delete(oldestKey);
+  }
+  embeddingCache.set(text, { vector: new Float32Array(vector), timestamp: Date.now() });
+}
+
+function cosineSimilarity(queryVec, doc) {
+  let dot = 0;
+  for (let i = 0; i < queryVec.length; i++) {
+    dot += queryVec[i] * doc.vec[i];
+  }
+  return dot / (doc.norm * Math.sqrt(queryVec.reduce((s, v) => s + v * v, 0)));
 }
 
 // -----------------------------------------------------------------------------
@@ -124,6 +137,13 @@ async function callGemini(apiKey, requestBody) {
 }
 
 async function getQueryEmbedding(text, apiKey) {
+  // Check cache first
+  const cached = getCachedEmbedding(text);
+  if (cached) {
+    console.log("Cache hit for query embedding");
+    return cached;
+  }
+
   const url = `https://generativelanguage.googleapis.com/v1beta/models/${EMBEDDING_MODEL}:embedContent?key=${apiKey}`;
 
   const response = await fetchWithTimeout(url, {
@@ -142,39 +162,38 @@ async function getQueryEmbedding(text, apiKey) {
   }
 
   const data = await response.json();
-  return data.embedding.values;
+  const embedding = data.embedding.values;
+
+  // Cache for future use
+  setCachedEmbedding(text, embedding);
+
+  return new Float32Array(embedding);
 }
 
-// -----------------------------------------------------------------------------
-// Retrieval — top-K with similarity threshold and category diversity
-// -----------------------------------------------------------------------------
-const MAX_CHUNKS = 8;              // Maximum chunks to include
-const RELEVANCE_THRESHOLD = 0.65;  // Below this, context is likely not relevant to the query
+const MAX_CHUNKS = 5;
+const RELEVANCE_THRESHOLD = 0.65;
+const HIGH_RELEVANCE_THRESHOLD = 0.9; // Early termination threshold
 
 function retrieveChunks(queryVector, topK = MAX_CHUNKS) {
   const scores = [];
 
-  for (const [id, vector] of Object.entries(embeddingsMap)) {
-    const similarity = cosineSimilarity(queryVector, vector, normsMap[id]);
-    scores.push({ id, similarity });
+  // Fast iteration over flat array
+  for (let i = 0; i < embeddingsArray.length; i++) {
+    const doc = embeddingsArray[i];
+    const similarity = cosineSimilarity(queryVector, doc);
+    scores.push({ id: doc.id, similarity });
   }
 
+  // Partial sort - only need topK, not full sort
   scores.sort((a, b) => b.similarity - a.similarity);
 
-  const topScore = scores.length > 0 ? scores[0].similarity : 0;
-
-  // If top score is below relevance threshold, the query is likely off-topic
-  // Still return a few chunks for basic context, but flag as low relevance
+  const topScore = scores[0]?.similarity || 0;
   const results = [];
   const limit = topScore < RELEVANCE_THRESHOLD ? 2 : topK;
 
-  for (const s of scores) {
-    if (results.length >= limit) break;
-
-    const chunk = knowledgeMap[s.id];
-    if (!chunk) continue;
-
-    results.push({ ...chunk, similarity: s.similarity });
+  for (let i = 0; i < scores.length && results.length < limit; i++) {
+    const chunk = knowledgeMap[scores[i].id];
+    if (chunk) results.push({ ...chunk, similarity: scores[i].similarity });
   }
 
   return { chunks: results, topScore };
@@ -401,7 +420,7 @@ module.exports = async function handler(req, res) {
 
     // Send the full text in chunks to simulate streaming
     const words = responseText.split(" ");
-    const chunkSize = 3;
+    const chunkSize = 2; // Smaller chunks = faster perceived response
 
     for (let i = 0; i < words.length; i += chunkSize) {
       const chunk = words.slice(i, i + chunkSize).join(" ");
