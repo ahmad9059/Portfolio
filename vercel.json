@@ -9,6 +9,15 @@
   "rewrites": [
     { "source": "/api/chat", "destination": "/api/chat.js" },
     { "source": "/api/health", "destination": "/api/health.js" },
+    { "source": "/api/ping", "destination": "/api/ping.js" },
+    { "source": "/personal", "destination": "/api/personal.js" }
+  ]
+}
+  },
+  "buildCommand": "hugo --gc --minify",
+  "rewrites": [
+    { "source": "/api/chat", "destination": "/api/chat.js" },
+    { "source": "/api/health", "destination": "/api/health.js" },
     { "source": "/install", "destination": "/api/install.js" },
     { "source": "/personal", "destination": "/api/personal.js" }
   ]

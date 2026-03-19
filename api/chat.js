@@ -1,42 +1,33 @@
 // =============================================================================
-// RAG Chat API — Vercel Serverless Function
-// Embeds user query → retrieves relevant knowledge → generates response as Ahmad
+// RAG Chat API — Vercel Serverless Function with Pinecone
+// Fast retrieval via Pinecone
 // =============================================================================
 
-// Load knowledge base and embeddings at cold start
-let knowledge = null;
-let knowledgeMap = {};
-let embeddingsArray = []; // Flat array for faster iteration
-let idToArrayIndex = {}; // Map ID to array index
-let loadError = null;
+// Pinecone client (lazy initialized)
+let pineconeIndex = null;
+let pineconeReady = false;
+const PINECONE_INDEX_NAME = "portfolio-rag";
+const PINECONE_NAMESPACE = "ahmad-knowledge";
 
-try {
-  knowledge = require("./knowledge.json");
-  const embeddingsData = require("./embeddings.json");
-
-  knowledge.forEach((chunk) => {
-    knowledgeMap[chunk.id] = chunk;
-  });
-
-  // Store embeddings as Float32Array for faster math
-  embeddingsData.forEach((item, idx) => {
-    embeddingsArray.push({
-      id: item.id,
-      vec: new Float32Array(item.vector),
-      norm: Math.sqrt(item.vector.reduce((sum, v) => sum + v * v, 0))
-    });
-    idToArrayIndex[item.id] = idx;
-  });
-} catch (e) {
-  loadError = e.message;
-  console.error("Failed to load knowledge/embeddings:", e.message);
+async function initPinecone(apiKey) {
+  if (pineconeReady) return true;
+  
+  try {
+    const { Pinecone } = await import("@pinecone-database/pinecone");
+    const pinecone = new Pinecone({ apiKey });
+    pineconeIndex = pinecone.Index(PINECONE_INDEX_NAME);
+    pineconeReady = true;
+    console.log("Pinecone initialized successfully");
+    return true;
+  } catch (e) {
+    console.error("Pinecone init failed:", e.message);
+    return false;
+  }
 }
 
-// -----------------------------------------------------------------------------
-// Rate Limiter — sliding window per IP
-// -----------------------------------------------------------------------------
+// Rate limiter
 const rateLimitMap = new Map();
-const RATE_LIMIT_WINDOW = 60 * 1000; // 1 minute
+const RATE_LIMIT_WINDOW = 60 * 1000;
 const RATE_LIMIT_MAX = 10;
 
 function checkRateLimit(ip) {
@@ -51,26 +42,21 @@ function checkRateLimit(ip) {
   return true;
 }
 
-// Periodically clean expired rate limit entries (prevent memory leak on long-lived instances)
 setInterval(() => {
   const now = Date.now();
   for (const [ip, entry] of rateLimitMap) {
-    if (now - entry.windowStart > RATE_LIMIT_WINDOW * 2) {
-      rateLimitMap.delete(ip);
-    }
+    if (now - entry.windowStart > RATE_LIMIT_WINDOW * 2) rateLimitMap.delete(ip);
   }
 }, RATE_LIMIT_WINDOW * 5);
 
-// Query embedding cache (LRU-style, max 100 entries)
+// Embedding cache (LRU,100 entries, 30min TTL)
 const embeddingCache = new Map();
 const EMBEDDING_CACHE_MAX = 100;
-const EMBEDDING_CACHE_TTL = 30 * 60 * 1000; // 30 minutes
+const EMBEDDING_CACHE_TTL = 30 * 60 * 1000;
 
 function getCachedEmbedding(text) {
   const cached = embeddingCache.get(text);
-  if (cached && Date.now() - cached.timestamp < EMBEDDING_CACHE_TTL) {
-    return cached.vector;
-  }
+  if (cached && Date.now() - cached.timestamp < EMBEDDING_CACHE_TTL) return cached.vector;
   return null;
 }
 
@@ -82,62 +68,146 @@ function setCachedEmbedding(text, vector) {
   embeddingCache.set(text, { vector: new Float32Array(vector), timestamp: Date.now() });
 }
 
-function cosineSimilarity(queryVec, doc) {
-  let dot = 0;
-  for (let i = 0; i < queryVec.length; i++) {
-    dot += queryVec[i] * doc.vec[i];
-  }
-  return dot / (doc.norm * Math.sqrt(queryVec.reduce((s, v) => s + v * v, 0)));
+// Query-result cache for Pinecone hits
+const queryResultCache = new Map();
+const QUERY_CACHE_MAX = 50;
+const QUERY_CACHE_TTL = 10 * 60 * 1000; // 10min
+
+function getCachedQuery(key) {
+  const cached = queryResultCache.get(key);
+  if (cached && Date.now() - cached.timestamp < QUERY_CACHE_TTL) return cached.result;
+  return null;
 }
 
-// -----------------------------------------------------------------------------
-// Embedding — calls Gemini embedding API with timeout
-// -----------------------------------------------------------------------------
-const EMBEDDING_MODEL = "gemini-embedding-001";
-const GEMINI_MODELS = ["gemini-2.5-flash", "gemini-2.5-flash-lite"]; // Primary → fallback
-const API_TIMEOUT = 15000; // 15 second timeout for API calls
+function setCachedQuery(key, result) {
+  if (queryResultCache.size >= QUERY_CACHE_MAX) {
+    const oldestKey = queryResultCache.keys().next().value;
+    queryResultCache.delete(oldestKey);
+  }
+  queryResultCache.set(key, { result, timestamp: Date.now() });
+}
 
-async function fetchWithTimeout(url, options, timeout = API_TIMEOUT) {
+// Pinecone retrieval
+async function retrievePinecone(queryVector, topK = 5) {
+  if (!pineconeReady) return null;
+  
+  try {
+    const results = await pineconeIndex.namespace(PINECONE_NAMESPACE).query({
+      vector: Array.from(queryVector),
+      topK,
+      includeMetadata: true,
+    });
+
+    if (!results.matches?.length) return null;
+
+    const chunks = results.matches.map(m => ({
+      id: m.id,
+      category: m.metadata?.category || "unknown",
+      title: m.metadata?.title || "",
+      content: m.metadata?.content || "",
+      similarity: m.score || 0
+    }));
+
+    return { chunks, topScore: chunks[0]?.similarity || 0 };
+  } catch (e) {
+    console.error("Pinecone query failed:", e.message);
+    return null;
+  }
+}
+
+// Gemini embedding
+const EMBEDDING_MODEL = "gemini-embedding-001";
+const GEMINI_MODELS = ["gemini-2.5-flash", "gemini-2.5-flash-lite"];
+
+async function fetchWithTimeout(url, options, timeout = 15000) {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), timeout);
   try {
-    const response = await fetch(url, { ...options, signal: controller.signal });
-    return response;
+    return await fetch(url, { ...options, signal: controller.signal });
   } finally {
     clearTimeout(timer);
   }
 }
 
-// Call Gemini with model fallback — tries primary model, falls back on 429/5xx
-async function callGemini(apiKey, requestBody) {
-  for (let i = 0; i < GEMINI_MODELS.length; i++) {
-    const model = GEMINI_MODELS[i];
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
+async function callGeminiStreaming(apiKey, requestBody, res) {
+  for (const model of GEMINI_MODELS) {
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:streamGenerateContent?key=${apiKey}&alt=sse`;
+    
+    try {
+      const response = await fetchWithTimeout(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(requestBody),
+      }, 30000);
 
+      if (!response.ok) {
+        const errorText = await response.text();
+        if ((response.status === 429 || response.status >= 500) && model !== GEMINI_MODELS[GEMINI_MODELS.length - 1]) continue;
+        throw new Error(`Gemini error ${response.status}: ${errorText}`);
+      }
+
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = "";
+      let fullText = "";
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+
+        buffer += decoder.decode(value, { stream: true });
+        const lines = buffer.split("\n");
+        buffer = lines.pop() || "";
+
+        for (const line of lines) {
+          if (line.startsWith("data: ")) {
+            const jsonStr = line.slice(6);
+            if (jsonStr.trim() === "[DONE]") continue;
+            
+            try {
+              const data = JSON.parse(jsonStr);
+              const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+              if (text) {
+                fullText += text;
+                res.write(`data: ${JSON.stringify({ text })}\n\n`);
+              }
+            } catch (e) {
+              // Ignore parse errors
+            }
+          }
+        }
+      }
+
+      res.write("data: [DONE]\n\n");
+      res.end();
+      return { success: true, text: fullText, model };
+    } catch (error) {
+      console.error(`Streaming error with ${model}:`, error.message);
+      if (model === GEMINI_MODELS[GEMINI_MODELS.length - 1]) {
+        throw error;
+      }
+    }
+  }
+}
+
+async function callGemini(apiKey, requestBody) {
+  for (const model of GEMINI_MODELS) {
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
     const response = await fetchWithTimeout(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(requestBody),
-    }, 30000); // 30s timeout for generation
-
+    }, 30000);
     if (response.ok) {
-      console.log(`Generated response using ${model}`);
+      console.log(`Generated using ${model}`);
       return { response, model };
     }
-
-    // If rate limited or server error, try next model
-    if ((response.status === 429 || response.status >= 500) && i < GEMINI_MODELS.length - 1) {
-      console.log(`${model} returned ${response.status}, falling back to ${GEMINI_MODELS[i + 1]}`);
-      continue;
-    }
-
-    // Last model or non-retryable error — return as-is
+    if ((response.status === 429 || response.status >= 500) && model !== GEMINI_MODELS[GEMINI_MODELS.length - 1]) continue;
     return { response, model };
   }
 }
 
 async function getQueryEmbedding(text, apiKey) {
-  // Check cache first
   const cached = getCachedEmbedding(text);
   if (cached) {
     console.log("Cache hit for query embedding");
@@ -145,7 +215,6 @@ async function getQueryEmbedding(text, apiKey) {
   }
 
   const url = `https://generativelanguage.googleapis.com/v1beta/models/${EMBEDDING_MODEL}:embedContent?key=${apiKey}`;
-
   const response = await fetchWithTimeout(url, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -163,78 +232,26 @@ async function getQueryEmbedding(text, apiKey) {
 
   const data = await response.json();
   const embedding = data.embedding.values;
-
-  // Cache for future use
   setCachedEmbedding(text, embedding);
-
   return new Float32Array(embedding);
 }
 
-const MAX_CHUNKS = 5;
-const RELEVANCE_THRESHOLD = 0.65;
-const HIGH_RELEVANCE_THRESHOLD = 0.9; // Early termination threshold
-
-function retrieveChunks(queryVector, topK = MAX_CHUNKS) {
-  const scores = [];
-
-  // Fast iteration over flat array
-  for (let i = 0; i < embeddingsArray.length; i++) {
-    const doc = embeddingsArray[i];
-    const similarity = cosineSimilarity(queryVector, doc);
-    scores.push({ id: doc.id, similarity });
-  }
-
-  // Partial sort - only need topK, not full sort
-  scores.sort((a, b) => b.similarity - a.similarity);
-
-  const topScore = scores[0]?.similarity || 0;
-  const results = [];
-  const limit = topScore < RELEVANCE_THRESHOLD ? 2 : topK;
-
-  for (let i = 0; i < scores.length && results.length < limit; i++) {
-    const chunk = knowledgeMap[scores[i].id];
-    if (chunk) results.push({ ...chunk, similarity: scores[i].similarity });
-  }
-
-  return { chunks: results, topScore };
-}
-
-// -----------------------------------------------------------------------------
-// Query Enhancement — combine recent conversation context for better retrieval
-// -----------------------------------------------------------------------------
+// Query enhancement
 const FOLLOWUP_PATTERNS = /^(tell me more|more|go on|continue|elaborate|what else|and\??|yes|yeah|sure|okay|ok)$/i;
 
 function buildEnhancedQuery(message, history) {
-  // For the first message or short conversations, just use the message
   if (!history || history.length === 0) return message;
-
-  // Only enhance for genuinely vague follow-ups (e.g. "tell me more", "yes", "go on")
-  // Do NOT enhance clear standalone questions like "give me certs"
   if (!FOLLOWUP_PATTERNS.test(message.trim())) return message;
-
-  // Take last user message for context on vague follow-ups
-  const lastUserMsg = history
-    .filter((m) => m.role === "user")
-    .slice(-1)[0];
-
-  if (lastUserMsg) {
-    return lastUserMsg.content + " " + message;
-  }
-
-  return message;
+  const lastUserMsg = history.filter(m => m.role === "user").slice(-1)[0];
+  return lastUserMsg ? lastUserMsg.content + " " + message : message;
 }
 
-// -----------------------------------------------------------------------------
-// System Prompt — comprehensive persona with knowledge coverage hints
-// -----------------------------------------------------------------------------
+// System prompt
 function buildSystemPrompt(contextChunks, topScore) {
   const context = contextChunks
     .map((c, i) => `[${i + 1}. ${c.category.toUpperCase()}: ${c.title}]\n${c.content}`)
     .join("\n\n");
-
-  // Build category summary from retrieved chunks
-  const categories = [...new Set(contextChunks.map((c) => c.category))];
-
+  const categories = [...new Set(contextChunks.map(c => c.category))];
   const isLowRelevance = topScore < 0.65;
 
   return `You are Ahmad Hassan, a Software Engineer and Full Stack Developer from Pakistan. You are the AI version of Ahmad, responding to visitors on his portfolio website (ahmadx.dev).
@@ -270,111 +287,144 @@ RETRIEVED CONTEXT (${contextChunks.length} sections, relevance score: ${topScore
 ${context}`;
 }
 
-// -----------------------------------------------------------------------------
-// History Sanitization — trim and validate conversation history
-// -----------------------------------------------------------------------------
 function sanitizeHistory(history) {
   if (!Array.isArray(history)) return [];
-
   return history
-    .slice(-4) // Last 4 messages (2 turns) — minimal context to reduce topic bleed
-    .filter((msg) => msg && typeof msg.content === "string" && msg.content.length <= 1000)
-    .map((msg) => ({
+    .slice(-4)
+    .filter(msg => msg && typeof msg.content === "string" && msg.content.length <= 1000)
+    .map(msg => ({
       role: msg.role === "user" ? "user" : "model",
-      // Heavily truncate assistant responses in history to prevent prior topics from
-      // bleeding into new questions (e.g. certs answer polluting a "where do you work?" query)
       parts: [{ text: msg.role === "user" ? msg.content.trim() : msg.content.trim().slice(0, 80) + "..." }],
     }));
 }
 
-// =============================================================================
-// Request Handler
-// =============================================================================
+// Handler with performance logging
 module.exports = async function handler(req, res) {
-  // CORS headers
+  const startTime = Date.now();
+  const log = (label) => console.log(`[${Date.now() - startTime}ms] ${label}`);
+
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
-  if (req.method === "OPTIONS") {
-    return res.status(200).end();
-  }
+  if (req.method === "OPTIONS") return res.status(200).end();
+  if (req.method !== "POST") return res.status(405).json({ error: "Method not allowed" });
 
-  if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed" });
-  }
-
-  // Rate limiting
   const ip = req.headers["x-forwarded-for"] || req.headers["x-real-ip"] || "unknown";
-  if (!checkRateLimit(ip)) {
-    return res.status(429).json({ error: "Too many requests. Please wait a moment." });
-  }
+  if (!checkRateLimit(ip)) return res.status(429).json({ error: "Too many requests. Please wait a moment." });
 
-  const apiKey = process.env.GEMINI_API_KEY;
-  if (!apiKey) {
-    console.error("Missing GEMINI_API_KEY env var");
+  const geminiApiKey = process.env.GEMINI_API_KEY;
+  const pineconeApiKey = process.env.PINECONE_API_KEY;
+
+  if (!geminiApiKey) {
+    console.error("Missing GEMINI_API_KEY");
     return res.status(500).json({ error: "Server configuration error: missing API key" });
   }
 
-  if (loadError) {
-    console.error("Data load failed at cold start:", loadError);
-    return res.status(500).json({ error: "Server configuration error: failed to load knowledge data", detail: loadError });
+  if (!pineconeApiKey) {
+    console.error("Missing PINECONE_API_KEY");
+    return res.status(500).json({ error: "Server configuration error: missing Pinecone API key" });
   }
 
   try {
     const { message, history = [] } = req.body;
-
-    if (!message || typeof message !== "string") {
-      return res.status(400).json({ error: "Message is required" });
-    }
-
+    if (!message || typeof message !== "string") return res.status(400).json({ error: "Message is required" });
     const trimmedMessage = message.trim();
-    if (trimmedMessage.length === 0) {
-      return res.status(400).json({ error: "Message cannot be empty" });
+    if (trimmedMessage.length === 0) return res.status(400).json({ error: "Message cannot be empty" });
+    if (trimmedMessage.length > 500) return res.status(400).json({ error: "Message too long (max 500 characters)" });
+
+    // Greeting shortcut - skip embedding + retrieval entirely
+    const lowerMsg = trimmedMessage.toLowerCase().trim();
+    const greetings = ["hi", "hello", "hey", "hii", "hiii", "helo", "hola", "howdy"];
+    if (greetings.includes(lowerMsg) || /^(hi|hello|hey|howdy)\s*[!.]*$/i.test(lowerMsg)) {
+      log("Greeting shortcut");
+      const systemPrompt = `You are Ahmad Hassan, a Software Engineer from Pakistan. Respond to the greeting warmly and briefly suggest what you can help with (projects, certifications, skills, experience). Keep it 1-2 sentences.`;
+      
+      const requestBody = {
+        system_instruction: { parts: [{ text: systemPrompt }] },
+        contents: [{ role: "user", parts: [{ text: trimmedMessage }] }],
+        generationConfig: { temperature: 0.7, topP: 0.9, topK: 40, maxOutputTokens: 200 },
+        safetySettings: [
+          { category: "HARM_CATEGORY_HARASSMENT", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
+          { category: "HARM_CATEGORY_HATE_SPEECH", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
+          { category: "HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
+          { category: "HARM_CATEGORY_DANGEROUS_CONTENT", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
+        ],
+      };
+
+      const { response: geminiResponse } = await callGemini(geminiApiKey, requestBody);
+      log("Gemini responded");
+
+      if (!geminiResponse.ok) {
+        return res.status(500).json({ error: "Failed to generate response" });
+      }
+
+      const geminiData = await geminiResponse.json();
+      const responseText = geminiData?.candidates?.[0]?.content?.parts?.[0]?.text;
+      if (!responseText) return res.status(500).json({ error: "Empty response from AI" });
+
+      res.setHeader("Content-Type", "text/event-stream");
+      res.setHeader("Cache-Control", "no-cache");
+      res.setHeader("Connection", "keep-alive");
+      const words = responseText.split(" ");
+      for (let i = 0; i < words.length; i += 2) {
+        const chunk = words.slice(i, i + 2).join(" ");
+        const suffix = i + 2 < words.length ? " " : "";
+        res.write(`data: ${JSON.stringify({ text: chunk + suffix })}\n\n`);
+      }
+      res.write("data: [DONE]\n\n");
+      res.end();
+      log(`Total: ${Date.now() - startTime}ms`);
+      return;
     }
 
-    if (trimmedMessage.length > 500) {
-      return res.status(400).json({ error: "Message too long (max 500 characters)" });
-    }
-
-    // Step 1: Build enhanced query with conversation context for better retrieval
     const enhancedQuery = buildEnhancedQuery(trimmedMessage, history);
+    log("Query enhanced");
 
-    // Step 2: Embed the (enhanced) query
-    const queryVector = await getQueryEmbedding(enhancedQuery, apiKey);
+    // Get query embedding
+    const queryVector = await getQueryEmbedding(enhancedQuery, geminiApiKey);
+    log("Embedding API done");
 
-    // Step 3: Retrieve relevant context chunks (with relevance scoring)
-    const { chunks: relevantChunks, topScore } = retrieveChunks(queryVector);
+    // Initialize Pinecone if needed
+    if (!pineconeReady) {
+      await initPinecone(pineconeApiKey);
+      log("Pinecone init");
+    }
 
-    // Step 4: Build system prompt with retrieved context and relevance signal
-    const systemPrompt = buildSystemPrompt(relevantChunks, topScore);
+    // Retrieve from Pinecone
+    let retrievalResult;
+    const cacheKey = trimmedMessage.toLowerCase().slice(0, 100);
+    const cachedResult = getCachedQuery(cacheKey);
+    
+    if (cachedResult) {
+      log("Query cache HIT");
+      retrievalResult = cachedResult;
+    } else {
+      log("Query cache MISS");
+      retrievalResult = await retrievePinecone(queryVector, 5);
+      log("Pinecone query done");
 
-    // Step 5: Build conversation history for Gemini
+      if (!retrievalResult) {
+        console.error("Pinecone query returned no results");
+        return res.status(500).json({ error: "Failed to retrieve context from knowledge base" });
+      }
+
+      setCachedQuery(cacheKey, retrievalResult);
+    }
+
+    const systemPrompt = buildSystemPrompt(retrievalResult.chunks, retrievalResult.topScore);
+    log("System prompt built");
+
     const conversationHistory = sanitizeHistory(history);
-
-    // Add current user message with clear framing to distinguish from history
-    // This prevents the model from confusing prior conversation topics with the current question
-    const currentMessageText = conversationHistory.length > 0
+    const currentMessageText = conversationHistory.length > 0 
       ? `[CURRENT QUESTION — answer THIS, not previous topics]: ${trimmedMessage}`
       : trimmedMessage;
+    conversationHistory.push({ role: "user", parts: [{ text: currentMessageText }] });
 
-    conversationHistory.push({
-      role: "user",
-      parts: [{ text: currentMessageText }],
-    });
-
-    // Step 6: Call Gemini API (with model fallback)
     const requestBody = {
-      system_instruction: {
-        parts: [{ text: systemPrompt }],
-      },
+      system_instruction: { parts: [{ text: systemPrompt }] },
       contents: conversationHistory,
-      generationConfig: {
-        temperature: 0.7,
-        topP: 0.9,
-        topK: 40,
-        maxOutputTokens: 1024,
-      },
+      generationConfig: { temperature: 0.7, topP: 0.9, topK: 40, maxOutputTokens: 800 },
       safetySettings: [
         { category: "HARM_CATEGORY_HARASSMENT", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
         { category: "HARM_CATEGORY_HATE_SPEECH", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
@@ -383,70 +433,32 @@ module.exports = async function handler(req, res) {
       ],
     };
 
-    const { response: geminiResponse, model: usedModel } = await callGemini(apiKey, requestBody);
-
-    if (!geminiResponse.ok) {
-      const errorText = await geminiResponse.text();
-      console.error(`Gemini API error (${usedModel}):`, geminiResponse.status, errorText);
-
-      if (geminiResponse.status === 429) {
-        return res.status(429).json({
-          error: "I'm getting too many requests right now. Please try again in a minute.",
-        });
-      }
-      if (geminiResponse.status === 403) {
-        return res.status(500).json({
-          error: "API configuration error. Please try again later.",
-        });
-      }
-      return res.status(500).json({
-        error: "Failed to generate response",
-        detail: `Gemini ${geminiResponse.status}: ${errorText}`,
-      });
-    }
-
-    const geminiData = await geminiResponse.json();
-    const responseText = geminiData?.candidates?.[0]?.content?.parts?.[0]?.text;
-
-    if (!responseText) {
-      console.error("No text in Gemini response:", JSON.stringify(geminiData));
-      return res.status(500).json({ error: "Empty response from AI" });
-    }
-
-    // Step 7: Stream response as SSE
+    log("Calling Gemini...");
+    
     res.setHeader("Content-Type", "text/event-stream");
     res.setHeader("Cache-Control", "no-cache");
     res.setHeader("Connection", "keep-alive");
 
-    // Send the full text in chunks to simulate streaming
-    const words = responseText.split(" ");
-    const chunkSize = 2; // Smaller chunks = faster perceived response
-
-    for (let i = 0; i < words.length; i += chunkSize) {
-      const chunk = words.slice(i, i + chunkSize).join(" ");
-      const suffix = i + chunkSize < words.length ? " " : "";
-      res.write(`data: ${JSON.stringify({ text: chunk + suffix })}\n\n`);
-    }
-
-    res.write("data: [DONE]\n\n");
-    res.end();
-  } catch (error) {
-    console.error("Chat API error:", error.message, error.stack);
-
-    // Handle timeout specifically
-    if (error.name === "AbortError") {
+    try {
+      await callGeminiStreaming(geminiApiKey, requestBody, res);
+      log("TOTAL TIME");
+    } catch (error) {
+      console.error("Streaming error:", error.message);
       if (!res.headersSent) {
-        return res.status(504).json({
-          error: "The request took too long. Please try again with a simpler question.",
-        });
+        return res.status(500).json({ error: "Failed to generate response" });
+      } else {
+        res.write(`data: ${JSON.stringify({ error: error.message })}\n\n`);
+        res.write("data: [DONE]\n\n");
+        res.end();
       }
     }
-
+  } catch (error) {
+    console.error("Chat API error:", error.message, error.stack);
+    if (error.name === "AbortError" && !res.headersSent) {
+      return res.status(504).json({ error: "The request took too long. Please try again." });
+    }
     if (!res.headersSent) {
-      res.status(500).json({
-        error: "An error occurred processing your request",
-        detail: error.message,
-      });
+      res.status(500).json({ error: "An error occurred processing your request" });
     } else {
       res.write(`data: ${JSON.stringify({ error: error.message })}\n\n`);
       res.end();

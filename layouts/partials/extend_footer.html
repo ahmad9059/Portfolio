@@ -178,3 +178,37 @@
   });
 })();
 </script>
+
+<!-- Warm-up API on page load for faster chat responses -->
+<script>
+(function() {
+  // Warm up the RAG API when any page loads (so chat is fast when user navigates to it)
+  if (typeof window !== 'undefined' && document.readyState === 'complete') {
+    warmupAPI();
+  } else {
+    window.addEventListener('load', warmupAPI);
+  }
+
+  function warmupAPI() {
+    // Only warm up once per session
+    if (sessionStorage.getItem('api_warmed')) return;
+    sessionStorage.setItem('api_warmed', 'true');
+
+    // Detect API URL
+    const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+    const apiUrl = isLocalhost ? 'http://localhost:3001/api/chat' : '/api/chat';
+
+    // Send a simple greeting to warm up the function
+    // The greeting shortcut in chat.js makes this instant (no embedding/retrieval)
+    fetch(apiUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: 'hi' })
+    }).then(() => {
+      console.log('API warmed up');
+    }).catch(() => {
+      // Silently fail - not critical
+    });
+  }
+})();
+</script>

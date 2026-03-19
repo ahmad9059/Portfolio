@@ -2,3 +2,7 @@
 public/
 .env
 .env.*
+node_modules/
+api/node_modules/
+api/knowledge.json
+api/embeddings.json
