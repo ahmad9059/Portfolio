@@ -183,19 +183,19 @@ body:not(.dark) #sun {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(0.96);
-    width: min(280px, 88vw);
+    width: min(200px, 80vw);
     flex-direction: column;
     margin: 0;
-    padding: 6px 0;
+    padding: 4px 0;
     white-space: normal;
     overflow: hidden;
     background: var(--entry);
     border: 1px solid var(--border);
-    border-radius: 14px;
-    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.28);
+    border-radius: 10px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.22);
     z-index: 1000;
     opacity: 0;
-    transition: opacity 0.18s ease, transform 0.18s ease;
+    transition: opacity 0.15s ease, transform 0.15s ease;
     pointer-events: none;
   }
 
@@ -216,9 +216,9 @@ body:not(.dark) #sun {
   }
 
   #menu a {
-    font-size: 15px;
+    font-size: 14px;
     display: block;
-    padding: 8px 22px;
+    padding: 6px 20px;
     text-align: center;
   }
 
