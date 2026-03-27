@@ -68,7 +68,17 @@ lastmod: 2026-03-05
 
 ## Work Experience
 
-At **VieroMind Foundation, Inc.**, I work on AI-powered mental health and wellness tools. My day-to-day involves building scalable interfaces with Next.js and TypeScript, writing backend services in Node.js and Golang, and integrating machine learning models for journaling, mood tracking, and wellness insights. I received a full-time offer based on my performance during the Pakathon hackathon, where our team secured 2nd place.
+**Software Engineer, [VieroMind Foundation, Inc.](https://vieromind.com)** · Full-time · Oct 2025 – Present
+
+Building full-stack AI wellness tools with Next.js, TypeScript, Node.js, and Golang. Integrating ML and NLP into journaling and mood tracking features. Joined full-time after placing 2nd at Pakathon.
+
+**Founder & Lead, BinaryBytes** · Full-time · May 2023 – Present
+
+Running a tech community focused on hands-on learning, workshops, and hackathons. Bridging the gap between theory and practical skills for the next generation of developers.
+
+**MERN Stack Developer, Digistartup** · Internship · May 2024 – Aug 2024
+
+Contributed to frontend and backend projects in a startup environment. Built features with React and Express.js across cross-functional teams to improve functionality and UX.
 
 ## Open Source & Projects
 
