@@ -9,7 +9,13 @@
 @media screen and (max-width: 768px) {
     /* theme-vars */
     :root {
-        --gap: 40px;
+        --gap: 20px;
+    }
+
+    /* Blog post content: extra horizontal breathing room */
+    .post-content {
+        padding-left: 16px;
+        padding-right: 16px;
     }
 
     /* profile-mode: real size reduction instead of scale() hack */
