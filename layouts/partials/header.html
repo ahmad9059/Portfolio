@@ -163,13 +163,28 @@
         </ul>
     </nav>
 </header>
+<div id="menu-backdrop"></div>
 <script>
 (function() {
     var toggle = document.getElementById('menu-toggle');
     var menu = document.getElementById('menu');
+    var backdrop = document.getElementById('menu-backdrop');
+    function openMenu() {
+        menu.classList.add('show');
+        backdrop.classList.add('show');
+    }
+    function closeMenu() {
+        menu.classList.remove('show');
+        backdrop.classList.remove('show');
+    }
     if (toggle && menu) {
-        toggle.addEventListener('click', function() {
-            menu.classList.toggle('show');
+        toggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            menu.classList.contains('show') ? closeMenu() : openMenu();
+        });
+        backdrop.addEventListener('click', closeMenu);
+        menu.addEventListener('click', function(e) {
+            if (e.target.tagName === 'A') closeMenu();
         });
     }
 })();

@@ -5,7 +5,7 @@
 
 .post-title {
   margin-bottom: 2px;
-  font-size: 40px;
+  font-size: clamp(26px, 5vw, 40px);
 }
 
 .post-description {
@@ -45,16 +45,16 @@
 
 .post-content h1 {
   margin: 40px auto 32px;
-  font-size: 40px;
+  font-size: clamp(28px, 5vw, 40px);
 }
 
 .post-content h2 {
   margin: 32px auto 24px;
-  font-size: 32px;
+  font-size: clamp(22px, 4vw, 32px);
 }
 
 .post-content h3 {
-  font-size: 24px;
+  font-size: clamp(18px, 3vw, 24px);
 }
 
 .post-content h4 {
@@ -124,6 +124,20 @@
   padding-inline-start: 10px;
 }
 
+@media screen and (max-width: 600px) {
+  .post-content dl {
+    flex-direction: column;
+  }
+  .post-content dt,
+  .post-content dd {
+    width: 100%;
+  }
+  .post-content dd {
+    padding-inline-start: 0;
+    margin-bottom: 8px;
+  }
+}
+
 .post-content dd ~ dd,
 .post-content dt ~ dt {
   margin-top: 10px;
@@ -131,6 +145,10 @@
 
 .post-content table {
   margin-bottom: var(--content-gap);
+  display: block;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  max-width: 100%;
 }
 
 .post-content table th,

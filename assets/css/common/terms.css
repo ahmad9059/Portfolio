@@ -9,7 +9,7 @@
     padding: 10px;
     font-weight: 500;
 
-    font-size: 35px;
+    font-size: clamp(18px, 4vw, 35px);
     -webkit-line-clamp: 3;
 }
 .terms-tags li:hover {

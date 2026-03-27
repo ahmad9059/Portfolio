@@ -19,8 +19,8 @@
 
 .profile img {
     border-radius: 50%;
-    width: 150px; /* Set the desired width */
-    height: 150px; /* Set the desired height to maintain a square shape */
+    width: clamp(100px, 20vw, 150px);
+    height: clamp(100px, 20vw, 150px);
 }
 
 .buttons {

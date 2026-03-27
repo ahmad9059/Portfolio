@@ -20,6 +20,8 @@
 .archive-month-header {
     margin: 25px 0;
     width: 200px;
+    min-width: 0;
+    flex-shrink: 0;
 }
 
 .archive-month:not(:last-of-type) {

@@ -75,6 +75,11 @@
 button#theme-toggle {
   font-size: 26px;
   margin: auto 4px;
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 body.dark #moon {
@@ -162,35 +167,78 @@ body:not(.dark) #sun {
   #menu-toggle {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     position: absolute;
     right: var(--gap);
     top: 0;
     height: var(--header-height);
+    min-width: 44px;
+    z-index: 1001;
   }
 
+  /* Floating menu card — centered */
   #menu {
     display: none;
-    flex-basis: 100%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.96);
+    width: min(280px, 88vw);
     flex-direction: column;
     margin: 0;
-    padding: 0 var(--gap) 8px;
+    padding: 6px 0;
     white-space: normal;
-    overflow-x: visible;
+    overflow: hidden;
+    background: var(--entry);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.28);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.18s ease, transform 0.18s ease;
+    pointer-events: none;
   }
 
   #menu.show {
     display: flex;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    pointer-events: auto;
   }
 
   #menu li {
-    padding: 2px 0;
+    padding: 0;
   }
 
   #menu li + li {
     margin-inline-start: 0;
+    border-top: 1px solid var(--border);
   }
 
   #menu a {
     font-size: 15px;
+    display: block;
+    padding: 8px 22px;
+    text-align: center;
+  }
+
+  #menu a:hover {
+    background: var(--tertiary);
+  }
+
+  /* Blurred backdrop */
+  #menu-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    transition: opacity 0.18s ease;
+  }
+
+  #menu-backdrop.show {
+    display: block;
   }
 }
