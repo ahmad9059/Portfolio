@@ -32,19 +32,19 @@ lastmod: 2026-03-05
 .post-content h2{font-size:1.5rem}
 .post-content h3{font-size:1.2rem}
 
-.profile-card{display:flex;align-items:center;gap:2rem;padding:2rem;background:transparent;border:1px solid var(--border);border-radius:12px;margin-bottom:2.5rem}
+.profile-card{display:flex;align-items:center;gap:1.75rem;padding:1.25rem 0;background:transparent;border:none;margin-bottom:2.5rem}
 .profile-card-img{flex-shrink:0}
-.profile-card-img img{width:130px;height:130px;border-radius:50%;object-fit:cover;display:block}
-.profile-card-info h1{margin:0 0 .4rem;font-size:1.8rem}
-.profile-card-info .profile-role{color:var(--accent);font-weight:600;font-size:1.05rem;margin:0 0 .6rem}
-.profile-card-info .profile-bio{color:var(--muted-foreground);font-size:.95rem;line-height:1.6;margin:0 0 .8rem}
-.profile-card-links{display:flex;flex-wrap:wrap;gap:.5rem}
-.profile-card-links a{display:inline-flex;align-items:center;gap:.35rem;padding:.3rem .7rem;font-size:.82rem;color:var(--primary);background:var(--theme);border:1px solid var(--border);border-radius:6px;text-decoration:none;transition:background .2s,color .2s;box-shadow:none}
+.profile-card-img img{width:110px;height:110px;border-radius:50%;object-fit:cover;display:block}
+.profile-card-info h1{margin:0 0 .3rem;font-size:2rem;font-weight:700}
+.profile-card-info .profile-role{color:var(--accent);font-weight:600;font-size:1rem;margin:0 0 .55rem}
+.profile-card-info .profile-bio{color:var(--muted-foreground);font-size:1rem;line-height:1.6;margin:0 0 .75rem}
+.profile-card-links{display:flex;flex-wrap:wrap;gap:.45rem}
+.profile-card-links a{display:inline-flex;align-items:center;gap:.35rem;padding:.3rem .7rem;font-size:.9rem;color:var(--primary);background:var(--theme);border:1px solid var(--border);border-radius:6px;text-decoration:none;transition:background .2s,color .2s;box-shadow:none}
 .profile-card-links a:hover{background:var(--accent);color:#fff}
 .profile-card-links a svg{width:14px;height:14px;fill:currentColor}
 @media(max-width:600px){
-  .profile-card{flex-direction:column;text-align:center;gap:1.2rem;padding:1.5rem}
-  .profile-card-img img{width:110px;height:110px}
+  .profile-card{flex-direction:column;text-align:center;gap:1.1rem;padding:1rem 0}
+  .profile-card-img img{width:90px;height:90px}
   .profile-card-links{justify-content:center}
 }
 </style>
