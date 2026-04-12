@@ -27,6 +27,7 @@
     padding: 3px 30px 20px;
     background: var(--entry);
     border-radius: 6px;
+    border: 1px solid var(--border);
     transition: transform 0.1s;
 }
 

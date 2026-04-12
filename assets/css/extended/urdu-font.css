@@ -1,10 +1,27 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap");
-
-[lang="ur"],
-.urdu {
-  font-family: "Noto Nastaliq Urdu", serif !important;
-  font-weight: normal;
+:where(:lang(ur), [lang="ur"], [lang|="ur"], .urdu),
+:where(:lang(ur), [lang="ur"], [lang|="ur"], .urdu) :not(code):not(pre):not(kbd):not(samp) {
+  font-family: "Noto Nastaliq Urdu", serif;
+  font-optical-sizing: auto;
+  line-height: 2.1;
   direction: rtl;
   text-align: right;
-  line-height: 2.2;
+  unicode-bidi: plaintext;
+}
+
+.post-title.urdu {
+  font-size: clamp(24px, 4vw, 34px);
+  line-height: 1.5;
+  margin-top: 12px;
+  margin-bottom: 24px;
+}
+
+.post-description.urdu {
+  margin-top: 6px;
+  line-height: 1.7;
+}
+
+.post-meta.urdu,
+.entry-footer.urdu {
+  display: block;
+  line-height: 1.8;
 }
