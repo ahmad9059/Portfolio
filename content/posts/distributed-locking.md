@@ -1,7 +1,7 @@
 ---
 title: Distributed Locking
 draft: false
-date: 2026-03-18
+date: 2026-03-26
 description: "How distributed systems coordinate access to shared resources - Redis Redlock, Zookeeper, fencing tokens, leases, and why distributed locking is harder than it looks."
 categories:
   - tech

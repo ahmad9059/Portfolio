@@ -1,7 +1,7 @@
 ---
 title: API Gateway
 draft: false
-date: 2026-03-04
+date: 2026-03-05
 description: "Why every large system needs an API gateway - request routing, authentication offloading, rate limiting, and how the gateway pattern simplifies microservice architecture."
 categories:
   - tech

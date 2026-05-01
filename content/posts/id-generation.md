@@ -1,7 +1,7 @@
 ---
 title: ID Generation in Distributed Systems
 draft: false
-date: 2026-04-06
+date: 2026-04-19
 description: "How to generate unique IDs across distributed machines - UUID, Snowflake, ULID, time sorted vs random, and coordination free approaches for system design."
 categories:
   - tech

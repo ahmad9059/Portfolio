@@ -1,7 +1,7 @@
 ---
 title: Authentication and Authorization
 draft: false
-date: 2026-04-18
+date: 2026-04-28
 description: "How systems verify identity and control access - JWT, OAuth2, session vs token, RBAC vs ABAC, SSO, and the security decisions that protect real applications."
 categories:
   - tech

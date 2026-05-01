@@ -1,7 +1,7 @@
 ---
 title: "How Netflix Streams Without Downtime"
 draft: false
-date: 2026-04-29
+date: 2026-04-04
 description: "A system design case study on Netflix - chaos engineering, microservices at scale, A/B testing infrastructure, edge routing, and how 250 million users stream reliably."
 categories:
   - tech

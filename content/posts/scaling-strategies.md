@@ -1,7 +1,7 @@
 ---
 title: Scaling Strategies
 draft: false
-date: 2026-03-22
+date: 2026-04-01
 description: "How systems scale to handle growth - vertical vs horizontal scaling, autoscaling, stateless design, over provisioning, and the architectural decisions that make or break scale."
 categories:
   - tech

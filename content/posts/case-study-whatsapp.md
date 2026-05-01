@@ -1,7 +1,7 @@
 ---
 title: "How WhatsApp Handles Billions of Messages"
 draft: false
-date: 2026-04-25
+date: 2026-03-11
 description: "A system design case study on WhatsApp - Erlang BEAM, the Comet architecture, message ordering, delivery receipts, and how 55 engineers serve 2 billion users."
 categories:
   - tech

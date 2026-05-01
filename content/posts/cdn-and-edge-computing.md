@@ -1,7 +1,7 @@
 ---
 title: CDN and Edge Computing
 draft: false
-date: 2026-03-20
+date: 2026-03-29
 description: "How CDNs and edge computing bring content closer to users - cache invalidation, TTL strategies, edge functions, and the latency gains that make or break global applications."
 categories:
   - tech

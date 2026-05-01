@@ -1,7 +1,7 @@
 ---
 title: "How YouTube Serves Billions of Videos"
 draft: false
-date: 2026-04-22
+date: 2026-02-28
 description: "A system design case study on YouTube - how adaptive bitrate streaming, distributed storage, CDN architecture, and recommendation pipelines serve video to 2 billion users."
 categories:
   - tech

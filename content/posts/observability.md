@@ -1,7 +1,7 @@
 ---
 title: Observability in Distributed Systems
 draft: false
-date: 2026-03-29
+date: 2026-04-10
 description: "How to understand what your distributed system is actually doing - the three pillars of observability, correlation IDs, service meshes, and why logs alone are not enough."
 categories:
   - tech

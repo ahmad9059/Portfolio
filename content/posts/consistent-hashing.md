@@ -1,7 +1,7 @@
 ---
 title: Consistent Hashing
 draft: false
-date: 2026-03-10
+date: 2026-03-14
 description: "How consistent hashing solves the rehashing problem in distributed systems - hash rings, virtual nodes, and why it matters for caching and data partitioning."
 categories:
   - tech

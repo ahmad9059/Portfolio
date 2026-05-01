@@ -1,7 +1,7 @@
 ---
 title: Search and Indexing
 draft: false
-date: 2026-04-13
+date: 2026-04-25
 description: "How search engines find what you're looking for in milliseconds - inverted indexes, full text search, ranking, Elasticsearch, and sharding indexes for scale."
 categories:
   - tech

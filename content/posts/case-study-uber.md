@@ -1,7 +1,7 @@
 ---
 title: "How Uber Matches Riders and Drivers in Real Time"
 draft: false
-date: 2026-04-28
+date: 2026-03-23
 description: "A system design case study on Uber - geospatial indexing, the dispatch system, surge pricing, event sourcing, and how millions of rides happen every day."
 categories:
   - tech
