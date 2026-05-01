@@ -24,7 +24,7 @@
 .terms-tags a {
     font-family: "JetBrains Mono", sans-serif;
     display: block;
-    padding: 3px 30px 20px;
+    padding: 20px 30px;
     background: var(--entry);
     border-radius: 6px;
     border: 1px solid var(--border);
