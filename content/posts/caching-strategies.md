@@ -4,9 +4,9 @@ draft: false
 date: 2026-02-23
 description: "How caching works in distributed systems - cache aside, write through, write back, eviction policies, and when each strategy saves you from a database meltdown."
 categories:
-  - tech
+  - system-design
 tags:
-  - tech
+  - system-design
   - web
   - system-design
 keywords:

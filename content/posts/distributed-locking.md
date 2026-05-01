@@ -4,9 +4,9 @@ draft: false
 date: 2026-03-26
 description: "How distributed systems coordinate access to shared resources - Redis Redlock, Zookeeper, fencing tokens, leases, and why distributed locking is harder than it looks."
 categories:
-  - tech
+  - system-design
 tags:
-  - tech
+  - system-design
   - web
   - system-design
 keywords:

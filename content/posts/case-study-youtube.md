@@ -4,9 +4,9 @@ draft: false
 date: 2026-02-28
 description: "A system design case study on YouTube - how adaptive bitrate streaming, distributed storage, CDN architecture, and recommendation pipelines serve video to 2 billion users."
 categories:
-  - tech
+  - system-design
 tags:
-  - tech
+  - system-design
   - web
   - system-design
 keywords:

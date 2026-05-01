@@ -4,9 +4,9 @@ draft: false
 date: 2026-04-19
 description: "How to generate unique IDs across distributed machines - UUID, Snowflake, ULID, time sorted vs random, and coordination free approaches for system design."
 categories:
-  - tech
+  - system-design
 tags:
-  - tech
+  - system-design
   - web
   - system-design
 keywords:

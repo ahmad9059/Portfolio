@@ -4,9 +4,9 @@ draft: false
 date: 2026-04-10
 description: "How to understand what your distributed system is actually doing - the three pillars of observability, correlation IDs, service meshes, and why logs alone are not enough."
 categories:
-  - tech
+  - system-design
 tags:
-  - tech
+  - system-design
   - web
   - system-design
 keywords:

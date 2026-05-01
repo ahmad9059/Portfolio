@@ -4,9 +4,9 @@ draft: false
 date: 2026-02-15
 description: "Understanding the CAP theorem for distributed systems - consistency, availability, and partition tolerance trade-offs explained for system designers."
 categories:
-  - tech
+  - system-design
 tags:
-  - tech
+  - system-design
   - web
   - system-design
 keywords:

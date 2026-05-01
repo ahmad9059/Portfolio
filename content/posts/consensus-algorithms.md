@@ -4,9 +4,9 @@ draft: false
 date: 2026-03-08
 description: "How distributed systems agree on truth - Paxos, Raft, leader election, split brain, and why consensus is the hardest problem in distributed computing."
 categories:
-  - tech
+  - system-design
 tags:
-  - tech
+  - system-design
   - web
   - system-design
 keywords:

@@ -4,9 +4,9 @@ draft: false
 date: 2026-03-02
 description: "How database replication keeps data available across machines - leader follower, multi leader, synchronous vs asynchronous replication, and the tradeoffs every system designer must know."
 categories:
-  - tech
+  - system-design
 tags:
-  - tech
+  - system-design
   - web
   - system-design
 keywords:

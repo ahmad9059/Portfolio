@@ -23,6 +23,10 @@ menu:
       name: Blog
       url: /posts/
       weight: 40
+    - identifier: categories
+      name: Categories
+      url: /categories/
+      weight: 45
     - identifier: contact
       name: Contact
       url: /contact/

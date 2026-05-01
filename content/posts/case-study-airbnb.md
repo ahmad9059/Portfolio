@@ -4,9 +4,9 @@ draft: false
 date: 2026-04-16
 description: "A system design case study on Airbnb - search ranking, geospatial filtering, ngram indexing, the Kubernetes migration, and payment orchestration across 220 countries."
 categories:
-  - tech
+  - system-design
 tags:
-  - tech
+  - system-design
   - web
   - system-design
 keywords:

@@ -4,9 +4,9 @@ draft: false
 date: 2026-04-07
 description: "How to model data for systems that actually scale - SQL vs NoSQL tradeoffs, denormalization, schema design for read and write patterns, and when to break normalization rules."
 categories:
-  - tech
+  - system-design
 tags:
-  - tech
+  - system-design
   - web
   - system-design
 keywords:

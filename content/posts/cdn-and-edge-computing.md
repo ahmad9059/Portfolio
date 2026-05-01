@@ -4,9 +4,9 @@ draft: false
 date: 2026-03-29
 description: "How CDNs and edge computing bring content closer to users - cache invalidation, TTL strategies, edge functions, and the latency gains that make or break global applications."
 categories:
-  - tech
+  - system-design
 tags:
-  - tech
+  - system-design
   - web
   - system-design
 keywords:

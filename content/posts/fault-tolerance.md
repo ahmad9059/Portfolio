@@ -4,9 +4,9 @@ draft: false
 date: 2026-04-13
 description: "How systems stay alive when things break - circuit breakers, bulkheads, retries with backoff, graceful degradation, and the engineering discipline of chaos testing."
 categories:
-  - tech
+  - system-design
 tags:
-  - tech
+  - system-design
   - web
   - system-design
 keywords:

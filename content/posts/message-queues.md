@@ -4,9 +4,9 @@ draft: false
 date: 2026-03-17
 description: "How message queues decouple systems in production - Kafka, RabbitMQ, delivery guarantees, backpressure, and when async communication saves your architecture."
 categories:
-  - tech
+  - system-design
 tags:
-  - tech
+  - system-design
   - web
   - system-design
 keywords:

@@ -4,9 +4,9 @@ draft: false
 date: 2026-03-11
 description: "A system design case study on WhatsApp - Erlang BEAM, the Comet architecture, message ordering, delivery receipts, and how 55 engineers serve 2 billion users."
 categories:
-  - tech
+  - system-design
 tags:
-  - tech
+  - system-design
   - web
   - system-design
 keywords:

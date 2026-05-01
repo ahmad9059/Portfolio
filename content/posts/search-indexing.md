@@ -4,9 +4,9 @@ draft: false
 date: 2026-04-25
 description: "How search engines find what you're looking for in milliseconds - inverted indexes, full text search, ranking, Elasticsearch, and sharding indexes for scale."
 categories:
-  - tech
+  - system-design
 tags:
-  - tech
+  - system-design
   - web
   - system-design
 keywords:

@@ -4,9 +4,9 @@ draft: false
 date: 2026-02-20
 description: "How load balancers distribute traffic across servers - algorithms, Layer 4 vs Layer 7, health checks, and real world tradeoffs for system designers."
 categories:
-  - tech
+  - system-design
 tags:
-  - tech
+  - system-design
   - web
   - system-design
 keywords:

@@ -4,9 +4,9 @@ draft: false
 date: 2026-04-22
 description: "Real time communication patterns for the web - WebSockets vs Server-Sent Events, when to use each, scaling persistent connections, and the tradeoffs of push vs pull."
 categories:
-  - tech
+  - system-design
 tags:
-  - tech
+  - system-design
   - web
   - system-design
 keywords:

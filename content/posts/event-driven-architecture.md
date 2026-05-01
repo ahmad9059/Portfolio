@@ -4,9 +4,9 @@ draft: false
 date: 2026-02-15
 description: "A practical guide to Event Driven Architecture - producers, consumers, message brokers like Kafka and RabbitMQ, and building loosely coupled systems."
 categories:
-  - tech
+  - system-design
 tags:
-  - tech
+  - system-design
   - web
   - system-design
   - architecture

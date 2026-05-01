@@ -4,9 +4,9 @@ draft: false
 date: 2026-02-15
 description: "How microservice architecture works - API gateways, service decomposition, independent deployment, and scaling strategies for modern applications."
 categories:
-  - tech
+  - system-design
 tags:
-  - tech
+  - system-design
   - web
   - system-design
   - architecture

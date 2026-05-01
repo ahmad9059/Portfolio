@@ -4,9 +4,9 @@ draft: false
 date: 2026-03-20
 description: "How rate limiting protects systems from abuse - token bucket, leaky bucket, sliding window, fixed window, and distributed rate limiting for production APIs."
 categories:
-  - tech
+  - system-design
 tags:
-  - tech
+  - system-design
   - web
   - system-design
 keywords:

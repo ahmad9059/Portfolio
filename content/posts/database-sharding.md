@@ -4,9 +4,9 @@ draft: false
 date: 2026-02-26
 description: "How database sharding splits data across multiple machines - shard key selection, horizontal partitioning, hotspot prevention, and the tradeoffs of distributing your data."
 categories:
-  - tech
+  - system-design
 tags:
-  - tech
+  - system-design
   - web
   - system-design
 keywords:

@@ -4,9 +4,9 @@ draft: false
 date: 2026-04-01
 description: "How systems scale to handle growth - vertical vs horizontal scaling, autoscaling, stateless design, over provisioning, and the architectural decisions that make or break scale."
 categories:
-  - tech
+  - system-design
 tags:
-  - tech
+  - system-design
   - web
   - system-design
 keywords:
