@@ -1,12 +1,12 @@
 ---
 title: "ہم بھول گئے ہر بات"
 draft: false
-date: 2026-04-13T00:00:00+05:00
+date: 2026-02-13T00:00:00+05:00
 author: Ahmad Hassan
 authorUr: "احمد حسن"
 description: "کیا کیا ہوا دل کے ساتھ، مگر تیرا پیار نہیں بھولے"
 textLang: ur
-hideFromPostsList: true
+# hideFromPostsList: true
 categories:
   - life
   - urdu
@@ -43,4 +43,5 @@ keywords:
 ہم جلتے رہے رے دن رات، مگر تیرا پیار نہیں بھولے<br>
 کیا کیا ہوا دل کے ساتھ...<br>
 کیا کیا ہوا دل کے ساتھ، مگر تیرا پیار نہیں بھولے
+
 </div>
