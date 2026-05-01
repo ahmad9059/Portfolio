@@ -105,12 +105,12 @@ You can see all of them on my [projects page](/projects/).
 
 ## Achievements
 
-- **1st Position** - Cybersecurity Workshop
-- **1st Position** - Maktab-e-Gulab Programming Competition
-- **2nd Position** - Pakathon (VieroMind)
-- **800+ GitHub stars** on HyprFlux
-- **2,000+ GitHub contributions** in 2025
 - Ranked **#92 worldwide** and **#2 in Pakistan** at the UC Berkeley CALICO Spring '25 programming competition
+- **2nd Position** - Pakathon (VieroMind)
+- **1st Position** - Maktab-e-Gulab Programming Competition
+- **1st Position** - Cybersecurity Competition by IGNITE, Pakistan
+- **800+ GitHub stars** on HyprFlux
+- **2,000+ GitHub contributions** in 2026
 - **600+ problems solved** on LeetCode and GeeksforGeeks
 - **Professional certifications** from AWS, Meta, Google, GitHub, IBM, Harvard, and more
 
