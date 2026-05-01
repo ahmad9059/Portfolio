@@ -91,10 +91,10 @@ hideMeta: true
 <div class="project-grid">
 
 <div class="project-card">
-<img src="/assets/projects/hyprflux.webp" alt="HyprFlux — Hyprland dotfiles and desktop configuration for Arch Linux with Waybar and custom theming">
+<img src="/assets/projects/hyprflux.webp" alt="HyprFlux — Complete Arch Linux desktop OS with Hyprland, branded ISO, TUI installer, and maintained desktop environment">
 <div class="project-card-info">
 <h3>HyprFlux</h3>
-<p>Dotfiles and configs for a beautiful, efficient Hyprland desktop on Arch Linux. Minimal, productive, and fast.</p>
+<p>A complete Arch Linux desktop operating system — branded live ISO, TUI installer, Hyprland desktop, boot theming, GTK theming, and developer tooling in one cohesive project.</p>
 <div class="project-tags">
 <span>Linux</span>
 <span>Arch Linux</span>
@@ -102,11 +102,11 @@ hideMeta: true
 <span>Waybar</span>
 <span>Shell</span>
 <span>CSS</span>
-<span>Dotfiles</span>
+<span>OS</span>
 </div>
 <div class="project-links">
 <a href="https://github.com/ahmad9059/HyprFlux" target="_blank" rel="noopener noreferrer">GitHub</a>
-<a href="https://www.hyprflux.dev" target="_blank" rel="noopener noreferrer">Live Demo</a>
+<a href="https://www.hyprflux.dev" target="_blank" rel="noopener noreferrer">Website</a>
 </div>
 </div>
 </div>
