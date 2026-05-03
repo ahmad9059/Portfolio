@@ -238,7 +238,7 @@ An IAM principal can access an S3 object if:
    - Save changes.
 5. **Result**
    - Any object in the bucket (example: `coffee.jpg`) is now accessible via its **Object URL**.
-   - You can test by copying the URL and opening it in the browser — the image/file will be publicly visible.
+   - You can test by copying the URL and opening it in the browser. The image/file will be publicly visible.
 
 ![S3 bucket policy applied to make objects publicly accessible via GetObject](/posts/assets/aws/img-47.webp)
 

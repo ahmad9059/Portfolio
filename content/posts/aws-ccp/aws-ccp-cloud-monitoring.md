@@ -356,7 +356,7 @@ X-Ray solves this by giving a **centralized trace** of all service interactions.
 - Used for **distributed tracing** across multiple AWS services.
 - Best for **troubleshooting**, **performance analysis**, and **microservices visualization**.
 - Integrated with **EC2, Lambda, ECS, API Gateway, and more**.
-- No hands-on for the CCP exam—**just understand what it does**.
+- No hands-on for the CCP exam: **just understand what it does**.
 
 
 

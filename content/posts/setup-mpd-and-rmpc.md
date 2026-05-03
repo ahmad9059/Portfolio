@@ -25,7 +25,7 @@ keywords:
 
 ## What is RMPC?
 
-RMPC is a **TUI (terminal UI) client** for MPD — it does _not_ do audio output itself, it just sends commands to MPD. ([mierak.github.io](https://mierak.github.io/rmpc/next/installation "Installation | rmpc - GitHub Pages"))
+RMPC is a **TUI (terminal UI) client** for MPD. It does _not_ do audio output itself, it just sends commands to MPD. ([mierak.github.io](https://mierak.github.io/rmpc/next/installation "Installation | rmpc - GitHub Pages"))
 
 So the setup has two parts:
 
@@ -220,4 +220,4 @@ If it fails to connect, check:
 - **Wrong path / username in config**: Be careful with your home path.
 - **Permissions**: The MPD process must have access rights.
 - **Audio output misconfigured**: If you pick `pipewire`, `pulse`, or `alsa`, ensure your system’s audio pipeline is compatible.
-- **Failure on MIDI files**: Some decoder plugins (e.g. wildmidi) may complain if dependencies missing — usually ignorable if you don’t use MIDI.
+- **Failure on MIDI files**: Some decoder plugins (e.g. wildmidi) may complain if dependencies missing. Usually ignorable if you don’t use MIDI.

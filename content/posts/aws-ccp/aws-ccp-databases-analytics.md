@@ -508,7 +508,7 @@ Amazon DocumentDB is a **fully managed, MongoDB-compatible NoSQL database** for 
 
 - **Type**: Fully managed **graph database**.
 - **Use case**: Handles **highly connected datasets** (e.g., social networks).
-   - Example: Users have friends, posts, comments, likes, and shares — all form a **graph** of relationships.
+   - Example: Users have friends, posts, comments, likes, and shares, all form a **graph** of relationships.
 
 ![Amazon Neptune graph database showing interconnected social network relationships](/posts/assets/aws/img-76.webp)
 

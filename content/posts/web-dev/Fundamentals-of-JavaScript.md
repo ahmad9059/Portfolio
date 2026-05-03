@@ -26,11 +26,11 @@ Author: Ahmad Hassan
 
 ![JS Image](/posts/assets/web/JS/js.webp)
 
-JavaScript was originally created to bring static web pages to life, enabling them to respond dynamically to user interactions. Its code, known as scripts, is directly embedded within HTML documents and executed by the browser as soon as the page loads. Because these scripts are delivered and interpreted as plain text, they bypass the need for a separate compilation process—this makes development swift and flexible.
+JavaScript was originally created to bring static web pages to life, enabling them to respond dynamically to user interactions. Its code, known as scripts, is directly embedded within HTML documents and executed by the browser as soon as the page loads. Because these scripts are delivered and interpreted as plain text, they bypass the need for a separate compilation process. This makes development swift and flexible.
 
 This interpretive nature is a key characteristic of JavaScript and distinguishes it from compiled languages like Java. Whereas Java requires a compile step to transform code into bytecode before execution, JavaScript’s immediate execution model facilitates rapid testing and iterative development. Over time, JavaScript has evolved from a simple tool for adding interactivity to a robust language capable of handling complex web applications, manipulating the Document Object Model (DOM), and even running on servers through environments like Node.js.
 
-In essence, JavaScript’s design philosophy—enabling live, responsive web experiences with minimal overhead—continues to shape the modern, dynamic web.
+In essence, JavaScript’s design philosophy (enabling live, responsive web experiences with minimal overhead) continues to shape the modern, dynamic web.
 
 *Tip:* **Brendan Eich** is the original developer of JavaScript
 

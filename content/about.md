@@ -82,7 +82,7 @@ Contributed to frontend and backend projects in a startup environment. Built fea
 
 ## Open Source & Projects
 
-My most well-known project is [**HyprFlux**](https://hyprflux.dev), a complete Arch Linux desktop operating system — branded live ISO, TUI installer, Hyprland desktop environment, boot theming, and developer tooling in one cohesive project. It has earned over 800 stars on GitHub, and I actively maintain it for the Hyprland community.
+My most well-known project is [**HyprFlux**](https://hyprflux.dev), a complete Arch Linux desktop operating system with branded live ISO, TUI installer, Hyprland desktop environment, boot theming, and developer tooling in one cohesive project. It has earned over 800 stars on GitHub, and I actively maintain it for the Hyprland community.
 
 Other projects I've built include:
 

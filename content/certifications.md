@@ -415,7 +415,7 @@ hideMeta: true
 
 <div class="achievement-item">
 <h3>HyprFlux - 800+ Stars</h3>
-<p>Created HyprFlux, a complete Arch Linux desktop operating system with branded live ISO, TUI installer, Hyprland desktop, and managed desktop environment — reached 800+ stars on GitHub.</p>
+<p>Created HyprFlux, a complete Arch Linux desktop operating system with branded live ISO, TUI installer, Hyprland desktop, and managed desktop environment. It reached 800+ stars on GitHub.</p>
 <div class="date">2025</div>
 </div>
 

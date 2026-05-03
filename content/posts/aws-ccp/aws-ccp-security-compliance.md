@@ -336,7 +336,7 @@ Apply **custom rules** to detect and block:
 A **centralized security management service** that lets you **configure and manage firewall rules across multiple AWS accounts** within your **AWS Organization**.
 
 **Purpose:**  
-Ensure consistent security policies across all accounts and resources — **current and future** — in your organization.
+Ensure consistent security policies across all accounts and resources (current and future) in your organization.
 
 ### Key Capabilities
 
@@ -375,10 +375,10 @@ The **most common exam question** mentions **“managing Security Groups across 
 
 ### Benefits
 
-**Centralized Management** — single dashboard for all accounts.  
-**Consistent Security** — automatic rule propagation.  
-**Reduced Misconfiguration Risk** — no need to manually set up firewalls per account.  
-**Integration with AWS Security Hub** — combined visibility and compliance checks.
+**Centralized Management**: single dashboard for all accounts.  
+**Consistent Security**: automatic rule propagation.  
+**Reduced Misconfiguration Risk**: no need to manually set up firewalls per account.  
+**Integration with AWS Security Hub**: combined visibility and compliance checks.
 
 ### AWS Firewall Manager vs Similar Services
 
@@ -695,7 +695,7 @@ It uses **machine learning, anomaly detection, and integrated threat intelligenc
    - Detects unusual or unauthorized behavior in AWS environments.
    - Uses **machine learning** and **third-party threat intelligence** feeds.
 2. **No Infrastructure Setup**
-   - Fully managed service — **no software installation** or agents required.
+   - Fully managed service: **no software installation** or agents required.
    - Can be **enabled in one click** with a **30-day free trial**.
 3. **Data Sources (Inputs)**
    - **Mandatory sources:**
@@ -819,7 +819,7 @@ When a new CVE (vulnerability) is released:
 Focus Points:
 
 - Inspector = **Vulnerability management**, **not threat detection**.
-- Scans **EC2, ECR, Lambda** — nothing else.
+- Scans **EC2, ECR, Lambda**: nothing else.
 - Uses **SSM Agent** for EC2 scanning.
 - **Continuous**, **automated**, and **CVE-based**.
 - **Integrates with Security Hub and EventBridge** for central visibility and automation.
@@ -909,7 +909,7 @@ A security group allows unrestricted SSH access (`0.0.0.0/0`).
 
 ### Pricing & Access
 
-- **Not free** — charges per configuration item recorded and evaluated.
+- **Not free**: charges per configuration item recorded and evaluated.
 - Access via **AWS Management Console → AWS Config**.
 
 ### **Common Use Cases**
@@ -1159,7 +1159,7 @@ These are **exclusive to the root user** and may appear on the exam:
    - **Change or cancel** your AWS Support plan.
 4. **Reserved Instance Marketplace**
    - **Register as a seller** in the **Reserved Instance Marketplace**.  
-       _(Example: If you bought a 3-year Reserved Instance but don’t need it after 2 years, you can resell it — only the root user can register as a seller.)_
+       _(Example: If you bought a 3-year Reserved Instance but don’t need it after 2 years, you can resell it. Only the root user can register as a seller.)_
 5. **Amazon S3**
    - **Enable MFA Delete** on an S3 bucket.
    - **Edit or delete bucket policies** that contain **invalid VPC IDs or endpoint IDs**.
@@ -1259,7 +1259,7 @@ Findings can have different **statuses**:
 - It’s **free**, **automated**, and **available in IAM console**.
 
 
-## AWS Security & Compliance — Summary Notes
+## AWS Security & Compliance: Summary Notes
 ---
 
 ### Shared Responsibility Model

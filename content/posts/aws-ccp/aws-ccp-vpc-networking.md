@@ -217,8 +217,8 @@ Private subnet → NAT Gateway → Internet Gateway → Internet
 
 ### Two Main Security Layers
 
-1. **Network ACL (NACL)** — subnet-level firewall
-2. **Security Group (SG)** — instance-level firewall
+1. **Network ACL (NACL)**: subnet-level firewall
+2. **Security Group (SG)**: instance-level firewall
 
 These work **together** to secure traffic _to and from_ your EC2 instances inside a VPC.
 
@@ -237,7 +237,7 @@ These work **together** to secure traffic _to and from_ your EC2 instances insid
 |**Scope**|Subnet-level|
 |**Rules**|Can **ALLOW** or **DENY** traffic|
 |**Direction**|Separate inbound and outbound rules|
-|**Statefulness**|**Stateless** — return traffic must be explicitly allowed|
+|**Statefulness**|**Stateless**: return traffic must be explicitly allowed|
 |**Default NACL**|Allows all inbound and outbound traffic|
 |**Custom NACLs**|Start with _DENY ALL_ rules (must explicitly allow)|
 |**Rules use**|Only **IP addresses** (no SG references)|
@@ -265,7 +265,7 @@ These work **together** to secure traffic _to and from_ your EC2 instances insid
 |**Scope**|Instance-level|
 |**Rules**|**ALLOW only** (no DENY rules)|
 |**Direction**|Separate inbound and outbound rules|
-|**Statefulness**|**Stateful** — return traffic automatically allowed|
+|**Statefulness**|**Stateful**: return traffic automatically allowed|
 |**References**|Can reference **IP addresses** or **other security groups**|
 |**Default SG**|Allows **no inbound**, but **all outbound** traffic|
 
@@ -668,7 +668,7 @@ It simplifies complex network topologies and replaces the need for multiple VPC 
 
 ### Core Concepts
 
-- **VPC** stands for **Virtual Private Cloud** — your **isolated private network** within AWS.
+- **VPC** stands for **Virtual Private Cloud**: your **isolated private network** within AWS.
 - **Subnet**: a subdivision of your VPC, tied to a **specific Availability Zone**.
 
 ### Internet Connectivity

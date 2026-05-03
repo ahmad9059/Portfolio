@@ -353,7 +353,7 @@ Author: Ahmad Hassan
 - **AWS Outposts** is a **fully managed service** that brings **AWS infrastructure, services, APIs, and tools** **on-premises**.
 - In simple words, AWS installs **server racks (Outposts racks)** **inside your data center**.
 - These racks run **the same AWS hardware and software** as used in AWS data centers.
-- You manage them **through the same AWS Console, CLI, or APIs**—no difference.
+- You manage them **through the same AWS Console, CLI, or APIs**, no difference.
 
 ### How It Works
 
@@ -536,8 +536,8 @@ _(If the question mentions **5G or telecom edge**, that’s **AWS Wavelength** i
 | Aspect                     | Description                                              |
 | -------------------------- | -------------------------------------------------------- |
 | **Setup**                  | One EC2 instance in one AZ in one region                 |
-| **High Availability (HA)** | ❌ No — single point of failure                           |
-| **Global Reach**           | ❌ Poor — users far from the region face **high latency** |
+| **High Availability (HA)** | ❌ No: single point of failure                           |
+| **Global Reach**           | ❌ Poor: users far from the region face **high latency** |
 | **Difficulty Level**       | ⭐ Very simple                                            |
 | **Use Case**               | Testing, development, or non-critical workloads          |
 
@@ -548,8 +548,8 @@ _(If the question mentions **5G or telecom edge**, that’s **AWS Wavelength** i
 |Aspect|Description|
 |---|---|
 |**Setup**|EC2 instances (and other resources) in multiple AZs within the same region|
-|**High Availability (HA)**|✅ Yes — because of **redundancy across AZs**|
-|**Global Reach**|❌ No — still serves users from one region only|
+|**High Availability (HA)**|✅ Yes: because of **redundancy across AZs**|
+|**Global Reach**|❌ No: still serves users from one region only|
 |**Difficulty Level**|⭐⭐ Slightly increased|
 |**Use Case**|Production workloads needing fault tolerance within one region|
 
@@ -563,7 +563,7 @@ _(If the question mentions **5G or telecom edge**, that’s **AWS Wavelength** i
 |**Data Replication**|✅ Data replicated from active → passive regions|
 |**Reads/Writes**|Reads may happen from passive, but **writes only allowed in active** region|
 |**Latency**|✅ Better read latency (data closer to users), ❌ Writes still go to one region|
-|**Difficulty Level**|⭐⭐⭐ Moderate — requires replication and failover setup|
+|**Difficulty Level**|⭐⭐⭐ Moderate: requires replication and failover setup|
 |**Example**|Backup/DR setups, S3 cross-region replication, RDS read replicas|
 |**Failover Behavior**|If active region fails → passive becomes active|
 |**Use Case**|Disaster Recovery (DR) or read-heavy global workloads|
@@ -575,10 +575,10 @@ _(If the question mentions **5G or telecom edge**, that’s **AWS Wavelength** i
 |Aspect|Description|
 |---|---|
 |**Setup**|Multiple regions, each region is **fully active**|
-|**Data Replication**|✅ Bidirectional — data synchronized across all regions|
+|**Data Replication**|✅ Bidirectional: data synchronized across all regions|
 |**Reads/Writes**|✅ Both reads and writes in all regions|
 |**Latency**|✅ Lowest for both reads and writes globally|
-|**Difficulty Level**|⭐⭐⭐⭐ High — complex synchronization logic needed|
+|**Difficulty Level**|⭐⭐⭐⭐ High: complex synchronization logic needed|
 |**Example**|DynamoDB Global Tables, Route 53 latency-based routing, global web apps|
 |**Use Case**|Mission-critical applications needing **global low-latency** and **no single point of failure**|
 
@@ -676,4 +676,4 @@ If the question says:
 **Key Takeaway:**  
 
 - AWS provides multiple global services to improve **latency, performance, and availability** for worldwide users.  
-- Each service addresses a different part of global infrastructure — **DNS, content delivery, data transfer, networking, or edge computing**.
+- Each service addresses a different part of global infrastructure: **DNS, content delivery, data transfer, networking, or edge computing**.

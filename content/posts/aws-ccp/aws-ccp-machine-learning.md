@@ -73,7 +73,7 @@ No need to memorize technical implementation details.
 ### Overview
 
 - **Purpose:** Converts **speech to text automatically** using **machine learning**.
-- **Technology Used:** **ASR (Automatic Speech Recognition)** — a deep learning process for fast and accurate transcription.
+- **Technology Used:** **ASR (Automatic Speech Recognition)**: a deep learning process for fast and accurate transcription.
 
 ### Key Features
 
@@ -324,7 +324,7 @@ A **fully managed service** that helps **developers and data scientists** build,
 
 - Most other AWS AI/ML services (like Polly, Rekognition, Translate, etc.) solve **specific ML problems**.
 - **SageMaker** is a **general-purpose ML platform** for creating your **own custom ML models**.
-- It handles the **end-to-end ML workflow** — from **data preparation to model deployment**.
+- It handles the **end-to-end ML workflow**: from **data preparation to model deployment**.
 
 ### Key Features
 
@@ -426,7 +426,7 @@ If the exam question mentions _document or knowledge search using natural langua
 ---
 
 **Purpose:**  
-A **fully managed machine learning service** that lets you easily **build real-time personalized recommendations** for users — the same technology used by **Amazon.com**.
+A **fully managed machine learning service** that lets you easily **build real-time personalized recommendations** for users, the same technology used by **Amazon.com**.
 
 ### Key Features
 
@@ -436,7 +436,7 @@ A **fully managed machine learning service** that lets you easily **build real-t
 |**Real-Time Personalization**|Generates recommendations dynamically as users interact with your app or website.|
 |**Input Data from S3**|Feeds in data such as user activity, purchase history, or product catalog stored in **Amazon S3**.|
 |**API Integration**|Uses **Amazon Personalize APIs** to send data and receive personalized results in real time.|
-|**Fast Deployment**|Takes **days (not months)** to implement — no need to manually build, train, or deploy ML models.|
+|**Fast Deployment**|Takes **days (not months)** to implement: no need to manually build, train, or deploy ML models.|
 |**Omnichannel Use**|Works across **websites, mobile apps, SMS, and email** for customized user engagement.|
 
 ### Example Use Case
@@ -456,9 +456,9 @@ A **fully managed machine learning service** that lets you easily **build real-t
 
 ### Benefits
 
-- **Fully managed** — no ML expertise required.
-- **Scalable** — handles millions of users and products.
-- **Real-time predictions** — updates instantly with user activity.
+- **Fully managed**: no ML expertise required.
+- **Scalable**: handles millions of users and products.
+- **Real-time predictions**: updates instantly with user activity.
 - **Integrates easily** with existing applications.
 
 
@@ -482,7 +482,7 @@ A **fully managed machine learning service** that lets you easily **build real-t
 
 Amazon **Textract** is an **AI and machine learning service** that automatically extracts **text, handwriting, and data** from scanned documents such as **PDFs or images**.
 
-It can identify and extract information from **forms, tables, and structured documents**—for example, fields like **name, date of birth, or ID number** from a driver’s license.
+It can identify and extract information from **forms, tables, and structured documents**. For example, fields like **name, date of birth, or ID number** from a driver’s license.
 
 **Use cases include:**
 

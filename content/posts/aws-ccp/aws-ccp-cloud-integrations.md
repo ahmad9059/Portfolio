@@ -89,7 +89,7 @@ Author: Ahmad Hassan
 - **SQS (Simple Queue Service)** is used to **decouple applications**.
 - It is **fully managed** and **serverless**.
 - One of the **oldest AWS services** (over 10 years old).
-- Handles any scale — from **1 msg/sec** to **tens of thousands/sec**.
+- Handles any scale: from **1 msg/sec** to **tens of thousands/sec**.
 
 ### Concept of a Queue
 
@@ -101,7 +101,7 @@ Author: Ahmad Hassan
 3. **Consumers** poll (retrieve) messages.
 4. Once processed, the message is **deleted** from the queue.
 
-**Producers and consumers are decoupled** — they work **independently** and at **different speeds**.
+**Producers and consumers are decoupled**. They work **independently** and at **different speeds**.
 
 ![SQS queue with producers sending messages and consumers polling messages](/posts/assets/aws/img-118.webp)
 

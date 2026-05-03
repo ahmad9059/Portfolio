@@ -799,10 +799,10 @@ AWS Budgets allow **detailed monitoring** of costs, usage, and reservations, wit
 
 #### Types of Budgets
 
-1. **Cost Budget** — Track how much money you spend.
-2. **Usage Budget** — Track usage of specific resources (e.g., EC2 hours, S3 GB).
-3. **Reservation Budget** — Monitor **Reserved Instance** utilization.
-4. **Savings Plan Budget** — Monitor **Savings Plan** utilization.
+1. **Cost Budget**: Track how much money you spend.
+2. **Usage Budget**: Track usage of specific resources (e.g., EC2 hours, S3 GB).
+3. **Reservation Budget**: Monitor **Reserved Instance** utilization.
+4. **Savings Plan Budget**: Monitor **Savings Plan** utilization.
 
 #### Supported Services for RI Budgets
 
@@ -874,7 +874,7 @@ AWS Budgets allow **detailed monitoring** of costs, usage, and reservations, wit
 |**Billing Alarm**|Sends alert when total cost exceeds threshold|Basic alert only|
 |**AWS Budgets**|Advanced tracking with forecasts, filters, and multiple alerts|4 types (Cost, Usage, RI, Savings Plan)|
 |**Notifications**|Up to 5 per budget|Via SNS (email, Lambda, etc.)|
-|**Cost**|First 2 free, then $0.02/day|—|
+|**Cost**|First 2 free, then $0.02/day|N/A|
 |**Integration**|Linked with Cost Explorer|Enables deeper analysis|
 
 

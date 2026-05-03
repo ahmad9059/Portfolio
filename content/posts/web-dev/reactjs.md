@@ -1124,7 +1124,7 @@ useEffect(() => {
 
 ### React Component Lifecycle
 
-The **component lifecycle** refers to the sequence of methods/functions that are invoked during the life of a React component — from its creation to its removal from the DOM.
+The **component lifecycle** refers to the sequence of methods/functions that are invoked during the life of a React component, from its creation to its removal from the DOM.
 
 #### 🧱 3 Main Phases:
 
@@ -1572,4 +1572,4 @@ export function Counter() {
 
 
 
-There is always room for improvement and continuous learning, but we'll end this note/article here. We've gained valuable knowledge about React — congratulations!
+There is always room for improvement and continuous learning, but we'll end this note/article here. We've gained valuable knowledge about React. Congratulations!
