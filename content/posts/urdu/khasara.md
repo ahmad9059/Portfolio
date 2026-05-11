@@ -6,6 +6,7 @@ author: Ahmad Hassan
 authorUr: "احمد حسن"
 description: "کتی جا کتی جا میرے دل کو تو چکنا چور. خسارہ، ایک گیت جو ضائع ہوئی محبت اور ناامیدی کی کہانی بیان کرتا ہے"
 textLang: ur
+hideFromPostsList: true
 categories:
   - life
   - urdu

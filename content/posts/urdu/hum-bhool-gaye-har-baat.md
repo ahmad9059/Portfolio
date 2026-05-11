@@ -6,7 +6,7 @@ author: Ahmad Hassan
 authorUr: "احمد حسن"
 description: "کیا کیا ہوا دل کے ساتھ، مگر تیرا پیار نہیں بھولے"
 textLang: ur
-# hideFromPostsList: true
+hideFromPostsList: true
 categories:
   - life
   - urdu
