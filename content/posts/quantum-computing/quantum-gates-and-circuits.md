@@ -101,6 +101,8 @@ Without CNOT (or some other entangling gate), a quantum computer would be limite
 
 ## Other Common Gates
 
+![Common quantum gate operations: X, Z, Hadamard, and CNOT with their effects and universal gate sets](/posts/assets/quantum/gate-operations.svg)
+
 **S gate.** The S gate applies a phase of `i` (90 degrees) to `|1⟩`. It is the square root of Z. Calling S twice gives you Z. It is useful for fine-grained phase control.
 
 ```
@@ -122,6 +124,8 @@ T = [[1, 0],
 **Rz and Ry gates.** Parametric rotations around the Z and Y axes. `Rz(θ)` rotates by angle `θ` around Z. `Ry(θ)` rotates by `θ` around Y. These are the building blocks for variational quantum algorithms like VQE and QAOA, where the angles are optimized by a classical optimizer.
 
 ## Building a Quantum Circuit
+
+![Bell state quantum circuit showing H gate and CNOT gate creating entanglement](/posts/assets/quantum/bell-state-circuit.svg)
 
 A quantum circuit is a sequence of gates applied to qubits, followed by measurement. You draw it left to right. Each horizontal line represents a qubit. Gates are boxes on the lines. Measurement is a meter symbol at the end.
 

@@ -56,6 +56,8 @@ The solution is both elegant and expensive: encode one logical qubit across mult
 
 ## How Quantum Error Correction Works
 
+![Surface code grid showing data qubits and ancilla qubits with error detection](/posts/assets/quantum/surface-code.svg)
+
 The key insight is indirect measurement. Instead of measuring the logical qubit directly, you measure parity checks called stabilizers. These are collective properties of the physical qubits that reveal whether an error has occurred without revealing the logical state itself.
 
 Here is a simplified example using the three-qubit repetition code for bit-flip errors.
@@ -75,6 +77,8 @@ Modern quantum error correction converges on the surface code. It uses a 2D grid
 The surface code has several advantages. It requires only nearest-neighbor interactions on a 2D grid, which matches the physical layout of superconducting qubit processors. It has a high error threshold around 1%, meaning the physical error rate only needs to be below 1% for the code to work. And it scales well. More physical qubits means better protection.
 
 ## Physical Qubits vs Logical Qubits
+
+![Physical vs logical qubits comparison showing the 1000x overhead of error correction](/posts/assets/quantum/physical-vs-logical.svg)
 
 This distinction is critical and widely misunderstood.
 

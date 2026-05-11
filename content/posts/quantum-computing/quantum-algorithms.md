@@ -37,6 +37,8 @@ This is not the same as "trying all possibilities in parallel." That description
 
 ## Grover's Search Algorithm
 
+![Grover's search algorithm circuit diagram showing oracle and diffuser iterations](/posts/assets/quantum/grover-circuit.svg)
+
 The problem: you have an unsorted list of N items and you want to find the one that satisfies a condition. Classically, you check each item one by one. On average, you need N/2 checks. In the worst case, you need N.
 
 Grover's algorithm solves this in `O(√N)` steps. A quadratic speedup. For a million items, it needs about 1000 checks instead of 500,000.
@@ -52,6 +54,8 @@ The speedup is quadratic, not exponential. For some problems, that is still mass
 The real power of Grover is its generality. It is not just for database search. Any problem that can be framed as "find the input that satisfies this condition" can use Grover as a subroutine. This includes satisfiability, collision finding, and optimization within constant factors.
 
 ## Shor's Factoring Algorithm
+
+![Shor's factoring algorithm flowchart showing period finding via QFT](/posts/assets/quantum/shor-flowchart.svg)
 
 The problem: given a composite number N, find its prime factors. Classically, the fastest known algorithm runs in sub-exponential time. For a 2048-bit RSA key, factoring would take longer than the age of the universe on current supercomputers. This is why RSA encryption works.
 

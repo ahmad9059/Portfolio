@@ -26,6 +26,8 @@ A quantum computer thinks in qubits. A qubit can be 0, 1, or both at the same ti
 
 Understanding quantum computing starts with understanding four ideas: superposition, entanglement, measurement, and the computational gap they create.
 
+![Bloch sphere showing qubit state with theta and phi angles](/posts/assets/quantum/bloch-sphere.svg)
+
 ## The Qubit
 
 A classical bit is a switch. Off or on. 0 or 1. You read it, you get one value.
@@ -43,6 +45,8 @@ When you measure the qubit, it collapses. You get 0 with probability `|α|²` an
 This is the first thing that confuses people. Superposition does not mean the qubit is "random." It means the qubit encodes probability amplitudes, which are complex numbers that can interfere with each other. This interference is what makes quantum computing powerful.
 
 ## Superposition in Practice
+
+![Classical bits vs qubits showing exponential state space](/posts/assets/quantum/superposition.svg)
 
 One qubit in superposition holds two states at once. Two qubits hold four. Three hold eight. `n` qubits hold `2ⁿ` states.
 
