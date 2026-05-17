@@ -1,28 +1,66 @@
-# Portfolio Project — Context Reference
+# Ahmad Hassan Portfolio — AI Agent Context
 
-**Site:** https://ahmadx.dev  
-**Owner:** Ahmad Hassan — Software Engineer & Full Stack Developer, Pakistan  
-**Employer:** VieroMind  
-**Education:** MNS University of Agriculture, Multan  
+## Project Overview
+
+**Name:** Ahmad Hassan Portfolio (`ahmadx.dev`)
+**Type:** Static portfolio website with AI-powered RAG chat feature
+**Stack:** Hugo 0.140.2 (extended) + PaperMod theme + Vercel deployment + Node.js API functions
+**Repository:** `/home/ahmad/Documents/Projects/Portfolio/`
+**Live URL:** https://ahmadx.dev
 
 ---
 
-## Stack at a Glance
+## Project Type & Purpose
+
+This is a personal portfolio, blog, and certification showcase for **Ahmad Hassan** — a Software Engineer and Full Stack Developer from Multan, Pakistan. The site also features an AI-powered chat assistant (RAG-based) that answers questions about Ahmad's background, projects, skills, certifications, and experience.
+
+The project consists of two main parts:
+1. **Hugo Static Site** — Portfolio pages, blog posts, certifications, tools/setup page, contact page
+2. **Vercel Serverless API** — RAG chat endpoint (`/api/chat`) powered by Gemini AI and Pinecone vector search
+
+---
+
+## Architecture
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                         BROWSER                                     │
+│  Portfolio Site (ahmadx.dev)     Chat Interface (ahmadx.dev/chat/) │
+└─────────────────────────────┬───────────────────────────────────────┘
+                              │
+              ┌───────────────┴───────────────┐
+              │                               │
+     ┌────────▼───────────────┐    ┌──────────▼────────────┐
+     │   Hugo Static Site     │    │  Vercel Serverless   │
+     │   (vercel.json)        │    │  API Functions       │
+     │   hugo --gc --minify   │    │  /api/chat.js        │
+     └────────────────────────┘    │  /api/health.js      │
+                                    │  /api/ping.js        │
+                                    └──────────┬────────────┘
+                                               │
+                              ┌────────────────┼────────────────┐
+                              │                │                │
+                     ┌────────▼────────┐ ┌────▼────┐  ┌─────────▼────┐
+                     │  Gemini API     │ │ Pinecone│  │ Local       │
+                     │  (Embeddings +  │ │ (Vector │  │ Fallback    │
+                     │   Generation)  │ │ Search) │  │ (embeddings │
+                     └─────────────────┘ └─────────┘  │  .json)     │
+                                                     └─────────────┘
+```
+
+### Technology Stack
 
 | Layer | Technology |
-|---|---|
-| Static site generator | Hugo 0.140.2 (extended) |
-| Theme | PaperMod (vendored, heavily customized) |
-| Frontend | Vanilla HTML / CSS / JS — zero framework |
-| Fonts | JetBrains Mono + Work Sans (Google Fonts, non-render-blocking) + Noto Nastaliq Urdu (self-hosted) |
-| Client search | Fuse.js 7.0.0 (lazy CDN load) |
-| AI chat backend | Node.js Vercel Serverless Functions |
-| AI text generation | Google Gemini (`gemini-2.5-flash` → `gemini-2.5-flash-lite` fallback) |
-| AI embeddings | `gemini-embedding-001` (3072 dimensions) |
-| Vector DB | Pinecone (serverless, `portfolio-rag` index, `ahmad-knowledge` namespace) |
-| Deployment | Vercel |
-| Analytics | Google Analytics `G-2GLY0PDB4W` |
-| Build command | `hugo --gc --minify` |
+|-------|------------|
+| Static Site Generator | Hugo 0.140.2 (extended) |
+| Theme | PaperMod (bundled locally under `themes/PaperMod`) |
+| Deployment | Vercel (`vercel.json` with `hugo --gc --minify`) |
+| API Runtime | Vercel Serverless Functions (Node.js) |
+| AI - Embeddings | Google Gemini Embedding API (`gemini-embedding-001`) |
+| AI - Generation | Google Gemini 2.5 Flash / Flash Lite |
+| Vector Search | Pinecone (optional, with local fallback) |
+| Search UI | Fuse.js with keyboard shortcut overlay (Ctrl+K or /) |
+| Styling | Custom CSS (shadcn/ui-inspired palette) |
 
 ---
 
@@ -30,517 +68,575 @@
 
 ```
 Portfolio/
-├── hugo.yaml                    # Master Hugo config (menus, params, SEO, theme)
-├── vercel.json                  # Vercel build config + API rewrites
-├── dev-server.js                # Local Node.js API dev server (port 3001)
-├── quickScript.sh               # Obsidian vault sync → git push automation
-├── .env                         # Local env vars: GEMINI_API_KEY, PINECONE_API_KEY
+├── api/                         # Vercel serverless API functions (Node.js)
+│   ├── chat.js                  # Main RAG chat handler (467 lines)
+│   ├── health.js                # Health check endpoint
+│   ├── ping.js                  # Ping endpoint
+│   ├── embeddings.json          # Pre-computed vector embeddings (~248 vectors)
+│   ├── knowledge.json           # RAG knowledge chunks (248 entries)
+│   ├── generate-embeddings.js    # Script to generate embeddings
+│   ├── upload-to-pinecone.js    # Script to upload to Pinecone
+│   ├── package.json             # Dependencies (Pinecone SDK)
+│   ├── chat.js                  # Main RAG chat handler
+│   └── node_modules/
 │
-├── content/                     # All site content (Markdown)
-│   ├── about.md
-│   ├── projects.md              # Embeds raw HTML/CSS — project card grid
-│   ├── certifications.md        # Embeds raw HTML/CSS — tabbed gallery + modal zoom
-│   ├── tools.md
-│   ├── contact.md
-│   ├── chat.md                  # Uses chat.html layout
-│   ├── search.md                # Uses search.html layout
-│   └── posts/                   # 43 blog posts (see Blog Posts section)
-│
-├── layouts/
-│   ├── _default/
-│   │   ├── baseof.html          # Base template
-│   │   ├── chat.html            # Full chat UI (766 lines — HTML + CSS + JS)
-│   │   ├── search.html          # Search page layout
-│   │   ├── terms.html           # Tag listing with SVG category icons
-│   │   ├── sitemap.xml          # Custom sitemap template
-│   │   └── _markup/             # Goldmark render hooks
-│   └── partials/
-│       ├── extend_head.html     # JSON-LD schemas + Twitter meta + Google Fonts
-│       ├── extend_footer.html   # Search modal + Fuse.js + API warmup script
-│       ├── header.html          # Site header override (theme toggle + hamburger)
-│       ├── footer.html          # Site footer override
-│       ├── head.html            # Head override
-│       └── templates/           # Additional partials
-│
-├── assets/css/
+├── assets/css/                  # Custom CSS stylesheets
 │   ├── core/
-│   │   ├── theme-vars.css       # shadcn/ui-inspired CSS custom properties (light + dark)
-│   │   ├── reset.css
-│   │   └── zmedia.css
-│   ├── common/                  # Page-level styles
-│   │   ├── main.css             # Layout wrapper, pagination, code copy button
-│   │   ├── header.css           # Nav, logo, hamburger, responsive breakpoint
-│   │   ├── footer.css
-│   │   ├── post-single.css      # Blog post page styles
-│   │   ├── post-entry.css       # Blog post list card styles
-│   │   ├── archive.css
-│   │   ├── search.css
-│   │   ├── profile-mode.css
-│   │   ├── terms.css
+│   │   ├── theme-vars.css       # CSS custom properties (light/dark palettes)
+│   │   ├── reset.css            # CSS reset
+│   │   ├── zmedia.css           # Responsive utilities
+│   │   └── license.css
+│   ├── common/                  # Component-specific styles
+│   │   ├── header.css           # Header styling
+│   │   ├── footer.css           # Footer styling
+│   │   ├── post-single.css      # Blog post styling
+│   │   ├── post-entry.css       # Post card styling
+│   │   ├── archive.css          # Archive page styling
+│   │   ├── profile-mode.css     # Profile landing page
+│   │   ├── terms.css            # Tag/category icons
+│   │   ├── search.css           # Search page
 │   │   └── 404.css
-│   ├── extended/
-│   │   ├── code-light.css       # Light-mode syntax highlight overrides + language label
-│   │   ├── urdu-font.css        # Noto Nastaliq Urdu typography
-│   │   └── blank.css            # Stub for extra overrides
+│   ├── extended/                # Theme overrides
+│   │   ├── code-light.css       # Light mode syntax highlighting
+│   │   └── urdu-font.css        # Urdu/Nastaliq typography support
 │   └── includes/
-│       ├── bg-pattern.css       # Background grid pattern
-│       ├── scroll-bar.css
-│       ├── chroma-styles.css    # Hugo syntax highlight base
+│       ├── bg-pattern.css       # Background pattern
+│       ├── scroll-bar.css       # Custom scrollbar
+│       ├── chroma-styles.css    # Syntax highlighting colors
 │       └── chroma-mod.css
 │
-├── static/                      # Served as-is (no Hugo processing)
-│   ├── Ahmad-Hassan-Resume.pdf
-│   ├── assets/                  # Images (profile, projects, certs), favicons
-│   ├── llms.txt                 # LLM-readable site description (full knowledge base)
-│   └── *.svg                    # check, copy, globe, heart, laptop, sprout icons
+├── content/                     # Hugo content (markdown)
+│   ├── about.md                 # About page with profile card, work experience
+│   ├── projects.md              # Projects grid with 7 project cards
+│   ├── certifications.md        # Tabbed gallery (certifications + achievements)
+│   ├── tools.md                 # Developer setup and tooling write-up
+│   ├── contact.md               # Contact page with social links
+│   ├── chat.md                  # Chat page (layout: "chat")
+│   ├── search.md                # Search page
+│   ├── categories/              # Auto-generated category pages
+│   └── posts/                   # Blog posts (organized by category)
+│       ├── aws-ccp/             # AWS Certified Cloud Practitioner series (18 posts)
+│       ├── shell-scripting/     # Shell scripting articles
+│       ├── web-dev/             # Web development articles
+│       ├── databases/           # Database articles
+│       ├── life/                # Personal/life articles
+│       ├── quantum-computing/    # Quantum computing articles
+│       ├── system-design/       # System design articles
+│       ├── urdu/                # Urdu language articles
+│       ├── vmware-archlinux-installation.md
+│       └── setup-mpd-and-rmpc.md
 │
-├── api/                         # Vercel serverless functions
-│   ├── chat.js                  # Main RAG handler (467 lines)
-│   ├── health.js                # Health check
-│   ├── ping.js                  # Ping endpoint
-│   ├── upload-to-pinecone.js    # One-time script: create index + batch upload embeddings
-│   ├── knowledge.json           # Knowledge chunks (metadata — gitignored or large)
-│   ├── embeddings.json          # Pre-computed 3072-dim vectors (gitignored or large)
-│   ├── package.json             # Only dependency: @pinecone-database/pinecone ^3.0.3
-│   └── README.md                # RAG architecture + Pinecone setup guide
+├── layouts/                     # Hugo template overrides
+│   ├── _default/
+│   │   ├── baseof.html          # Base HTML template
+│   │   ├── terms.html           # Tag/category term pages
+│   │   └── search.html          # Search page template
+│   ├── partials/
+│   │   ├── header.html          # Site header with nav menu and theme toggle
+│   │   ├── footer.html          # Site footer with code copy buttons
+│   │   ├── head.html            # Head element partial
+│   │   ├── extend_head.html     # Custom head additions (SEO, JSON-LD, fonts)
+│   │   ├── extend_footer.html   # Search modal + API warmup script
+│   │   ├── post_meta.html       # Post metadata display
+│   │   └── urdu_digits.html     # Urdu digit conversion
+│   └── chat/                    # Chat page layout (if exists)
 │
+├── static/assets/               # Published static assets
+│   ├── profile-1.webp           # Profile image
+│   ├── desktop.webp             # Setup screenshot
+│   ├── opengraph.webp           # OG image for social sharing
+│   ├── fav.ico                  # Favicon
+│   ├── favicon-16x16.png        # Small favicon
+│   ├── favicon-32x32.png        # Medium favicon
+│   ├── apple-touch-icon.png     # Apple touch icon
+│   ├── projects/                # Project screenshots
+│   │   ├── hyprflux.webp
+│   │   ├── sehatscan.webp
+│   │   ├── hisaabscore.webp
+│   │   ├── raf-sp.webp
+│   │   ├── uam-tracker.webp
+│   │   ├── mindosis.webp
+│   │   └── codinghawks.webp
+│   ├── certification/           # Certification badges/images (22 certifications)
+│   │   ├── aws-cpp.jpg
+│   │   ├── calico.jpg
+│   │   ├── meta-frontend-developer.jpg
+│   │   └── ... (19 more)
+│   └── Ahmad-Hassan-Resume.pdf  # Resume PDF
+│
+├── resources/                   # Hugo generated resources
+│   └── _gen/                   # Generated assets (processed images, etc.)
+│
+├── themes/PaperMod/             # Bundled PaperMod theme (git submodule)
+│   ├── assets/
+│   ├── layouts/
+│   ├── i18n/
+│   ├── static/
+│   └── theme.toml
+│
+├── hugo.yaml                    # Hugo configuration (baseURL, menus, params, outputs)
+├── vercel.json                  # Vercel build configuration
+├── .env                         # Environment variables (GEMINI_API_KEY, PINECONE_API_KEY)
+├── .gitignore                   # Git ignore rules
+├── quickScript.sh               # Local automation script (sync Obsidian → git → push)
 ├── scripts/
-│   └── import-aws-articles.sh   # Batch-import AWS CCP notes from temp/
-│
-├── themes/PaperMod/             # Vendored theme (no git submodule)
-├── temp/                        # Raw Obsidian notes (not published)
-├── archetypes/default.md        # Default front matter for `hugo new`
-├── resources/                   # Hugo resource cache
-└── public/                      # Generated site output (after build)
+│   └── import-aws-articles.sh  # Batch import AWS CCP notes from Obsidian
+├── archetypes/
+│   └── default.md              # Default front matter template for `hugo new`
+├── dev-server.js               # Local development server helper
+└── docs/
+    └── CONTEXT.md              # This file — AI agent context documentation
 ```
 
 ---
 
 ## Hugo Configuration (`hugo.yaml`)
 
-```yaml
-baseURL: "https://ahmadx.dev"
-title: Ahmad Hassan
-theme: PaperMod
-defaultTheme: auto          # respects system light/dark preference
-googleAnalytics: "G-2GLY0PDB4W"
-markup.goldmark.renderer.unsafe: true   # allows raw HTML in Markdown
-highlight.style: dracula                # dark code theme (overridden for light mode)
-outputs.home: [HTML, RSS, JSON]         # JSON powers Fuse.js search index
-```
+**Key settings:**
+- **Base URL:** `https://ahmadx.dev`
+- **Theme:** PaperMod (vendored locally)
+- **Hugo Version Required:** ≥ 0.140.2 (extended)
+- **Default Theme:** `auto` (light/dark based on system preference + localStorage)
+- **Menu Items:** About, Projects, Certs, Blog, Categories, Contact, Chat, Search
+- **Output Formats:** HTML, RSS, JSON (JSON for search index)
+- **Google Analytics:** G-2GLY0PDB4W
+- **Minify:** Enabled (`minifyOutput: true`)
+- **RobotsTXT:** Enabled
+- **Custom CSS Assets:** `css/extended/urdu-font.css`, `css/extended/code-light.css`
 
-**Extra CSS loaded** (via `params.assets.css`):
-- `css/extended/urdu-font.css`
-- `css/extended/code-light.css`
-
-**Menu items** (in order): About → Projects → Certs → Blog → Contact → Chat → Search
-
-**Profile mode** (homepage): name, subtitle, profile image (`/assets/profile-1.webp`), buttons: blogs / tools / resume
-
-**Social icons**: GitHub (`ahmad9059`), LinkedIn (`ahmad9059`), X (`ahmad9059x`), LeetCode (`ahmad9059`), Instagram (`ahmad9059x`), Email (`hi@ahmadx.dev`)
+**Params relevant to styling:**
+- `defaultTheme: auto` — enables light/dark mode switching
+- Theme toggle is enabled (`disableThemeToggle: false`)
+- Code copy buttons are enabled
+- Profile mode is enabled with custom buttons (blogs, tools, resume)
 
 ---
 
-## Vercel Configuration (`vercel.json`)
+## CSS Styling System
+
+### Theme Variables (`assets/css/core/theme-vars.css`)
+
+The site uses a **shadcn/ui-inspired color palette** with custom property names:
+
+**Light Mode Palette:**
+```css
+--background: #ffffff
+--foreground: #0a0a0a
+--card: #ffffff
+--primary: #18181b
+--secondary: #f4f4f5
+--muted: #f4f4f5
+--accent: #ea580c (chart-1 orange)
+--border: #e4e4e7
+--code-block-bg: #f4f4f5
+--code-block-border: #e4e4e7
+```
+
+**Dark Mode Palette:**
+```css
+--background: #0a0a0a
+--foreground: #fafafa
+--card: #0a0a0a
+--primary: #fafafa
+--secondary: #27272a
+--muted: #18181b
+--accent: #1d4ed8 (chart-1 blue)
+--border: #27272a
+--code-block-bg: #0a0a0a
+--code-block-border: #27272a
+```
+
+### Key CSS Files
+
+| File | Purpose |
+|------|---------|
+| `core/theme-vars.css` | CSS custom properties for both light/dark modes |
+| `core/reset.css` | CSS reset |
+| `common/header.css` | Header/nav styling |
+| `common/footer.css` | Footer styling |
+| `common/post-single.css` | Blog post content styling |
+| `common/post-entry.css` | Post card styling |
+| `common/archive.css` | Archive page |
+| `common/profile-mode.css` | Profile landing page |
+| `common/terms.css` | Tag/category icons (life, tech, web) |
+| `extended/code-light.css` | Light mode syntax highlighting |
+| `extended/urdu-font.css` | Urdu Nastaliq typography (`.urdu` class) |
+| `includes/bg-pattern.css` | Background pattern overlay |
+| `includes/scroll-bar.css` | Custom scrollbar styling |
+
+### Background Pattern
+
+The base template (`layouts/_default/baseof.html`) conditionally adds a `.bg-pattern` div on non-post pages:
+```html
+{{ if not (and .IsPage (eq .Section "posts")) }}<div class="bg-pattern"></div>{{ end }}
+```
+
+The pattern is defined in `assets/css/includes/bg-pattern.css`.
+
+---
+
+## Content Pages
+
+### 1. About (`content/about.md`)
+- Profile card with image, name, role, bio, and social links
+- Work experience timeline (VieroMind, BinaryBytes, Digistartup)
+- Open source projects section
+- Technical skills grid
+- Achievements list
+- "Beyond Code" section about Arch Linux/Hyprland setup
+- Contact information
+
+### 2. Projects (`content/projects.md`)
+- 7 project cards in responsive grid (auto-fit, minmax 320px)
+- Each card: image, title, description, tech tags, links (GitHub/Live)
+- Projects: HyprFlux, SehatScan, HisaabScore, RAF-SP, UAM Tracker, MindOasis, CodingHawks
+
+### 3. Certifications (`content/certifications.md`)
+- **Tabbed interface** (Certifications / Achievements)
+- 22 certification cards with modal zoom functionality
+- Verification links to Credly, Coursera, etc.
+- 9 achievement items with descriptions and dates
+- Modal overlay with close on click/Escape key
+
+### 4. Tools (`content/tools.md`)
+- Long-form write-up of daily software/tools
+- Sections: Software, Applications, Theme, Website
+- Setup screenshot image
+- Categories: OS (Arch Linux btw), WM (Hyprland), Terminal (foot, Zsh), Editor (Neovim, VSCodium), etc.
+
+### 5. Contact (`content/contact.md`)
+- Minimal centered layout
+- Email CTA button
+- Social links grid (GitHub, LinkedIn, X, LeetCode)
+- Location display (Multan, Pakistan)
+
+### 6. Chat (`content/chat.md`)
+- Layout set to `"chat"`
+- Custom styling for chat interface
+- Embeds the RAG chat API
+
+### 7. Search (`content/search.md`)
+- Uses PaperMod's search layout
+- Fuse.js powered with JSON index
+
+---
+
+## Blog Posts Structure
+
+Blog posts are organized under `content/posts/` with subdirectories by category:
+
+| Category | Path | Post Count | Examples |
+|----------|------|------------|----------|
+| AWS CCP | `posts/aws-ccp/` | ~18 | Cloud Computing, IAM, EC2, S3, Security, Databases, etc. |
+| Shell Scripting | `posts/shell-scripting/` | ~2 | MPD & R MPC setup |
+| Web Dev | `posts/web-dev/` | ~2 | - |
+| Databases | `posts/databases/` | ~2 | - |
+| Life | `posts/life/` | ~2 | - |
+| Quantum Computing | `posts/quantum-computing/` | ~1 | - |
+| System Design | `posts/system-design/` | ~2 | - |
+| Urdu | `posts/urdu/` | ~2 | Urdu language posts |
+| Root | `posts/` | ~2 | VMware ArchLinux installation, MPD setup |
+
+AWS CCP series posts cover all exam topics with study notes and images.
+
+---
+
+## RAG Chat API (`api/chat.js`)
+
+### Architecture
+
+The chat API implements a **Retrieval-Augmented Generation (RAG)** pattern:
+
+1. **Query Enhancement** — Detects follow-up patterns and prepends previous context
+2. **Embedding** — Queries Gemini embedding API (`gemini-embedding-001`)
+3. **Vector Search** — Searches Pinecone (or local fallback) for relevant knowledge chunks
+4. **Generation** — Streams response from Gemini 2.5 Flash
+
+### Performance Optimizations
+
+| Optimization | Description |
+|-------------|-------------|
+| Float32Arrays | 10-50% faster vector math |
+| Embedding Cache | LRU cache, 100 entries, 30min TTL |
+| Query Result Cache | 50 entries, 10min TTL |
+| Lazy Pinecone Init | Initializes on first use |
+| Local Fallback | Brute-force search if Pinecone fails |
+| Reduced Chunks | 5 retrieved chunks (vs 8) |
+| Smaller Stream Chunks | 2 words per chunk (vs 3) |
+| API Warmup | Background warmup on page load |
+
+### Caching Strategy
+
+```
+Query → Check Query Cache → [HIT] → Return cached result
+            ↓ [MISS]
+      Check Embedding Cache → [HIT] → Use cached embedding
+            ↓ [MISS]
+      Gemini Embedding API → Cache embedding
+            ↓
+      Pinecone Query (or local fallback)
+            ↓
+      Cache result → Build System Prompt → Gemini Generation → Stream Response
+```
+
+### Knowledge Base (`api/knowledge.json`)
+
+248 knowledge chunks across categories:
+- `about` — Biography, work, open source, competitive programming, writing, beyond code
+- `contact` — Contact information
+- `skills` — Technical skills and stack
+- `project` — All 7 projects with descriptions
+- `certification` — Cloud/AI certs, frontend/databases certs, programming certs
+- `achievement` — Competition wins, GitHub stars, rankings
+- `blog` — Blog article links and topics
+
+### System Prompt Persona
+
+The AI responds as "Ahmad Hassan" with rules:
+- First person perspective ("I", "my", "me")
+- Conversational, warm, professional
+- Concise responses (1-3 paragraphs, up to 4 for detailed)
+- Markdown formatting with **bold**, [links](url), bullet lists
+- ALWAYS include relevant URLs when mentioning projects/certs
+- **SAVAGE MODE** for relationship status questions
+- Low relevance detection with graceful fallback
+
+### Rate Limiting
+
+- Window: 60 seconds
+- Max requests: 10 per IP per window
+- Implemented via in-memory Map
+
+### API Endpoints
+
+| Endpoint | Method | Purpose |
+|----------|--------|---------|
+| `/api/chat` | POST | RAG chat with streaming response |
+| `/api/health` | GET | Health check |
+| `/api/ping` | GET | Ping response |
+
+### Vercel Rewrites (`vercel.json`)
+
+```json
+{ "source": "/api/chat", "destination": "/api/chat.js" }
+{ "source": "/api/health", "destination": "/api/health.js" }
+{ "source": "/api/ping", "destination": "/api/ping.js" }
+{ "source": "/personal", "destination": "/api/personal.js" }
+```
+
+### Environment Variables
+
+| Variable | Purpose |
+|----------|---------|
+| `GEMINI_API_KEY` | Google Gemini API key (required) |
+| `PINECONE_API_KEY` | Pinecone vector database key (optional, local fallback available) |
+| `HUGO_VERSION` | Pinned to `0.140.2` in vercel.json |
+| `GO_VERSION` | Pinned to `1.20.6` in vercel.json |
+
+---
+
+## SEO & Metadata
+
+### JSON-LD Structured Data
+
+The site implements comprehensive JSON-LD schemas:
+
+1. **Homepage (`extend_head.html`)** — Person + WebSite graph
+2. **Blog Posts** — BlogPosting schema with author, date, word count
+3. **Projects Page** — ItemList with SoftwareSourceCode entries for each project
+
+### Open Graph & Twitter
+
+- `twitter:creator` — @ahmad9059x
+- `twitter:site` — @ahmad9059x
+- OG image — `/assets/opengraph.webp`
+
+### Meta Tags
+
+- Canonical links
+- `robots` — `index, follow, max-image-preview:large`
+- Keywords from `hugo.yaml` params
+
+### Fonts
+
+Three Google Font families loaded (non-render-blocking):
+- **JetBrains Mono** — Monospace font for code
+- **Work Sans** — Sans-serif for body text
+- **Noto Nastaliq Urdu** — For Urdu language support
+
+---
+
+## Search Functionality
+
+### Implementation
+
+- **Fuse.js** loaded from CDN (`cdn.jsdelivr.net/npm/fuse.js@7.0.0`)
+- **JSON Index** — Hugo generates `/index.json` (configured in `outputs.home`)
+- **Keyboard Shortcut** — `Ctrl+K` or `/` opens search modal
+- **Result Navigation** — Arrow keys + Enter
+
+### Search Modal (`layouts/partials/extend_footer.html`)
+
+- Backdrop blur overlay
+- Input field with ESC to close
+- Results limited to 6 matches
+- Fuse.js `threshold: 0.3` (tight matching)
+- Keyboard navigation support
+
+---
+
+## Deployment
+
+### Vercel Configuration (`vercel.json`)
 
 ```json
 {
-  "build": { "env": { "HUGO_VERSION": "0.140.2", "GO_VERSION": "1.20.6" } },
+  "build": {
+    "env": {
+      "HUGO_VERSION": "0.140.2",
+      "GO_VERSION": "1.20.6"
+    }
+  },
   "buildCommand": "hugo --gc --minify",
   "rewrites": [
-    { "source": "/api/chat",   "destination": "/api/chat.js" },
-    { "source": "/api/health", "destination": "/api/health.js" },
-    { "source": "/api/ping",   "destination": "/api/ping.js" },
-    { "source": "/personal",   "destination": "/api/personal.js" }
+    { "source": "/api/chat", "destination": "/api/chat.js" },
+    ...
   ]
 }
 ```
 
-**Note:** `vercel.json` currently has a syntax duplication bug (the file has two root objects). The first block is the active one.
+### Build Process
+
+1. Vercel installs Hugo 0.140.2 and Go 1.20.6
+2. Runs `hugo --gc --minify`
+3. Output goes to `./public`
+4. Vercel serves static files + API functions
+
+### Theme Handling
+
+PaperMod is vendored under `themes/PaperMod/` — no submodule initialization needed.
 
 ---
 
-## Pages Reference
+## Utilities & Scripts
 
-| Route | Source File | Layout | Notes |
-|---|---|---|---|
-| `/` | Hugo profile mode | profile | Homepage with profile card + social icons + hero buttons |
-| `/about/` | `content/about.md` | default | Bio, experience, open source, competitive programming |
-| `/projects/` | `content/projects.md` | default | Raw HTML grid — 7 project cards |
-| `/certifications/` | `content/certifications.md` | default | Raw HTML — tabbed gallery with modal zoom |
-| `/tools/` | `content/tools.md` | default | Daily tooling writeup |
-| `/contact/` | `content/contact.md` | default | Contact information |
-| `/chat/` | `content/chat.md` | `chat.html` | Full AI chat interface |
-| `/search/` | `content/search.md` | `search.html` | Fuse.js powered search |
-| `/posts/` | `content/posts/*.md` | default | Blog listing + 43 articles |
-| `/api/chat` | `api/chat.js` | serverless | RAG chat endpoint |
-| `/api/health` | `api/health.js` | serverless | Health check |
-| `/api/ping` | `api/ping.js` | serverless | Ping endpoint |
+### `quickScript.sh`
+Local automation script that:
+1. Rsyncs posts from Obsidian vault to `content/posts/`
+2. Git add + commit with timestamp
+3. Git push
 
----
+**Note:** Paths are workstation-specific; must be adjusted before use.
 
-## CSS Architecture
+### `scripts/import-aws-articles.sh`
+Batch-imports AWS CCP notes and assets from Obsidian vault.
 
-### Token System (`assets/css/core/theme-vars.css`)
-
-shadcn/ui-inspired CSS custom properties — full light and dark token sets.
-
-**Light mode key tokens:**
-```css
---background: #ffffff;   --foreground: #0a0a0a;
---card: #ffffff;         --primary: #18181b;
---muted: #f4f4f5;        --muted-foreground: #71717a;
---border: #e4e4e7;       --secondary: #f4f4f5;
---accent: var(--chart-1) /* #ea580c — orange */
---radius: 0.625rem;
-```
-
-**Dark mode key tokens (`.dark` class):**
-```css
---background: #0a0a0a;   --foreground: #fafafa;
---card: #0a0a0a;         --primary: #fafafa;
---muted: #18181b;        --muted-foreground: #a1a1aa;
---border: #27272a;       --secondary: #27272a;
---accent: var(--chart-1) /* #1d4ed8 — blue */
-```
-
-**Legacy bridge vars** (keeps PaperMod internals working):
-```css
---theme: var(--background);
---entry: var(--card);
---tertiary: var(--muted);
---content: var(--foreground);
-```
-
-**Layout vars:**
-```css
---gap: 24px;  --content-gap: 20px;
---nav-width: 1024px;  --main-width: 720px;
---header-height: 60px;  --footer-height: 60px;
-```
-
-### Theme Toggle Logic
-
-Stored in `localStorage` as `pref-theme` (`"dark"` | `"light"`). Falls back to `prefers-color-scheme`. Toggled by clicking the moon/sun button. Handled inline in `layouts/partials/header.html` before first paint.
-
-### Responsive Breakpoints
-
-- `768px` — hamburger menu activates, nav collapses into vertical dropdown
-- `600px` — chat message bubbles expand to 92% width
-
-### Code Block Styling (`assets/css/extended/code-light.css`)
-
-- Light mode bg: `#eef0f3`, border: `#dee2e6`
-- Language label shown top-right, fades on hover to reveal copy button
-- Syntax colors (light): comments `#6a737d`, keywords `#d73a49`, strings `#0a6640`, names `#6f42c1`, numbers `#005cc5`
-- Dark mode uses Hugo's built-in Dracula theme
+### `dev-server.js`
+Local development server helper (not frequently used — prefer `hugo server`).
 
 ---
 
-## AI Chat System (`api/chat.js`)
+## Key Implementation Details
 
-### Architecture Flow
+### PaperMod Profile Mode
 
-```
-POST /api/chat  { message, history[] }
-        │
-        ├─ CORS + OPTIONS handling
-        ├─ Rate limit check (10 req/min per IP, in-memory Map)
-        │
-        ├─ [Greeting shortcut] ─────────────────────────────────────┐
-        │   matches: hi/hello/hey/hii/hola/howdy                    │
-        │   → skip embedding + retrieval                             │
-        │   → callGemini (non-streaming) → simulate word-by-word SSE │
-        │   → return immediately                                     ┘
-        │
-        ├─ buildEnhancedQuery (resolves follow-up fragments against history)
-        │
-        ├─ getQueryEmbedding (Gemini embedding-001, 3072-dim)
-        │   └─ embeddingCache (LRU 100 entries, 30-min TTL)
-        │
-        ├─ initPinecone (lazy, once per cold start)
-        │
-        ├─ retrievePinecone (topK=5, cosine, namespace: ahmad-knowledge)
-        │   └─ queryResultCache (LRU 50 entries, 10-min TTL, key = first 100 chars)
-        │
-        ├─ buildSystemPrompt (injects context chunks + persona instructions)
-        │
-        ├─ sanitizeHistory (last 4 messages, truncate assistant to 80 chars)
-        │
-        └─ callGeminiStreaming → SSE stream → res.write chunks → res.end
-```
+The homepage uses PaperMod's `profileMode` feature with:
+- Custom title, subtitle, image
+- Image dimensions: 120x120px
+- Buttons linking to blogs, tools, and resume PDF
 
-### Key Constants
+### Custom Theme Toggle
 
-| Constant | Value |
-|---|---|
-| `PINECONE_INDEX_NAME` | `"portfolio-rag"` |
-| `PINECONE_NAMESPACE` | `"ahmad-knowledge"` |
-| `EMBEDDING_MODEL` | `"gemini-embedding-001"` |
-| `GEMINI_MODELS` | `["gemini-2.5-flash", "gemini-2.5-flash-lite"]` |
-| `RATE_LIMIT_MAX` | `10` requests/minute per IP |
-| `EMBEDDING_CACHE_MAX` | `100` entries |
-| `EMBEDDING_CACHE_TTL` | `30` minutes |
-| `QUERY_CACHE_MAX` | `50` entries |
-| `QUERY_CACHE_TTL` | `10` minutes |
-| Max message length | `500` characters |
-| `maxOutputTokens` | `800` (full query), `200` (greeting) |
-| `temperature` | `0.7`, `topP: 0.9`, `topK: 40` |
+Header includes a theme toggle button (moon/sun icons) that:
+- Persists preference in `localStorage` under `pref-theme`
+- Respects `prefers-color-scheme` media query
+- Handles `light`, `dark`, and `auto` modes
 
-### System Prompt Persona
+### Code Copy Buttons
 
-- Always responds in first person as Ahmad Hassan
-- Conversational, warm, professional
-- Focuses exclusively on current question (ignores previous conversation topics)
-- Low relevance mode (`topScore < 0.65`): ignores context, redirects politely
-- Savage mode for relationship/romantic questions: witty roast (1-2 sentences)
-- For greetings: warm, brief, suggests what it can help with
-- For off-topic: politely redirects to portfolio content
+Post pages include copy buttons on code blocks:
+- Clipboard API with fallback to `execCommand`
+- Visual feedback (checkmark icon) for 2 seconds
+- Styled differently for light/dark modes
 
-### SSE Protocol
+### Urdu Font Support
 
-```
-data: {"text": "chunk"}\n\n    (repeated per chunk)
-data: [DONE]\n\n               (stream end signal)
-data: {"error": "..."}\n\n     (error, if mid-stream)
-```
+Opt-in via `.urdu` class or `lang="ur"` attribute:
+- Uses Noto Nastaliq Urdu font
+- RTL direction
+- Custom line-height (2.1)
+- Special styling for post titles and descriptions
 
 ### API Warmup
 
-On every page load (once per session via `sessionStorage.api_warmed`), the footer script sends a silent `POST /api/chat` with `{ message: "hi" }`. Uses the greeting shortcut path — no embedding or retrieval — just warms the Vercel function and Pinecone connection.
+Every page load triggers a background API warmup:
+- Sends a greeting message to `/api/chat`
+- Uses `sessionStorage` to ensure single warmup per session
+- Detects localhost vs production for API URL
 
 ---
 
-## Search System
+## Environment & Configuration
 
-- **Index:** Hugo builds `/index.json` at compile time (via `outputs.home: [JSON]`)
-- **Library:** Fuse.js 7.0.0 loaded lazily from CDN on first modal trigger
-- **Config:** `keys: ['title'], threshold: 0.3, limit: 6`
-- **Keyboard shortcuts:** `Ctrl+K` or `/` (when not in input/textarea) to open, `ESC` to close, arrow keys to navigate, `Enter` to follow link
-- **Search nav item** in header calls `openSearchModal()` (onclick, prevents default navigation)
-
----
-
-## Chat UI (`layouts/_default/chat.html`)
-
-- Full-page layout: hides `.footer`, removes `.main` max-width and padding
-- Height: `calc(100vh - var(--header-height, 60px))`
-- Three sections (flex column): messages area → suggested questions → input area
-- Max content width: `800px` centered
-
-### Markdown Parser (custom, inline in chat.html)
-
-Handles: `## headings`, `### headings`, `- unordered lists`, `1. ordered lists`, `**bold**`, `*italic*`, `` `inline code` ``, `[text](url)` links, paragraph wrapping. Processes line-by-line with HTML escaping before inline formatting.
-
-### Conversation State
-
-- `conversationHistory[]` stored in-memory (page-scoped JS)
-- Last 10 messages sent with each request
-- Server sanitizes to last 4 messages, truncates assistant messages to 80 chars
-- History NOT sent for first message (server treats it as fresh)
-
-### API URL Detection
-
-```js
-const API_URL = (hostname === 'localhost' || hostname === '127.0.0.1')
-  ? 'http://localhost:3001/api/chat'
-  : '/api/chat';
-```
-
----
-
-## Local Development
-
-Two concurrent servers required:
+### Local Development
 
 ```bash
-# Terminal 1 — Hugo static site
-hugo server
-# → http://localhost:1313
-
-# Terminal 2 — API (reads .env for keys)
-node dev-server.js
-# → http://localhost:3001/api/chat
-#   http://localhost:3001/api/health
+hugo server -D --bind 0.0.0.0 --baseURL http://localhost:1313
 ```
 
-`dev-server.js` manually parses `.env`, parses POST body JSON, and wraps `http.ServerResponse` in a Vercel-compatible `res` object (`.setHeader`, `.status`, `.json`, `.write`, `.end`, `.headersSent`).
-
----
-
-## Content Patterns
-
-### Raw HTML in Markdown
-
-`markup.goldmark.renderer.unsafe: true` allows embedding `<style>` blocks and raw HTML directly in `.md` files. Used extensively in:
-- `content/projects.md` — project card grid with hover effects
-- `content/certifications.md` — tabbed cert gallery with modal image zoom
-
-### Front Matter Conventions
-
-```yaml
----
-title: "..."
-description: "..."      # used for SEO meta and JSON-LD
-keywords: [...]         # page-specific keywords
-lastmod: 2025-03-05
-showtoc: false          # disable TOC
-searchHidden: true      # exclude from search index
-ShowShareButtons: false
-hideMeta: true
----
-```
-
-### Blog Post Front Matter
-
-```yaml
----
-title: "..."
-date: 2024-01-01
-tags: [tag1, tag2]
-categories: [tech]
-cover:
-  image: "/posts/assets/image.webp"
-  alt: "..."
----
-```
-
----
-
-## SEO & Structured Data (`layouts/partials/extend_head.html`)
-
-**Robots meta** (production only):
-```html
-<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-```
-
-**Twitter meta:** `@ahmad9059x` for both creator and site.
-
-**JSON-LD schemas injected conditionally:**
-
-| Page condition | Schema type |
-|---|---|
-| `.IsHome` | `Person` + `WebSite` (with `SearchAction`) |
-| `.IsPage` + `.Section == "posts"` | `BlogPosting` |
-| `projects.md` | `ItemList` of 7 `SoftwareSourceCode` items |
-
-**Google Fonts loading strategy:** `rel="preconnect"` + `rel="preload" as="style"` + `media="print" onload="this.media='all'"` + `<noscript>` fallback — prevents render blocking.
-
----
-
-## Projects
-
-| # | Name | URL | GitHub | Stack |
-|---|---|---|---|---|
-| 1 | HyprFlux | hyprflux.dev | ahmad9059/HyprFlux | Linux, Arch, Hyprland, Waybar, Shell, CSS |
-| 2 | SehatScan | sehatscan.vercel.app | ahmad9059/SehatScan | Python, Next.js, TS, AWS, Redis, PostgreSQL, Prisma, Gemini |
-| 3 | HisaabScore | hisaabscore.vercel.app | ahmad9059/HisaabScore | Next.js, TS, Tailwind, Firebase, Genkit, Gemini 2.0, Prisma |
-| 4 | RAF-SP | raf-sp.vercel.app | — | Next.js, TS, Tailwind, Prisma, Supabase, shadcn/ui, Framer Motion |
-| 5 | UAM Tracker | uam-tracker.vercel.app | ahmad9059/UamTracker | Next.js, TS, Tailwind, Prisma, PostgreSQL, Better Auth, Recharts |
-| 6 | MindOasis | mindoasis.vercel.app | ahmad9059/MindOasis | Next.js, TS, Tailwind, shadcn/ui, Firebase Genkit, Gemini |
-| 7 | CodingHawks | codinghawks.vercel.app | ahmad9059/codinghawks | Next.js, TS, Tailwind, Prisma, Supabase, shadcn/ui |
-
----
-
-## Blog Posts (43 total)
-
-### AWS CCP Series (18 posts)
-`aws-ccp-cloud-computing`, `aws-ccp-iam-identity-and-access-management`, `aws-ccp-ec2-elastic-compute-cloud`, `aws-ccp-ec2-instance-storage`, `aws-ccp-elb-asg-elastic-load-balancing-auto-scaling-groups`, `aws-ccp-amazon-s3`, `aws-ccp-databases-analytics`, `aws-ccp-other-compute-services-ecs-lambda-batch-lightsail`, `aws-ccp-deployments-managing-infrastructure-at-scale`, `aws-ccp-leveraging-the-aws-global-infrastructure`, `aws-ccp-cloud-integrations`, `aws-ccp-cloud-monitoring`, `aws-ccp-vpc-networking`, `aws-ccp-security-compliance`, `aws-ccp-machine-learning`, `aws-ccp-account-management-billing-support`, `aws-ccp-advanced-identity`, `aws-ccp-other-services`
-
-### Web Development (11 posts)
-`html`, `css`, `tailwind-css`, `Fundamentals-of-JavaScript`, `javascript-advanced`, `dom-js`, `asynchronous-js`, `reactjs`, `gsap-locomotive`, `web-dev-roadmap`, `chatbot`
-
-### System Design (3 posts)
-`cap-theorem`, `event-driven-architecture`, `microservice-architecture`
-
-### Databases (2 posts)
-`mysql`, `sqlServer`
-
-### Shell Scripting & Linux (6 posts)
-`intro-to-shell-scripting`, `variable-in-shell-scripting`, `shell-expansion`, `shell-operation-shell-scripting`, `setup-mpd-and-rmpc`, `vmware-archlinux-installation`
-
-### Other (3 posts)
-`80-20-rule`, `forher`, (+ any unlisted)
-
----
-
-## Certifications (21)
-
-AWS Certified Cloud Practitioner, AWS Introduction to Generative AI, Meta Front-End Developer, Meta Database Structures and Management with MySQL, Meta Introduction to Databases, Meta Programming with JavaScript, Google Agile Project Management, Google Cloud Digital Leader, Google Python, Google Data Analytics, Google Git and GitHub, GitHub Foundations, IBM DevOps, IBM Software Engineering, IBM Critical Thinking, HackerRank SQL Intermediate, HackerRank Problem Solving, Harvard CS50x Puzzle Day, UC Davis Critical Thinking Skills, DeepLearning.AI AI For Everyone, UC Berkeley CALICO Spring '25
-
----
-
-## Key Achievements
-
-- Ranked **#92 worldwide / #2 in Pakistan** at UC Berkeley CALICO Spring '25
-- **2,000+** GitHub contributions in 2025
-- **HyprFlux** — 800+ GitHub stars
-- Full-time offer at **VieroMind**
-- 2nd place at **Pakathon**
-- 1st place at **Maktab-e-Gulab** competition
-- 1st place at **Cybersecurity Workshop**
-- 3rd place at **Speed Programming** competition
-- 400+ problems solved on LeetCode and GeeksforGeeks
-
----
-
-## Personal Details (used by AI persona)
-
-- **DOB:** July 4, 2005
-- **From:** Pakistan
-- **Hobbies:** Book reading, chess, finance
-- **Books read:** 70+ (self-improvement + technical)
-- **Setup:** Dell XPS 15, Arch Linux, Neovim, Hyprland, Zsh
-- **Email:** hi@ahmadx.dev
-
----
-
-## Environment Variables
-
-| Variable | Where Used |
-|---|---|
-| `GEMINI_API_KEY` | `api/chat.js` — Gemini generation + embeddings |
-| `PINECONE_API_KEY` | `api/chat.js` — vector store queries |
-
-Local: stored in `.env` at project root, parsed manually by `dev-server.js`.  
-Production: set in Vercel Dashboard → Project → Settings → Environment Variables.
-
----
-
-## Pinecone Setup (one-time)
+### Production Build
 
 ```bash
-cd api
-npm install
-node upload-to-pinecone.js
+hugo --gc --minify
+# Output: ./public
 ```
 
-Creates serverless index `portfolio-rag` (3072 dims, cosine metric, AWS us-east-1), uploads `knowledge.json` + `embeddings.json` in batches of 100, stores in namespace `ahmad-knowledge`. Metadata per vector: `category`, `title` (≤200 chars), `content` (≤7000 chars).
+### API Keys
+
+- `.env` file (gitignored) contains actual keys
+- Vercel environment variables set in dashboard
+- Local development: keys from `.env`
+- Production: keys from Vercel config
 
 ---
 
-## Content Automation
+## Dependencies
 
-**`quickScript.sh`** — syncs posts from Obsidian vault via `rsync`, then `git add . && git commit && git push`  
-**`scripts/import-aws-articles.sh`** — batch imports AWS CCP notes from `temp/1-Notes/AWS Certified Cloud Practitioner/` into `content/posts/`
+### Hugo (no npm install needed)
+
+Hugo is the only required tool for the static site. The PaperMod theme is vendored locally.
+
+### API (Node.js)
+
+Located in `api/package.json`:
+```json
+{
+  "dependencies": {
+    "@pinecone-database/pinecone": "^^version"
+  }
+}
+```
 
 ---
 
-## Static Assets (`static/assets/`)
+## Important Notes for AI Agents
 
-- `profile-1.webp` — profile photo (used in homepage, chat avatar)
-- `opengraph.webp` — OG/Twitter card image
-- `fav.ico`, `favicon-16x16.png`, `favicon-32x32.png`, `apple-touch-icon.png` — favicons
-- `projects/` — project screenshots (hyprflux, sehatscan, hisaabscore, raf-sp, uam-tracker, mindosis, codinghawks)
-- `certs/` — certification images
+1. **CSS Variable Mapping** — When editing styles, use `--background`, `--foreground`, `--card`, `--primary`, `--secondary`, `--muted`, `--accent`, `--border`, `--muted-foreground` for theming compatibility.
 
-**SVG icons in `static/`:** `check.svg`, `copy.svg`, `globe.svg`, `heart.svg`, `laptop.svg`, `sprout.svg`
+2. **Theme Toggle** — Theme state is managed via `localStorage` and `data-theme` attributes. The dark mode class is `dark` on `<body>`.
 
----
+3. **Search Index** — Generated at build time via Hugo's `outputs.home` config. If search breaks, ensure JSON output is configured.
 
-## Known Issues / Notes
+4. **API Rewrites** — All `/api/*` routes are rewritten to `/*.js` files via `vercel.json`. The actual files are at root level (`api/chat.js` → `/api/chat`).
 
-1. **`vercel.json` duplicate root** — the file has two JSON root objects (syntax error). The second block's rewrites differ slightly (`/install` instead of `/api/ping`). Needs cleanup.
-2. **`api/knowledge.json` and `api/embeddings.json`** — large files, likely gitignored. Must be present locally and re-uploaded to Pinecone when knowledge changes.
-3. The chat page hides the site footer entirely (`display: none !important`) and overrides `.main` constraints to allow full-viewport layout.
-4. The search nav item doesn't navigate to `/search/` — it calls `openSearchModal()` via `onclick` and `event.preventDefault()`.
+5. **Pinecone is Optional** — The chat API falls back to local brute-force search over `embeddings.json` if Pinecone is unavailable or not configured.
+
+6. **Knowledge JSON** — `api/knowledge.json` is gitignored. It's used to generate `embeddings.json`. If you need to regenerate embeddings, run `node generate-embeddings.js`.
+
+7. **Hugo Version** — Requires v0.125.7 minimum (stated in PaperMod theme.toml). Site config requires 0.140.2+.
+
+8. **Content Organization** — Posts use front matter with `draft: true` by default (via archetype). Categories and tags are auto-generated from front matter.
+
+9. **JSON-LD** — Only home and post pages have structured data. Projects page also has ItemList schema.
+
+10. **Background Pattern** — The `.bg-pattern` div is only added on non-post pages (home, about, projects, etc.) to avoid cluttering blog posts.
