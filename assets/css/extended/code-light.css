@@ -37,8 +37,8 @@
 }
 
 body:not(.dark) .code-block::before {
-  color: rgba(0, 0, 0, 0.4);
-  background: rgba(0, 0, 0, 0.05);
+  color: rgba(45, 42, 36, 0.5);
+  background: rgba(45, 42, 36, 0.07);
 }
 
 /* ── Line numbers ── */
@@ -66,7 +66,7 @@ body:not(.dark) .code-block::before {
 }
 
 body:not(.dark) .chroma .lnt {
-  color: #9ca3af !important;
+  color: #a09b8e !important;
 }
 
 /* Ensure line-number table has no gaps */
@@ -86,29 +86,29 @@ body:not(.dark) .chroma .lnt {
   padding: 1rem 1rem 1rem 0.5rem !important;
 }
 
-/* Light mode code blocks for #131418 theme */
+/* Light mode code blocks - warm cream theme */
 body:not(.dark) .highlight {
-  background: #eef0f3 !important;
-  border: 1px solid #dee2e6;
+  background: var(--code-block-bg) !important;
+  border: 1px solid var(--code-block-border);
 }
 
 body:not(.dark) .highlight pre,
 body:not(.dark) .highlight .chroma {
-  background: #eef0f3 !important;
+  background: var(--code-block-bg) !important;
   border: none;
 }
 
 body:not(.dark) .highlight code,
 body:not(.dark) pre code {
   background: transparent !important;
-  color: #1a1c23 !important;
+  color: var(--foreground) !important;
 }
 
 /* Syntax colors for light mode */
 body:not(.dark) .highlight .c,
 body:not(.dark) .highlight .c1,
 body:not(.dark) .highlight .cm {
-  color: #6a737d !important;
+  color: #8a8577 !important;
 }
 
 body:not(.dark) .highlight .k,
@@ -117,7 +117,7 @@ body:not(.dark) .highlight .kn,
 body:not(.dark) .highlight .kp,
 body:not(.dark) .highlight .kr,
 body:not(.dark) .highlight .kt {
-  color: #d73a49 !important;
+  color: #b8451c !important;
 }
 
 body:not(.dark) .highlight .s,
@@ -127,7 +127,7 @@ body:not(.dark) .highlight .se,
 body:not(.dark) .highlight .sh,
 body:not(.dark) .highlight .si,
 body:not(.dark) .highlight .sx {
-  color: #0a6640 !important;
+  color: #4a7a3e !important;
 }
 
 body:not(.dark) .highlight .na,
@@ -142,7 +142,7 @@ body:not(.dark) .highlight .nl,
 body:not(.dark) .highlight .nn,
 body:not(.dark) .highlight .nt,
 body:not(.dark) .highlight .nv {
-  color: #6f42c1 !important;
+  color: #7c3aad !important;
 }
 
 body:not(.dark) .highlight .m,
@@ -150,19 +150,19 @@ body:not(.dark) .highlight .mi,
 body:not(.dark) .highlight .mf,
 body:not(.dark) .highlight .mh,
 body:not(.dark) .highlight .mo {
-  color: #005cc5 !important;
+  color: #1a6fb5 !important;
 }
 
 body:not(.dark) .highlight .o,
 body:not(.dark) .highlight .p {
-  color: #24292e !important;
+  color: #3d3a34 !important;
 }
 
 /* Inline code in light mode */
 body:not(.dark) code {
-  background: #eef0f3 !important;
-  color: #1a1c23 !important;
-  border: 1px solid #dee2e6;
+  background: var(--secondary) !important;
+  color: var(--foreground) !important;
+  border: 1px solid var(--code-block-border);
 }
 
 /* Dark mode copy button */
@@ -176,9 +176,9 @@ body:not(.dark) code {
 
 /* Light mode copy button */
 body:not(.dark) .copy-code {
-  color: rgba(0, 0, 0, 0.5);
+  color: rgba(45, 42, 36, 0.5);
 }
 
 body:not(.dark) .copy-code:hover {
-  color: rgba(0, 0, 0, 0.8);
+  color: rgba(45, 42, 36, 0.85);
 }
