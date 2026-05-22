@@ -12,50 +12,50 @@
     --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
     --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
 
-    /* shadcn/ui color palette - Light mode */
-    --card: #ffffff;
-    --ring: #d4d4d8;
-    --input: #d4d4d8;
-    --muted: #f4f4f5;
-    --accent: #f4f4f5;
-    --border: #e4e4e7;
+    /* Warm cream color palette - Light mode */
+    --card: #fffcf5;
+    --ring: #ddd7c8;
+    --input: #ddd7c8;
+    --muted: #ede8da;
+    --accent: #ede8da;
+    --border: #ddd7c8;
     --radius: 0.625rem;
-    --chart-1: #ea580c;
+    --chart-1: #c2590a;
     --chart-2: #0d9488;
     --chart-3: #164e63;
-    --chart-4: #fbbf24;
-    --chart-5: #f59e0b;
-    --popover: #ffffff;
-    --primary: #18181b;
-    --sidebar: #fafafa;
-    --secondary: #f4f4f5;
-    --background: #ffffff;
-    --foreground: #0a0a0a;
-    --destructive: #ef4444;
-    --sidebar-ring: #d4d4d8;
-    --sidebar-accent: #f4f4f5;
-    --sidebar-border: #e4e4e7;
-    --card-foreground: #0a0a0a;
-    --sidebar-primary: #18181b;
-    --muted-foreground: #71717a;
-    --accent-foreground: #18181b;
-    --popover-foreground: #0a0a0a;
-    --primary-foreground: #fafafa;
-    --sidebar-foreground: #0a0a0a;
-    --secondary-foreground: #18181b;
-    --destructive-foreground: #ef4444;
-    --sidebar-accent-foreground: #18181b;
-    --sidebar-primary-foreground: #fafafa;
+    --chart-4: #d4a017;
+    --chart-5: #d97706;
+    --popover: #fffcf5;
+    --primary: #2d2a24;
+    --sidebar: #f0ecdf;
+    --secondary: #ede8da;
+    --background: #f6f2e8;
+    --foreground: #2d2a24;
+    --destructive: #c53030;
+    --sidebar-ring: #ddd7c8;
+    --sidebar-accent: #ede8da;
+    --sidebar-border: #ddd7c8;
+    --card-foreground: #2d2a24;
+    --sidebar-primary: #2d2a24;
+    --muted-foreground: #8a8577;
+    --accent-foreground: #2d2a24;
+    --popover-foreground: #2d2a24;
+    --primary-foreground: #f6f2e8;
+    --sidebar-foreground: #2d2a24;
+    --secondary-foreground: #2d2a24;
+    --destructive-foreground: #c53030;
+    --sidebar-accent-foreground: #2d2a24;
+    --sidebar-primary-foreground: #f6f2e8;
 
     /* Legacy compatibility variables - mapped to new palette */
     --theme: var(--background);
     --entry: var(--card);
     --tertiary: var(--muted);
     --content: var(--foreground);
-    /* Code blocks - light mode (subtle gray backgrounds) */
-    --code-block-bg: #f4f4f5;
-    --code-bg: #fafafa;
-    --code-block-border: #e4e4e7;
+    /* Code blocks - light mode (warm cream backgrounds) */
+    --code-block-bg: #ede8da;
+    --code-bg: #f6f2e8;
+    --code-block-border: #ddd7c8;
     /* Override accent for hover states - use chart colors */
     --accent: var(--chart-1);
 }
