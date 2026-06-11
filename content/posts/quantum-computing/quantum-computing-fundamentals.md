@@ -132,4 +132,4 @@ The danger of hype is real. Not every problem needs a quantum computer. Not ever
 
 But the foundations are solid. The physics is real. The math is rigorous. And the potential is enormous.
 
-Happy designing
+Happy quantuming

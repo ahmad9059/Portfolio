@@ -182,4 +182,4 @@ A random quantum circuit does nothing useful. The art is in arranging gates so t
 
 The gates themselves are simple. The magic is in how you combine them.
 
-Happy designing
+Happy quantuming

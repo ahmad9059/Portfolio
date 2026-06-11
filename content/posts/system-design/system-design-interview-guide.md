@@ -1,8 +1,8 @@
 ---
-title: How to Approach a System Design Interview
+title: The Architecture of Distributed Systems
 draft: false
 date: 2026-06-11
-description: "A complete framework for system design interviews: how to structure your answer, which topics matter, and how to connect the dots across 27 system design concepts from scaling to sharding to case studies."
+description: "A complete framework for understanding distributed systems: how to design, reason about, and connect the dots across 27 system design concepts from scaling to sharding to real-world case studies."
 categories:
   - system-design
 tags:
@@ -10,39 +10,39 @@ tags:
   - web
   - system-design
 keywords:
-  - system design interview
+  - distributed systems
   - system design framework
-  - system design prep
-  - distributed systems interview
   - system design guide
-  - architecture interview
+  - architecture patterns
   - system design methodology
+  - distributed systems design
+  - scalable architecture
 Author: Ahmad Hassan
 ---
 
-System design interviews are not about knowing the right answer. There is no right answer. A real system has 47 tradeoffs and 12 valid architectures. The interviewer wants to see how you think, which tradeoffs you recognize, and whether you can build something coherent under pressure.
+Distributed systems are not about knowing the right answer. There is no right answer. A real system has 47 tradeoffs and 12 valid architectures. The discipline is in recognizing which tradeoffs matter, and building something that holds together under the constraints that matter most.
 
-The problem is that most people walk in with scattered knowledge. You read about load balancing here, caching there, sharding somewhere else. The pieces do not connect.
+The problem is that most people learn these concepts in isolation. You read about load balancing here, caching there, sharding somewhere else. The pieces do not connect.
 
-This article gives you a framework for connecting them. Every section links to a deeper article that covers the topic in full. Read the framework first, then follow the links for the topics you are weak on.
+This article gives you a framework for connecting them. Every section links to a deeper article that covers the topic in full. Read the framework first, then follow the links for the topics you want to understand better.
 
 ## The Four-Step Framework
 
-Every system design interview follows the same structure, whether the interviewer makes it explicit or not.
+Every system design process follows the same structure, whether you are in an interview room or a design document at work.
 
-**Step 1: Clarify requirements.** Before drawing a single box, ask questions. What are the scale numbers? How many users? How many requests per second? What is the read-to-write ratio? What are the latency requirements? What are the consistency requirements? Which features are in scope?
+**Step 1: Clarify requirements.** Before drawing a single box, define the constraints. What are the scale numbers? How many users? How many requests per second? What is the read-to-write ratio? What are the latency requirements? What are the consistency requirements? Which features are in scope?
 
-You cannot design a system for "a URL shortener" without knowing whether it handles 100 URLs a day or 100 million. The interviewer will not give you all the numbers up front. They want to see you ask.
+You cannot design a system for "a URL shortener" without knowing whether it handles 100 URLs a day or 100 million. The requirements determine the architecture. Define them first.
 
 **Step 2: Define the high-level architecture.** Draw the major components and how data flows between them. Client, load balancer, API servers, database, cache. Do not go into detail yet. Get the skeleton right, then flesh it out.
 
-**Step 3: Dive deep into two or three subsystems.** This is where you show depth. Pick the most interesting or challenging parts of the system and design them in detail. The interviewer cares more about depth in a few areas than shallow coverage of everything.
+**Step 3: Dive deep into two or three subsystems.** This is where the real design work happens. Pick the most interesting or challenging parts of the system and design them in detail. Depth in a few areas matters more than shallow coverage of everything.
 
-**Step 4: Identify bottlenecks and tradeoffs.** Every design has weaknesses. The best candidates find them before the interviewer does. Point out where the system breaks at scale, where consistency is sacrificed for availability, and what could go wrong.
+**Step 4: Identify bottlenecks and tradeoffs.** Every design has weaknesses. The best engineers find them before anyone else does. Point out where the system breaks at scale, where consistency is sacrificed for availability, and what could go wrong.
 
 ## Step 1: Clarify Requirements
 
-The fastest way to fail a system design interview is to start designing without understanding what you are designing.
+The fastest way to build the wrong system is to start designing without understanding what you are building.
 
 ### Functional Requirements
 
@@ -52,7 +52,7 @@ Write these down. Keep the list short. Three to five core functions. Everything 
 
 ### Non-Functional Requirements
 
-This is where the interview is won or lost. Non-functional requirements determine your architecture.
+This is where the real design work happens. Non-functional requirements determine your architecture.
 
 - **Scale.** How many users? How many requests per second? How much data? These numbers determine whether you need one server or a distributed system.
 - **Read vs. write ratio.** A system that is 99% reads (like a news feed) has a different architecture than one that is 50% writes (like a collaborative document editor). Read-heavy systems benefit from caching. Write-heavy systems need careful sharding and async processing.
@@ -60,7 +60,7 @@ This is where the interview is won or lost. Non-functional requirements determin
 - **Consistency vs. availability.** Do you need every read to return the latest write, or is eventual consistency acceptable? This is the [CAP theorem](/posts/system-design/cap-theorem) tradeoff, and it affects every downstream decision.
 - **Durability.** Can you lose data? A banking system cannot. A metrics system that drops a data point occasionally can. This affects replication strategy and acknowledgment models.
 
-If the interviewer does not give you these numbers, estimate them and state your assumptions. "I will assume 10 million daily active users with a 100:1 read-to-write ratio and eventual consistency is acceptable for this feature."
+If the interviewer does not give you these numbers, estimate them and state your assumptions. "I will assume 10 million daily active users with a 100:1 read-to-write ratio and eventual consistency is acceptable for this feature." If you are designing on your own, define them explicitly before you start.
 
 ## Step 2: High-Level Architecture
 
@@ -150,7 +150,7 @@ Multi-leader replication allows writes to any node and asynchronously synchroniz
 
 [Sharding](/posts/system-design/database-sharding) splits data across multiple database instances. Choose a shard key that distributes data evenly and allows most queries to hit a single shard. Common shard keys include user_id (for user-scoped data), geographic region (for location-based data), and hash of a composite key.
 
-Sharding introduces cross-shard queries (how do you fetch data that spans multiple shards?), resharding (how do you add a shard when the data grows?), and hotspot prevention (what happens when one shard gets all the traffic?). These are the tradeoffs the interviewer wants to hear you discuss.
+Sharding introduces cross-shard queries (how do you fetch data that spans multiple shards?), resharding (how do you add a shard when the data grows?), and hotspot prevention (what happens when one shard gets all the traffic?). These are the tradeoffs that matter.
 
 ### Consistent Hashing
 
@@ -296,7 +296,7 @@ The best way to internalize these concepts is to see them applied to real system
 
 ## The Cheat Sheet
 
-| If the interviewer asks about | Read this |
+| If you need to understand | Read this |
 |---|---|
 | How to distribute traffic | [Load Balancing](/posts/system-design/load-balancing) |
 | How to handle more users | [Scaling Strategies](/posts/system-design/scaling-strategies) |
@@ -329,16 +329,16 @@ The best way to internalize these concepts is to see them applied to real system
 
 Reading is not enough. You need to design systems under time pressure.
 
-**Pick a system.** Twitter, Instagram, Google Drive, a parking lot management system, a elevator control system. Any system with non-trivial requirements works.
+**Pick a system.** Twitter, Instagram, Google Drive, a parking lot management system, an elevator control system. Any system with non-trivial requirements works.
 
-**Set a timer for 45 minutes.** This is roughly the time you get in a real interview.
+**Set a timer for 45 minutes.** This forces you to prioritize and make tradeoffs under constraint, the same pressure you face in a real design session.
 
 **Follow the framework.** Requirements (5 min), high-level design (10 min), deep dive (20 min), bottlenecks and tradeoffs (10 min). The time allocations are approximate. Adjust based on the problem.
 
-**Review your design.** Where are the bottlenecks? What happens at 100x scale? Where does consistency break? What happens when a component fails? These are the questions the interviewer will ask.
+**Review your design.** Where are the bottlenecks? What happens at 100x scale? Where does consistency break? What happens when a component fails? These are the questions that separate a working design from a fragile one.
 
 **Study real systems.** The five case studies in this guide are real architectures solving real problems. Read them not for the specific technologies but for the decision patterns. Every choice has a reason. Understanding the reason matters more than remembering the technology.
 
-The best system design interviews feel like a conversation, not an exam. You and the interviewer are designing a system together. You bring the knowledge and the framework. They bring the requirements and the constraints. The result is something neither of you would have built alone.
+The best system design is not a checklist. It is a conversation between requirements and constraints, between what you need and what you can afford. Every tradeoff is a decision. Every decision has consequences. Understanding those consequences is what makes you a systems architect.
 
 Happy designing

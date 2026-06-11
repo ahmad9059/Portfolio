@@ -143,4 +143,4 @@ We do not have many quantum algorithms. But the ones we have solve problems that
 
 The algorithms are real. The hardware is catching up.
 
-Happy designing
+Happy quantuming

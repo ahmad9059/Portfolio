@@ -154,4 +154,4 @@ The field needs people who understand both the classical and quantum sides. Not 
 
 The timeline is uncertain. The direction is clear. Quantum computers will solve specific problems that are intractable classically. The question is when, not if. And the answer depends on progress in error correction, qubit quality, and hardware scaling.
 
-Happy designing
+Happy quantuming
