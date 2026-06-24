@@ -51,7 +51,7 @@ lastmod: 2026-03-05
 
 <div class="profile-card">
   <div class="profile-card-img">
-    <img src="/assets/profile-1.webp" alt="Ahmad Hassan" />
+    <img src="/assets/profile-1.webp" alt="Ahmad Hassan" width="200" height="200" decoding="async" />
   </div>
   <div class="profile-card-info">
     <h1>Ahmad Hassan</h1>

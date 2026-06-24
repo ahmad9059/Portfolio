@@ -207,16 +207,25 @@
 </script>
 {{- end }}
 
-{{- /* Google Fonts - non-render-blocking */ -}}
+{{- /* Fonts are self-hosted (see assets/css/extended/fonts.css). Preload the two
+       above-the-fold weights so first paint isn't blocked on a font swap. */ -}}
+<link rel="preload" as="font" type="font/woff2" href="/fonts/work-sans-400-latin.woff2" crossorigin />
+<link rel="preload" as="font" type="font/woff2" href="/fonts/jetbrains-mono-700-latin.woff2" crossorigin />
+
+{{- /* Preload the LCP profile image on the homepage for a faster largest paint. */ -}}
+{{- if .IsHome }}
+<link rel="preload" as="image" href="{{ "assets/profile-1.webp" | absURL }}" fetchpriority="high" />
+{{- end }}
+
+{{- /* Noto Nastaliq Urdu is only needed on Urdu pages — load it (deferred) only
+       there instead of on every page. */ -}}
+{{- if or (eq .Params.textLang "ur") .Params.hasUrdu }}
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" />
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
-  rel="stylesheet" media="print" onload="this.media='all'" />
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400..700&display=swap" />
 <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400..700&display=swap"
   rel="stylesheet" media="print" onload="this.media='all'" />
 <noscript>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400..700&display=swap" rel="stylesheet" />
 </noscript>
+{{- end }}

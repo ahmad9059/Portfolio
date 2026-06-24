@@ -1,0 +1,11 @@
+{{- /* Lightweight search index: only the fields the Fuse.js modal needs.
+     The custom search modal (layouts/partials/extend_footer.html) searches by
+     `title` and renders `title` + `permalink`, so shipping full `content`/`summary`
+     here is unnecessary and previously bloated this file to ~1.16MB. */ -}}
+{{- $.Scratch.Add "index" slice -}}
+{{- range site.RegularPages -}}
+    {{- if and (not .Params.searchHidden) (ne .Layout `archives`) (ne .Layout `search`) }}
+    {{- $.Scratch.Add "index" (dict "title" .Title "permalink" .Permalink) -}}
+    {{- end }}
+{{- end -}}
+{{- $.Scratch.Get "index" | jsonify -}}

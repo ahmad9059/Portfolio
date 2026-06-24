@@ -106,7 +106,7 @@
     if (fuse || fuseLoading) return;
     fuseLoading = true;
     const s = document.createElement('script');
-    s.src = 'https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js';
+    s.src = '{{ (resources.Get "js/fuse.basic.min.js" | minify | fingerprint).RelPermalink }}';
     s.onload = function() {
       fetch('/index.json').then(r => r.json()).then(data => {
         fuse = new Fuse(data, { keys: ['title'], threshold: 0.3 });
@@ -179,36 +179,38 @@
 })();
 </script>
 
-<!-- Warm-up API on page load for faster chat responses -->
+<!-- Warm up the chat API only on chat-intent (hovering the Chat link or visiting /chat/) -->
 <script>
 (function() {
-  // Warm up the RAG API when any page loads (so chat is fast when user navigates to it)
-  if (typeof window !== 'undefined' && document.readyState === 'complete') {
-    warmupAPI();
-  } else {
-    window.addEventListener('load', warmupAPI);
-  }
-
   function warmupAPI() {
-    // Only warm up once per session
     if (sessionStorage.getItem('api_warmed')) return;
     sessionStorage.setItem('api_warmed', 'true');
 
-    // Detect API URL
     const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
     const apiUrl = isLocalhost ? 'http://localhost:3001/api/chat' : '/api/chat';
 
-    // Send a simple greeting to warm up the function
-    // The greeting shortcut in chat.js makes this instant (no embedding/retrieval)
+    // The greeting shortcut in chat.js makes this instant (no embedding/retrieval).
     fetch(apiUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ message: 'hi' })
-    }).then(() => {
-      console.log('API warmed up');
-    }).catch(() => {
-      // Silently fail - not critical
-    });
+    }).catch(function() { /* silently ignore — non-critical */ });
   }
+
+  // 1) If we're already on the chat page, warm up during idle time.
+  if (location.pathname.replace(/\/$/, '').endsWith('/chat')) {
+    (window.requestIdleCallback || function(cb){ setTimeout(cb, 1); })(warmupAPI);
+    return;
+  }
+
+  // 2) Otherwise, warm up the moment the user signals intent to chat
+  //    (pointer/focus on any link to /chat). Far cheaper than firing on every page view.
+  function onIntent(e) {
+    const a = e.target.closest && e.target.closest('a[href*="/chat"]');
+    if (a) warmupAPI();
+  }
+  document.addEventListener('pointerenter', onIntent, true);
+  document.addEventListener('focusin', onIntent);
+  document.addEventListener('touchstart', onIntent, { passive: true });
 })();
 </script>

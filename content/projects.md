@@ -91,7 +91,7 @@ hideMeta: true
 <div class="project-grid">
 
 <div class="project-card">
-<img src="/assets/projects/hyprflux.webp" alt="HyprFlux: Complete Arch Linux desktop OS with Hyprland, branded ISO, TUI installer, and maintained desktop environment">
+<img loading="lazy" decoding="async" width="400" height="200" src="/assets/projects/hyprflux.webp" alt="HyprFlux: Complete Arch Linux desktop OS with Hyprland, branded ISO, TUI installer, and maintained desktop environment">
 <div class="project-card-info">
 <h3>HyprFlux</h3>
 <p>A complete Arch Linux desktop operating system with branded live ISO, TUI installer, Hyprland desktop, boot theming, GTK theming, and developer tooling in one cohesive project.</p>
@@ -112,7 +112,7 @@ hideMeta: true
 </div>
 
 <div class="project-card">
-<img src="/assets/projects/sehatscan.webp" alt="SehatScan: AI-powered health assessment platform analyzing medical documents and facial images">
+<img loading="lazy" decoding="async" width="400" height="200" src="/assets/projects/sehatscan.webp" alt="SehatScan: AI-powered health assessment platform analyzing medical documents and facial images">
 <div class="project-card-info">
 <h3>SehatScan</h3>
 <p>AI-powered health assessment platform that analyzes medical documents and facial images to generate personalized health insights.</p>
@@ -134,7 +134,7 @@ hideMeta: true
 </div>
 
 <div class="project-card">
-<img src="/assets/projects/hisaabscore.webp" alt="HisaabScore: AI-powered alternative credit scoring dashboard for gig workers">
+<img loading="lazy" decoding="async" width="400" height="200" src="/assets/projects/hisaabscore.webp" alt="HisaabScore: AI-powered alternative credit scoring dashboard for gig workers">
 <div class="project-card-info">
 <h3>HisaabScore</h3>
 <p>AI-powered alternative credit scoring for gig workers and informal economy workers lacking traditional credit history.</p>
@@ -155,7 +155,7 @@ hideMeta: true
 </div>
 
 <div class="project-card">
-<img src="/assets/projects/raf-sp.webp" alt="RAF-SP: Agricultural data management platform with department and equipment tracking">
+<img loading="lazy" decoding="async" width="400" height="200" src="/assets/projects/raf-sp.webp" alt="RAF-SP: Agricultural data management platform with department and equipment tracking">
 <div class="project-card-info">
 <h3>RAF-SP</h3>
 <p>Agricultural data management platform with department management, equipment tracking, and maintenance logs.</p>
@@ -175,7 +175,7 @@ hideMeta: true
 </div>
 
 <div class="project-card">
-<img src="/assets/projects/uam-tracker.webp" alt="UAM Tracker: GPA and CGPA tracker with interactive progress charts for university students">
+<img loading="lazy" decoding="async" width="400" height="200" src="/assets/projects/uam-tracker.webp" alt="UAM Tracker: GPA and CGPA tracker with interactive progress charts for university students">
 <div class="project-card-info">
 <h3>UAM Tracker</h3>
 <p>Full-stack GPA/CGPA tracker for UAM University students with authenticated dashboards and interactive progress charts.</p>
@@ -196,7 +196,7 @@ hideMeta: true
 </div>
 
 <div class="project-card">
-<img src="/assets/projects/mindosis.webp" alt="MindOasis: Mental health professional finder for Pakistan with AI-powered profile summaries">
+<img loading="lazy" decoding="async" width="400" height="200" src="/assets/projects/mindosis.webp" alt="MindOasis: Mental health professional finder for Pakistan with AI-powered profile summaries">
 <div class="project-card-info">
 <h3>MindOasis</h3>
 <p>Hackathon project helping users in Pakistan find mental health professionals with AI-powered profile summaries.</p>
@@ -216,7 +216,7 @@ hideMeta: true
 </div>
 
 <div class="project-card">
-<img src="/assets/projects/codinghawks.webp" alt="CodingHawks: Official website for the Coding Hawks Society at MNS University of Agriculture">
+<img loading="lazy" decoding="async" width="400" height="200" src="/assets/projects/codinghawks.webp" alt="CodingHawks: Official website for the Coding Hawks Society at MNS University of Agriculture">
 <div class="project-card-info">
 <h3>CodingHawks</h3>
 <p>Official website for Coding Hawks Society at MNS-UoA, empowering coders through projects, learning, and competitions.</p>
