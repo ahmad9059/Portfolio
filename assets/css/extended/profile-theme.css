@@ -1,0 +1,13 @@
+/* Theme-aware homepage profile picture.
+   Light mode shows .profile-pic--light, dark mode shows .profile-pic--dark.
+   Toggled by the body.dark class (set before paint by the early script in
+   header.html), so the swap is instant with no flash. */
+.profile-pic--dark {
+  display: none;
+}
+body.dark .profile-pic--light {
+  display: none;
+}
+body.dark .profile-pic--dark {
+  display: block;
+}

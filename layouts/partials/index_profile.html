@@ -2,35 +2,20 @@
     {{- with site.Params.profileMode }}
     <div class="profile_inner">
         {{- if .imageUrl -}}
-        {{- $img := "" }}
-        {{- if not (urls.Parse .imageUrl).IsAbs }}
-            {{- $img = resources.Get .imageUrl }}
-        {{- end }}
-        {{- if $img }}
-            {{- $processableFormats := (slice "jpg" "jpeg" "png" "tif" "bmp" "gif") -}}
-            {{- if hugo.IsExtended -}}
-                {{- $processableFormats = $processableFormats | append "webp" -}}
-            {{- end -}}
-            {{- $prod := (hugo.IsProduction | or (eq site.Params.env "production")) }}
-            {{- if and (in $processableFormats $img.MediaType.SubType) (eq $prod true)}}
-                {{- if (not (and (not .imageHeight) (not .imageWidth))) }}
-                    {{- $img = $img.Resize (printf "%dx%d" .imageWidth .imageHeight) }}
-                {{- else if .imageHeight }}
-                    {{- $img = $img.Resize (printf "x%d" .imageHeight) }}
-                {{ else if .imageWidth }}
-                    {{- $img = $img.Resize (printf "%dx" .imageWidth) }}
-                {{ else }}
-                    {{- $img = $img.Resize "150x150" }}
-                {{- end }}
-            {{- end }}
-            <img draggable="false" src="{{ $img.Permalink }}" alt="{{ .imageTitle | default "profile image" }}" title="{{ .imageTitle }}"
-                height="{{ .imageHeight | default 150 }}" width="{{ .imageWidth | default 150 }}" fetchpriority="high" decoding="async" />
-        {{- else }}
-        {{- /* LCP element on the homepage: keep it eager + high priority so the
-               browser fetches it immediately (matches the head preload). */ -}}
-        <img draggable="false" src="{{ .imageUrl | absURL }}" alt="{{ .imageTitle | default "profile image" }}" title="{{ .imageTitle }}"
-            height="{{ .imageHeight | default 150 }}" width="{{ .imageWidth | default 150 }}" fetchpriority="high" decoding="async" />
-        {{- end }}
+        {{- /* Theme-aware profile picture: a light-mode image and a dark-mode image
+               are both rendered, then toggled via the body.dark class (see
+               assets/css/extended/profile-theme.css). The early theme script in
+               header.html sets body.dark before paint, so there's no flash.
+               Both are tiny (~8-13KB) and the visible one is preloaded in <head>. */ -}}
+        {{- $alt := .imageTitle | default "profile image" -}}
+        {{- $h := .imageHeight | default 150 -}}
+        {{- $w := .imageWidth | default 150 -}}
+        {{- $dark := .imageUrl | absURL -}}
+        {{- $light := (.imageUrlLight | default .imageUrl) | absURL -}}
+        <img class="profile-pic profile-pic--light" draggable="false" src="{{ $light }}" alt="{{ $alt }}" title="{{ .imageTitle }}"
+            height="{{ $h }}" width="{{ $w }}" fetchpriority="high" decoding="async" />
+        <img class="profile-pic profile-pic--dark" draggable="false" src="{{ $dark }}" alt="{{ $alt }}" title="{{ .imageTitle }}"
+            height="{{ $h }}" width="{{ $w }}" fetchpriority="high" decoding="async" />
         {{- end }}
         <h1>{{ .title | default site.Title | markdownify }}</h1>
         <span>{{ .subtitle | markdownify }}</span>

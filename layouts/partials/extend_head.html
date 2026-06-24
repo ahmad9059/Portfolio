@@ -212,9 +212,10 @@
 <link rel="preload" as="font" type="font/woff2" href="/fonts/work-sans-400-latin.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="/fonts/jetbrains-mono-700-latin.woff2" crossorigin />
 
-{{- /* Preload the LCP profile image on the homepage for a faster largest paint. */ -}}
+{{- /* Preload the LCP profile image on the homepage for a faster largest paint.
+       Default (server-rendered) state is light mode, so preload the light image. */ -}}
 {{- if .IsHome }}
-<link rel="preload" as="image" href="{{ "assets/profile-1.webp" | absURL }}" fetchpriority="high" />
+<link rel="preload" as="image" href="{{ (site.Params.profileMode.imageUrlLight | default site.Params.profileMode.imageUrl) | absURL }}" fetchpriority="high" />
 {{- end }}
 
 {{- /* Noto Nastaliq Urdu is only needed on Urdu pages — load it (deferred) only
