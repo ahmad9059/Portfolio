@@ -3,7 +3,6 @@ languageCode: en-us
 title: Ahmad Hassan
 theme: PaperMod
 copyright: "Ahmad Hassan"
-googleAnalytics: "G-2GLY0PDB4W"
 
 menu:
   main:
@@ -79,8 +78,8 @@ params:
     enabled: true
     title: "Ahmad Hassan" # optional default will be site title
     subtitle: "Software Engineer"
-    imageUrl: "/assets/profile-1.webp" # shown in DARK mode
-    imageUrlLight: "/assets/profile-light.webp" # shown in LIGHT mode
+    imageUrl: "/assets/profile-1-200.webp" # shown in DARK mode
+    imageUrlLight: "/assets/profile-light-200.webp" # shown in LIGHT mode
     imageTitle: "Ahmad Hassan - Software Engineer from Pakistan"
     imageWidth: 120 # custom size
     imageHeight: 120 # custom size

@@ -1,7 +1,7 @@
 .footer,
 .top-link {
     font-size: 14px;
-    color: var(--muted-foreground);
+    color: var(--primary);
 }
 
 .footer {
