@@ -23,6 +23,11 @@
     {{- with site.Params.description }}{{ . }}{{- end }}{{- end }}{{- end -}}">
 <meta name="author" content="{{ (partial "author.html" . ) }}">
 <link rel="canonical" href="{{ if .Params.canonicalURL -}} {{ trim .Params.canonicalURL " " }} {{- else -}} {{ .Permalink }} {{- end }}">
+{{- if .IsHome }}
+<link rel="preload" as="image" href="{{ (site.Params.profileMode.imageUrlLight | default site.Params.profileMode.imageUrl) | absURL }}" fetchpriority="high">
+{{- end }}
+<link rel="preload" as="font" type="font/woff2" href="/fonts/work-sans-700-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/fonts/jetbrains-mono-700-latin.woff2" crossorigin>
 {{- if site.Params.analytics.google.SiteVerificationTag }}
 <meta name="google-site-verification" content="{{ site.Params.analytics.google.SiteVerificationTag }}">
 {{- end }}

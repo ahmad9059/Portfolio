@@ -1,10 +1,5 @@
 {{- /* Head custom content area start */ -}}
 
-{{- /* Put the homepage LCP image preload as early as this extension point allows. */ -}}
-{{- if .IsHome }}
-<link rel="preload" as="image" href="{{ (site.Params.profileMode.imageUrlLight | default site.Params.profileMode.imageUrl) | absURL }}" fetchpriority="high">
-{{- end }}
-
 {{- /* Enhanced robots meta with max-image-preview for better SERP thumbnails */ -}}
 {{- if hugo.IsProduction | or (eq site.Params.env "production") }}
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
@@ -211,11 +206,6 @@
 }
 </script>
 {{- end }}
-
-{{- /* Fonts are self-hosted (see assets/css/extended/fonts.css). Preload the two
-       above-the-fold weights so first paint isn't blocked on a font swap. */ -}}
-<link rel="preload" as="font" type="font/woff2" href="/fonts/work-sans-700-latin.woff2" crossorigin />
-<link rel="preload" as="font" type="font/woff2" href="/fonts/jetbrains-mono-700-latin.woff2" crossorigin />
 
 {{- /* Noto Nastaliq Urdu is only needed on Urdu pages — load it (deferred) only
        there instead of on every page. */ -}}
