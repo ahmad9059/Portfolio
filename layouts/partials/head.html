@@ -24,9 +24,9 @@
 <meta name="author" content="{{ (partial "author.html" . ) }}">
 <link rel="canonical" href="{{ if .Params.canonicalURL -}} {{ trim .Params.canonicalURL " " }} {{- else -}} {{ .Permalink }} {{- end }}">
 {{- if .IsHome }}
-<link rel="preload" as="image" href="{{ (site.Params.profileMode.imageUrlLight | default site.Params.profileMode.imageUrl) | absURL }}" fetchpriority="high">
+<link rel="preload" as="image" href="{{ (site.Params.profileMode.imageUrlLight | default site.Params.profileMode.imageUrl) | relURL }}" fetchpriority="high">
 {{- with site.Params.profileMode.imageUrl }}
-<link rel="preload" as="image" href="{{ . | absURL }}" fetchpriority="high">
+<link rel="preload" as="image" href="{{ . | relURL }}" fetchpriority="high">
 {{- end }}
 {{- end }}
 <link rel="preload" as="font" type="font/woff2" href="/fonts/work-sans-700-latin.woff2" crossorigin>

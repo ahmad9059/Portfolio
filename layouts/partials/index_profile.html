@@ -9,8 +9,8 @@
                Both are tiny (~8-13KB) and the visible one is preloaded in <head>. */ -}}
         {{- $h := .imageHeight | default 150 -}}
         {{- $w := .imageWidth | default 150 -}}
-        {{- $dark := .imageUrl | absURL -}}
-        {{- $light := (.imageUrlLight | default .imageUrl) | absURL -}}
+        {{- $dark := .imageUrl | relURL -}}
+        {{- $light := (.imageUrlLight | default .imageUrl) | relURL -}}
         <img class="profile-pic profile-pic--light" draggable="false" src="{{ $light }}" alt="" title="{{ .imageTitle }}"
             height="{{ $h }}" width="{{ $w }}" fetchpriority="high" decoding="async" />
         <img class="profile-pic profile-pic--dark" draggable="false" src="{{ $dark }}" alt="" title="{{ .imageTitle }}"
