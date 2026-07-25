@@ -7,14 +7,13 @@
                assets/css/extended/profile-theme.css). The early theme script in
                header.html sets body.dark before paint, so there's no flash.
                Both are tiny (~8-13KB) and the visible one is preloaded in <head>. */ -}}
-        {{- $alt := .imageTitle | default "profile image" -}}
         {{- $h := .imageHeight | default 150 -}}
         {{- $w := .imageWidth | default 150 -}}
         {{- $dark := .imageUrl | absURL -}}
         {{- $light := (.imageUrlLight | default .imageUrl) | absURL -}}
-        <img class="profile-pic profile-pic--light" draggable="false" src="{{ $light }}" alt="{{ $alt }}" title="{{ .imageTitle }}"
+        <img class="profile-pic profile-pic--light" draggable="false" src="{{ $light }}" alt="" title="{{ .imageTitle }}"
             height="{{ $h }}" width="{{ $w }}" fetchpriority="high" decoding="async" />
-        <img class="profile-pic profile-pic--dark" draggable="false" src="{{ $dark }}" alt="{{ $alt }}" title="{{ .imageTitle }}"
+        <img class="profile-pic profile-pic--dark" draggable="false" src="{{ $dark }}" alt="" title="{{ .imageTitle }}"
             height="{{ $h }}" width="{{ $w }}" fetchpriority="high" decoding="async" />
         {{- end }}
         <h1>{{ .title | default site.Title | markdownify }}</h1>
