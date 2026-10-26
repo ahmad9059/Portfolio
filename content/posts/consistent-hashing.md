@@ -12,6 +12,7 @@ tags:
   - architecture
 Author: Ahmad Hassan
 ---
+![Hand-drawn ring of nodes and keys showing the clockwise walk, the arc a fifth node takes over, and virtual nodes for balance](/posts/assets/system-design/consistent-hashing.webp)
 
 Let's talk about consistent hashing.
 
@@ -28,6 +29,10 @@ Consistent hashing removes the node count from the equation entirely.
 Picture a ring instead of a list. Take the hash space and wrap it into a circle, so the largest possible hash sits right next to zero. Now place each node somewhere on that circle, at its own hash position.
 
 To find where a key belongs, hash the key and walk clockwise until you hit a node. Whatever you land on, that is the owner.
+
+The image shows this. On the right, four nodes on a ring. Six keys scattered between them. One dashed box where a fifth node would land. Look at what that box touches: one arc, the stretch between N1 and N2. Only the keys inside that arc change hands. Add the node and k1 moves to N5. k2 through k6 do not move at all.
+
+On the left, the numbers. Ten keys, then the same ten after the fifth node joins. With a modulo, eight of them land somewhere new. On the ring, two.
 
 Now add a node. It lands somewhere on the ring and takes responsibility for the arc between it and the node behind it. Only the keys in that arc move. Everything else stays exactly where it was. Add a fifth node to a four node cluster and roughly one fifth of your keys relocate.
 
