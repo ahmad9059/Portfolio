@@ -1,10 +1,17 @@
 const { test } = require("node:test");
 const assert = require("node:assert/strict");
-const { streamAnswer } = require("../../lib/chat/gemini");
+const { streamAnswer, generationConfig } = require("../../lib/chat/gemini");
 
 function packet(parts, finishReason) {
   return `data: ${JSON.stringify({ candidates: [{ content: { parts }, ...(finishReason ? { finishReason } : {}) }] })}\n\n`;
 }
+
+test("Flash-Lite uses minimal thinking while arbitrary model overrides keep compatible settings", () => {
+  assert.equal(generationConfig("gemini-3.5-flash-lite", "hello").thinkingConfig.thinkingLevel, "minimal");
+  assert.ok(generationConfig("gemini-3.5-flash-lite", "compare projects in detail").maxOutputTokens
+    > generationConfig("gemini-3.5-flash-lite", "hello").maxOutputTokens);
+  assert.equal(generationConfig("some-other-model", "hello").thinkingConfig, undefined);
+});
 
 test("SSE handles split UTF-8, CRLF, multiple parts, thought exclusion and final unterminated event", async () => {
   const data = (packet([{ text: "secret", thought: true }, { text: "Hé" }, { text: "llo " }])

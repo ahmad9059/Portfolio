@@ -40,6 +40,10 @@ The cache belongs to each warm function instance. It is not shared between insta
 
 ## Conversation grounding
 
+Common topic misspellings (including `eduction`) are normalized before both intent detection and retrieval. Corrections use an explicit alias list, not fuzzy substitutions of names or source facts.
+
+Requests to list earlier questions use a separate, model-free chat-history path. It lists original user messages only and explains the available-history limit. The browser sends up to 40 recent messages; recall accepts at most 20,000 characters. Portfolio generation still uses the smaller context window described below. This is not persistent memory and cannot recover other chats or missing history.
+
 The API accepts up to ten recent valid user/assistant messages, bounded to 10,000 characters in total. System roles from the client are discarded. Explicit new topics reset the model context. Follow-ups preserve the active topic, including narrowing turns such as “what about Google?” followed by “tell me more”. Named and ordinal references resolve against known portfolio entities. Ambiguous references ask for clarification instead of guessing.
 
 Previous assistant text identifies referents only; it is not treated as evidence. Retrieval scopes certifications, work, projects, biography, and blog questions to the relevant source categories. Unknown personal facts cannot use an unrelated blog paragraph as biography. This is deterministic local topic resolution, not a semantic model, so ambiguous language can still require clarification.

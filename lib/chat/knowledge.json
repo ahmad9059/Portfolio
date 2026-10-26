@@ -1,9 +1,15 @@
 {
-  "version": "8f3586ef4397d417",
+  "version": "7b990b782bb914a8",
   "documents": [
     {
       "id": "about.md:0:0",
       "category": "about",
+      "facets": [
+        "identity",
+        "education",
+        "location",
+        "contact"
+      ],
       "title": "About Ahmad Hassan: Ahmad Hassan",
       "url": "https://ahmadx.dev/about/",
       "content": "# Ahmad Hassan\n\nSoftware Engineer & Full Stack Developer\n\nCurrently building AI-powered tools at [VieroMind](https://vieromind.com/). CS student at MNS-UAM, Multan. Open source contributor and creator of [HyprFlux](https://github.com/ahmad9059/HyprFlux).\n\n[GitHub](https://github.com/ahmad9059)\n[LinkedIn](https://www.linkedin.com/in/ahmad9059/)\n[Email](mailto:hi@ahmadx.dev)\n[Resume](https://ahmadx.dev/Ahmad-Hassan-Resume.pdf)",
@@ -12,6 +18,9 @@
     {
       "id": "about.md:1:0",
       "category": "about",
+      "facets": [
+        "experience"
+      ],
       "title": "About Ahmad Hassan: Work Experience",
       "url": "https://ahmadx.dev/about/",
       "content": "## Work Experience\n\n**Software Engineer, [VieroMind Foundation, Inc.](https://vieromind.com)** · Full-time · Oct 2025 – Present\n\nBuilding full-stack AI wellness tools with Next.js, TypeScript, Node.js, and Golang. Integrating ML and NLP into journaling and mood tracking features. Joined full-time after placing 2nd at Pakathon.\n\n**Founder & Lead, BinaryBytes** · Full-time · May 2023 – Present\n\nRunning a tech community focused on hands-on learning, workshops, and hackathons. Bridging the gap between theory and practical skills for the next generation of developers.\n\n**MERN Stack Developer, Digistartup** · Internship · May 2024 – Aug 2024\n\nContributed to frontend and backend projects in a startup environment. Built features with React and Express.js across cross-functional teams to improve functionality and UX."
@@ -19,6 +28,9 @@
     {
       "id": "about.md:2:0",
       "category": "about",
+      "facets": [
+        "projects"
+      ],
       "title": "About Ahmad Hassan: Open Source & Projects",
       "url": "https://ahmadx.dev/about/",
       "content": "## Open Source & Projects\n\nMy most well-known project is [**HyprFlux**](https://hyprflux.dev), a complete Arch Linux desktop operating system with branded live ISO, TUI installer, Hyprland desktop environment, boot theming, and developer tooling in one cohesive project. It has earned over 800 stars on GitHub, and I actively maintain it for the Hyprland community.\n\nOther projects I've built include:\n\n- [**SehatScan**](https://sehatscan.vercel.app): AI health assessment platform using multi-modal analysis with Google Gemini, Python, and AWS\n- [**HisaabScore**](https://hisaabscore.vercel.app): AI-powered alternative credit scoring system for unbanked gig workers\n- [**RAF-SP**](https://raf-sp.vercel.app): Agricultural data management system for the South Punjab agriculture department\n- [**UAM Tracker**](https://uam-tracker.vercel.app): GPA/CGPA tracker for university students\n- [**MindOasis**](https://mindoasis.vercel.app): Hackathon project helping users in Pakistan find mental health professionals\n\nYou can see all of them on my [projects page](https://ahmadx.dev/projects/)."
@@ -26,6 +38,9 @@
     {
       "id": "about.md:3:0",
       "category": "about",
+      "facets": [
+        "skills"
+      ],
       "title": "About Ahmad Hassan: Technical Skills",
       "url": "https://ahmadx.dev/about/",
       "content": "## Technical Skills\n\n- **Languages:** TypeScript, JavaScript, Python, Golang, SQL, Shell/Bash\n- **Frontend:** React, Next.js, Tailwind CSS, shadcn/ui, Framer Motion, GSAP\n- **Backend:** Node.js, Golang, Vercel Serverless Functions\n- **Databases:** PostgreSQL, MySQL, Redis, Supabase, Firebase\n- **Cloud & DevOps:** AWS (EC2, S3, Lambda), Vercel, Docker\n- **AI/ML:** Google Gemini API, RAG, Firebase Genkit, NLP"
@@ -33,6 +48,9 @@
     {
       "id": "about.md:4:0",
       "category": "about",
+      "facets": [
+        "achievements"
+      ],
       "title": "About Ahmad Hassan: Achievements",
       "url": "https://ahmadx.dev/about/",
       "content": "## Achievements\n\n- Ranked **#92 worldwide** and **#2 in Pakistan** at the UC Berkeley CALICO Spring '25 programming competition\n- **2nd Position** - Pakathon (VieroMind)\n- **1st Position** - Maktab-e-Gulab Programming Competition\n- **1st Position** - Cybersecurity Competition by IGNITE, Pakistan\n- **800+ GitHub stars** on HyprFlux\n- **2,000+ GitHub contributions** in 2026\n- **600+ problems solved** on LeetCode and GeeksforGeeks\n- **Professional certifications** from AWS, Meta, Google, GitHub, IBM, Harvard, and more"
@@ -40,6 +58,10 @@
     {
       "id": "about.md:5:0",
       "category": "about",
+      "facets": [
+        "interests",
+        "tools"
+      ],
       "title": "About Ahmad Hassan: Beyond Code",
       "url": "https://ahmadx.dev/about/",
       "content": "## Beyond Code\n\nI'm an Arch Linux user running a Hyprland setup. I like my tools fast, minimal, and keyboard-driven. Neovim is my primary editor, Zsh is my shell, and I try to keep things distraction-free. You can see my full setup on the [tools page](https://ahmadx.dev/tools/).\n\nWhen I'm not coding, I'm usually reading about productivity and self-improvement, customizing my Linux desktop, or exploring new tech."
@@ -47,6 +69,9 @@
     {
       "id": "about.md:6:0",
       "category": "about",
+      "facets": [
+        "contact"
+      ],
       "title": "About Ahmad Hassan: Get in Touch",
       "url": "https://ahmadx.dev/about/",
       "content": "## Get in Touch\n\nI'm always open to interesting conversations, collaborations, or opportunities. Feel free to reach out:\n\n- **Email:** [hi@ahmadx.dev](mailto:hi@ahmadx.dev)\n- **LinkedIn:** [linkedin.com/in/ahmad9059](https://www.linkedin.com/in/ahmad9059/)\n- **GitHub:** [github.com/ahmad9059](https://github.com/ahmad9059)\n- **LeetCode:** [leetcode.com/ahmad9059](https://leetcode.com/ahmad9059/)\n- **Instagram:** [instagram.com/ahmad9059x](https://www.instagram.com/ahmad9059x/)\n- **X/Twitter:** [x.com/ahmad9059x](https://x.com/ahmad9059x)\n\nThanks for stopping by!"
@@ -250,6 +275,9 @@
     {
       "id": "certifications.md:0:0",
       "category": "certifications",
+      "facets": [
+        "certifications"
+      ],
       "title": "Certifications & Achievements: Certifications & Achievements",
       "url": "https://ahmadx.dev/certifications/",
       "content": "Certifications\nAchievements"
@@ -257,6 +285,9 @@
     {
       "id": "certifications.md:22:0",
       "category": "achievements",
+      "facets": [
+        "achievements"
+      ],
       "title": "Certifications & Achievements: CALICO Spring '25 - Rank #92 Worldwide, #2 in Pakistan",
       "url": "https://ahmadx.dev/certifications/",
       "content": "### CALICO Spring '25 - Rank #92 Worldwide, #2 in Pakistan\n\nSecured Rank #92 globally and #2 in Pakistan in the CALICO Spring '25 programming competition by UC Berkeley.\n\n2025"
@@ -264,6 +295,9 @@
     {
       "id": "certifications.md:23:0",
       "category": "achievements",
+      "facets": [
+        "achievements"
+      ],
       "title": "Certifications & Achievements: 2000+ GitHub Contributions",
       "url": "https://ahmadx.dev/certifications/",
       "content": "### 2000+ GitHub Contributions\n\nMade over 2000 contributions on GitHub in 2025, demonstrating consistent open-source involvement.\n\n2025"
@@ -271,6 +305,9 @@
     {
       "id": "certifications.md:24:0",
       "category": "achievements",
+      "facets": [
+        "achievements"
+      ],
       "title": "Certifications & Achievements: HyprFlux - 800+ Stars",
       "url": "https://ahmadx.dev/certifications/",
       "content": "### HyprFlux - 800+ Stars\n\nCreated HyprFlux, a complete Arch Linux desktop operating system with branded live ISO, TUI installer, Hyprland desktop, and managed desktop environment. It reached 800+ stars on GitHub.\n\n2025"
@@ -278,6 +315,9 @@
     {
       "id": "certifications.md:25:0",
       "category": "achievements",
+      "facets": [
+        "achievements"
+      ],
       "title": "Certifications & Achievements: Full-Time Job Offer at VieroMind",
       "url": "https://ahmadx.dev/certifications/",
       "content": "### Full-Time Job Offer at VieroMind\n\nReceived a full job offer at VieroMind based on performance and skills.\n\n2025"
@@ -285,6 +325,9 @@
     {
       "id": "certifications.md:26:0",
       "category": "achievements",
+      "facets": [
+        "achievements"
+      ],
       "title": "Certifications & Achievements: 2nd Position - Pakathon (VieroMind)",
       "url": "https://ahmadx.dev/certifications/",
       "content": "### 2nd Position - Pakathon (VieroMind)\n\nSecured 2nd position in Pakathon, a nationwide hackathon organized by VieroMind.\n\n2024"
@@ -292,6 +335,9 @@
     {
       "id": "certifications.md:27:0",
       "category": "achievements",
+      "facets": [
+        "achievements"
+      ],
       "title": "Certifications & Achievements: 1st Position - Maktab-e-Gulab Programming Competition",
       "url": "https://ahmadx.dev/certifications/",
       "content": "### 1st Position - Maktab-e-Gulab Programming Competition\n\nWon 1st place in the Maktab-e-Gulab Programming Competition.\n\n2024"
@@ -299,6 +345,9 @@
     {
       "id": "certifications.md:28:0",
       "category": "achievements",
+      "facets": [
+        "achievements"
+      ],
       "title": "Certifications & Achievements: 1st Position - Cybersecurity Workshop",
       "url": "https://ahmadx.dev/certifications/",
       "content": "### 1st Position - Cybersecurity Workshop\n\nSecured 1st place in a 3-day hands-on Cybersecurity Workshop organized by Ignite - National Technology Fund.\n\nSep 2024"
@@ -306,6 +355,9 @@
     {
       "id": "certifications.md:29:0",
       "category": "achievements",
+      "facets": [
+        "achievements"
+      ],
       "title": "Certifications & Achievements: 3rd Position - Speed Programming (ACM-W)",
       "url": "https://ahmadx.dev/certifications/",
       "content": "### 3rd Position - Speed Programming (ACM-W)\n\nSecured 3rd place in the Speed Programming competition at the ACM-W Celebration Event held at Air University.\n\n2024"
@@ -313,6 +365,9 @@
     {
       "id": "certifications.md:30:0",
       "category": "achievements",
+      "facets": [
+        "achievements"
+      ],
       "title": "Certifications & Achievements: 400+ Problems Solved",
       "url": "https://ahmadx.dev/certifications/",
       "content": "### 400+ Problems Solved\n\nSolved over 400+ problems on LeetCode and GeeksforGeeks platforms.\n\nOngoing\n\n&times;\n\n##"
@@ -320,6 +375,9 @@
     {
       "id": "tools.md:0:0",
       "category": "tools",
+      "facets": [
+        "tools"
+      ],
       "title": "Tools & Setup: Tools & Setup",
       "url": "https://ahmadx.dev/tools/",
       "content": "I often get questions about my setup and the software I use. Most of the time, it’s something like, “How do I make my desktop look cool like yours?” So, here’s a page detailing everything I use daily.\n\nMy motivation behind choosing my operating system and software is to maximize efficiency and work seamlessly. I aim to use my computer “at the speed of thought,” which is why I prefer minimal yet powerful tools. This setup works best for me, but it may not be for everyone."
@@ -327,6 +385,9 @@
     {
       "id": "tools.md:1:0",
       "category": "tools",
+      "facets": [
+        "tools"
+      ],
       "title": "Tools & Setup: Software",
       "url": "https://ahmadx.dev/tools/",
       "content": "## Software\n\n- For my operating system, I use **[Arch Linux (btw)](https://archlinux.org/)**. It’s the only Linux distribution that truly gets out of my way and lets me focus on my work. While the initial learning curve can be steep, it’s minimal, customizable, and absolutely worth the investment.\n\n- **[Hyprland](https://hyprland.org/)** is my window manager. Basically, “**how I make my desktop look cool.**” A tiling window manager is essential for my workflow, and Hyprland, being Wayland-based, provides smooth animations along with efficiency. Previously, I’ve used other setups, but Hyprland fits my needs best.\n\n- **[Waybar](https://github.com/Alexays/Waybar)** serves as my status bar at the top.\n\n- For my terminal, I use **foot** because of its speed, customization, and support for images in Wayland. My shell is **Zsh**, enhanced with plugins for syntax highlighting and auto-completion, making it even more productive.\n\n- I use **Thorium** as my web browser. It’s Chromium-based, offering great speed and efficiency while avoiding the telemetry and bloat of other browsers. It’s my go-to for everything web-related.\n\n- For browser extensions, I keep things minimal:\n\n- uBlock Origin to block ads and trackers.\n- Vimium for vim-like keybindings."
@@ -334,6 +395,9 @@
     {
       "id": "tools.md:2:0",
       "category": "tools",
+      "facets": [
+        "tools"
+      ],
       "title": "Tools & Setup: Applications",
       "url": "https://ahmadx.dev/tools/",
       "content": "## Applications\n\nI use **Neovim** for all of my coding. Vim notoriously has a steep learning curve, but as with most things, I think the payoff is worth it.\n\n**VSCodium** is my secondary code editor for when I want to show my code to other, they shocked when they see my setup :( . It’s essentially VS Code but without Microsoft’s telemetry, making it a great open-source alternative.\n\nFor file management in the terminal, I use **Yazi**. It’s fast, highly customizable, and supports image previews, making navigation much smoother.\n\nFor note-taking, I use **Obsidian**. I haven’t been using it for very long, and I’m still exploring its features, but so far, it’s been great for organizing knowledge efficiently.\n\nFor reading books, I use **Foliate**, which provides a clean and distraction-free experience.\n\nFor Telegram, I prefer **64gram**, as it’s lightweight and efficient.\n\nFor office work, I use **WPS Office**, which offers great compatibility with Microsoft Office formats.\n\nFor email, I use **Thunderbird**. While it has its quirks, it’s still the best email client available on Linux.\n\nFor an application launcher, I use **Tofi**. I previously used Rofi, but I had some issues with it on Wayland. Tofi is simpler, highly customizable, and works flawlessly. I also use it as a power menu."
@@ -341,6 +405,9 @@
     {
       "id": "tools.md:3:0",
       "category": "tools",
+      "facets": [
+        "tools"
+      ],
       "title": "Tools & Setup: Theme",
       "url": "https://ahmadx.dev/tools/",
       "content": "## Theme\n\n- I use the **Tokyo Night and Catppuccin** color scheme for just about everything.\n- For my terminal font, I use **[JetBrains Mono](https://www.programmingfonts.org/#jetbrainsmono)**. Of course, I also use [Nerd Font](https://www.nerdfonts.com/) icons."
@@ -348,6 +415,9 @@
     {
       "id": "tools.md:4:0",
       "category": "tools",
+      "facets": [
+        "tools"
+      ],
       "title": "Tools & Setup: This Website",
       "url": "https://ahmadx.dev/tools/",
       "content": "## This Website\n\n- This site is built with **[Hugo](https://gohugo.io/)** and **PaperMod theme**, Hugo a static site generator that just outputs HTML and CSS instead of the bloated mess that is most of the modern web."
@@ -355,6 +425,10 @@
     {
       "id": "contact.md:0:0",
       "category": "contact",
+      "facets": [
+        "contact",
+        "location"
+      ],
       "title": "Contact: Let's talk",
       "url": "https://ahmadx.dev/contact/",
       "content": "# Let's talk\n\nHave a project in mind or just want to say hello? I'd love to hear from you.\n\n[\n\nhi@ahmadx.dev\n](mailto:hi@ahmadx.dev)\n\n[\n\n](https://github.com/ahmad9059)\n[\n\n](https://www.linkedin.com/in/ahmad9059/)\n[\n\n](https://x.com/ahmad9059x)\n[\n\n](https://leetcode.com/ahmad9059/)\n\nMultan, Pakistan"
@@ -15836,6 +15910,7 @@
     "name": "Ahmad Hassan",
     "role": "Software Engineer & Full Stack Developer",
     "bio": "Currently building AI-powered tools at [VieroMind](https://vieromind.com/). CS student at MNS-UAM, Multan. Open source contributor and creator of [HyprFlux](https://github.com/ahmad9059/HyprFlux).",
-    "url": "https://ahmadx.dev/about/"
+    "url": "https://ahmadx.dev/about/",
+    "location": "Multan, Pakistan"
   }
 }

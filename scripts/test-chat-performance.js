@@ -1,75 +1,54 @@
 #!/usr/bin/env node
-// Test script to measure RAG performance
-// Usage: node scripts/test-chat-performance.js
+// Uses the real API: includes provider latency, cache behavior and SSE completion.
+// API_BASE_URL=http://localhost:3001 node scripts/test-chat-performance.js
+const { performance } = require("node:perf_hooks");
+const { readChatStream } = require("../assets/js/chat-stream");
 
-async function testPerformance() {
-  const apiBase = process.env.API_BASE_URL || "http://localhost:3001";
-  const tests = [
-    { name: "Prepared greeting", query: "hi" },
-    { name: "Prepared projects", query: "what projects have you built?" },
-    { name: "Generated answer", query: "What is HyprFlux?" },
-    {
-      name: "Same question (cache hit)",
-      query: "What is HyprFlux?",
-    },
-    {
-      name: "Complex question",
-      query:
-        "tell me about your certifications and which ones are most valuable for software engineering",
-    },
-  ];
+const tests = [
+  { name: "Education typo (prepared)", message: "what is your eduction" },
+  { name: "Project (prepared)", message: "What is HyprFlux?" },
+  { name: "Conversation recall", message: "give me all previous question I have asked you?", history: [
+    { role: "user", content: "who are you?" }, { role: "user", content: "what is your eduction" },
+  ] },
+  { name: "New generation", message: "What do you build at VieroMind?" },
+  { name: "Same question (cache)", message: "What do you build at VieroMind?" },
+  { name: "Comparison", message: "Compare HyprFlux and SehatScan" },
+  { name: "Credential grounding", message: "Do you hold the AWS Solutions Architect certification, or only Cloud Practitioner?" },
+  { name: "Follow-up", message: "what technologies does it use?", history: [
+    { role: "user", content: "Tell me about SehatScan" },
+    { role: "assistant", content: "SehatScan is my AI health assessment platform." },
+  ] },
+];
 
-  console.log("Testing RAG Performance...\n");
-  console.log("Note: First call will be slower due to cold start\n");
-
-  for (const test of tests) {
-    const start = Date.now();
+async function benchmark() {
+  const base = process.env.API_BASE_URL || "http://localhost:3001";
+  const health = await fetch(`${base}/api/health`, { signal: AbortSignal.timeout(5000) });
+  const diagnostics = await health.json();
+  console.log(`Model: ${diagnostics.model}; knowledge: ${diagnostics.knowledgeCount} chunks`);
+  console.log("Real HTTP measurements. Generated responses incur normal provider usage; this is a small sample, not an SLA.\n");
+  const results = [];
+  for (const item of tests) {
+    const start = performance.now();
+    let firstText = null;
     try {
-      const response = await fetch(`${apiBase}/api/chat`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: test.query }),
-        signal: AbortSignal.timeout(20000),
+      const response = await fetch(`${base}/api/chat`, {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: item.message, history: item.history || [] }),
+        signal: AbortSignal.timeout(22000),
       });
-
-      if (!response.ok) {
-        console.log(`${test.name}: ERROR ${response.status}`);
-        continue;
-      }
-
-      // Read the stream
-      const reader = response.body.getReader();
-      const decoder = new TextDecoder();
-      let buffer = "", firstText = null, chars = 0, complete = false, streamError = null;
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-        buffer += decoder.decode(value, { stream: true });
-        const lines = buffer.split("\n");
-        buffer = lines.pop() || "";
-        for (const line of lines) {
-          if (!line.startsWith("data: ")) continue;
-          const data = line.slice(6).trim();
-          if (data === "[DONE]") { complete = true; continue; }
-          const event = JSON.parse(data);
-          if (event.error) streamError = event.error;
-          if (event.text) {
-            if (firstText === null) firstText = Date.now() - start;
-            chars += event.text.length;
-          }
-        }
-      }
-
-      const time = Date.now() - start;
-      console.log(`${test.name}: first text=${firstText ?? "none"}ms total=${time}ms chars=${chars} complete=${complete && !streamError} source=${response.headers.get("x-chat-source")}`);
-      if (streamError) console.log(`  Stream error: ${streamError}`);
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const text = await readChatStream(response.body, () => { if (firstText === null) firstText = performance.now() - start; });
+      const result = { name: item.name, source: response.headers.get("x-chat-source"), firstTextMs: Math.round(firstText), totalMs: Math.round(performance.now() - start), chars: text.length };
+      results.push(result);
+      console.log(JSON.stringify(result));
+      if (process.env.SHOW_ANSWERS === "1") console.log(text + "\n");
     } catch (error) {
-      console.log(`${test.name}: ERROR - ${error.message}`);
+      console.error(`${item.name}: ${error.message}`);
+      process.exitCode = 1;
     }
   }
+  const generated = results.filter(r => r.source === "generated").map(r => r.firstTextMs).sort((a, b) => a - b);
+  if (generated.length) console.log(`\nUncached first text: min=${generated[0]}ms median=${generated[Math.floor(generated.length / 2)]}ms max=${generated.at(-1)}ms (${generated.length} samples)`);
 }
 
-// Start local dev server first: node dev-server.js
-// Then run this test: node scripts/test-chat-performance.js
-// Optional: API_BASE_URL=http://localhost:3001 node scripts/test-chat-performance.js
-testPerformance();
+benchmark().catch(error => { console.error(error.message); process.exitCode = 1; });

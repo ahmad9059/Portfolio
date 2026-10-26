@@ -6,6 +6,18 @@ const { CitationFilter } = require("../../lib/chat/citations");
 const user = content => ({ role: "user", content });
 const assistant = content => ({ role: "assistant", content });
 
+test("common topic typos normalize consistently without fuzzy-changing entity names", () => {
+  for (const question of ["what is your eduction", "your educaton?", "your educatoin?"]) {
+    const context = resolveConversation(question, []);
+    assert.equal(context.topic, "education");
+    assert.deepEqual(retrieve(context.query).map(d => d.id), retrieve("what is your education").map(d => d.id));
+  }
+  assert.equal(topicOf("your experiance"), "experience");
+  assert.equal(topicOf("your certifcations"), "certifications");
+  assert.equal(topicOf("what is your birthday?"), "personal");
+  assert.equal(resolveConversation("HyprFlax", []).entity, null);
+});
+
 test("identity questions work after certifications, without inheriting their context", () => {
   const history = [user("Tell me about your certifications"), assistant(preparedAnswer("Tell me about your certifications"))];
   for (const question of ["who are you?", "introduce yourself", "what's your name?", "tell me about yourself"]) {

@@ -105,6 +105,10 @@ function buildKnowledge(root = ROOT, today = new Date().toISOString().slice(0, 1
       if (!name || !role || !bio) throw new Error("Public profile extraction is incomplete");
       profile = { name, role, bio, url };
     }
+    if (category === "contact") {
+      const location = clean(body.match(/<div class="contact-location">([\s\S]*?)<\/div>/)?.[1] || "");
+      if (location) profile.location = location;
+    }
 
     // Index article sections locally. Retrieval still sends only a small bounded selection.
     if (post) {
@@ -150,7 +154,13 @@ function buildKnowledge(root = ROOT, today = new Date().toISOString().slice(0, 1
         const searchTerms = category === "about" && index === 0 && /student/i.test(content)
           ? "education university college student background bio" : "";
         const recordCategory = category === "certifications" && achievementTitles.has(heading) ? "achievements" : category;
-        documents.push({ id: `${file}:${index}:${part}`, category: recordCategory, title: `${title}: ${heading}`, url, content, ...(searchTerms ? { searchTerms } : {}) });
+        const facets = category === "about" ? {
+          "Work Experience": ["experience"], "Technical Skills": ["skills"],
+          "Open Source & Projects": ["projects"], "Achievements": ["achievements"],
+          "Beyond Code": ["interests", "tools"], "Get in Touch": ["contact"],
+        }[heading] || ["identity", "education", "location", "contact"]
+          : recordCategory === "contact" ? ["contact", "location"] : [recordCategory];
+        documents.push({ id: `${file}:${index}:${part}`, category: recordCategory, facets, title: `${title}: ${heading}`, url, content, ...(searchTerms ? { searchTerms } : {}) });
       });
     });
   }

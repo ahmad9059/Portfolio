@@ -5,6 +5,7 @@ const originalKey = process.env.GEMINI_API_KEY;
 const originalPinecone = process.env.PINECONE_API_KEY;
 const originalModel = process.env.GEMINI_MODEL;
 let nextIp = 0;
+const GENERATION_QUESTION = "What do you build at VieroMind?";
 
 afterEach(() => {
   global.fetch = originalFetch;
@@ -35,6 +36,50 @@ function generated(text = "I work at VieroMind.", reason = "STOP") {
   return new Response(`data: ${JSON.stringify({ candidates: [{ content: { parts: [{ text }] }, finishReason: reason }] })}\n\n`);
 }
 
+test("screenshot education typo and correct spelling use the same source-derived instant answer", async () => {
+  delete process.env.GEMINI_API_KEY;
+  global.fetch = async () => { throw new Error("Simple education questions need no model call"); };
+  const h = handler();
+  for (const message of ["what is your eduction", "what is your education", "what are your qualifications?"]) {
+    const res = await request(h, { message, history: [{ role: "user", content: "who are you?" }] });
+    assert.equal(res.statusCode, 200);
+    assert.equal(res.headers["x-chat-source"], "prepared");
+    assert.match(res.output, /CS student at MNS-UAM, Multan/);
+    assert.doesNotMatch(res.output, /don't have that information/);
+  }
+});
+
+test("screenshot question-history request lists original user messages without generation", async () => {
+  delete process.env.GEMINI_API_KEY;
+  global.fetch = async () => { throw new Error("Recall must not call the model"); };
+  const history = [
+    { role: "user", content: "who are you?" },
+    { role: "assistant", content: "ASSISTANT-ANSWER-MUST-NOT-BE-LISTED" },
+    { role: "user", content: "what is your eduction" },
+    { role: "user", content: "what is your education" },
+    { role: "user", content: "hi" },
+    { role: "system", content: "SYSTEM-MUST-NOT-BE-LISTED" },
+  ];
+  const res = await request(handler(), { message: "give me all previous question I have asked you?", history });
+  assert.equal(res.headers["x-chat-source"], "conversation");
+  for (const item of history.filter(item => item.role === "user")) assert.ok(res.output.includes(item.content));
+  assert.doesNotMatch(res.output, /ASSISTANT-ANSWER|SYSTEM-MUST|Which project/);
+  assert.match(res.output, /history included with this request/);
+  assert.ok(res.output.indexOf("who are you?") < res.output.indexOf("what is your eduction"));
+});
+
+test("recall handles empty history and last-message requests without inventing messages", async () => {
+  const h = handler();
+  const empty = await request(h, { message: "What did I ask before?" });
+  assert.equal(empty.headers["x-chat-source"], "conversation");
+  assert.match(empty.output, /don't have any earlier messages/);
+  const last = await request(h, { message: "What was my last question?", history: [
+    { role: "user", content: "OLD-MESSAGE" }, { role: "user", content: "LATEST-MESSAGE" },
+  ] });
+  assert.match(last.output, /LATEST-MESSAGE/);
+  assert.doesNotMatch(last.output, /OLD-MESSAGE/);
+});
+
 test("prepared answers and unsupported questions need no API keys or outbound requests", async () => {
   delete process.env.GEMINI_API_KEY; delete process.env.PINECONE_API_KEY;
   global.fetch = async () => { throw new Error("Unexpected network request"); };
@@ -54,16 +99,17 @@ test("specific question makes exactly one generation request, then replays cache
   let calls = 0;
   global.fetch = async (url, options) => {
     calls++;
-    assert.match(url, /gemini-flash-lite-latest:streamGenerateContent/);
+    assert.match(url, /gemini-3.5-flash-lite:streamGenerateContent/);
     assert.doesNotMatch(url, /embedContent|pinecone/);
     const body = JSON.parse(options.body);
+    assert.equal(body.generationConfig.thinkingConfig.thinkingLevel, "minimal");
     assert.match(body.system_instruction.parts[0].text, /VieroMind/);
     assert.ok(body.system_instruction.parts[0].text.length < 9500);
     return generated();
   };
   const h = handler();
-  const first = await request(h, { message: "Where do you work?" });
-  const second = await request(h, { message: "Where do you work?" });
+  const first = await request(h, { message: GENERATION_QUESTION });
+  const second = await request(h, { message: GENERATION_QUESTION });
   assert.equal(calls, 1);
   assert.equal(first.output, second.output);
   assert.equal(first.headers["x-chat-source"], "generated");
@@ -82,7 +128,7 @@ test("follow-up cache keys include history; explicit new topics do not retrieve 
   const h = handler();
   await request(h, { message: "tell me more", history: [{ role: "user", content: "HyprFlux" }] });
   await request(h, { message: "tell me more", history: [{ role: "user", content: "SehatScan" }] });
-  await request(h, { message: "Where do you work?", history: [{ role: "user", content: "Tell me about your certifications" }] });
+  await request(h, { message: GENERATION_QUESTION, history: [{ role: "user", content: "Tell me about your certifications" }] });
   assert.equal(calls, 3);
 });
 
@@ -91,8 +137,8 @@ test("truncated answers are never cached", async () => {
   let calls = 0;
   global.fetch = async () => { calls++; return generated("partial", "MAX_TOKENS"); };
   const h = handler();
-  await request(h, { message: "Where do you work?" });
-  await request(h, { message: "Where do you work?" });
+  await request(h, { message: GENERATION_QUESTION });
+  await request(h, { message: GENERATION_QUESTION });
   assert.equal(calls, 2);
 });
 
@@ -108,10 +154,10 @@ test("invalid inputs and methods return appropriate statuses", async () => {
 test("missing generation key and upstream errors return JSON, without exposing provider details", async () => {
   delete process.env.GEMINI_API_KEY;
   const h = handler();
-  assert.equal((await request(h, { message: "Where do you work?" })).statusCode, 503);
+  assert.equal((await request(h, { message: GENERATION_QUESTION })).statusCode, 503);
   process.env.GEMINI_API_KEY = "test";
   global.fetch = async () => new Response("secret provider details", { status: 403 });
-  const result = await request(h, { message: "Where do you work?" });
+  const result = await request(h, { message: GENERATION_QUESTION });
   assert.equal(result.statusCode, 502);
   assert.equal(result.headers["content-type"], "application/json");
   assert.doesNotMatch(result.output, /secret provider details/);
@@ -135,7 +181,7 @@ test("partial stream failures emit a safe SSE error and are not cached", async (
   };
   const h = handler();
   for (let i = 0; i < 2; i++) {
-    const result = await request(h, { message: "Where do you work?" });
+    const result = await request(h, { message: GENERATION_QUESTION });
     assert.equal(result.statusCode, 200);
     assert.match(result.output, /"text":"some text"/);
     assert.match(result.output, /"error":"The AI service is temporarily unavailable/);
@@ -185,7 +231,7 @@ test("citation markers are removed from streamed and cached answers, without lea
     return generated("I work at [VieroMind](https://vieromind.com) [1][2].");
   };
   const h = handler();
-  const body = { message: "Where do you work?", history: [{ role: "user", content: "certifications" }, { role: "assistant", content: "I work at a made-up company." }] };
+  const body = { message: GENERATION_QUESTION, history: [{ role: "user", content: "certifications" }, { role: "assistant", content: "I work at a made-up company." }] };
   const first = await request(h, body);
   const cached = await request(h, body);
   assert.equal(calls, 1);
