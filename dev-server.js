@@ -27,6 +27,8 @@ if (fs.existsSync(envPath)) {
   console.log("Loaded .env file");
 }
 
+// Refresh the public knowledge snapshot before loading the API modules.
+require("child_process").execFileSync(process.execPath, [path.join(__dirname, "scripts/build-chat-knowledge.js")], { stdio: "inherit" });
 const chatHandler = require("./api/chat.js");
 const healthHandler = require("./api/health.js");
 
@@ -51,6 +53,9 @@ const server = http.createServer(async (req, res) => {
     _headers: {},
     _headersSent: false,
     get headersSent() { return this._headersSent; },
+    get writableEnded() { return res.writableEnded; },
+    on(event, listener) { res.on(event, listener); },
+    off(event, listener) { res.off(event, listener); },
     setHeader(key, value) { this._headers[key] = value; },
     status(code) { this._statusCode = code; return this; },
     json(data) {

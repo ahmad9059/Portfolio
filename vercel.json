@@ -5,7 +5,11 @@
       "GO_VERSION": "1.20.6"
     }
   },
-  "buildCommand": "hugo --gc --minify",
+  "buildCommand": "node scripts/build-chat-knowledge.js && hugo --gc --minify",
+  "functions": {
+    "api/chat.js": { "includeFiles": "lib/chat/**" },
+    "api/health.js": { "includeFiles": "lib/chat/**" }
+  },
   "rewrites": [
     { "source": "/api/chat", "destination": "/api/chat.js" },
     { "source": "/api/health", "destination": "/api/health.js" },

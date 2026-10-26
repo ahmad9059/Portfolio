@@ -1,0 +1,782 @@
+{
+  "version": "92d2fac37213d4ec",
+  "documents": [
+    {
+      "id": "about.md:0:0",
+      "category": "about",
+      "title": "About Ahmad Hassan: Ahmad Hassan",
+      "url": "https://ahmadx.dev/about/",
+      "content": "# Ahmad Hassan\n\nSoftware Engineer & Full Stack Developer\n\nCurrently building AI-powered tools at [VieroMind](https://vieromind.com/). CS student at MNS-UAM, Multan. Open source contributor and creator of [HyprFlux](https://github.com/ahmad9059/HyprFlux).\n\n[GitHub](https://github.com/ahmad9059)\n[LinkedIn](https://www.linkedin.com/in/ahmad9059/)\n[Email](mailto:hi@ahmadx.dev)\n[Resume](https://ahmadx.dev/Ahmad-Hassan-Resume.pdf)",
+      "searchTerms": "education university college student background bio"
+    },
+    {
+      "id": "about.md:1:0",
+      "category": "about",
+      "title": "About Ahmad Hassan: Work Experience",
+      "url": "https://ahmadx.dev/about/",
+      "content": "## Work Experience\n\n**Software Engineer, [VieroMind Foundation, Inc.](https://vieromind.com)** · Full-time · Oct 2025 – Present\n\nBuilding full-stack AI wellness tools with Next.js, TypeScript, Node.js, and Golang. Integrating ML and NLP into journaling and mood tracking features. Joined full-time after placing 2nd at Pakathon.\n\n**Founder & Lead, BinaryBytes** · Full-time · May 2023 – Present\n\nRunning a tech community focused on hands-on learning, workshops, and hackathons. Bridging the gap between theory and practical skills for the next generation of developers.\n\n**MERN Stack Developer, Digistartup** · Internship · May 2024 – Aug 2024\n\nContributed to frontend and backend projects in a startup environment. Built features with React and Express.js across cross-functional teams to improve functionality and UX."
+    },
+    {
+      "id": "about.md:2:0",
+      "category": "about",
+      "title": "About Ahmad Hassan: Open Source & Projects",
+      "url": "https://ahmadx.dev/about/",
+      "content": "## Open Source & Projects\n\nMy most well-known project is [**HyprFlux**](https://hyprflux.dev), a complete Arch Linux desktop operating system with branded live ISO, TUI installer, Hyprland desktop environment, boot theming, and developer tooling in one cohesive project. It has earned over 800 stars on GitHub, and I actively maintain it for the Hyprland community.\n\nOther projects I've built include:\n\n- [**SehatScan**](https://sehatscan.vercel.app): AI health assessment platform using multi-modal analysis with Google Gemini, Python, and AWS\n- [**HisaabScore**](https://hisaabscore.vercel.app): AI-powered alternative credit scoring system for unbanked gig workers\n- [**RAF-SP**](https://raf-sp.vercel.app): Agricultural data management system for the South Punjab agriculture department\n- [**UAM Tracker**](https://uam-tracker.vercel.app): GPA/CGPA tracker for university students\n- [**MindOasis**](https://mindoasis.vercel.app): Hackathon project helping users in Pakistan find mental health professionals\n\nYou can see all of them on my [projects page](https://ahmadx.dev/projects/)."
+    },
+    {
+      "id": "about.md:3:0",
+      "category": "about",
+      "title": "About Ahmad Hassan: Technical Skills",
+      "url": "https://ahmadx.dev/about/",
+      "content": "## Technical Skills\n\n- **Languages:** TypeScript, JavaScript, Python, Golang, SQL, Shell/Bash\n- **Frontend:** React, Next.js, Tailwind CSS, shadcn/ui, Framer Motion, GSAP\n- **Backend:** Node.js, Golang, Vercel Serverless Functions\n- **Databases:** PostgreSQL, MySQL, Redis, Supabase, Firebase\n- **Cloud & DevOps:** AWS (EC2, S3, Lambda), Vercel, Docker\n- **AI/ML:** Google Gemini API, RAG, Firebase Genkit, NLP"
+    },
+    {
+      "id": "about.md:4:0",
+      "category": "about",
+      "title": "About Ahmad Hassan: Achievements",
+      "url": "https://ahmadx.dev/about/",
+      "content": "## Achievements\n\n- Ranked **#92 worldwide** and **#2 in Pakistan** at the UC Berkeley CALICO Spring '25 programming competition\n- **2nd Position** - Pakathon (VieroMind)\n- **1st Position** - Maktab-e-Gulab Programming Competition\n- **1st Position** - Cybersecurity Competition by IGNITE, Pakistan\n- **800+ GitHub stars** on HyprFlux\n- **2,000+ GitHub contributions** in 2026\n- **600+ problems solved** on LeetCode and GeeksforGeeks\n- **Professional certifications** from AWS, Meta, Google, GitHub, IBM, Harvard, and more"
+    },
+    {
+      "id": "about.md:5:0",
+      "category": "about",
+      "title": "About Ahmad Hassan: Beyond Code",
+      "url": "https://ahmadx.dev/about/",
+      "content": "## Beyond Code\n\nI'm an Arch Linux user running a Hyprland setup. I like my tools fast, minimal, and keyboard-driven. Neovim is my primary editor, Zsh is my shell, and I try to keep things distraction-free. You can see my full setup on the [tools page](https://ahmadx.dev/tools/).\n\nWhen I'm not coding, I'm usually reading about productivity and self-improvement, customizing my Linux desktop, or exploring new tech."
+    },
+    {
+      "id": "about.md:6:0",
+      "category": "about",
+      "title": "About Ahmad Hassan: Get in Touch",
+      "url": "https://ahmadx.dev/about/",
+      "content": "## Get in Touch\n\nI'm always open to interesting conversations, collaborations, or opportunities. Feel free to reach out:\n\n- **Email:** [hi@ahmadx.dev](mailto:hi@ahmadx.dev)\n- **LinkedIn:** [linkedin.com/in/ahmad9059](https://www.linkedin.com/in/ahmad9059/)\n- **GitHub:** [github.com/ahmad9059](https://github.com/ahmad9059)\n- **LeetCode:** [leetcode.com/ahmad9059](https://leetcode.com/ahmad9059/)\n- **Instagram:** [instagram.com/ahmad9059x](https://www.instagram.com/ahmad9059x/)\n- **X/Twitter:** [x.com/ahmad9059x](https://x.com/ahmad9059x)\n\nThanks for stopping by!"
+    },
+    {
+      "id": "projects.md:0:0",
+      "category": "projects",
+      "title": "Projects: HyprFlux",
+      "url": "https://ahmadx.dev/projects/",
+      "content": "### HyprFlux\n\nA complete Arch Linux desktop operating system with branded live ISO, TUI installer, Hyprland desktop, boot theming, GTK theming, and developer tooling in one cohesive project.\n\nLinux\nArch Linux\nHyprland\nWaybar\nShell\nCSS\nOS\n\n[GitHub](https://github.com/ahmad9059/HyprFlux)\n[Website](https://www.hyprflux.dev/)"
+    },
+    {
+      "id": "projects.md:1:0",
+      "category": "projects",
+      "title": "Projects: SehatScan",
+      "url": "https://ahmadx.dev/projects/",
+      "content": "### SehatScan\n\nAI-powered health assessment platform that analyzes medical documents and facial images to generate personalized health insights.\n\nPython\nNext.js\nTypeScript\nAWS\nRedis\nPostgreSQL\nPrisma\nGoogle Gemini\n\n[GitHub](https://github.com/ahmad9059/SehatScan)\n[Live Demo](https://sehatscan.vercel.app/)"
+    },
+    {
+      "id": "projects.md:2:0",
+      "category": "projects",
+      "title": "Projects: HisaabScore",
+      "url": "https://ahmadx.dev/projects/",
+      "content": "### HisaabScore\n\nAI-powered alternative credit scoring for gig workers and informal economy workers lacking traditional credit history.\n\nTypeScript\nNext.js\nTailwind CSS\nFirebase\nGoogle Genkit\nGemini 2.0\nPrisma\n\n[GitHub](https://github.com/ahmad9059/HisaabScore)\n[Live Demo](https://hisaabscore.vercel.app/)"
+    },
+    {
+      "id": "projects.md:3:0",
+      "category": "projects",
+      "title": "Projects: RAF-SP",
+      "url": "https://ahmadx.dev/projects/",
+      "content": "### RAF-SP\n\nAgricultural data management platform with department management, equipment tracking, and maintenance logs.\n\nTypeScript\nNext.js\nTailwind CSS\nPrisma\nSupabase\nshadcn/ui\nFramer Motion\n\n[Live Demo](https://raf-sp.vercel.app/)"
+    },
+    {
+      "id": "projects.md:4:0",
+      "category": "projects",
+      "title": "Projects: UAM Tracker",
+      "url": "https://ahmadx.dev/projects/",
+      "content": "### UAM Tracker\n\nFull-stack GPA/CGPA tracker for UAM University students with authenticated dashboards and interactive progress charts.\n\nTypeScript\nNext.js\nTailwind CSS\nPrisma\nPostgreSQL\nBetter Auth\nRecharts\n\n[GitHub](https://github.com/ahmad9059/UamTracker)\n[Live Demo](https://uam-tracker.vercel.app/)"
+    },
+    {
+      "id": "projects.md:5:0",
+      "category": "projects",
+      "title": "Projects: MindOasis",
+      "url": "https://ahmadx.dev/projects/",
+      "content": "### MindOasis\n\nHackathon project helping users in Pakistan find mental health professionals with AI-powered profile summaries.\n\nTypeScript\nNext.js\nTailwind CSS\nshadcn/ui\nFirebase Genkit\nGoogle Gemini\n\n[GitHub](https://github.com/ahmad9059/MindOasis)\n[Live Demo](https://mindoasis.vercel.app/)"
+    },
+    {
+      "id": "projects.md:6:0",
+      "category": "projects",
+      "title": "Projects: CodingHawks",
+      "url": "https://ahmadx.dev/projects/",
+      "content": "### CodingHawks\n\nOfficial website for Coding Hawks Society at MNS-UoA, empowering coders through projects, learning, and competitions.\n\nTypeScript\nNext.js\nTailwind CSS\nPrisma\nSupabase\nshadcn/ui\n\n[GitHub](https://github.com/ahmad9059/codinghawks)\n[Live Demo](https://codinghawks.vercel.app/)"
+    },
+    {
+      "id": "certifications.md:0:0",
+      "category": "certifications",
+      "title": "Certifications & Achievements: Certifications & Achievements",
+      "url": "https://ahmadx.dev/certifications/",
+      "content": "Certifications\nAchievements"
+    },
+    {
+      "id": "certifications.md:1:0",
+      "category": "certifications",
+      "title": "Certifications & Achievements: AWS Certified Cloud Practitioner",
+      "url": "https://ahmadx.dev/certifications/",
+      "content": "### AWS Certified Cloud Practitioner\n\nAmazon Web Services\n\n[Verify](https://www.credly.com/badges/d12ea9df-c9c3-40c2-8f48-e8d3cc289900)"
+    },
+    {
+      "id": "certifications.md:2:0",
+      "category": "certifications",
+      "title": "Certifications & Achievements: CALICO Spring '25",
+      "url": "https://ahmadx.dev/certifications/",
+      "content": "### CALICO Spring '25\n\nUC Berkeley\n\n[Verify](https://hkn.eecs.berkeley.edu/examfiles/certificates?id=5721)"
+    },
+    {
+      "id": "certifications.md:3:0",
+      "category": "certifications",
+      "title": "Certifications & Achievements: Meta Front-End Developer",
+      "url": "https://ahmadx.dev/certifications/",
+      "content": "### Meta Front-End Developer\n\nMeta\n\n[Verify](https://www.coursera.org/account/accomplishments/professional-cert/EOD4GA2NMYMM)"
+    },
+    {
+      "id": "certifications.md:4:0",
+      "category": "certifications",
+      "title": "Certifications & Achievements: SQL (Intermediate)",
+      "url": "https://ahmadx.dev/certifications/",
+      "content": "### SQL (Intermediate)\n\nHackerRank\n\n[Verify](https://www.hackerrank.com/certificates/32242ff98c07)"
+    },
+    {
+      "id": "certifications.md:5:0",
+      "category": "certifications",
+      "title": "Certifications & Achievements: Database Structures & MySQL",
+      "url": "https://ahmadx.dev/certifications/",
+      "content": "### Database Structures & MySQL\n\nMeta\n\n[Verify](https://www.coursera.org/account/accomplishments/verify/647YYNTB39M2)"
+    },
+    {
+      "id": "certifications.md:6:0",
+      "category": "certifications",
+      "title": "Certifications & Achievements: CS50x Puzzle Day 2025",
+      "url": "https://ahmadx.dev/certifications/",
+      "content": "### CS50x Puzzle Day 2025\n\nHarvard University\n\n[Verify](https://certificates.cs50.io/d7ecbce7-91eb-4f1d-8dc1-bda0c3564972)"
+    },
+    {
+      "id": "certifications.md:7:0",
+      "category": "certifications",
+      "title": "Certifications & Achievements: Introduction to Databases",
+      "url": "https://ahmadx.dev/certifications/",
+      "content": "### Introduction to Databases\n\nMeta\n\n[Verify](https://www.coursera.org/account/accomplishments/verify/ITLH074TW550)"
+    },
+    {
+      "id": "certifications.md:8:0",
+      "category": "certifications",
+      "title": "Certifications & Achievements: Introduction to Generative AI",
+      "url": "https://ahmadx.dev/certifications/",
+      "content": "### Introduction to Generative AI\n\nAmazon Web Services\n\n[Verify](https://www.credly.com/badges/5a8f69dc-f881-4c30-94e3-94a89ca62c52)"
+    },
+    {
+      "id": "certifications.md:9:0",
+      "category": "certifications",
+      "title": "Certifications & Achievements: Agile Project Management",
+      "url": "https://ahmadx.dev/certifications/",
+      "content": "### Agile Project Management\n\nGoogle\n\n[Verify](https://www.coursera.org/account/accomplishments/verify/YKWFRIEPJQST)"
+    },
+    {
+      "id": "certifications.md:10:0",
+      "category": "certifications",
+      "title": "Certifications & Achievements: GitHub Foundations",
+      "url": "https://ahmadx.dev/certifications/",
+      "content": "### GitHub Foundations\n\nGitHub\n\n[Verify](https://www.credly.com/badges/4ddc90a7-090b-4a36-b318-76da222cabba)"
+    },
+    {
+      "id": "certifications.md:11:0",
+      "category": "certifications",
+      "title": "Certifications & Achievements: Problem Solving (Intermediate)",
+      "url": "https://ahmadx.dev/certifications/",
+      "content": "### Problem Solving (Intermediate)\n\nHackerRank\n\n[Verify](https://www.hackerrank.com/certificates/7542b0741a9d)"
+    },
+    {
+      "id": "certifications.md:12:0",
+      "category": "certifications",
+      "title": "Certifications & Achievements: Programming with JavaScript",
+      "url": "https://ahmadx.dev/certifications/",
+      "content": "### Programming with JavaScript\n\nMeta\n\n[Verify](https://www.coursera.org/account/accomplishments/verify/YY8J2RAW0UWY)"
+    },
+    {
+      "id": "certifications.md:13:0",
+      "category": "certifications",
+      "title": "Certifications & Achievements: Introduction to DevOps",
+      "url": "https://ahmadx.dev/certifications/",
+      "content": "### Introduction to DevOps\n\nIBM\n\n[Verify](https://www.coursera.org/account/accomplishments/verify/HEJPAL3ZNCQD)"
+    },
+    {
+      "id": "certifications.md:14:0",
+      "category": "certifications",
+      "title": "Certifications & Achievements: Introduction to Software Engineering",
+      "url": "https://ahmadx.dev/certifications/",
+      "content": "### Introduction to Software Engineering\n\nIBM\n\n[Verify](https://www.coursera.org/account/accomplishments/verify/SSFJX9Q9LOVD)"
+    },
+    {
+      "id": "certifications.md:15:0",
+      "category": "certifications",
+      "title": "Certifications & Achievements: Google Cloud Digital Leader",
+      "url": "https://ahmadx.dev/certifications/",
+      "content": "### Google Cloud Digital Leader\n\nGoogle\n\n[Verify](https://www.coursera.org/account/accomplishments/verify/RFTCJ5KWNSMR)"
+    },
+    {
+      "id": "certifications.md:16:0",
+      "category": "certifications",
+      "title": "Certifications & Achievements: Crash Course on Python",
+      "url": "https://ahmadx.dev/certifications/",
+      "content": "### Crash Course on Python\n\nGoogle\n\n[Verify](https://www.coursera.org/account/accomplishments/verify/KQDGM9ECXRF9)"
+    },
+    {
+      "id": "certifications.md:17:0",
+      "category": "certifications",
+      "title": "Certifications & Achievements: Foundations: Data, Data, Everywhere",
+      "url": "https://ahmadx.dev/certifications/",
+      "content": "### Foundations: Data, Data, Everywhere\n\nGoogle\n\n[Verify](https://www.coursera.org/account/accomplishments/verify/7JGEDDR7PASY)"
+    },
+    {
+      "id": "certifications.md:18:0",
+      "category": "certifications",
+      "title": "Certifications & Achievements: Introduction to Git and GitHub",
+      "url": "https://ahmadx.dev/certifications/",
+      "content": "### Introduction to Git and GitHub\n\nGoogle\n\n[Verify](https://www.coursera.org/account/accomplishments/verify/CHETJ3H9G279)"
+    },
+    {
+      "id": "certifications.md:19:0",
+      "category": "certifications",
+      "title": "Certifications & Achievements: Creative & Critical Thinking",
+      "url": "https://ahmadx.dev/certifications/",
+      "content": "### Creative & Critical Thinking\n\nIBM\n\n[Verify](https://www.coursera.org/account/accomplishments/verify/W8BYDH8QGBLW)"
+    },
+    {
+      "id": "certifications.md:20:0",
+      "category": "certifications",
+      "title": "Certifications & Achievements: Critical Thinking Skills",
+      "url": "https://ahmadx.dev/certifications/",
+      "content": "### Critical Thinking Skills\n\nUC Davis\n\n[Verify](https://www.coursera.org/account/accomplishments/verify/7HE4RC6U1WUY)"
+    },
+    {
+      "id": "certifications.md:21:0",
+      "category": "certifications",
+      "title": "Certifications & Achievements: AI For Everyone",
+      "url": "https://ahmadx.dev/certifications/",
+      "content": "### AI For Everyone\n\nDeepLearning.AI\n\n[Verify](https://www.coursera.org/account/accomplishments/verify/WXYWQ2YNDYDM)"
+    },
+    {
+      "id": "certifications.md:22:0",
+      "category": "certifications",
+      "title": "Certifications & Achievements: CALICO Spring '25 - Rank #92 Worldwide, #2 in Pakistan",
+      "url": "https://ahmadx.dev/certifications/",
+      "content": "### CALICO Spring '25 - Rank #92 Worldwide, #2 in Pakistan\n\nSecured Rank #92 globally and #2 in Pakistan in the CALICO Spring '25 programming competition by UC Berkeley.\n\n2025"
+    },
+    {
+      "id": "certifications.md:23:0",
+      "category": "certifications",
+      "title": "Certifications & Achievements: 2000+ GitHub Contributions",
+      "url": "https://ahmadx.dev/certifications/",
+      "content": "### 2000+ GitHub Contributions\n\nMade over 2000 contributions on GitHub in 2025, demonstrating consistent open-source involvement.\n\n2025"
+    },
+    {
+      "id": "certifications.md:24:0",
+      "category": "certifications",
+      "title": "Certifications & Achievements: HyprFlux - 800+ Stars",
+      "url": "https://ahmadx.dev/certifications/",
+      "content": "### HyprFlux - 800+ Stars\n\nCreated HyprFlux, a complete Arch Linux desktop operating system with branded live ISO, TUI installer, Hyprland desktop, and managed desktop environment. It reached 800+ stars on GitHub.\n\n2025"
+    },
+    {
+      "id": "certifications.md:25:0",
+      "category": "certifications",
+      "title": "Certifications & Achievements: Full-Time Job Offer at VieroMind",
+      "url": "https://ahmadx.dev/certifications/",
+      "content": "### Full-Time Job Offer at VieroMind\n\nReceived a full job offer at VieroMind based on performance and skills.\n\n2025"
+    },
+    {
+      "id": "certifications.md:26:0",
+      "category": "certifications",
+      "title": "Certifications & Achievements: 2nd Position - Pakathon (VieroMind)",
+      "url": "https://ahmadx.dev/certifications/",
+      "content": "### 2nd Position - Pakathon (VieroMind)\n\nSecured 2nd position in Pakathon, a nationwide hackathon organized by VieroMind.\n\n2024"
+    },
+    {
+      "id": "certifications.md:27:0",
+      "category": "certifications",
+      "title": "Certifications & Achievements: 1st Position - Maktab-e-Gulab Programming Competition",
+      "url": "https://ahmadx.dev/certifications/",
+      "content": "### 1st Position - Maktab-e-Gulab Programming Competition\n\nWon 1st place in the Maktab-e-Gulab Programming Competition.\n\n2024"
+    },
+    {
+      "id": "certifications.md:28:0",
+      "category": "certifications",
+      "title": "Certifications & Achievements: 1st Position - Cybersecurity Workshop",
+      "url": "https://ahmadx.dev/certifications/",
+      "content": "### 1st Position - Cybersecurity Workshop\n\nSecured 1st place in a 3-day hands-on Cybersecurity Workshop organized by Ignite - National Technology Fund.\n\nSep 2024"
+    },
+    {
+      "id": "certifications.md:29:0",
+      "category": "certifications",
+      "title": "Certifications & Achievements: 3rd Position - Speed Programming (ACM-W)",
+      "url": "https://ahmadx.dev/certifications/",
+      "content": "### 3rd Position - Speed Programming (ACM-W)\n\nSecured 3rd place in the Speed Programming competition at the ACM-W Celebration Event held at Air University.\n\n2024"
+    },
+    {
+      "id": "certifications.md:30:0",
+      "category": "certifications",
+      "title": "Certifications & Achievements: 400+ Problems Solved",
+      "url": "https://ahmadx.dev/certifications/",
+      "content": "### 400+ Problems Solved\n\nSolved over 400+ problems on LeetCode and GeeksforGeeks platforms.\n\nOngoing\n\n&times;\n\n##"
+    },
+    {
+      "id": "tools.md:0:0",
+      "category": "tools",
+      "title": "Tools & Setup: Tools & Setup",
+      "url": "https://ahmadx.dev/tools/",
+      "content": "I often get questions about my setup and the software I use. Most of the time, it’s something like, “How do I make my desktop look cool like yours?” So, here’s a page detailing everything I use daily.\n\nMy motivation behind choosing my operating system and software is to maximize efficiency and work seamlessly. I aim to use my computer “at the speed of thought,” which is why I prefer minimal yet powerful tools. This setup works best for me, but it may not be for everyone."
+    },
+    {
+      "id": "tools.md:1:0",
+      "category": "tools",
+      "title": "Tools & Setup: Software",
+      "url": "https://ahmadx.dev/tools/",
+      "content": "## Software\n\n- For my operating system, I use **[Arch Linux (btw)](https://archlinux.org/)**. It’s the only Linux distribution that truly gets out of my way and lets me focus on my work. While the initial learning curve can be steep, it’s minimal, customizable, and absolutely worth the investment.\n\n- **[Hyprland](https://hyprland.org/)** is my window manager. Basically, “**how I make my desktop look cool.**” A tiling window manager is essential for my workflow, and Hyprland, being Wayland-based, provides smooth animations along with efficiency. Previously, I’ve used other setups, but Hyprland fits my needs best.\n\n- **[Waybar](https://github.com/Alexays/Waybar)** serves as my status bar at the top.\n\n- For my terminal, I use **foot** because of its speed, customization, and support for images in Wayland. My shell is **Zsh**, enhanced with plugins for syntax highlighting and auto-completion, making it even more productive.\n\n- I use **Thorium** as my web browser. It’s Chromium-based, offering great speed and efficiency while avoiding the telemetry and bloat of other browsers. It’s my go-to for everything web-related.\n\n- For browser extensions, I keep things minimal:\n\n- uBlock Origin to block ads and trackers.\n- Vimium for vim-like keybindings."
+    },
+    {
+      "id": "tools.md:2:0",
+      "category": "tools",
+      "title": "Tools & Setup: Applications",
+      "url": "https://ahmadx.dev/tools/",
+      "content": "## Applications\n\nI use **Neovim** for all of my coding. Vim notoriously has a steep learning curve, but as with most things, I think the payoff is worth it.\n\n**VSCodium** is my secondary code editor for when I want to show my code to other, they shocked when they see my setup :( . It’s essentially VS Code but without Microsoft’s telemetry, making it a great open-source alternative.\n\nFor file management in the terminal, I use **Yazi**. It’s fast, highly customizable, and supports image previews, making navigation much smoother.\n\nFor note-taking, I use **Obsidian**. I haven’t been using it for very long, and I’m still exploring its features, but so far, it’s been great for organizing knowledge efficiently.\n\nFor reading books, I use **Foliate**, which provides a clean and distraction-free experience.\n\nFor Telegram, I prefer **64gram**, as it’s lightweight and efficient.\n\nFor office work, I use **WPS Office**, which offers great compatibility with Microsoft Office formats.\n\nFor email, I use **Thunderbird**. While it has its quirks, it’s still the best email client available on Linux.\n\nFor an application launcher, I use **Tofi**. I previously used Rofi, but I had some issues with it on Wayland. Tofi is simpler, highly customizable, and works flawlessly. I also use it as a power menu."
+    },
+    {
+      "id": "tools.md:3:0",
+      "category": "tools",
+      "title": "Tools & Setup: Theme",
+      "url": "https://ahmadx.dev/tools/",
+      "content": "## Theme\n\n- I use the **Tokyo Night and Catppuccin** color scheme for just about everything.\n- For my terminal font, I use **[JetBrains Mono](https://www.programmingfonts.org/#jetbrainsmono)**. Of course, I also use [Nerd Font](https://www.nerdfonts.com/) icons."
+    },
+    {
+      "id": "tools.md:4:0",
+      "category": "tools",
+      "title": "Tools & Setup: This Website",
+      "url": "https://ahmadx.dev/tools/",
+      "content": "## This Website\n\n- This site is built with **[Hugo](https://gohugo.io/)** and **PaperMod theme**, Hugo a static site generator that just outputs HTML and CSS instead of the bloated mess that is most of the modern web."
+    },
+    {
+      "id": "contact.md:0:0",
+      "category": "contact",
+      "title": "Contact: Let's talk",
+      "url": "https://ahmadx.dev/contact/",
+      "content": "# Let's talk\n\nHave a project in mind or just want to say hello? I'd love to hear from you.\n\n[\n\nhi@ahmadx.dev\n](mailto:hi@ahmadx.dev)\n\n[\n\n](https://github.com/ahmad9059)\n[\n\n](https://www.linkedin.com/in/ahmad9059/)\n[\n\n](https://x.com/ahmad9059x)\n[\n\n](https://leetcode.com/ahmad9059/)\n\nMultan, Pakistan"
+    },
+    {
+      "id": "posts/80-20-rule.md",
+      "category": "blog",
+      "title": "The 80/20 Principle",
+      "url": "https://ahmadx.dev/posts/80-20-rule/",
+      "content": "The 80/20 Principle\nThe 80/20 Principle: The Secret to Achieving More with Less\nRead: https://ahmadx.dev/posts/80-20-rule/"
+    },
+    {
+      "id": "posts/Fundamentals-of-JavaScript.md",
+      "category": "blog",
+      "title": "Fundamentals of JavaScript",
+      "url": "https://ahmadx.dev/posts/fundamentals-of-javascript/",
+      "content": "Fundamentals of JavaScript\nJavaScript is a versatile language that powers the modern web. Learn about its history, design philosophy, and key features.\nRead: https://ahmadx.dev/posts/fundamentals-of-javascript/"
+    },
+    {
+      "id": "posts/asynchronous-js.md",
+      "category": "blog",
+      "title": "Asynchronous JavaScript",
+      "url": "https://ahmadx.dev/posts/asynchronous-js/",
+      "content": "Asynchronous JavaScript\nLearn about synchronous vs asynchronous JavaScript, callbacks, Promises, async/await, Web Workers, and the Event Loop. Understand how JavaScript handles async tasks efficiently.\nRead: https://ahmadx.dev/posts/asynchronous-js/"
+    },
+    {
+      "id": "posts/aws-ccp-account-management-billing-support.md",
+      "category": "blog",
+      "title": "Account Management, Billing & Support",
+      "url": "https://ahmadx.dev/posts/aws-ccp-account-management-billing-support/",
+      "content": "Account Management, Billing & Support\nAWS Certified Cloud Practitioner notes on Account Management, Billing & Support\nRead: https://ahmadx.dev/posts/aws-ccp-account-management-billing-support/"
+    },
+    {
+      "id": "posts/aws-ccp-advanced-identity.md",
+      "category": "blog",
+      "title": "Advanced Identity",
+      "url": "https://ahmadx.dev/posts/aws-ccp-advanced-identity/",
+      "content": "Advanced Identity\nAWS Certified Cloud Practitioner notes on Advanced Identity\nRead: https://ahmadx.dev/posts/aws-ccp-advanced-identity/"
+    },
+    {
+      "id": "posts/aws-ccp-amazon-s3.md",
+      "category": "blog",
+      "title": "Amazon S3",
+      "url": "https://ahmadx.dev/posts/aws-ccp-amazon-s3/",
+      "content": "Amazon S3\nAWS Certified Cloud Practitioner notes on Amazon S3\nRead: https://ahmadx.dev/posts/aws-ccp-amazon-s3/"
+    },
+    {
+      "id": "posts/aws-ccp-cloud-computing.md",
+      "category": "blog",
+      "title": "Cloud Computing",
+      "url": "https://ahmadx.dev/posts/aws-ccp-cloud-computing/",
+      "content": "Cloud Computing\nAWS Certified Cloud Practitioner notes on Cloud Computing\nRead: https://ahmadx.dev/posts/aws-ccp-cloud-computing/"
+    },
+    {
+      "id": "posts/aws-ccp-cloud-integrations.md",
+      "category": "blog",
+      "title": "Cloud Integrations",
+      "url": "https://ahmadx.dev/posts/aws-ccp-cloud-integrations/",
+      "content": "Cloud Integrations\nAWS Certified Cloud Practitioner notes on Cloud Integrations\nRead: https://ahmadx.dev/posts/aws-ccp-cloud-integrations/"
+    },
+    {
+      "id": "posts/aws-ccp-cloud-monitoring.md",
+      "category": "blog",
+      "title": "Cloud Monitoring",
+      "url": "https://ahmadx.dev/posts/aws-ccp-cloud-monitoring/",
+      "content": "Cloud Monitoring\nAWS Certified Cloud Practitioner notes on Cloud Monitoring\nRead: https://ahmadx.dev/posts/aws-ccp-cloud-monitoring/"
+    },
+    {
+      "id": "posts/aws-ccp-databases-analytics.md",
+      "category": "blog",
+      "title": "Databases & Analytics",
+      "url": "https://ahmadx.dev/posts/aws-ccp-databases-analytics/",
+      "content": "Databases & Analytics\nAWS Certified Cloud Practitioner notes on Databases & Analytics\nRead: https://ahmadx.dev/posts/aws-ccp-databases-analytics/"
+    },
+    {
+      "id": "posts/aws-ccp-deployments-managing-infrastructure-at-scale.md",
+      "category": "blog",
+      "title": "Deployments & Managing Infrastructure at Scale",
+      "url": "https://ahmadx.dev/posts/aws-ccp-deployments-managing-infrastructure-at-scale/",
+      "content": "Deployments & Managing Infrastructure at Scale\nAWS Certified Cloud Practitioner notes on Deployments & Managing Infrastructure at Scale\nRead: https://ahmadx.dev/posts/aws-ccp-deployments-managing-infrastructure-at-scale/"
+    },
+    {
+      "id": "posts/aws-ccp-ec2-elastic-compute-cloud.md",
+      "category": "blog",
+      "title": "EC2 - Elastic Compute Cloud",
+      "url": "https://ahmadx.dev/posts/aws-ccp-ec2-elastic-compute-cloud/",
+      "content": "EC2 - Elastic Compute Cloud\nAWS Certified Cloud Practitioner notes on EC2 - Elastic Compute Cloud\nRead: https://ahmadx.dev/posts/aws-ccp-ec2-elastic-compute-cloud/"
+    },
+    {
+      "id": "posts/aws-ccp-ec2-instance-storage.md",
+      "category": "blog",
+      "title": "EC2 - Instance Storage",
+      "url": "https://ahmadx.dev/posts/aws-ccp-ec2-instance-storage/",
+      "content": "EC2 - Instance Storage\nAWS Certified Cloud Practitioner notes on EC2 - Instance Storage\nRead: https://ahmadx.dev/posts/aws-ccp-ec2-instance-storage/"
+    },
+    {
+      "id": "posts/aws-ccp-elb-asg-elastic-load-balancing-auto-scaling-groups.md",
+      "category": "blog",
+      "title": "ELB & ASG - Elastic Load Balancing & Auto Scaling Groups",
+      "url": "https://ahmadx.dev/posts/aws-ccp-elb-asg-elastic-load-balancing-auto-scaling-groups/",
+      "content": "ELB & ASG - Elastic Load Balancing & Auto Scaling Groups\nAWS Certified Cloud Practitioner notes on ELB & ASG - Elastic Load Balancing & Auto Scaling Groups\nRead: https://ahmadx.dev/posts/aws-ccp-elb-asg-elastic-load-balancing-auto-scaling-groups/"
+    },
+    {
+      "id": "posts/aws-ccp-iam-identity-and-access-management.md",
+      "category": "blog",
+      "title": "IAM (Identity and Access Management)",
+      "url": "https://ahmadx.dev/posts/aws-ccp-iam-identity-and-access-management/",
+      "content": "IAM (Identity and Access Management)\nAWS Certified Cloud Practitioner notes on IAM (Identity and Access Management)\nRead: https://ahmadx.dev/posts/aws-ccp-iam-identity-and-access-management/"
+    },
+    {
+      "id": "posts/aws-ccp-leveraging-the-aws-global-infrastructure.md",
+      "category": "blog",
+      "title": "Leveraging the AWS Global Infrastructure",
+      "url": "https://ahmadx.dev/posts/aws-ccp-leveraging-the-aws-global-infrastructure/",
+      "content": "Leveraging the AWS Global Infrastructure\nAWS Certified Cloud Practitioner notes on Leveraging the AWS Global Infrastructure\nRead: https://ahmadx.dev/posts/aws-ccp-leveraging-the-aws-global-infrastructure/"
+    },
+    {
+      "id": "posts/aws-ccp-machine-learning.md",
+      "category": "blog",
+      "title": "Machine Learning",
+      "url": "https://ahmadx.dev/posts/aws-ccp-machine-learning/",
+      "content": "Machine Learning\nAWS Certified Cloud Practitioner notes on Machine Learning\nRead: https://ahmadx.dev/posts/aws-ccp-machine-learning/"
+    },
+    {
+      "id": "posts/aws-ccp-other-compute-services-ecs-lambda-batch-lightsail.md",
+      "category": "blog",
+      "title": "Other Compute Services ECS, Lambda, Batch, Lightsail",
+      "url": "https://ahmadx.dev/posts/aws-ccp-other-compute-services-ecs-lambda-batch-lightsail/",
+      "content": "Other Compute Services ECS, Lambda, Batch, Lightsail\nAWS Certified Cloud Practitioner notes on Other Compute Services ECS, Lambda, Batch, Lightsail\nRead: https://ahmadx.dev/posts/aws-ccp-other-compute-services-ecs-lambda-batch-lightsail/"
+    },
+    {
+      "id": "posts/aws-ccp-other-services.md",
+      "category": "blog",
+      "title": "Other Services",
+      "url": "https://ahmadx.dev/posts/aws-ccp-other-services/",
+      "content": "Other Services\nAWS Certified Cloud Practitioner notes on Other Services\nRead: https://ahmadx.dev/posts/aws-ccp-other-services/"
+    },
+    {
+      "id": "posts/aws-ccp-security-compliance.md",
+      "category": "blog",
+      "title": "Security & Compliance",
+      "url": "https://ahmadx.dev/posts/aws-ccp-security-compliance/",
+      "content": "Security & Compliance\nAWS Certified Cloud Practitioner notes on Security & Compliance\nRead: https://ahmadx.dev/posts/aws-ccp-security-compliance/"
+    },
+    {
+      "id": "posts/aws-ccp-vpc-networking.md",
+      "category": "blog",
+      "title": "VPC & Networking",
+      "url": "https://ahmadx.dev/posts/aws-ccp-vpc-networking/",
+      "content": "VPC & Networking\nAWS Certified Cloud Practitioner notes on VPC & Networking\nRead: https://ahmadx.dev/posts/aws-ccp-vpc-networking/"
+    },
+    {
+      "id": "posts/cap-theorem.md",
+      "category": "blog",
+      "title": "CAP Theorem",
+      "url": "https://ahmadx.dev/posts/cap-theorem/",
+      "content": "CAP Theorem\ncategories:\nRead: https://ahmadx.dev/posts/cap-theorem/"
+    },
+    {
+      "id": "posts/chatbot.md",
+      "category": "blog",
+      "title": "Build an AI Chatbot Web App with Google Gemini and Deploy on Vercel",
+      "url": "https://ahmadx.dev/posts/chatbot/",
+      "content": "Build an AI Chatbot Web App with Google Gemini and Deploy on Vercel\nLearn how to build an AI chatbot web app using Google Gemini and deploy it on Vercel.\nRead: https://ahmadx.dev/posts/chatbot/"
+    },
+    {
+      "id": "posts/consistent-hashing.md",
+      "category": "blog",
+      "title": "Consistent Hashing",
+      "url": "https://ahmadx.dev/posts/consistent-hashing/",
+      "content": "Consistent Hashing\nHow consistent hashing keeps a distributed cache stable when nodes join or leave.\nRead: https://ahmadx.dev/posts/consistent-hashing/"
+    },
+    {
+      "id": "posts/css.md",
+      "category": "blog",
+      "title": "CSS - Cascading Style Sheets",
+      "url": "https://ahmadx.dev/posts/css/",
+      "content": "CSS - Cascading Style Sheets\nCSS is the style sheet language that's use to specify how a document written in HTML or XML should be presented and styled.\nRead: https://ahmadx.dev/posts/css/"
+    },
+    {
+      "id": "posts/dns-domain-name-system.md",
+      "category": "blog",
+      "title": "DNS (Domain Name System)",
+      "url": "https://ahmadx.dev/posts/dns-domain-name-system/",
+      "content": "DNS (Domain Name System)\nHow a domain name becomes an IP address, and why DNS is really a hierarchy of delegations and caches with a TTL attached.\nRead: https://ahmadx.dev/posts/dns-domain-name-system/"
+    },
+    {
+      "id": "posts/dom-js.md",
+      "category": "blog",
+      "title": "DOM Manipulation in JavaScript",
+      "url": "https://ahmadx.dev/posts/dom-js/",
+      "content": "DOM Manipulation in JavaScript\nLearn how to manipulate the DOM (Document Object Model) in JavaScript by selecting, creating, and removing elements dynamically. Understand the differences between innerHTML, innerText, and textContent.\nRead: https://ahmadx.dev/posts/dom-js/"
+    },
+    {
+      "id": "posts/event-driven-architecture.md",
+      "category": "blog",
+      "title": "Event Driven Architecture",
+      "url": "https://ahmadx.dev/posts/event-driven-architecture/",
+      "content": "Event Driven Architecture\ncategories:\nRead: https://ahmadx.dev/posts/event-driven-architecture/"
+    },
+    {
+      "id": "posts/forher.md",
+      "category": "blog",
+      "title": "What It Means to Feel for Someone",
+      "url": "https://ahmadx.dev/posts/forher/",
+      "content": "What It Means to Feel for Someone\nFor her that leave me behind\nRead: https://ahmadx.dev/posts/forher/"
+    },
+    {
+      "id": "posts/gsap-locomotive.md",
+      "category": "blog",
+      "title": "GSAP & Locomotive Scroll",
+      "url": "https://ahmadx.dev/posts/gsap-locomotive/",
+      "content": "GSAP & Locomotive Scroll\nLearn how to use GSAP (Greensock Animation Platform) and Locomotive Scroll to create smooth animations and scroll-based effects in web development.\nRead: https://ahmadx.dev/posts/gsap-locomotive/"
+    },
+    {
+      "id": "posts/html.md",
+      "category": "blog",
+      "title": "HTML - The Language of the Web",
+      "url": "https://ahmadx.dev/posts/html/",
+      "content": "HTML - The Language of the Web\nHTML is the backbone of the web. Learn the basics of HTML, its structure, and how to create your first webpage.\nRead: https://ahmadx.dev/posts/html/"
+    },
+    {
+      "id": "posts/intro-to-shell-scripting.md",
+      "category": "blog",
+      "title": "Introduction to Shell Scripting",
+      "url": "https://ahmadx.dev/posts/intro-to-shell-scripting/",
+      "content": "Introduction to Shell Scripting\nLearn Shell Scripting From Scratch and Dive Deep Into Scripting\nRead: https://ahmadx.dev/posts/intro-to-shell-scripting/"
+    },
+    {
+      "id": "posts/javascript-advanced.md",
+      "category": "blog",
+      "title": "JavaScript Advanced Concepts",
+      "url": "https://ahmadx.dev/posts/javascript-advanced/",
+      "content": "JavaScript Advanced Concepts\nAdvanced JavaScript concepts like closures, event listeners, higher-order functions, and more. Learn how to use these concepts to write better JavaScript code.\nRead: https://ahmadx.dev/posts/javascript-advanced/"
+    },
+    {
+      "id": "posts/microservice-architecture.md",
+      "category": "blog",
+      "title": "Microservice Architecture",
+      "url": "https://ahmadx.dev/posts/microservice-architecture/",
+      "content": "Microservice Architecture\ncategories:\nRead: https://ahmadx.dev/posts/microservice-architecture/"
+    },
+    {
+      "id": "posts/mysql.md",
+      "category": "blog",
+      "title": "Introduction to Databases - MySQL",
+      "url": "https://ahmadx.dev/posts/mysql/",
+      "content": "Introduction to Databases - MySQL\nMySQL is an open-source relational database management system. It is used to store and manage data in a structured format.\nRead: https://ahmadx.dev/posts/mysql/"
+    },
+    {
+      "id": "posts/reactjs.md",
+      "category": "blog",
+      "title": "React – A JavaScript Library",
+      "url": "https://ahmadx.dev/posts/reactjs/",
+      "content": "React – A JavaScript Library\nA comprehensive guide to React.js, covering its key features, state management, props, routing, redux, and more.\nRead: https://ahmadx.dev/posts/reactjs/"
+    },
+    {
+      "id": "posts/setup-mpd-and-rmpc.md",
+      "category": "blog",
+      "title": "Setting Up MPD and RMPC",
+      "url": "https://ahmadx.dev/posts/setup-mpd-and-rmpc/",
+      "content": "Setting Up MPD and RMPC\nLearn How to setup MPD and RMPC Completely From Start\nRead: https://ahmadx.dev/posts/setup-mpd-and-rmpc/"
+    },
+    {
+      "id": "posts/shell-expansion.md",
+      "category": "blog",
+      "title": "Shell Expansion in Shell Scripting",
+      "url": "https://ahmadx.dev/posts/shell-expansion/",
+      "content": "Shell Expansion in Shell Scripting\nLearn About Shell Expansion in Shell Scripting\nRead: https://ahmadx.dev/posts/shell-expansion/"
+    },
+    {
+      "id": "posts/shell-operation-shell-scripting.md",
+      "category": "blog",
+      "title": "Shell Operation in Shell Scripting",
+      "url": "https://ahmadx.dev/posts/shell-operation-shell-scripting/",
+      "content": "Shell Operation in Shell Scripting\nLearn Shell Expansion From Scratch and Dive Deep Into Scripting\nRead: https://ahmadx.dev/posts/shell-operation-shell-scripting/"
+    },
+    {
+      "id": "posts/sqlServer.md",
+      "category": "blog",
+      "title": "MS SQL Server and Azure Data Studio on Arch Linux",
+      "url": "https://ahmadx.dev/posts/sqlserver/",
+      "content": "MS SQL Server and Azure Data Studio on Arch Linux\nInstalling MS SQL Server and Azure Data Studio on Arch Linux using Docker.\nRead: https://ahmadx.dev/posts/sqlserver/"
+    },
+    {
+      "id": "posts/tailwind-css.md",
+      "category": "blog",
+      "title": "Tailwind CSS - A Utility-First CSS Framework",
+      "url": "https://ahmadx.dev/posts/tailwind-css/",
+      "content": "Tailwind CSS - A Utility-First CSS Framework\nTailwind CSS is a utility-first CSS framework designed to allow developers to build custom designs quickly. Learn how to use Tailwind CSS for styling web elements.\nRead: https://ahmadx.dev/posts/tailwind-css/"
+    },
+    {
+      "id": "posts/variable-in-shell-scripting.md",
+      "category": "blog",
+      "title": "Variables in Shell Scripting",
+      "url": "https://ahmadx.dev/posts/variable-in-shell-scripting/",
+      "content": "Variables in Shell Scripting\nLearn About Variables in Shell Scripting\nRead: https://ahmadx.dev/posts/variable-in-shell-scripting/"
+    },
+    {
+      "id": "posts/web-dev-roadmap.md",
+      "category": "blog",
+      "title": "Becoming a Full-Stack Web Developer in 2025",
+      "url": "https://ahmadx.dev/posts/web-dev-roadmap/",
+      "content": "Becoming a Full-Stack Web Developer in 2025\nWant to become a full-stack developer in 2025? Follow this step-by-step roadmap to master web development skills and build projects that stand out!\nRead: https://ahmadx.dev/posts/web-dev-roadmap/"
+    }
+  ],
+  "cards": {
+    "projects": [
+      {
+        "title": "HyprFlux",
+        "url": "https://www.hyprflux.dev/"
+      },
+      {
+        "title": "SehatScan",
+        "url": "https://sehatscan.vercel.app/"
+      },
+      {
+        "title": "HisaabScore",
+        "url": "https://hisaabscore.vercel.app/"
+      },
+      {
+        "title": "RAF-SP",
+        "url": "https://raf-sp.vercel.app/"
+      },
+      {
+        "title": "UAM Tracker",
+        "url": "https://uam-tracker.vercel.app/"
+      },
+      {
+        "title": "MindOasis",
+        "url": "https://mindoasis.vercel.app/"
+      },
+      {
+        "title": "CodingHawks",
+        "url": "https://codinghawks.vercel.app/"
+      }
+    ],
+    "certifications": [
+      {
+        "title": "AWS Certified Cloud Practitioner",
+        "url": "https://www.credly.com/badges/d12ea9df-c9c3-40c2-8f48-e8d3cc289900"
+      },
+      {
+        "title": "CALICO Spring '25",
+        "url": "https://hkn.eecs.berkeley.edu/examfiles/certificates?id=5721"
+      },
+      {
+        "title": "Meta Front-End Developer",
+        "url": "https://www.coursera.org/account/accomplishments/professional-cert/EOD4GA2NMYMM"
+      },
+      {
+        "title": "SQL (Intermediate)",
+        "url": "https://www.hackerrank.com/certificates/32242ff98c07"
+      },
+      {
+        "title": "Database Structures & MySQL",
+        "url": "https://www.coursera.org/account/accomplishments/verify/647YYNTB39M2"
+      },
+      {
+        "title": "CS50x Puzzle Day 2025",
+        "url": "https://certificates.cs50.io/d7ecbce7-91eb-4f1d-8dc1-bda0c3564972"
+      },
+      {
+        "title": "Introduction to Databases",
+        "url": "https://www.coursera.org/account/accomplishments/verify/ITLH074TW550"
+      },
+      {
+        "title": "Introduction to Generative AI",
+        "url": "https://www.credly.com/badges/5a8f69dc-f881-4c30-94e3-94a89ca62c52"
+      },
+      {
+        "title": "Agile Project Management",
+        "url": "https://www.coursera.org/account/accomplishments/verify/YKWFRIEPJQST"
+      },
+      {
+        "title": "GitHub Foundations",
+        "url": "https://www.credly.com/badges/4ddc90a7-090b-4a36-b318-76da222cabba"
+      },
+      {
+        "title": "Problem Solving (Intermediate)",
+        "url": "https://www.hackerrank.com/certificates/7542b0741a9d"
+      },
+      {
+        "title": "Programming with JavaScript",
+        "url": "https://www.coursera.org/account/accomplishments/verify/YY8J2RAW0UWY"
+      },
+      {
+        "title": "Introduction to DevOps",
+        "url": "https://www.coursera.org/account/accomplishments/verify/HEJPAL3ZNCQD"
+      },
+      {
+        "title": "Introduction to Software Engineering",
+        "url": "https://www.coursera.org/account/accomplishments/verify/SSFJX9Q9LOVD"
+      },
+      {
+        "title": "Google Cloud Digital Leader",
+        "url": "https://www.coursera.org/account/accomplishments/verify/RFTCJ5KWNSMR"
+      },
+      {
+        "title": "Crash Course on Python",
+        "url": "https://www.coursera.org/account/accomplishments/verify/KQDGM9ECXRF9"
+      },
+      {
+        "title": "Foundations: Data, Data, Everywhere",
+        "url": "https://www.coursera.org/account/accomplishments/verify/7JGEDDR7PASY"
+      },
+      {
+        "title": "Introduction to Git and GitHub",
+        "url": "https://www.coursera.org/account/accomplishments/verify/CHETJ3H9G279"
+      },
+      {
+        "title": "Creative & Critical Thinking",
+        "url": "https://www.coursera.org/account/accomplishments/verify/W8BYDH8QGBLW"
+      },
+      {
+        "title": "Critical Thinking Skills",
+        "url": "https://www.coursera.org/account/accomplishments/verify/7HE4RC6U1WUY"
+      },
+      {
+        "title": "AI For Everyone",
+        "url": "https://www.coursera.org/account/accomplishments/verify/WXYWQ2YNDYDM"
+      }
+    ]
+  }
+}

@@ -1,5 +1,9 @@
 # Ahmad Hassan Portfolio — AI Agent Context
 
+## Chat migration note (2026-10-26)
+
+The chat sections below describe the former embedding/Pinecone implementation. The current chat uses bundled public knowledge and local BM25 search. See `api/README.md`, `lib/chat/`, and `scripts/build-chat-knowledge.js` for current behavior. Only `GEMINI_API_KEY` is required for generation. Private facts from the old index are not copied into the public-source snapshot.
+
 ## Project Overview
 
 **Name:** Ahmad Hassan Portfolio (`ahmadx.dev`)

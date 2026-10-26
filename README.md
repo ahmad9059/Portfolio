@@ -11,7 +11,7 @@ Static portfolio, blog, and certification showcase for Ahmad Hassan. Built with 
 - Custom styling: JetBrains Mono + Work Sans + Noto Nastaliq Urdu, tailored light/dark palettes (`assets/css/core/theme-vars.css`, `assets/css/extended/*.css`).
 - Search overlay powered by Fuse.js with keyboard shortcuts (`Ctrl+K` or `/`) and JSON index output (`outputs.home` includes `index.json`).
 - On-page UX details: code copy buttons, tailored syntax highlighting for light mode, smooth scroll-to-top, and tag/category icons.
-- Deployment ready for Vercel via `vercel.json` (`hugo --gc --minify`).
+- Deployment ready for Vercel via `vercel.json` (local chat knowledge compilation followed by Hugo).
 
 ## Feature Highlights
 - **Profile landing**: PaperMod profile mode with resume link, social icons, and hero buttons (blogs, tools, resume).
@@ -50,6 +50,8 @@ hugo --gc --minify
 # Output goes to ./public
 ```
 
+For the portfolio chat, use Node.js 22+ and run `node dev-server.js` in another terminal with `GEMINI_API_KEY` in `.env`. No Pinecone setup or embedding generation is needed. See [API setup](api/README.md).
+
 ## Content Workflow
 - New post: `hugo new posts/my-title.md` (archetype sets `draft: true`; flip to `false` when ready).
 - Images: place under `static/assets/...`; reference with absolute paths such as `/assets/projects/your-image.webp`.
@@ -64,7 +66,7 @@ hugo --gc --minify
 - Additional tweaks for layout, headers, posts, archives, and scrollbar are in `assets/css/common/` and `assets/css/includes/`.
 
 ## Deployment
-- Vercel is configured through `vercel.json` with pinned `HUGO_VERSION=0.140.2` and build command `hugo --gc --minify`.
+- Vercel is configured through `vercel.json` with pinned `HUGO_VERSION=0.140.2` and build command `node scripts/build-chat-knowledge.js && hugo --gc --minify`.
 - The repo expects the PaperMod theme to be present in `themes/PaperMod`; since it is vendored, no submodule init is required.
 - Set `HUGO_ENV=production` or rely on Vercel defaults for minified output and sitemap/robots generation.
 

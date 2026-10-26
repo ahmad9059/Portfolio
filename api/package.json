@@ -1,7 +1,10 @@
 {
   "name": "portfolio-api",
   "version": "1.0.0",
-  "dependencies": {
-    "@pinecone-database/pinecone": "^3.0.3"
-  }
+  "private": true,
+  "scripts": {
+    "knowledge": "node ../scripts/build-chat-knowledge.js",
+    "test": "node --test ../tests/chat/*.test.js"
+  },
+  "engines": { "node": ">=22" }
 }

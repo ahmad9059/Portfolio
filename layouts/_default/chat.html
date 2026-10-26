@@ -736,6 +736,7 @@
       let fullText = '';
       let bubble = null;
       let buffer = '';
+      let streamError = null;
 
       while (true) {
         const { done, value } = await reader.read();
@@ -754,6 +755,10 @@
 
           try {
             var parsed = JSON.parse(data);
+            if (parsed.error) {
+              streamError = parsed.error;
+              continue;
+            }
             if (parsed.text) {
               fullText += parsed.text;
               if (!bubble) {
@@ -769,6 +774,10 @@
         }
       }
 
+      if (streamError) {
+        showError(streamError);
+        return;
+      }
       if (fullText) {
         conversationHistory.push({ role: 'assistant', content: fullText });
         lastFailedMessage = null; // Clear on success
