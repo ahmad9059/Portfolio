@@ -79,6 +79,7 @@ function chunks(text, max = 1800) {
 function buildKnowledge(root = ROOT, today = new Date().toISOString().slice(0, 10)) {
   const documents = [];
   const cards = { projects: [], certifications: [] };
+  let profile;
   const pages = ["about", "projects", "certifications", "tools", "contact"];
   const posts = fs.readdirSync(path.join(root, "content/posts")).filter(f => f.endsWith(".md")).sort();
   const files = [...pages.map(p => `${p}.md`), ...posts.map(p => `posts/${p}`)];
@@ -97,10 +98,23 @@ function buildKnowledge(root = ROOT, today = new Date().toISOString().slice(0, 1
     const url = absolute(scalar(fm, "url") || `/${post ? "posts/" : ""}${slug}/`);
     const category = post ? "blog" : path.basename(file, ".md");
     const text = clean(body);
+    if (category === "about") {
+      const name = clean(body.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i)?.[1] || "");
+      const role = clean(body.match(/<p class="profile-role">([\s\S]*?)<\/p>/)?.[1] || "");
+      const bio = clean(body.match(/<p class="profile-bio">([\s\S]*?)<\/p>/)?.[1] || "");
+      if (!name || !role || !bio) throw new Error("Public profile extraction is incomplete");
+      profile = { name, role, bio, url };
+    }
 
-    // Blog summaries support discovery without feeding entire technical tutorials to the model.
+    // Index article sections locally. Retrieval still sends only a small bounded selection.
     if (post) {
-      documents.push({ id: file, category, title, url, content: `${title}\n${scalar(fm, "description") || text.slice(0, 500)}\nRead: ${url}` });
+      documents.push({ id: file, category, kind: "summary", title, url, content: `${title}\n${scalar(fm, "description") || text.slice(0, 500)}\nRead: ${url}` });
+      text.split(/\n(?=#{1,6} )/).forEach((section, index) => {
+        const heading = section.match(/^#{1,6}\s+([^\n]+)/)?.[1];
+        chunks(section).forEach((content, part) => {
+          documents.push({ id: `${file}:${index}:${part}`, category, kind: "article", title: heading ? `${title}: ${heading}` : title, url, content });
+        });
+      });
       continue;
     }
 
@@ -115,25 +129,36 @@ function buildKnowledge(root = ROOT, today = new Date().toISOString().slice(0, 1
         const name = clean(card[1].match(/<h3[^>]*>([\s\S]*?)<\/h3>/)?.[1] || "");
         const links = [...card[1].matchAll(/<a\b[^>]*href="([^"]+)"[^>]*>([^<]*)<\/a>/g)];
         const href = (links.find(link => /Website|Live Demo/.test(link[2])) || links[0])?.[1];
-        if (name) cards[category].push({ title: name, url: absolute(href || url) });
+        if (name) {
+          const description = clean(card[1].match(/<p[^>]*>([\s\S]*?)<\/p>/)?.[1] || "");
+          const tags = [...card[1].matchAll(/<span[^>]*>([\s\S]*?)<\/span>/g)].map(match => clean(match[1]));
+          const details = { title: name, url: absolute(href || url), description, ...(tags.length ? { tags } : {}) };
+          cards[category].push(details);
+          documents.push({ id: `${file}:card:${cards[category].length}`, category, title: name, url,
+            content: `${name}\n${description}${tags.length ? `\nTechnologies: ${tags.join(", ")}` : ""}\n${links.map(link => `[${clean(link[2])}](${absolute(link[1])})`).join("\n")}` });
+        }
       }
     }
 
+    const achievementTitles = new Set([...((body.split('<div id="achievements"')[1]) || "").matchAll(/<h3[^>]*>([\s\S]*?)<\/h3>/g)].map(match => clean(match[1])));
     const sections = text.split(/\n(?=#{1,6} )/);
     sections.forEach((section, index) => {
       const heading = section.match(/^#{1,6}\s+([^\n]+)/)?.[1] || title;
+      // Cards are already indexed as self-contained records. Keep achievements separate.
+      if (cards[category] && cards[category].some(card => card.title === heading)) return;
       chunks(section).forEach((content, part) => {
         const searchTerms = category === "about" && index === 0 && /student/i.test(content)
           ? "education university college student background bio" : "";
-        documents.push({ id: `${file}:${index}:${part}`, category, title: `${title}: ${heading}`, url, content, ...(searchTerms ? { searchTerms } : {}) });
+        const recordCategory = category === "certifications" && achievementTitles.has(heading) ? "achievements" : category;
+        documents.push({ id: `${file}:${index}:${part}`, category: recordCategory, title: `${title}: ${heading}`, url, content, ...(searchTerms ? { searchTerms } : {}) });
       });
     });
   }
 
-  if (!documents.length || !cards.projects.length || !cards.certifications.length) {
+  if (!documents.length || !cards.projects.length || !cards.certifications.length || !profile) {
     throw new Error("Knowledge extraction is incomplete; check public page markup.");
   }
-  const payload = { documents, cards };
+  const payload = { documents, cards, profile };
   const version = createHash("sha256").update(JSON.stringify(payload)).digest("hex").slice(0, 16);
   return { version, ...payload };
 }

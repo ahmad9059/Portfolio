@@ -160,3 +160,36 @@ test("health reports bundled knowledge, not old embedding files or credentials",
   res = response(); health({}, res);
   assert.equal(res.statusCode, 503);
 });
+
+test("identity question after certifications returns a grounded prepared biography", async () => {
+  delete process.env.GEMINI_API_KEY;
+  global.fetch = async () => { throw new Error("No network expected"); };
+  const result = await request(handler(), {
+    message: "who are you?",
+    history: [{ role: "user", content: "Tell me about your certifications" }, { role: "assistant", content: "My portfolio lists 21 certifications." }],
+  });
+  assert.equal(result.statusCode, 200);
+  assert.match(result.output, /Ahmad Hassan/);
+  assert.match(result.output, /VieroMind/);
+  assert.doesNotMatch(result.output, /don't have that information|21 certifications/);
+});
+
+test("citation markers are removed from streamed and cached answers, without leaking prior topics", async () => {
+  process.env.GEMINI_API_KEY = "test";
+  let calls = 0;
+  global.fetch = async (_, options) => {
+    calls++;
+    const body = JSON.parse(options.body);
+    assert.equal(body.contents.length, 1);
+    assert.doesNotMatch(body.system_instruction.parts[0].text, /\[1\] About/);
+    return generated("I work at [VieroMind](https://vieromind.com) [1][2].");
+  };
+  const h = handler();
+  const body = { message: "Where do you work?", history: [{ role: "user", content: "certifications" }, { role: "assistant", content: "I work at a made-up company." }] };
+  const first = await request(h, body);
+  const cached = await request(h, body);
+  assert.equal(calls, 1);
+  assert.equal(first.output, cached.output);
+  assert.doesNotMatch(first.output, /\[1\]|\[2\]/);
+  assert.match(first.output, /\[VieroMind\]\(https:\/\/vieromind.com\)/);
+});

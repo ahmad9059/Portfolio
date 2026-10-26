@@ -509,7 +509,11 @@
       str = str.replace(/(?<!\*)\*([^*]+)\*(?!\*)/g, '<em>$1</em>');
       str = str.replace(/(?<!_)_([^_]+)_(?!_)/g, '<em>$1</em>');
       // Links [text](url)
-      str = str.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+      str = str.replace(/\[([^\]]+)\]\(([^)]+)\)/g, function(_, label, href) {
+        // Model output is untrusted. Reject executable schemes and attribute injection.
+        if (!/^(https?:\/\/|mailto:|\/(?!\/))/i.test(href) || /[\s"'`]/.test(href)) return label;
+        return '<a href="' + href + '" target="_blank" rel="noopener noreferrer">' + label + '</a>';
+      });
       return str;
     }
 

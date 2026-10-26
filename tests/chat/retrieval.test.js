@@ -14,6 +14,10 @@ test("snapshot is deterministic, current, public-only and contains usable links"
   assert.equal(knowledge.cards.certifications.length, 21);
   assert.equal(knowledge.cards.projects[0].url, "https://www.hyprflux.dev/");
   assert.match(knowledge.cards.certifications[0].url, /credly.com\/badges\//);
+  assert.match(knowledge.cards.certifications[0].description, /Amazon Web Services/);
+  assert.ok(knowledge.cards.projects[0].tags.includes("Hyprland"));
+  assert.ok(knowledge.documents.some(d => d.kind === "article" && /DNS/.test(d.title)));
+  assert.ok(knowledge.documents.filter(d => d.category === "achievements").every(d => !/AWS Certified Cloud Practitioner/.test(d.title)));
   const text = JSON.stringify(knowledge);
   assert.doesNotMatch(text, /PINECONE_API_KEY|GEMINI_API_KEY|onclick=|<style|<script|switchTab\(/);
   for (const doc of knowledge.documents) {
@@ -33,7 +37,7 @@ test("compiler excludes draft and future posts, while retaining published ones",
       fs.writeFileSync(path.join(dir, `content/posts/${name}.md`), `---\ntitle: ${name}\n${flags}\n---\nPublic text.`);
     }
     const result = buildKnowledge(dir, "2026-10-26");
-    assert.deepEqual(result.documents.filter(d => d.category === "blog").map(d => d.id), ["posts/published.md"]);
+    assert.deepEqual(result.documents.filter(d => d.category === "blog" && d.kind === "summary").map(d => d.id), ["posts/published.md"]);
   } finally { fs.rmSync(dir, { recursive: true, force: true }); }
 });
 
