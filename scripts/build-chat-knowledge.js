@@ -168,6 +168,26 @@ function buildKnowledge(root = ROOT, today = new Date().toISOString().slice(0, 1
   if (!documents.length || !cards.projects.length || !cards.certifications.length || !profile) {
     throw new Error("Knowledge extraction is incomplete; check public page markup.");
   }
+  // Explicitly owner-approved public facts supplement the site, without editing its pages.
+  const extraPath = path.join(root, "data/chat-profile.json");
+  if (fs.existsSync(extraPath)) {
+    const extra = JSON.parse(fs.readFileSync(extraPath, "utf8"));
+    const add = (id, title, content, category, facets) => {
+      if (typeof content !== "string" || !content.trim()) throw new Error(`Invalid owner fact: ${id}`);
+      documents.push({ id: `owner:${id}`, title, content, category, facets, url: `${SITE}/chat/`, provenance: extra.source, reportedOn: extra.reportedOn });
+    };
+    profile.education = extra.education;
+    profile.availability = extra.availability;
+    add("education", "About Ahmad Hassan: Education", extra.education, "about", ["education"]);
+    add("availability", "About Ahmad Hassan: Hiring availability and career interests", extra.availability, "about", ["contact", "interests"]);
+    add("experience", "About Ahmad Hassan: VieroMind infrastructure and architecture", extra.experience, "about", ["experience"]);
+    for (const [name, details] of Object.entries(extra.projects)) {
+      const card = cards.projects.find(item => item.title === name);
+      if (!card || !Array.isArray(details) || details.some(item => typeof item !== "string")) throw new Error(`Invalid project facts: ${name}`);
+      card.ownerFacts = details;
+      add(`project:${name}`, `${name}: Solo ownership and impact`, details.join("\n\n"), "projects", ["projects", "achievements"]);
+    }
+  }
   for (const category of ["projects", "certifications"]) {
     documents.push({ id: `${category}.md:catalog`, category, kind: "catalog", title: `${category === "projects" ? "Projects" : "Certifications"} catalog`,
       url: `${SITE}/${category}/`, content: `The public portfolio lists ${cards[category].length} ${category === "projects" ? "featured project" : "certification"} entries:\n${cards[category].map(item => `- ${item.title}`).join("\n")}` });

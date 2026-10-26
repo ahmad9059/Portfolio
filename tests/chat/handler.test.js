@@ -44,7 +44,8 @@ test("screenshot education typo and correct spelling use the same source-derived
     const res = await request(h, { message, history: [{ role: "user", content: "who are you?" }] });
     assert.equal(res.statusCode, 200);
     assert.equal(res.headers["x-chat-source"], "prepared");
-    assert.match(res.output, /CS student at MNS-UAM, Multan/);
+    assert.match(res.output, /BSCS at MNS-University of Agriculture, Multan/);
+    assert.match(res.output, /2023.*2027/);
     assert.doesNotMatch(res.output, /don't have that information/);
   }
 });

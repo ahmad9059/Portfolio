@@ -18,6 +18,8 @@ Only Gemini generation requires a credential. `PINECONE_API_KEY` is no longer us
 
 `node scripts/build-chat-knowledge.js` compiles:
 
+- Explicit owner-provided public facts from `data/chat-profile.json`, with provenance and reporting dates. These supplement the chatbot without silently editing the public site pages. Update dated metrics there when new figures are confirmed.
+
 - Public about, projects, certifications, tools and contact pages.
 - Published blog summaries and paragraph-sized article sections, with their original URLs.
 - Structured project descriptions, technology tags, certificate issuers, and verification links extracted from the public cards.

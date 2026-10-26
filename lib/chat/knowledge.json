@@ -1,5 +1,5 @@
 {
-  "version": "f582d0cd6c1e0679",
+  "version": "7f6097182230d4e1",
   "documents": [
     {
       "id": "about.md:0:0",
@@ -15698,6 +15698,69 @@
       "content": "## Final Thought on Becoming Full-Stack in 2025\n\nThis roadmap provides a clear and structured guide to becoming a proficient full-stack developer by 2025. It covers everything from the basics of HTML to advanced distributed systems, ensuring you're equipped to handle real-world challenges with confidence.\n\nHappy coding! 🚀"
     },
     {
+      "id": "owner:education",
+      "title": "About Ahmad Hassan: Education",
+      "content": "I'm pursuing a BSCS at MNS-University of Agriculture, Multan. I enrolled in 2023 and expect to graduate in 2027.",
+      "category": "about",
+      "facets": [
+        "education"
+      ],
+      "url": "https://ahmadx.dev/chat/",
+      "provenance": "Owner-provided answers in portfolio chat development",
+      "reportedOn": "2026-10-26"
+    },
+    {
+      "id": "owner:availability",
+      "title": "About Ahmad Hassan: Hiring availability and career interests",
+      "content": "I'm open to full-time jobs and also do freelance work. I'm interested in Linux, cloud, and AI roles, and I'm open to remote, on-site, or hybrid work. Please contact me to discuss a start date.",
+      "category": "about",
+      "facets": [
+        "contact",
+        "interests"
+      ],
+      "url": "https://ahmadx.dev/chat/",
+      "provenance": "Owner-provided answers in portfolio chat development",
+      "reportedOn": "2026-10-26"
+    },
+    {
+      "id": "owner:experience",
+      "title": "About Ahmad Hassan: VieroMind infrastructure and architecture",
+      "content": "At VieroMind, I built code infrastructure and architecture. No additional performance metrics or business outcomes have been provided.",
+      "category": "about",
+      "facets": [
+        "experience"
+      ],
+      "url": "https://ahmadx.dev/chat/",
+      "provenance": "Owner-provided answers in portfolio chat development",
+      "reportedOn": "2026-10-26"
+    },
+    {
+      "id": "owner:project:HyprFlux",
+      "title": "HyprFlux: Solo ownership and impact",
+      "content": "I built HyprFlux as a solo project.\n\nLinux users around the world use HyprFlux. It has 10,000+ downloads, and I've received positive feedback. This download figure was reported by me on October 26, 2026; no exact user count or download analytics link has been provided.",
+      "category": "projects",
+      "facets": [
+        "projects",
+        "achievements"
+      ],
+      "url": "https://ahmadx.dev/chat/",
+      "provenance": "Owner-provided answers in portfolio chat development",
+      "reportedOn": "2026-10-26"
+    },
+    {
+      "id": "owner:project:SehatScan",
+      "title": "SehatScan: Solo ownership and impact",
+      "content": "I built SehatScan as a solo project.",
+      "category": "projects",
+      "facets": [
+        "projects",
+        "achievements"
+      ],
+      "url": "https://ahmadx.dev/chat/",
+      "provenance": "Owner-provided answers in portfolio chat development",
+      "reportedOn": "2026-10-26"
+    },
+    {
       "id": "projects.md:catalog",
       "category": "projects",
       "kind": "catalog",
@@ -15728,6 +15791,10 @@
           "Shell",
           "CSS",
           "OS"
+        ],
+        "ownerFacts": [
+          "I built HyprFlux as a solo project.",
+          "Linux users around the world use HyprFlux. It has 10,000+ downloads, and I've received positive feedback. This download figure was reported by me on October 26, 2026; no exact user count or download analytics link has been provided."
         ]
       },
       {
@@ -15743,6 +15810,9 @@
           "PostgreSQL",
           "Prisma",
           "Google Gemini"
+        ],
+        "ownerFacts": [
+          "I built SehatScan as a solo project."
         ]
       },
       {
@@ -15927,6 +15997,8 @@
     "role": "Software Engineer & Full Stack Developer",
     "bio": "Currently building AI-powered tools at [VieroMind](https://vieromind.com/). CS student at MNS-UAM, Multan. Open source contributor and creator of [HyprFlux](https://github.com/ahmad9059/HyprFlux).",
     "url": "https://ahmadx.dev/about/",
-    "location": "Multan, Pakistan"
+    "location": "Multan, Pakistan",
+    "education": "I'm pursuing a BSCS at MNS-University of Agriculture, Multan. I enrolled in 2023 and expect to graduate in 2027.",
+    "availability": "I'm open to full-time jobs and also do freelance work. I'm interested in Linux, cloud, and AI roles, and I'm open to remote, on-site, or hybrid work. Please contact me to discuss a start date."
   }
 }
