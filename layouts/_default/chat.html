@@ -701,6 +701,8 @@
 
     // Add user message to UI
     addMessage('user', message);
+    const requestHistory = conversationHistory.slice(-40);
+    conversationHistory.push({ role: 'user', content: message });
 
     // Clear input
     chatInput.value = '';
@@ -724,12 +726,9 @@
         signal: controller.signal,
         body: JSON.stringify({
           message: message,
-          history: conversationHistory.slice(-40)
+          history: requestHistory
         })
       });
-
-      // Add to history AFTER sending (so it's not duplicated in the request)
-      conversationHistory.push({ role: 'user', content: message });
 
       removeTypingIndicator();
 

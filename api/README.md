@@ -27,14 +27,15 @@ The compiler excludes draft and future posts, scripts, styles, images, private f
 
 The generated file is `lib/chat/knowledge.json`. Commit this snapshot with its compiler. The Vercel build regenerates it, and function configuration explicitly includes `lib/chat/**`. Runtime search never needs the source Markdown files. A content hash versions the snapshot.
 
-Local BM25 ranking uses title/category boosts and a small alias dictionary. It retrieves up to five whole chunks, with a 6,500-character content budget. Unlike embeddings, lexical search can miss paraphrases or misspellings. Add query aliases in `lib/chat/retrieval.js` and regression tests when needed. Retrieval scores are ranking scores, not cosine confidence values.
+Local BM25 ranking uses an inverted index, precomputed IDF weights, source facets, and query aliases. It retrieves up to five whole chunks, with a 6,500-character content budget. Mixed-topic requests reserve evidence for each topic; named article queries stay within that article. Unlike embeddings, lexical search can still miss paraphrases or misspellings. Add query aliases in `lib/chat/retrieval.js` and regression tests when needed. Retrieval scores are ranking scores, not cosine confidence values.
 
 ## Response paths
 
-1. Greetings, identity questions, and narrow generic project/certification questions return source-derived prepared answers without an AI request.
+1. Greetings, identity questions, narrow generic portfolio questions, project descriptions/technology lists, and simple provider-specific credential questions return source-derived prepared answers without an AI request. These paths extract public facts; they do not guess recommendations or missing details.
 2. Other questions search the local index. Unsupported topics receive a short no-context answer without generation.
 3. Relevant questions call Gemini once and stream its answer.
-4. Successfully completed answers enter a bounded, ten-minute in-memory LRU cache. Cache keys include knowledge version, model, question and sanitized conversation. Incomplete, failed and token-limited responses are not cached.
+4. Successfully completed answers enter a bounded, ten-minute in-memory LRU cache, checked before retrieval. Cache keys include prompt-policy version, UTC date, knowledge version, model/configuration, question and sanitized conversation. Incomplete, failed and token-limited responses are not cached.
+5. Concurrent identical generation requests share one streamed upstream call. Different histories remain isolated. Disconnecting the last subscriber cancels upstream work; at most eight unique generations run simultaneously per instance.
 
 The cache belongs to each warm function instance. It is not shared between instances, and cold starts clear it. Prepared answers remain fast on a cold instance because they need no network service.
 
@@ -48,13 +49,17 @@ The API accepts up to ten recent valid user/assistant messages, bounded to 10,00
 
 Previous assistant text identifies referents only; it is not treated as evidence. Retrieval scopes certifications, work, projects, biography, and blog questions to the relevant source categories. Unknown personal facts cannot use an unrelated blog paragraph as biography. This is deterministic local topic resolution, not a semantic model, so ambiguous language can still require clarification.
 
+Catalog records carry complete public project/certificate names and counts. Direct count/full-list questions use the structured records rather than counting a partial retrieval window. Counts describe published portfolio entries, not a claim about every project ever built or every professional exam passed. The generation prompt includes today's UTC date and forbids adding overlapping job tenures into a fabricated total.
+
 Source prompts use descriptive titles rather than numbered IDs. A streaming filter removes numeric citation markers such as `[1]` and `[2]` while preserving real Markdown links, lists, and numbers. The chat renderer also rejects executable URL schemes and unsafe link attributes.
 
 ## Generation and errors
 
-Default model: `gemini-flash-lite-latest`. Optional `GEMINI_MODEL` overrides it. Verify access before selecting another model. There is no slow fallback chain.
+Default model: **`gemini-3.5-flash-lite`**, explicitly pinned rather than using a changing alias. Minimal thinking is configured for supported Flash-Lite versions; arbitrary `GEMINI_MODEL` overrides do not receive unsupported thinking-level settings. Detailed questions get a larger output budget. Verify model access before selecting another model. There is no slow fallback chain or duplicate speculative provider requests.
 
 The generation deadline is 15 seconds and covers headers and the streamed body. The server parses split SSE events, suppresses thought parts, and checks completion. Before streaming, failures return JSON with a 502/504 status. During streaming, failures emit an SSE `error` followed by `[DONE]`. Provider error bodies and API keys are not sent to visitors.
+
+Provider throttling and local generation-capacity limits return 503 with `Retry-After`. Token-limited answers emit an explicit truncation error. The browser has a 25-second deadline, rejects interrupted/malformed streams, and requires `[DONE]` before recording an assistant turn. The shared browser SSE reader is regression-tested across every byte split of Unicode/CRLF examples. User turns are recorded even if their requests fail; failed assistant answers are not used as context.
 
 `GET /api/health` reports local knowledge count/version, model and whether generation is configured. It does not call Gemini or reveal keys. Without a generation key it returns 503, but prepared answers still work.
 
@@ -78,5 +83,7 @@ node scripts/test-chat-performance.js
 ```
 
 Tests use mocked generation and need no credentials. They cover content extraction, draft exclusion, retrieval, prepared answers, cache isolation/expiry, rate limits, SSE parsing, errors and deadlines.
+
+The scenario suite also covers the screenshot failures (`eduction`, previous-question recall), mixed topics, unknown/private facts, source facets, pronoun/ordinal references, concurrent request sharing, disconnect cleanup, browser streaming, and the pinned model's thinking configuration. This is regression coverage, not proof of all possible language or guaranteed model correctness. `SHOW_ANSWERS=1` prints the live benchmark answers for manual grounding checks.
 
 Measure time to the **first text event** separately from full completion. Local retrieval removes two remote calls but cannot guarantee 1–2 seconds for novel generated answers. Model load, network distance and function cold starts still matter. Prepared and warm cached answers avoid that dependency. Rate limiting and caching are instance-local, not a distributed abuse-prevention system.

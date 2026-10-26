@@ -239,3 +239,35 @@ test("citation markers are removed from streamed and cached answers, without lea
   assert.doesNotMatch(first.output, /\[1\]|\[2\]/);
   assert.match(first.output, /\[VieroMind\]\(https:\/\/vieromind.com\)/);
 });
+
+test("project stack follow-ups and credential lists use source records, not model guesses", async () => {
+  delete process.env.GEMINI_API_KEY;
+  global.fetch = async () => { throw new Error("No model needed for source extraction"); };
+  const h = handler();
+  const stack = await request(h, { message: "what technologies does it use?", history: [
+    { role: "user", content: "Tell me about SehatScan" },
+    { role: "assistant", content: "SehatScan is my health assessment platform." },
+  ] });
+  assert.equal(stack.headers["x-chat-source"], "prepared");
+  assert.match(stack.output, /SehatScan/);
+  assert.match(stack.output, /Python/);
+  assert.doesNotMatch(stack.output, /Hyprland/);
+  const certs = await request(h, { message: "Do you hold the AWS Solutions Architect certification, or only Cloud Practitioner?" });
+  assert.equal(certs.headers["x-chat-source"], "prepared");
+  assert.match(certs.output, /AWS Certified Cloud Practitioner/);
+  assert.doesNotMatch(certs.output, /hold.*Solutions Architect/);
+  assert.match(certs.output, /not unlisted certifications/);
+});
+
+test("counts and complete lists do not rely on a partial retrieval window", async () => {
+  delete process.env.GEMINI_API_KEY;
+  global.fetch = async () => { throw new Error("No generation needed for counts"); };
+  const h = handler();
+  const count = await request(h, { message: "How many projects have you built?" });
+  assert.match(count.output, /7 featured projects/);
+  const all = await request(h, { message: "List all certifications" });
+  assert.match(all.output, /21 certification entries/);
+  assert.match(all.output, /AWS Certified Cloud Practitioner/);
+  assert.match(all.output, /AI For Everyone/);
+  assert.equal(all.headers["x-chat-source"], "prepared");
+});

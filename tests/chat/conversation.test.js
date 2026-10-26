@@ -3,8 +3,19 @@ const assert = require("node:assert/strict");
 const { resolveConversation, sanitizeHistory, topicOf } = require("../../lib/chat/conversation");
 const { preparedAnswer, retrieve } = require("../../lib/chat/retrieval");
 const { CitationFilter } = require("../../lib/chat/citations");
+const { normalizeInput } = require("../../lib/chat/input");
 const user = content => ({ role: "user", content });
 const assistant = content => ({ role: "assistant", content });
+
+test("normalization is idempotent and handles common Unicode formatting without rewriting names", () => {
+  for (const input of ["what is your educ\u200bation", "ｗｈａｔ ｉｓ ｙｏｕｒ ｅｄｕｃａｔｉｏｎ", "what’s your name?", "HyprFlux SehatScan", "مرحبا"]) {
+    const normalized = normalizeInput(input);
+    assert.equal(normalizeInput(normalized), normalized);
+  }
+  assert.equal(topicOf("what is your educ\u200bation"), "education");
+  assert.equal(topicOf("ｗｈａｔ ｉｓ ｙｏｕｒ ｅｄｕｃａｔｉｏｎ"), "education");
+  assert.equal(normalizeInput("HyprFlux SehatScan"), "HyprFlux SehatScan");
+});
 
 test("common topic typos normalize consistently without fuzzy-changing entity names", () => {
   for (const question of ["what is your eduction", "your educaton?", "your educatoin?"]) {

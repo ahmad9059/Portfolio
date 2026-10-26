@@ -168,6 +168,10 @@ function buildKnowledge(root = ROOT, today = new Date().toISOString().slice(0, 1
   if (!documents.length || !cards.projects.length || !cards.certifications.length || !profile) {
     throw new Error("Knowledge extraction is incomplete; check public page markup.");
   }
+  for (const category of ["projects", "certifications"]) {
+    documents.push({ id: `${category}.md:catalog`, category, kind: "catalog", title: `${category === "projects" ? "Projects" : "Certifications"} catalog`,
+      url: `${SITE}/${category}/`, content: `The public portfolio lists ${cards[category].length} ${category === "projects" ? "featured project" : "certification"} entries:\n${cards[category].map(item => `- ${item.title}`).join("\n")}` });
+  }
   const payload = { documents, cards, profile };
   const version = createHash("sha256").update(JSON.stringify(payload)).digest("hex").slice(0, 16);
   return { version, ...payload };

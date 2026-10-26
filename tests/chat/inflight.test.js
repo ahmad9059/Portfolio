@@ -79,3 +79,19 @@ test("capacity is bounded, shared subscribers remain allowed, and failures can b
   await Promise.resolve();
   assert.equal((await hub.join("a", { run: async () => "retry", onText() {} })), "retry");
 });
+
+test("a failing client writer removes its subscription and cancels otherwise-unused work", async () => {
+  const hub = new InflightGenerations();
+  let signal;
+  const task = hub.join("writer", {
+    onText() { throw new Error("connection closed"); },
+    run: async options => {
+      signal = options.signal;
+      options.onText("text");
+      assert.equal(signal.aborted, true);
+      return {};
+    },
+  });
+  await assert.rejects(task, /connection closed/);
+  assert.equal(hub.entries.size, 0);
+});

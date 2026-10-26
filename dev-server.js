@@ -22,7 +22,7 @@ if (fs.existsSync(envPath)) {
         (value.startsWith("'") && value.endsWith("'"))) {
       value = value.slice(1, -1);
     }
-    process.env[key.trim()] = value;
+    if (process.env[key.trim()] === undefined) process.env[key.trim()] = value;
   });
   console.log("Loaded .env file");
 }

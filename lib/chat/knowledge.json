@@ -1,5 +1,5 @@
 {
-  "version": "7b990b782bb914a8",
+  "version": "f582d0cd6c1e0679",
   "documents": [
     {
       "id": "about.md:0:0",
@@ -15696,6 +15696,22 @@
       "title": "Becoming a Full-Stack Web Developer in 2025: Final Thought on Becoming Full-Stack in 2025",
       "url": "https://ahmadx.dev/posts/web-dev-roadmap/",
       "content": "## Final Thought on Becoming Full-Stack in 2025\n\nThis roadmap provides a clear and structured guide to becoming a proficient full-stack developer by 2025. It covers everything from the basics of HTML to advanced distributed systems, ensuring you're equipped to handle real-world challenges with confidence.\n\nHappy coding! 🚀"
+    },
+    {
+      "id": "projects.md:catalog",
+      "category": "projects",
+      "kind": "catalog",
+      "title": "Projects catalog",
+      "url": "https://ahmadx.dev/projects/",
+      "content": "The public portfolio lists 7 featured project entries:\n- HyprFlux\n- SehatScan\n- HisaabScore\n- RAF-SP\n- UAM Tracker\n- MindOasis\n- CodingHawks"
+    },
+    {
+      "id": "certifications.md:catalog",
+      "category": "certifications",
+      "kind": "catalog",
+      "title": "Certifications catalog",
+      "url": "https://ahmadx.dev/certifications/",
+      "content": "The public portfolio lists 21 certification entries:\n- AWS Certified Cloud Practitioner\n- CALICO Spring '25\n- Meta Front-End Developer\n- SQL (Intermediate)\n- Database Structures & MySQL\n- CS50x Puzzle Day 2025\n- Introduction to Databases\n- Introduction to Generative AI\n- Agile Project Management\n- GitHub Foundations\n- Problem Solving (Intermediate)\n- Programming with JavaScript\n- Introduction to DevOps\n- Introduction to Software Engineering\n- Google Cloud Digital Leader\n- Crash Course on Python\n- Foundations: Data, Data, Everywhere\n- Introduction to Git and GitHub\n- Creative & Critical Thinking\n- Critical Thinking Skills\n- AI For Everyone"
     }
   ],
   "cards": {

@@ -13,6 +13,7 @@
       if (data.trim() === '[DONE]') { complete = true; return; }
       let parsed;
       try { parsed = JSON.parse(data); } catch { throw new Error('Invalid response received. Please try again.'); }
+      if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) throw new Error('Invalid response received. Please try again.');
       if (parsed.error) throw new Error(String(parsed.error).slice(0, 500));
       if (typeof parsed.text === 'string' && parsed.text) {
         text += parsed.text;

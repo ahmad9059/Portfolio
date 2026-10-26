@@ -4,6 +4,7 @@ const { topicOf, resolveConversation } = require("../../lib/chat/conversation");
 const { retrieve, preparedAnswer } = require("../../lib/chat/retrieval");
 
 const groups = [
+  ["identity", /Ahmad Hassan/, ["who are you?", "who are you and what do you do", "what do you do", "what can you do", "tell me about you", "are you a bot", "are you an AI", "what’s your name?"]],
   ["education", /CS student at MNS-UAM/, ["what is your education", "what is your eduction", "what is your educaton", "what is your educatoin", "Where did you study?", "Where are you studying?", "what degree are you pursuing", "tell me about your qualifications"]],
   ["experience", /VieroMind/, ["Where do you work?", "who do you work for", "Tell me about your job", "what is your company", "What is your experiance?", "Tell me about your career", "How many years of experience do you have?"]],
   ["skills", /TypeScript/, ["What are your skills?", "what programming languages do you know", "what languages do you use", "tell me your tech stack", "what is your favorite programming language", "What backend technologies do you use?"]],
@@ -11,7 +12,7 @@ const groups = [
   ["interests", /productivity/, ["What are your hobbies?", "what are your interests", "what do you do in your free time", "what do you do outside coding"]],
   ["contact", /hi@ahmadx.dev/, ["How can I contact you?", "what is your email", "are you available for hire", "how do I connect with you", "can I see your resume?"]],
   ["projects", /HyprFlux/, ["What is HyprFlux?", "Tell me about HyprFlux", "describe HyprFlux", "how can I contribute to HyprFlux", "What stack did you use in HyprFlux?"]],
-  ["certifications", /AWS Certified Cloud Practitioner/, ["What AWS certifications do you have?", "Do you have AWS Solutions Architect certification?", "tell me about your certifcations", "What credentials do you have?"]],
+  ["certifications", /AWS Certified Cloud Practitioner/, ["What AWS certifications do you have?", "Are you AWS certified?", "Do you have AWS Solutions Architect certification?", "tell me about your certifcations", "What credentials do you have?"]],
   ["blog", /consistent hashing/i, ["Explain consistent hashing", "Tell me about consistent hashing", "what have you written about consistent hashing"]],
   ["blog", /DNS|Domain Name System/, ["Explain DNS", "what have you written about DNS", "tell me about DNS"]],
 ];
@@ -66,4 +67,13 @@ test("a chain of pronoun follow-ups stays on the project, not generic skills", (
   const compared = resolveConversation("compare it with HyprFlux", history);
   assert.match(compared.query, /SehatScan/);
   assert.match(compared.query, /HyprFlux/);
+});
+
+test("short identity follow-ups still retrieve the biography instead of an empty query", () => {
+  const context = resolveConversation("tell me more", [
+    { role: "user", content: "who are you?" },
+    { role: "assistant", content: "I'm Ahmad's portfolio AI assistant." },
+  ]);
+  const docs = retrieve(context.query, { topic: context.topic });
+  assert.ok(docs.some(d => d.facets?.includes("identity")));
 });
