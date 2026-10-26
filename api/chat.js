@@ -117,7 +117,14 @@ async function retrievePinecone(queryVector, topK = 5) {
 
 // Gemini embedding
 const EMBEDDING_MODEL = "gemini-embedding-001";
-const GEMINI_MODELS = ["gemini-2.5-flash", "gemini-2.5-flash-lite"];
+// Primary, then fallback. Retired models return 404, so the loop must retry on that too.
+const GEMINI_MODELS = ["gemini-flash-lite-latest"];
+
+// A retired or overloaded model is worth retrying on the next one.
+// 404 = model gone, 429 = quota, 5xx = upstream trouble.
+function isRetryableStatus(status) {
+  return status === 404 || status === 429 || status >= 500;
+}
 
 async function fetchWithTimeout(url, options, timeout = 15000) {
   const controller = new AbortController();
@@ -130,6 +137,7 @@ async function fetchWithTimeout(url, options, timeout = 15000) {
 }
 
 async function callGeminiStreaming(apiKey, requestBody, res) {
+  let lastError;
   for (const model of GEMINI_MODELS) {
     const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:streamGenerateContent?key=${apiKey}&alt=sse`;
     
@@ -142,8 +150,12 @@ async function callGeminiStreaming(apiKey, requestBody, res) {
 
       if (!response.ok) {
         const errorText = await response.text();
-        if ((response.status === 429 || response.status >= 500) && model !== GEMINI_MODELS[GEMINI_MODELS.length - 1]) continue;
-        throw new Error(`Gemini error ${response.status}: ${errorText}`);
+        lastError = new Error(`Gemini error ${response.status}: ${errorText}`);
+        if (isRetryableStatus(response.status)) {
+          console.error(`${model} failed (${response.status}), trying next model`);
+          continue;
+        }
+        throw lastError;
       }
 
       const reader = response.body.getReader();
@@ -166,7 +178,12 @@ async function callGeminiStreaming(apiKey, requestBody, res) {
             
             try {
               const data = JSON.parse(jsonStr);
-              const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+              // Gemini 3.x sends thought parts alongside the answer. Keep only the answer.
+              const parts = data?.candidates?.[0]?.content?.parts || [];
+              const text = parts
+                .filter((p) => p?.text && !p.thought)
+                .map((p) => p.text)
+                .join("");
               if (text) {
                 fullText += text;
                 res.write(`data: ${JSON.stringify({ text })}\n\n`);
@@ -183,14 +200,14 @@ async function callGeminiStreaming(apiKey, requestBody, res) {
       return { success: true, text: fullText, model };
     } catch (error) {
       console.error(`Streaming error with ${model}:`, error.message);
-      if (model === GEMINI_MODELS[GEMINI_MODELS.length - 1]) {
-        throw error;
-      }
+      lastError = error;
     }
   }
+  throw lastError || new Error("No Gemini model available");
 }
 
 async function callGemini(apiKey, requestBody) {
+  let lastResult;
   for (const model of GEMINI_MODELS) {
     const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
     const response = await fetchWithTimeout(url, {
@@ -202,9 +219,11 @@ async function callGemini(apiKey, requestBody) {
       console.log(`Generated using ${model}`);
       return { response, model };
     }
-    if ((response.status === 429 || response.status >= 500) && model !== GEMINI_MODELS[GEMINI_MODELS.length - 1]) continue;
-    return { response, model };
+    lastResult = { response, model };
+    if (!isRetryableStatus(response.status)) break;
+    console.error(`${model} failed (${response.status}), trying next model`);
   }
+  return lastResult;
 }
 
 async function getQueryEmbedding(text, apiKey) {
@@ -248,11 +267,14 @@ function buildEnhancedQuery(message, history) {
 
 // System prompt
 function buildSystemPrompt(contextChunks, topScore) {
-  const context = contextChunks
-    .map((c, i) => `[${i + 1}. ${c.category.toUpperCase()}: ${c.title}]\n${c.content}`)
-    .join("\n\n");
+  const hasContext = Array.isArray(contextChunks) && contextChunks.length > 0;
+  const context = hasContext
+    ? contextChunks
+        .map((c, i) => `[${i + 1}. ${(c.category || "unknown").toUpperCase()}: ${c.title}]\n${c.content}`)
+        .join("\n\n")
+    : "(no context retrieved)";
   const categories = [...new Set(contextChunks.map(c => c.category))];
-  const isLowRelevance = topScore < 0.65;
+  const isLowRelevance = !hasContext || topScore < 0.65;
 
   return `You are Ahmad Hassan, a Software Engineer and Full Stack Developer from Pakistan. You are the AI version of Ahmad, responding to visitors on his portfolio website (ahmadx.dev).
 
@@ -360,7 +382,11 @@ module.exports = async function handler(req, res) {
       }
 
       const geminiData = await geminiResponse.json();
-      const responseText = geminiData?.candidates?.[0]?.content?.parts?.[0]?.text;
+      const parts = geminiData?.candidates?.[0]?.content?.parts || [];
+      const responseText = parts
+        .filter((p) => p?.text && !p.thought)
+        .map((p) => p.text)
+        .join("");
       if (!responseText) return res.status(500).json({ error: "Empty response from AI" });
 
       res.setHeader("Content-Type", "text/event-stream");
@@ -381,19 +407,9 @@ module.exports = async function handler(req, res) {
     const enhancedQuery = buildEnhancedQuery(trimmedMessage, history);
     log("Query enhanced");
 
-    // Get query embedding
-    const queryVector = await getQueryEmbedding(enhancedQuery, geminiApiKey);
-    log("Embedding API done");
-
-    // Initialize Pinecone if needed
-    if (!pineconeReady) {
-      await initPinecone(pineconeApiKey);
-      log("Pinecone init");
-    }
-
     // Retrieve from Pinecone
     let retrievalResult;
-    const cacheKey = trimmedMessage.toLowerCase().slice(0, 100);
+    const cacheKey = enhancedQuery;
     const cachedResult = getCachedQuery(cacheKey);
     
     if (cachedResult) {
@@ -401,15 +417,25 @@ module.exports = async function handler(req, res) {
       retrievalResult = cachedResult;
     } else {
       log("Query cache MISS");
+      // Overlap cold client initialization with the embedding request.
+      const [queryVector] = await Promise.all([
+        getQueryEmbedding(enhancedQuery, geminiApiKey),
+        initPinecone(pineconeApiKey),
+      ]);
+      log("Embedding and Pinecone ready");
       retrievalResult = await retrievePinecone(queryVector, 5);
       log("Pinecone query done");
 
-      if (!retrievalResult) {
-        console.error("Pinecone query returned no results");
-        return res.status(500).json({ error: "Failed to retrieve context from knowledge base" });
+      if (retrievalResult) {
+        setCachedQuery(cacheKey, retrievalResult);
       }
+    }
 
-      setCachedQuery(cacheKey, retrievalResult);
+    // Retrieval is best effort. If Pinecone is slow, empty or unreachable the chat
+    // still answers, with an honest "I don't have that on my portfolio" instead of a 500.
+    if (!retrievalResult) {
+      console.error("Pinecone returned no context, continuing without it");
+      retrievalResult = { chunks: [], topScore: 0 };
     }
 
     const systemPrompt = buildSystemPrompt(retrievalResult.chunks, retrievalResult.topScore);
@@ -424,7 +450,7 @@ module.exports = async function handler(req, res) {
     const requestBody = {
       system_instruction: { parts: [{ text: systemPrompt }] },
       contents: conversationHistory,
-      generationConfig: { temperature: 0.7, topP: 0.9, topK: 40, maxOutputTokens: 800 },
+      generationConfig: { temperature: 0.7, topP: 0.9, topK: 40, maxOutputTokens: 400 },
       safetySettings: [
         { category: "HARM_CATEGORY_HARASSMENT", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
         { category: "HARM_CATEGORY_HATE_SPEECH", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
