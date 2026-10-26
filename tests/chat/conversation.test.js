@@ -36,7 +36,22 @@ test("identity questions work after certifications, without inheriting their con
     assert.equal(context.topic, "identity");
     assert.deepEqual(context.history, []);
     assert.match(preparedAnswer(question), /Ahmad Hassan/);
+    assert.match(preparedAnswer(question), /^I'm \*\*Ahmad Hassan\*\*/);
+    assert.doesNotMatch(preparedAnswer(question), /AI assistant|assistant for|Ahmad's projects/);
     assert.doesNotMatch(preparedAnswer(question), /21 certifications/);
+  }
+});
+
+test("greetings use first-person portfolio voice while explicit AI questions remain truthful", () => {
+  assert.match(preparedAnswer("hi"), /^Hi! I'm Ahmad Hassan\./);
+  assert.match(preparedAnswer("how are you?"), /my projects/);
+  const introduction = preparedAnswer("who are you?");
+  assert.match(introduction, /I'm currently building/);
+  assert.match(introduction, /I'm a CS student/);
+  assert.match(introduction, /I'm an open source contributor/);
+  for (const question of ["are you a bot?", "are you an AI?", "are you a real person?", "is this really Ahmad?"]) {
+    assert.match(preparedAnswer(question), /AI-powered/);
+    assert.match(preparedAnswer(question), /not Ahmad Hassan chatting live/);
   }
 });
 

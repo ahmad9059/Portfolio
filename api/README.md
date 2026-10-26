@@ -41,6 +41,8 @@ The cache belongs to each warm function instance. It is not shared between insta
 
 ## Conversation grounding
 
+The chat uses Ahmad's first-person portfolio voice for normal replies and introductions ("I'm Ahmad Hassan", "my projects"), without unsolicited assistant disclaimers. Explicit questions about whether the chat is AI or Ahmad responding live receive a truthful AI disclosure.
+
 Common topic misspellings (including `eduction`) are normalized before both intent detection and retrieval. Corrections use an explicit alias list, not fuzzy substitutions of names or source facts.
 
 Requests to list earlier questions use a separate, model-free chat-history path. It lists original user messages only and explains the available-history limit. The browser sends up to 40 recent messages; recall accepts at most 20,000 characters. Portfolio generation still uses the smaller context window described below. This is not persistent memory and cannot recover other chats or missing history.
